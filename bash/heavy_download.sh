@@ -1,3 +1,7 @@
+OUT_DIR="$1"
+mkdir -p "$OUT_DIR"
+cd "$OUT_DIR"
+
 wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843405_Heavy_IGHG.csv.gz
 wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843396_Heavy_IGHG.csv.gz
 wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843399_Heavy_IGHG.csv.gz
@@ -2389,3 +2393,5 @@ wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383454
 wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383462_Heavy_IGHG.csv.gz
 wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383465_Heavy_IGHG.csv.gz
 wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383459_Heavy_IGHG.csv.gz
+
+cd ..

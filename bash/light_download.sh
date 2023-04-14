@@ -1,3 +1,7 @@
+OUT_DIR="$1"
+mkdir -p "$OUT_DIR"
+cd "$OUT_DIR"
+
 wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534363_Light_Bulk.csv.gz
 wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534361_Light_Bulk.csv.gz
 wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534364_Light_Bulk.csv.gz
@@ -1241,3 +1245,5 @@ wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537524
 wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537526_Light_Bulk.csv.gz
 wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537523_Light_Bulk.csv.gz
 wget http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537525_Light_Bulk.csv.gz
+
+cd ..

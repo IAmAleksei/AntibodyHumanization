@@ -1,0 +1,3 @@
+DATASET_DIR="$1"
+OUT_FILE="$2"
+ls "$PWD/$DATASET_DIR"/* > "$OUT_FILE"
