@@ -1,13 +1,14 @@
 import logging
+from typing import List
 
 import numpy as np
 from catboost import CatBoostClassifier
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 
-from dataset import read_dataset
+from dataset import read_prepared_heavy_dataset, make_binary_target
 
-logger = logging.getLogger("Heavy chains random forest")
+logger = logging.getLogger("Heavy chains RF")
 logger.setLevel(logging.DEBUG)
 ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
@@ -15,32 +16,44 @@ ch.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(me
 logger.addHandler(ch)
 
 
-def build_tree(v_type=1) -> CatBoostClassifier:
-    dataset = read_dataset(requested_columns=['sequence_alignment_aa', 'v_call'])
-    logger.info(f"Tree will train on dataset {dataset.size}")
-    X = dataset['sequence_alignment_aa']
-    X = X.str.split('', expand=True).fillna(value='')  # Make column for every aa
-    y = np.where(dataset['v_call'].apply(lambda x: x.startswith(f"IGHV{v_type}")), 1, 0)
-    X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
-    X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.2, shuffle=False)
+def build_tree(X, y, v_type=1) -> CatBoostClassifier:
+    y = make_binary_target(y, v_type)
+    logger.debug(f"Dataset for V{v_type} tree contains {np.count_nonzero(y == 1)} positive samples")
+    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, shuffle=True)
 
-    model = CatBoostClassifier(iterations=200,
+    model = CatBoostClassifier(iterations=250,
                                depth=3,
                                learning_rate=1,
                                loss_function='Logloss',
-                               verbose=True)
+                               verbose=False)
     model.fit(X_train, y_train,
               cat_features=X.columns.tolist(),
               eval_set=(X_val, y_val))
 
-    y_pred = model.predict(X_test)
-    tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
-    logger.info(f"Test data: TP={tp}, TN={tn}, FP={fp}, FN={fn}")
-    # Test data: TP=3289, TN=13729, FP=5, FN=1
-
     return model
 
 
+def build_trees() -> List[CatBoostClassifier]:
+    X, y = read_prepared_heavy_dataset()
+    X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
+    logger.info(f"Train dataset: {X_.shape[0]} rows")
+    logger.info(f"Test dataset: {X_test.shape[0]} rows")
+    models = []
+    for v_type in range(1, 8):
+        logger.debug(f"Tree for V{v_type} is building...")
+        model = build_tree(X_, y_, v_type)
+        y_pred = model.predict(X_test)
+        logger.debug(f"Tree for V{v_type} was built")
+        tn, fp, fn, tp = confusion_matrix(make_binary_target(y_test, v_type), y_pred).ravel()
+        logger.info(f"Tree for V{v_type} tested.")
+        logger.info(f"TP={tp}, TN={tn}, FP={fp}, FN={fn}. "
+                    f"Recall={round(tp / (tp + fn), 5)}. "
+                    f"Precision={round(tp / (tp + fp), 5)}. "
+                    f"Accuracy={round((tp + tn) / (tp + tn + fp + fn), 5)}")
+        models.append(model)
+    return models
+
+
 if __name__ == '__main__':
-    model = build_tree()
+    trees = build_trees()
 
