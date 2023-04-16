@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 from dataset import read_prepared_heavy_dataset, make_binary_target
 
-logger = logging.getLogger("Heavy chains RF")
+logger = logging.getLogger("Heavy chain RF")
 logger.setLevel(logging.DEBUG)
 ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
@@ -37,7 +37,9 @@ def build_trees() -> List[CatBoostClassifier]:
     X, y = read_prepared_heavy_dataset()
     X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
     logger.info(f"Train dataset: {X_.shape[0]} rows")
+    logger.debug(f"Statistics:\n{y_.value_counts()}")
     logger.info(f"Test dataset: {X_test.shape[0]} rows")
+    logger.debug(f"Statistics:\n{y_test.value_counts()}")
     models = []
     for v_type in range(1, 8):
         logger.debug(f"Tree for V{v_type} is building...")
