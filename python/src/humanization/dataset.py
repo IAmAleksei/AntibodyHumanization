@@ -1,19 +1,14 @@
-import gzip
-import logging
-import os.path
-import zipfile
-from typing import NoReturn, List
 import json
+from typing import List
 
-import pandas
 import numpy as np
+import pandas
 
-logger = logging.getLogger("Dataset reader")
-logger.setLevel(logging.DEBUG)
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
-ch.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-logger.addHandler(ch)
+from humanization import config_loader, utils
+from humanization.utils import configure_logger
+
+config = config_loader.Config()
+logger = configure_logger(config, "Dataset reader")
 
 
 def read_dataset(
@@ -56,12 +51,12 @@ def read_prepared_heavy_dataset():
         'sequence_alignment_aa', 'fwr1_aa', 'cdr1_aa', 'fwr2_aa', 'cdr2_aa', 'fwr3_aa', 'cdr3_aa', 'fwr4_aa',
         'species', 'v_call'
     ])
-    segment_names = ['fwr1', 'cdr1', 'fwr2', 'cdr2', 'fwr3', 'cdr3', 'fwr4']
     segments = []
-    for seg_name in segment_names:
-        df_col = dataset[f'{seg_name}_aa'].str.split('', expand=True)
-        df_col = df_col.drop(columns=[0]).add_prefix(f'{seg_name}_')
-        # First column is empty always
+    for segment_name, _ in utils.SEGMENTS:
+        df_col = dataset[f'{segment_name}_aa'].str.split('', expand=True)
+        df_col = df_col.drop(columns=[0, len(df_col.columns) - 1]).add_prefix(f'{segment_name}_')
+        logger.debug(f"Segment {segment_name} has {len(df_col.columns)} columns")
+        # First and last columns are empty always
         segments.append(df_col)
     dataset['v_call'] = dataset['v_call'].str.slice(stop=5)
     dataset.loc[dataset['species'] != 'human', 'v_call'] = 'NOT_HUMAN'

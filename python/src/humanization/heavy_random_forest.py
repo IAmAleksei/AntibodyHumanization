@@ -1,4 +1,4 @@
-import logging
+import argparse
 from typing import List
 
 import numpy as np
@@ -6,14 +6,13 @@ from catboost import CatBoostClassifier
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 
-from dataset import read_prepared_heavy_dataset, make_binary_target
+import config_loader
+from humanization.dataset import read_prepared_heavy_dataset, make_binary_target
+from humanization.models import ModelWrapper, HeavyChainType, save_model
+from humanization.utils import configure_logger
 
-logger = logging.getLogger("Heavy chain RF")
-logger.setLevel(logging.DEBUG)
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
-ch.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-logger.addHandler(ch)
+config = config_loader.Config()
+logger = configure_logger(config, "Heavy chain RF")
 
 
 def build_tree(X, y, v_type=1) -> CatBoostClassifier:
@@ -33,9 +32,9 @@ def build_tree(X, y, v_type=1) -> CatBoostClassifier:
     return model
 
 
-def build_trees() -> List[CatBoostClassifier]:
+def build_trees() -> List[ModelWrapper]:
     X, y = read_prepared_heavy_dataset()
-    X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
+    X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.15, shuffle=True)
     logger.info(f"Train dataset: {X_.shape[0]} rows")
     logger.debug(f"Statistics:\n{y_.value_counts()}")
     logger.info(f"Test dataset: {X_test.shape[0]} rows")
@@ -52,10 +51,22 @@ def build_trees() -> List[CatBoostClassifier]:
                     f"Recall={round(tp / (tp + fn), 5)}. "
                     f"Precision={round(tp / (tp + fp), 5)}. "
                     f"Accuracy={round((tp + tn) / (tp + tn + fp + fn), 5)}")
-        models.append(model)
+        wrapped_model = ModelWrapper(HeavyChainType(str(v_type)), model)
+        models.append(wrapped_model)
     return models
 
 
-if __name__ == '__main__':
-    trees = build_trees()
+def main(output_directory):
+    wrapped_models = build_trees()
+    for wrapped_model in wrapped_models:
+        save_model(output_directory, wrapped_model)
 
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description='''RF generator''')
+    parser.add_argument('input', type=str, help='Path to file where all .csv (or .csv.gz) are listed')
+    parser.add_argument('output', type=str, help='Output models location')
+    args = parser.parse_args()
+
+    main(args.output)
