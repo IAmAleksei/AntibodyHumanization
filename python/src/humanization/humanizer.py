@@ -65,7 +65,7 @@ def read_sequences(input_file):
         sequence = input("Enter sequence: ")
         result = [("CONSOLE", sequence)]
     else:
-        result = [(seq.name, seq.seq) for seq in SeqIO.parse(input_file, 'fasta')]
+        result = [(seq.name, str(seq.seq)) for seq in SeqIO.parse(input_file, 'fasta')]
     return result
 
 
