@@ -7,6 +7,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 
 import config_loader
+from humanization.annotations import load_annotation
 from humanization.dataset import read_prepared_heavy_dataset, make_binary_target
 from humanization.models import ModelWrapper, HeavyChainType, save_model
 from humanization.utils import configure_logger
@@ -32,8 +33,9 @@ def build_tree(X, y, v_type=1) -> CatBoostClassifier:
     return model
 
 
-def build_trees() -> List[ModelWrapper]:
-    X, y = read_prepared_heavy_dataset()
+def build_trees(input_directory: str, schema: str) -> List[ModelWrapper]:
+    annotation = load_annotation(schema)
+    X, y = read_prepared_heavy_dataset(input_directory, annotation)
     X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.15, shuffle=True)
     logger.info(f"Train dataset: {X_.shape[0]} rows")
     logger.debug(f"Statistics:\n{y_.value_counts()}")
@@ -51,13 +53,13 @@ def build_trees() -> List[ModelWrapper]:
                     f"Recall={round(tp / (tp + fn), 5)}. "
                     f"Precision={round(tp / (tp + fp), 5)}. "
                     f"Accuracy={round((tp + tn) / (tp + tn + fp + fn), 5)}")
-        wrapped_model = ModelWrapper(HeavyChainType(str(v_type)), model)
+        wrapped_model = ModelWrapper(HeavyChainType(str(v_type)), model, annotation)
         models.append(wrapped_model)
     return models
 
 
-def main(output_directory):
-    wrapped_models = build_trees()
+def main(input_directory, schema, output_directory):
+    wrapped_models = build_trees(input_directory, schema)
     for wrapped_model in wrapped_models:
         save_model(output_directory, wrapped_model)
 
@@ -66,7 +68,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='''RF generator''')
     parser.add_argument('input', type=str, help='Path to file where all .csv (or .csv.gz) are listed')
+    parser.add_argument('schema', type=str, help='Annotation schema')
     parser.add_argument('output', type=str, help='Output models location')
     args = parser.parse_args()
 
-    main(args.output)
+    main(args.input, args.schema, args.output)
