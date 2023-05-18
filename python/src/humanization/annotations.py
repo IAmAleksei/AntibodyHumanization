@@ -9,10 +9,19 @@ config = config_loader.Config()
 logger = configure_logger(config, "Annotations")
 
 
+def segments_to_columns(segments: List[Tuple[str, List[str]]]) -> List[str]:
+    result = []
+    for segment_name, segment_positions in segments:
+        for idx, _ in enumerate(segment_positions):
+            result.append(f"{segment_name}_{idx + 1}")
+    return result
+
+
 class Annotation:
     name = "-"
     positions = []
     segments = []
+    segmented_positions = []
 
 
 class Chothia(Annotation):
@@ -62,6 +71,7 @@ class Chothia(Annotation):
             ["103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113"]
         ),
     ]
+    segmented_positions = segments_to_columns(segments)
 
 
 class Imgt(Annotation):
@@ -109,6 +119,17 @@ class Imgt(Annotation):
              '118', '119', '120', '121', '122', '123', '124', '125', '126', '127', '128']
         ),
     ]
+    segmented_positions = segments_to_columns(segments)
+
+
+SEGMENTS_ORDER = ["fwr1", "cdr1", "fwr2", "cdr2", "fwr3", "cdr3", "fwr4"]
+
+
+def compare_positions(first: str, second: str):
+    if first[:4] == second[:4]:  # AAAX_YY
+        return int(first[5:]) < int(second[5:])
+    else:
+        return SEGMENTS_ORDER.index(first[:4]) < SEGMENTS_ORDER.index(second[:4])
 
 
 def load_annotation(schema: str) -> Annotation:
@@ -120,24 +141,17 @@ def load_annotation(schema: str) -> Annotation:
         raise RuntimeError("Unrecognized annotation type")
 
 
-def segments_to_columns(annotation: Annotation) -> List[str]:
-    result = []
-    for segment_name, segment_positions in annotation.segments:
-        for idx, _ in enumerate(segment_positions):
-            result.append(f"{segment_name}_{idx + 1}")
-    return result
-
-
 def annotate_batch(sequences: List[str], annotation: Annotation) -> Tuple[List[int], List[List[str]]]:
     logger.debug(f"Anarci run on {len(sequences)} rows")
     sequences_ = list(enumerate(sequences))
-    numerated_sequences = run_anarci(sequences_, ncpu=4, scheme=annotation.name)[1]
+    numerated_sequences = run_anarci(sequences_, ncpu=config.get(config_loader.ANARCI_NCPU),
+                                     scheme=annotation.name)[1]
     logger.debug(f"Anarci run is finished")
     index_results = []
     prepared_results = []
     for i, numerated_seq in enumerate(numerated_sequences):
         if numerated_seq is None:
-            logger.warn(f"Bad sequence found")
+            logger.warn(f"Bad sequence found {sequences[i]}")
         else:
             a = numerated_seq[0]
             b = a[0]

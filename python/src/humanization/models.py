@@ -1,5 +1,6 @@
 import json
 import os.path
+from datetime import datetime
 from enum import Enum
 
 from catboost import CatBoostClassifier
@@ -57,7 +58,7 @@ def save_model(model_dir: str, wrapped_model: ModelWrapper):
     wrapped_model.model.save_model(model_path)
     with open(meta_path, 'w') as file:
         schema = wrapped_model.annotation.name
-        json.dump({'schema': schema}, file)
+        json.dump({'schema': schema, 'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, file)
 
 
 def load_model(model_dir, chain_type: ChainType) -> ModelWrapper:

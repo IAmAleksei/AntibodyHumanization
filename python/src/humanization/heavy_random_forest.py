@@ -8,7 +8,8 @@ from sklearn.model_selection import train_test_split
 
 import config_loader
 from humanization.annotations import load_annotation
-from humanization.dataset import read_prepared_heavy_dataset, make_binary_target
+from humanization.dataset import make_binary_target
+from humanization.dataset_preparer import read_any_heavy_dataset
 from humanization.models import ModelWrapper, HeavyChainType, save_model
 from humanization.utils import configure_logger
 
@@ -33,9 +34,9 @@ def build_tree(X, y, v_type=1) -> CatBoostClassifier:
     return model
 
 
-def build_trees(input_directory: str, schema: str) -> List[ModelWrapper]:
+def build_trees(input_dir: str, schema: str, annotated_data: bool) -> List[ModelWrapper]:
     annotation = load_annotation(schema)
-    X, y = read_prepared_heavy_dataset(input_directory, annotation)
+    X, y = read_any_heavy_dataset(input_dir, annotated_data, annotation)
     X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.15, shuffle=True)
     logger.info(f"Train dataset: {X_.shape[0]} rows")
     logger.debug(f"Statistics:\n{y_.value_counts()}")
@@ -58,10 +59,10 @@ def build_trees(input_directory: str, schema: str) -> List[ModelWrapper]:
     return models
 
 
-def main(input_directory, schema, output_directory):
-    wrapped_models = build_trees(input_directory, schema)
+def main(input_dir, schema, output_dir, annotated_data):
+    wrapped_models = build_trees(input_dir, schema, annotated_data)
     for wrapped_model in wrapped_models:
-        save_model(output_directory, wrapped_model)
+        save_model(output_dir, wrapped_model)
 
 
 if __name__ == '__main__':
@@ -70,6 +71,12 @@ if __name__ == '__main__':
     parser.add_argument('input', type=str, help='Path to file where all .csv (or .csv.gz) are listed')
     parser.add_argument('schema', type=str, help='Annotation schema')
     parser.add_argument('output', type=str, help='Output models location')
+    parser.add_argument('--annotated-data', action='store_true', help='Data is annotated')
+    parser.add_argument('--raw-data', dest='annotated_data', action='store_false')
+    parser.set_defaults(annotated_data=True)
     args = parser.parse_args()
 
-    main(args.input, args.schema, args.output)
+    main(input_dir=args.input,
+         schema=args.schema,
+         output_dir=args.output,
+         annotated_data=args.annotated_data)
