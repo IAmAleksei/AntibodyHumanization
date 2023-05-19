@@ -28,10 +28,11 @@ class LightChainType(ChainType):
 
 
 class ModelWrapper:
-    def __init__(self, chain_type: ChainType, model: CatBoostClassifier, annotation: Annotation):
+    def __init__(self, chain_type: ChainType, model: CatBoostClassifier, annotation: Annotation, threshold: float):
         self.chain_type = chain_type
         self.model = model
         self.annotation = annotation
+        self.threshold = threshold
 
 
 def get_model_name(chain_type: ChainType) -> str:
@@ -58,18 +59,23 @@ def save_model(model_dir: str, wrapped_model: ModelWrapper):
     wrapped_model.model.save_model(model_path)
     with open(meta_path, 'w') as file:
         schema = wrapped_model.annotation.name
-        json.dump({'schema': schema, 'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')}, file)
+        json.dump(
+            {
+                'schema': schema,
+                'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                'threshold': wrapped_model.threshold
+            }, file
+        )
 
 
 def load_model(model_dir, chain_type: ChainType) -> ModelWrapper:
     model_path = os.path.join(model_dir, get_model_name(chain_type))
     meta_path = os.path.join(model_dir, get_meta_name(chain_type))
     with open(meta_path, 'r') as file:
-        d = json.load(file)
-    schema = d['schema']
-    annotation = load_annotation(schema)
+        desc = json.load(file)
+    annotation = load_annotation(desc['schema'])
     model = CatBoostClassifier()
     model.load_model(model_path)
-    model_wrapper = ModelWrapper(chain_type, model, annotation)
+    model_wrapper = ModelWrapper(chain_type, model, annotation, desc['threshold'])
     return model_wrapper
 

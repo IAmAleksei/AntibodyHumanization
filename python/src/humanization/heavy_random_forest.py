@@ -11,6 +11,7 @@ from humanization.annotations import load_annotation
 from humanization.dataset import make_binary_target
 from humanization.dataset_preparer import read_any_heavy_dataset
 from humanization.models import ModelWrapper, HeavyChainType, save_model
+from humanization.stats import plot_roc_auc, find_optimal_threshold
 from humanization.utils import configure_logger
 
 config = config_loader.Config()
@@ -46,15 +47,20 @@ def build_trees(input_dir: str, schema: str, annotated_data: bool) -> List[Model
     for v_type in range(1, 8):
         logger.debug(f"Tree for V{v_type} is building...")
         model = build_tree(X_, y_, v_type)
-        y_pred = model.predict(X_test)
         logger.debug(f"Tree for V{v_type} was built")
-        tn, fp, fn, tp = confusion_matrix(make_binary_target(y_test, v_type), y_pred).ravel()
+        y_pred_proba = model.predict_proba(X_test)[:, 1]
+        y_test_binary = make_binary_target(y_test, v_type)
+        threshold, metric_score = find_optimal_threshold("youdens", y_test_binary, y_pred_proba)
+        logger.info(f"Optimal threshold is {threshold}, metric score = {metric_score}")
+        plot_roc_auc(y_test_binary, y_pred_proba)
+        y_pred = np.where(y_pred_proba >= threshold, 1, 0)
+        tn, fp, fn, tp = confusion_matrix(y_test_binary, y_pred).ravel()
         logger.info(f"Tree for V{v_type} tested.")
         logger.info(f"TP={tp}, TN={tn}, FP={fp}, FN={fn}. "
                     f"Recall={round(tp / (tp + fn), 5)}. "
                     f"Precision={round(tp / (tp + fp), 5)}. "
                     f"Accuracy={round((tp + tn) / (tp + tn + fp + fn), 5)}")
-        wrapped_model = ModelWrapper(HeavyChainType(str(v_type)), model, annotation)
+        wrapped_model = ModelWrapper(HeavyChainType(str(v_type)), model, annotation, threshold)
         models.append(wrapped_model)
     return models
 
