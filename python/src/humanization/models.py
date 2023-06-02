@@ -58,10 +58,9 @@ def save_model(model_dir: str, wrapped_model: ModelWrapper):
     meta_path = os.path.join(model_dir, get_meta_name(wrapped_model.chain_type))
     wrapped_model.model.save_model(model_path)
     with open(meta_path, 'w') as file:
-        schema = wrapped_model.annotation.name
         json.dump(
             {
-                'schema': schema,
+                'schema': wrapped_model.annotation.name,
                 'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                 'threshold': wrapped_model.threshold
             }, file

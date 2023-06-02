@@ -34,8 +34,11 @@ def make_annotated_df(df: pandas.DataFrame, annotation: Annotation) -> pandas.Da
     aa_columns = annotation.segmented_positions
     annotated_indexes, annotated_list = annotate_batch(df['sequence_alignment_aa'].tolist(), annotation)
     X = pandas.DataFrame(annotated_list, columns=aa_columns)  # Make column for every aa
-    y = df['v_call'][annotated_indexes]
+    y = df['v_call'][annotated_indexes].reset_index(drop=True)
     dataset = pandas.concat([X, y], axis=1)
+    nan_errors = dataset['v_call'].isna().sum()
+    if nan_errors > 0:
+        logger.error(f"Found {nan_errors} NaNs in target chain types")
     return dataset
 
 
@@ -54,6 +57,7 @@ def read_heavy_dataset(input_dir: str, read_function: Callable[[str], pandas.Dat
     for input_file_name in tqdm(file_names):
         input_file_path = os.path.join(input_dir, input_file_name)
         df: pandas.DataFrame = read_function(input_file_path)
+        # df = df[df['v_call'] != "NOT_HUMAN"]
         dfs.append(df)
         original_data_size += df.shape[0]
     dataset = pandas.concat(dfs, axis=0, ignore_index=True).drop_duplicates(ignore_index=True)

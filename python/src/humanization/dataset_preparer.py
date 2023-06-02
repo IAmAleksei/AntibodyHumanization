@@ -30,6 +30,7 @@ def read_any_heavy_dataset(input_dir: str, annotated_data: bool,
                            annotation: Annotation) -> Tuple[pandas.DataFrame, pandas.Series]:
     if annotated_data:
         logger.info(f"Use annotated-data mode")
+        logger.info(f"Please check that `{annotation.name}` is defined correctly")
         return read_annotated_heavy_dataset(input_dir)
     else:
         logger.info(f"Use raw-data mode")

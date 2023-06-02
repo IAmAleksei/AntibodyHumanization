@@ -144,14 +144,15 @@ def load_annotation(schema: str) -> Annotation:
 def annotate_batch(sequences: List[str], annotation: Annotation) -> Tuple[List[int], List[List[str]]]:
     logger.debug(f"Anarci run on {len(sequences)} rows")
     sequences_ = list(enumerate(sequences))
-    numerated_sequences = run_anarci(sequences_, ncpu=config.get(config_loader.ANARCI_NCPU),
-                                     scheme=annotation.name)[1]
+    temp_res = run_anarci(sequences_, ncpu=config.get(config_loader.ANARCI_NCPU), scheme=annotation.name)
+    numerated_sequences = temp_res[1]
     logger.debug(f"Anarci run is finished")
     index_results = []
     prepared_results = []
     for i, numerated_seq in enumerate(numerated_sequences):
+        assert sequences_[i][0] == temp_res[0][i][0]
         if numerated_seq is None:
-            logger.warn(f"Bad sequence found {sequences[i]}")
+            logger.warn(f"Bad sequence found #{i} {sequences[i]}")
         else:
             a = numerated_seq[0]
             b = a[0]
