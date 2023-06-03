@@ -1,5 +1,5 @@
 import argparse
-from typing import List, Optional, NamedTuple
+from typing import List, Optional, NamedTuple, Tuple
 
 from Bio import SeqIO
 from Bio.Seq import Seq
@@ -27,12 +27,9 @@ class SequenceChange(NamedTuple):
 
 
 class Humanizer:
-    def __init__(self, model_wrapper: ModelWrapper, target_model_metric: float, v_gene_scorer: VGeneScorer,
-                 target_v_gene_score: float, modify_cdr: bool,skip_positions: List[str],
-                 deny_use_aa: List[str], deny_change_aa: List[str]):
+    def __init__(self, model_wrapper: ModelWrapper, v_gene_scorer: Optional[VGeneScorer], modify_cdr: bool,
+                 skip_positions: List[str], deny_use_aa: List[str], deny_change_aa: List[str]):
         self.model_wrapper = model_wrapper
-        self.target_model_metric = target_model_metric
-        self.target_v_gene_score = target_v_gene_score
         self.v_gene_scorer = v_gene_scorer
         self.modify_cdr = modify_cdr
         self.skip_positions = skip_positions
@@ -79,7 +76,7 @@ class Humanizer:
     def seq_to_str(sequence: List[str]) -> str:
         return "".join(c for c in sequence if c != 'X')
 
-    def query(self, sequence: str) -> str:
+    def query(self, sequence: str, target_model_metric: float, target_v_gene_score: float = 0.0) -> str:
         current_seq = self._annotate_sequence(sequence)
         if current_seq is None:
             return sequence
@@ -102,7 +99,7 @@ class Humanizer:
                     logger.debug(f"Nearest human sample: {human_sample}. V gene score = {round(v_gene_score, 6)}")
                 else:
                     v_gene_score = 1.0
-                if best_value >= self.target_model_metric and v_gene_score >= self.target_v_gene_score:
+                if best_value >= target_model_metric and v_gene_score >= target_v_gene_score:
                     logger.info(f"Target metrics are reached ({round(best_value, 6)})")
                     break
             else:
@@ -130,22 +127,36 @@ def write_sequences(output_file, sequences):
         SeqIO.write(seqs, output_file, 'fasta')
 
 
-def run_humanizer(sequences, model_wrapper, target_model_metric, human_samples, target_v_gene_score,
-                  modify_cdr, skip_positions, deny_use_aa_list, deny_change_aa_list):
-    v_gene_scorer = VGeneScorer(model_wrapper.annotation, human_samples)
-    humanizer = Humanizer(
-        model_wrapper, target_model_metric, v_gene_scorer, target_v_gene_score, modify_cdr,
-        skip_positions, deny_use_aa_list, deny_change_aa_list
-    )
+def build_v_gene_scorer(annotation, dataset_file, annotated_data) -> Optional[VGeneScorer]:
+    human_samples = read_human_samples(dataset_file, annotated_data, annotation)
+    if human_samples is not None:
+        v_gene_scorer = VGeneScorer(annotation, human_samples)
+        return v_gene_scorer
+    else:
+        return None
+
+
+def run_humanizer(humanizer: Humanizer, sequences: List[Tuple[str, str]],
+                  target_model_metric: float, target_v_gene_score: float):
     results = []
     for name, sequence in sequences:
-        result = humanizer.query(sequence)
+        result = humanizer.query(sequence, target_model_metric, target_v_gene_score)
         results.append((name, result))
     return results
 
 
 def parse_list(value: str) -> List[str]:
     return [x for x in value.split(",") if x != ""]
+
+
+def read_human_samples(dataset_file=None, annotated_data=None, annotation=None) -> Optional[List[str]]:
+    if dataset_file is not None:
+        X, y = read_any_heavy_dataset(dataset_file, annotated_data, annotation)
+        df = X[y != 'NOT_HUMAN'].reset_index(drop=True)
+        human_samples = merge_all_columns(df)
+        return human_samples
+    else:
+        return None
 
 
 def main(models_dir, input_file, dataset_file, annotated_data, modify_cdr, skip_positions,
@@ -159,30 +170,25 @@ def main(models_dir, input_file, dataset_file, annotated_data, modify_cdr, skip_
         v_gene_type = input("V gene type (kappa or lambda): ")
     else:
         raise RuntimeError(f"Unknown chain type: {chain_type_str}")
-    chain_type = chain_type_class(v_gene_type)
     target_model_metric = float(input("Enter target model metric: "))
-    model_wrapper = load_model(models_dir, chain_type)
     if dataset_file is not None:
         target_v_gene_score = float(input("Enter target V gene score: "))
-        X, y = read_any_heavy_dataset(dataset_file, annotated_data, model_wrapper.annotation)
-        df = X[y != 'NOT_HUMAN'].reset_index(drop=True)
-        human_samples = merge_all_columns(df)
     else:
         target_v_gene_score = 0.0
-        human_samples = None
-    sequences = read_sequences(input_file)
-    results = run_humanizer(
-        sequences, model_wrapper, target_model_metric, human_samples, target_v_gene_score, modify_cdr,
+    chain_type = chain_type_class(v_gene_type)
+    model_wrapper = load_model(models_dir, chain_type)
+    v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, annotated_data)
+    humanizer = Humanizer(
+        model_wrapper, v_gene_scorer, modify_cdr,
         parse_list(skip_positions), parse_list(deny_use_aa), parse_list(deny_change_aa)
     )
+    sequences = read_sequences(input_file)
+    results = run_humanizer(humanizer, sequences, target_model_metric, target_v_gene_score)
     write_sequences(output_file, results)
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description='''Humanizer''')
+def common_parser_options(parser):
     parser.add_argument('models', type=str, help='Path to directory with models')
-    parser.add_argument('--input', type=str, required=False, help='Path to input fasta file')
     parser.add_argument('--modify-cdr', action='store_true', help='Allow CDR modifications')
     parser.add_argument('--skip-cdr', dest='modify_cdr', action='store_false', help='Deny CDR modifications')
     parser.set_defaults(modify_cdr=True)
@@ -191,11 +197,19 @@ if __name__ == '__main__':
     parser.add_argument('--annotated-data', action='store_true', help='Data is annotated')
     parser.add_argument('--raw-data', dest='annotated_data', action='store_false')
     parser.set_defaults(annotated_data=True)
-    parser.add_argument('--output', type=str, required=False, help='Path to output fasta file')
     parser.add_argument('--deny-use-aa', type=str, default=",".join(utils.TABOO_INSERT_AA), required=False,
                         help='Amino acids that could not be used')
     parser.add_argument('--deny-change-aa', type=str,  default=",".join(utils.TABOO_DELETE_AA), required=False,
                         help='Amino acids that could not be changed')
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description='''Humanizer''')
+    parser.add_argument('--input', type=str, required=False, help='Path to input fasta file')
+    parser.add_argument('--output', type=str, required=False, help='Path to output fasta file')
+    common_parser_options(parser)
+
     args = parser.parse_args()
 
     main(models_dir=args.models,
