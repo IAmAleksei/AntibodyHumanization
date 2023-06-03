@@ -35,7 +35,7 @@ async def start(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
 def humanize_gen(humanizers: List[Humanizer]):
     async def humanize(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         try:
-            await update.effective_message.reply_text("Query is in queue")
+            await update.effective_message.reply_text("Your query is in queue")
 
             with pool_sema:
                 v_gene_type = int(context.args[0])
@@ -44,35 +44,37 @@ def humanize_gen(humanizers: List[Humanizer]):
                 logger.info(f"Execution humanization query from {update.effective_message.from_user.full_name} "
                             f"({update.effective_message.from_user.name}):\n"
                             f"{v_gene_type} {target_model_metric} {sequence}")
-                await update.effective_message.reply_text("Process is started")
+                await update.effective_message.reply_text("Humanization process is started")
                 humanizer = humanizers[v_gene_type - 1]
-                result = humanizer.query(sequence, target_model_metric)
-                await update.effective_message.reply_text(f"Result:\n{result}")
+                result, iterations = humanizer.query(sequence, target_model_metric)
+                iterations_repr = "\n".join(map(str, iterations))
+                response = f"Input: {sequence}\n" \
+                           f"{iterations_repr}\n" \
+                           f"======\n" \
+                           f"Result: {result}"
+                await update.effective_message.reply_text(response)
         except (IndexError, ValueError):
             await update.effective_message.reply_text("Correct usage specified in /help")
 
     return humanize
 
 
-def main(models_dir, dataset_file, annotated_data, modify_cdr, skip_positions, deny_use_aa, deny_change_aa) -> None:
+def main(models_dir, dataset_file, annotated_data, modify_cdr,
+         skip_positions, deny_use_aa, deny_change_aa, use_aa_similarity) -> None:
     humanizers = []
     for i in range(1, 8):
         model_wrapper = load_model(models_dir, HeavyChainType(str(i)))
-        humanizers.append(Humanizer(
-            model_wrapper, None, modify_cdr, skip_positions, deny_use_aa, deny_change_aa
-        ))
+        humanizers.append(
+            Humanizer(model_wrapper, None, modify_cdr, skip_positions, deny_use_aa, deny_change_aa, use_aa_similarity)
+        )
 
     with open("bot.token", 'r') as file:
         token = file.read()
-    """Run bot."""
-    # Create the Application and pass it your bot's bot.token.
     application = Application.builder().token(token).build()
 
-    # on different commands - answer in Telegram
     application.add_handler(CommandHandler(["start", "help"], start))
     application.add_handler(CommandHandler("humanize", humanize_gen(humanizers)))
 
-    # Run the bot until the user presses Ctrl-C
     logger.info("Bot polling started")
     application.run_polling()
 
@@ -90,4 +92,5 @@ if __name__ == "__main__":
          modify_cdr=args.modify_cdr,
          skip_positions=args.skip_positions,
          deny_use_aa=args.deny_use_aa,
-         deny_change_aa=args.deny_change_aa)
+         deny_change_aa=args.deny_change_aa,
+         use_aa_similarity=args.use_aa_similarity)
