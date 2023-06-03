@@ -1,5 +1,6 @@
 import json
 import os
+from itertools import accumulate
 from typing import List, Tuple, Any, NoReturn, Callable
 
 import numpy as np
@@ -42,11 +43,12 @@ def make_annotated_df(df: pandas.DataFrame, annotation: Annotation) -> pandas.Da
     return dataset
 
 
-def filter_df(df: pandas.DataFrame) -> pandas.DataFrame:
-    mask1 = df['fwr1_23'] == "C"
-    mask2 = df['fwr2_15'] == "W"
-    mask3 = df['fwr3_39'] == "C"
-    return df[mask1 & mask2 & mask3]
+def filter_df(df: pandas.DataFrame, annotation: Annotation) -> pandas.DataFrame:
+    if len(annotation.required_positions) > 0:
+        masks = [df[pos] == aa for pos, aa in annotation.required_positions.items()]
+        mask = accumulate(masks, func=lambda a, b: a & b)
+        return df[mask]
+    return df
 
 
 def read_heavy_dataset(input_dir: str, read_function: Callable[[str], pandas.DataFrame]):
@@ -57,7 +59,6 @@ def read_heavy_dataset(input_dir: str, read_function: Callable[[str], pandas.Dat
     for input_file_name in tqdm(file_names):
         input_file_path = os.path.join(input_dir, input_file_name)
         df: pandas.DataFrame = read_function(input_file_path)
-        # df = df[df['v_call'] != "NOT_HUMAN"]
         dfs.append(df)
         original_data_size += df.shape[0]
     dataset = pandas.concat(dfs, axis=0, ignore_index=True).drop_duplicates(ignore_index=True)

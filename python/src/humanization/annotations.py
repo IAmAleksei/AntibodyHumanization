@@ -22,6 +22,8 @@ class Annotation:
     positions = []
     segments = []
     segmented_positions = []
+    required_positions = {}
+    v_gene_end = ""
 
 
 class Chothia(Annotation):
@@ -72,6 +74,8 @@ class Chothia(Annotation):
         ),
     ]
     segmented_positions = segments_to_columns(segments)
+    required_positions = {'fwr1_23': 'C', 'fwr2_15': 'W', 'fwr3_39': 'C'}
+    v_gene_end = segmented_positions.index('fwr3_41')
 
 
 class Imgt(Annotation):

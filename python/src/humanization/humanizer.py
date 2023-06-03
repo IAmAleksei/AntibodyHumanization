@@ -27,13 +27,17 @@ class SequenceChange(NamedTuple):
 
 
 class Humanizer:
-    def __init__(self, model_wrapper: ModelWrapper, target_model_metric: float,
-                 v_gene_scorer: VGeneScorer, target_humanness: float, modify_cdr: bool):
+    def __init__(self, model_wrapper: ModelWrapper, target_model_metric: float, v_gene_scorer: VGeneScorer,
+                 target_v_gene_score: float, modify_cdr: bool,skip_positions: List[str],
+                 deny_use_aa: List[str], deny_change_aa: List[str]):
         self.model_wrapper = model_wrapper
         self.target_model_metric = target_model_metric
-        self.target_humanness = target_humanness
+        self.target_v_gene_score = target_v_gene_score
         self.v_gene_scorer = v_gene_scorer
         self.modify_cdr = modify_cdr
+        self.skip_positions = skip_positions
+        self.deny_insert_aa = deny_use_aa
+        self.deny_delete_aa = deny_change_aa
 
     def _annotate_sequence(self, sequence: str) -> Optional[List[str]]:
         _, annotated_seq = annotate_batch([sequence], self.model_wrapper.annotation)
@@ -46,9 +50,11 @@ class Humanizer:
     def _test_single_change(self, sequence: List[str], column_idx: int) -> SequenceChange:
         aa_backup = sequence[column_idx]
         best_change = SequenceChange(None, None, 0.0)
-        if aa_backup == 'X':
-            return best_change  # No inserts
+        if aa_backup in self.deny_delete_aa:
+            return best_change
         for new_aa in utils.AA_ALPHABET:  # TODO: make it batched
+            if aa_backup == new_aa or new_aa in self.deny_insert_aa:
+                continue
             sequence[column_idx] = new_aa
             new_value = self.model_wrapper.model.predict_proba(sequence)[1]
             if new_value > best_change.value:
@@ -60,7 +66,9 @@ class Humanizer:
         current_value = self.model_wrapper.model.predict_proba(current_seq)[1]
         best_change = SequenceChange(None, None, current_value)
         for idx, column_name in enumerate(self.model_wrapper.annotation.segmented_positions):
-            if column_name.startswith('cdr') and not self.modify_cdr:
+            if not self.modify_cdr and column_name.startswith('cdr'):
+                continue
+            if column_name in self.skip_positions:
                 continue
             candidate_change = self._test_single_change(current_seq, idx)
             if candidate_change.value > best_change.value:
@@ -75,28 +83,30 @@ class Humanizer:
         current_seq = self._annotate_sequence(sequence)
         if current_seq is None:
             return sequence
+        logger.debug(f"Annotated sequence: {''.join(current_seq)}")
+        if self.v_gene_scorer is not None:
+            human_sample, v_gene_score = self.v_gene_scorer.query(current_seq)
+            logger.debug(f"Nearest human sample: {human_sample}. V gene score = {round(v_gene_score, 6)}")
         for it in range(config.get(config_loader.MAX_CHANGES)):
             current_value = self.model_wrapper.model.predict_proba(current_seq)[1]
-            logger.debug(f"Iteration {it + 1}. Current model metric = {current_value}")
+            logger.info(f"Iteration {it + 1}. Current model metric = {round(current_value, 6)}")
             best_change = self._find_best_change(current_seq)
             if best_change.is_defined():
                 prev_aa = current_seq[best_change.position]
                 current_seq[best_change.position] = best_change.aa
                 best_value = self.model_wrapper.model.predict_proba(current_seq)[1]
-                logger.debug(f"Best change: model metric = {current_value} -> {best_value}")
-                if self.v_gene_scorer is not None:
-                    human_sample, humanness = self.v_gene_scorer.query(current_seq)
-                    logger.debug(f"Nearest human sample: {human_sample}")
-                    logger.debug(f"After change humanness = {humanness}")
-                else:
-                    humanness = 1.0
                 column_name = self.model_wrapper.annotation.segmented_positions[best_change.position]
-                logger.debug(f"Position {column_name}: {prev_aa} -> {best_change.aa}")
-                if best_value >= self.target_model_metric and humanness >= self.target_humanness:
-                    logger.info(f"Target metrics are reached ({best_value})")
+                logger.info(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
+                if self.v_gene_scorer is not None:
+                    human_sample, v_gene_score = self.v_gene_scorer.query(current_seq)
+                    logger.debug(f"Nearest human sample: {human_sample}. V gene score = {round(v_gene_score, 6)}")
+                else:
+                    v_gene_score = 1.0
+                if best_value >= self.target_model_metric and v_gene_score >= self.target_v_gene_score:
+                    logger.info(f"Target metrics are reached ({round(best_value, 6)})")
                     break
             else:
-                logger.info(f"No effective changes found. Stop algorithm on model metric = {current_value}")
+                logger.info(f"No effective changes found. Stop algorithm on model metric = {round(current_value, 6)}")
                 break
         return self.seq_to_str(current_seq)
 
@@ -120,10 +130,13 @@ def write_sequences(output_file, sequences):
         SeqIO.write(seqs, output_file, 'fasta')
 
 
-def run_humanizer(sequences, model_wrapper, target_model_metric,
-                  human_samples=None, target_humanness=0.0, modify_cdr=False):
-    v_gene_scorer = VGeneScorer(human_samples)
-    humanizer = Humanizer(model_wrapper, target_model_metric, v_gene_scorer, target_humanness, modify_cdr)
+def run_humanizer(sequences, model_wrapper, target_model_metric, human_samples, target_v_gene_score,
+                  modify_cdr, skip_positions, deny_use_aa_list, deny_change_aa_list):
+    v_gene_scorer = VGeneScorer(model_wrapper.annotation, human_samples)
+    humanizer = Humanizer(
+        model_wrapper, target_model_metric, v_gene_scorer, target_v_gene_score, modify_cdr,
+        skip_positions, deny_use_aa_list, deny_change_aa_list
+    )
     results = []
     for name, sequence in sequences:
         result = humanizer.query(sequence)
@@ -131,7 +144,12 @@ def run_humanizer(sequences, model_wrapper, target_model_metric,
     return results
 
 
-def main(models_dir, input_file, dataset_file, annotated_data, modify_cdr, output_file):
+def parse_list(value: str) -> List[str]:
+    return [x for x in value.split(",") if x != ""]
+
+
+def main(models_dir, input_file, dataset_file, annotated_data, modify_cdr, skip_positions,
+         deny_use_aa, deny_change_aa, output_file):
     chain_type_str = input("Enter chain type (heavy or light): ")
     if chain_type_str.lower() in ["h", "heavy"]:
         chain_type_class = HeavyChainType
@@ -145,15 +163,18 @@ def main(models_dir, input_file, dataset_file, annotated_data, modify_cdr, outpu
     target_model_metric = float(input("Enter target model metric: "))
     model_wrapper = load_model(models_dir, chain_type)
     if dataset_file is not None:
-        target_humanness = float(input("Enter target humanness: "))
+        target_v_gene_score = float(input("Enter target V gene score: "))
         X, y = read_any_heavy_dataset(dataset_file, annotated_data, model_wrapper.annotation)
         df = X[y != 'NOT_HUMAN'].reset_index(drop=True)
         human_samples = merge_all_columns(df)
     else:
-        target_humanness = 0.0
+        target_v_gene_score = 0.0
         human_samples = None
     sequences = read_sequences(input_file)
-    results = run_humanizer(sequences, model_wrapper, target_model_metric, human_samples, target_humanness, modify_cdr)
+    results = run_humanizer(
+        sequences, model_wrapper, target_model_metric, human_samples, target_v_gene_score, modify_cdr,
+        parse_list(skip_positions), parse_list(deny_use_aa), parse_list(deny_change_aa)
+    )
     write_sequences(output_file, results)
 
 
@@ -162,14 +183,19 @@ if __name__ == '__main__':
         description='''Humanizer''')
     parser.add_argument('models', type=str, help='Path to directory with models')
     parser.add_argument('--input', type=str, required=False, help='Path to input fasta file')
-    parser.add_argument('--modify-cdr', action='store_true', help='Allowing CDR modifications')
-    parser.add_argument('--skip-cdr', dest='modify_cdr', action='store_false')
+    parser.add_argument('--modify-cdr', action='store_true', help='Allow CDR modifications')
+    parser.add_argument('--skip-cdr', dest='modify_cdr', action='store_false', help='Deny CDR modifications')
     parser.set_defaults(modify_cdr=True)
+    parser.add_argument('--skip-positions', required=False, default="", help='Positions that could not be changed')
     parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
     parser.add_argument('--annotated-data', action='store_true', help='Data is annotated')
     parser.add_argument('--raw-data', dest='annotated_data', action='store_false')
     parser.set_defaults(annotated_data=True)
     parser.add_argument('--output', type=str, required=False, help='Path to output fasta file')
+    parser.add_argument('--deny-use-aa', type=str, default=",".join(utils.TABOO_INSERT_AA), required=False,
+                        help='Amino acids that could not be used')
+    parser.add_argument('--deny-change-aa', type=str,  default=",".join(utils.TABOO_DELETE_AA), required=False,
+                        help='Amino acids that could not be changed')
     args = parser.parse_args()
 
     main(models_dir=args.models,
@@ -177,4 +203,7 @@ if __name__ == '__main__':
          dataset_file=args.dataset,
          annotated_data=args.annotated_data,
          modify_cdr=args.modify_cdr,
+         skip_positions=args.skip_positions,
+         deny_use_aa=args.deny_use_aa,
+         deny_change_aa=args.deny_change_aa,
          output_file=args.output)

@@ -1,6 +1,7 @@
 from typing import List, Tuple
 
 from humanization import config_loader
+from humanization.annotations import Annotation
 from humanization.utils import configure_logger
 
 config = config_loader.Config()
@@ -8,20 +9,24 @@ logger = configure_logger(config, "V Gene Scorer")
 
 
 class VGeneScorer:
-    def __init__(self, human_samples: List[str]):
+    def __init__(self, annotation: Annotation, human_samples: List[str]):
+        self.annotation = annotation
         self.human_samples = human_samples
 
-    @staticmethod
-    def _calc_affinity(seq_1: str, seq_2: str) -> int:
-        return sum(c1 == c2 and c1 != 'X' for c1, c2 in zip(seq_1, seq_2))
+    def _calc_score(self, seq_1: List[str], seq_2: str) -> float:
+        same, total = 0, 0
+        for i in range(self.annotation.v_gene_end + 1):
+            if seq_1[i] != 'X' or seq_2[i] != 'X':
+                total += 1
+                if seq_1[i] == seq_2[i]:
+                    same += 1
+        return same / total
 
     def query(self, sequence: List[str]) -> Tuple[str, float]:
-        str_sequence = "".join(sequence)
-        best_sample_idx, best_affinity = None, -1
+        best_sample_idx, best_v_gene_score = None, 0
         for idx, human_sample in enumerate(self.human_samples):
-            affinity = self._calc_affinity(str_sequence, human_sample)
-            if affinity > best_affinity:
+            v_gene_score = self._calc_score(sequence, human_sample)
+            if v_gene_score > best_v_gene_score:
                 best_sample_idx = idx
-                best_affinity = affinity
-        v_gene_score = best_affinity / len(str_sequence)
-        return self.human_samples[best_sample_idx], v_gene_score
+                best_v_gene_score = v_gene_score
+        return self.human_samples[best_sample_idx], best_v_gene_score

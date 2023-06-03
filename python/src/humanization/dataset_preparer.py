@@ -18,7 +18,7 @@ def read_and_annotate_file(csv_file: str, annotation: Annotation) -> pandas.Data
     df, metadata = read_file(csv_file, ['sequence_alignment_aa', 'v_call'])
     correct_v_call(df, metadata)
     df = make_annotated_df(df, annotation)
-    df = filter_df(df)
+    df = filter_df(df, annotation)
     return df
 
 
