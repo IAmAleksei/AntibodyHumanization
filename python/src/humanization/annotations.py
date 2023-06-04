@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 
 from anarci import run_anarci
 
@@ -168,3 +168,11 @@ def annotate_batch(sequences: List[str], annotation: Annotation) -> Tuple[List[i
             index_results.append(i)
             prepared_results.append(result_seq)
     return index_results, prepared_results
+
+
+def annotate_single(sequence: str, annotation: Annotation) -> Optional[List[str]]:
+    _, annotated_seq = annotate_batch([sequence], annotation)
+    if len(annotated_seq) == 1:
+        return annotated_seq[0]
+    else:
+        return None

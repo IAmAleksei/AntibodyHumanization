@@ -1,13 +1,13 @@
 import argparse
 import os
-from typing import NoReturn, Tuple
+from typing import NoReturn, Tuple, Optional, List
 
 import pandas
 
 from humanization import config_loader
 from humanization.annotations import load_annotation, Annotation
 from humanization.dataset import read_file, correct_v_call, make_annotated_df, filter_df, read_heavy_dataset, \
-    read_annotated_heavy_dataset
+    read_annotated_heavy_dataset, merge_all_columns
 from humanization.utils import configure_logger
 
 config = config_loader.Config()
@@ -35,6 +35,16 @@ def read_any_heavy_dataset(input_dir: str, annotated_data: bool,
     else:
         logger.info(f"Use raw-data mode")
         return read_raw_heavy_dataset(input_dir, annotation)
+
+
+def read_human_samples(dataset_file=None, annotated_data=None, annotation=None) -> Optional[List[str]]:
+    if dataset_file is not None:
+        X, y = read_any_heavy_dataset(dataset_file, annotated_data, annotation)
+        df = X[y != 'NOT_HUMAN'].reset_index(drop=True)
+        human_samples = merge_all_columns(df)
+        return human_samples
+    else:
+        return None
 
 
 def main(input_dir: str, schema: str, output_dir: str, skip_existing: bool) -> NoReturn:
