@@ -3,6 +3,7 @@ tar xf hmmer.tar.gz
 cd hmmer-3.3.2
 ./configure
 make
+make install
 cd ..
 
 git clone https://github.com/oxpig/ANARCI.git

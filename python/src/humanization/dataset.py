@@ -46,7 +46,7 @@ def make_annotated_df(df: pandas.DataFrame, annotation: Annotation) -> pandas.Da
 def filter_df(df: pandas.DataFrame, annotation: Annotation) -> pandas.DataFrame:
     if len(annotation.required_positions) > 0:
         masks = [df[pos] == aa for pos, aa in annotation.required_positions.items()]
-        mask = accumulate(masks, func=lambda a, b: a & b)
+        mask = next(accumulate(masks, func=lambda a, b: a & b))
         return df[mask]
     return df
 

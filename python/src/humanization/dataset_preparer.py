@@ -62,7 +62,7 @@ def main(input_dir: str, schema: str, output_dir: str, skip_existing: bool) -> N
         logger.debug(f"Processing {input_file_name}...")
         df = read_and_annotate_file(input_file_path, annotation)
         df.to_csv(output_file_path, index=False)
-        logger.debug(f"Result saved to {output_file_path}")
+        logger.debug(f"Result with {df.shape[0]} rows saved to {output_file_path}")
 
 
 if __name__ == '__main__':
