@@ -7,7 +7,7 @@ from humanization.abstract_humanizer import run_humanizer, AbstractHumanizer, Se
 from humanization.annotations import annotate_single
 from humanization.models import load_model, ModelWrapper
 from humanization.utils import configure_logger, read_sequences, write_sequences, parse_list
-from humanization.v_gene_scorer import VGeneScorer, build_v_gene_scorer, calc_score
+from humanization.v_gene_scorer import VGeneScorer, build_v_gene_scorer, calc_score, is_v_gene_score_less
 
 config = config_loader.Config()
 logger = configure_logger(config, "Humanizer")
@@ -53,10 +53,12 @@ class Humanizer(AbstractHumanizer):
         return best_change
 
     def query(self, sequence: str, target_model_metric: float,
-              target_v_gene_score: float = 0.0) -> Tuple[str, List[IterationDetails]]:
+              target_v_gene_score: Optional[float] = None) -> Tuple[str, List[IterationDetails]]:
         current_seq = annotate_single(sequence, self.model_wrapper.annotation)
         if current_seq is None:
             raise RuntimeError(f"{sequence} cannot be annotated")
+        if self.v_gene_scorer is None and target_v_gene_score is not None:
+            logger.warning(f"V Gene scorer not defined, so target score ignored")
         logger.debug(f"Annotated sequence: {seq_to_str(current_seq, True)}")
         iterations = []
         current_value, v_gene_score = self._calc_metrics(current_seq)
@@ -73,7 +75,7 @@ class Humanizer(AbstractHumanizer):
                 logger.info(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
                 best_value, v_gene_score = self._calc_metrics(current_seq)
                 iterations.append(IterationDetails(it, best_value, v_gene_score, best_change))
-                if current_value >= target_model_metric and v_gene_score >= target_v_gene_score:
+                if target_model_metric <= current_value and is_v_gene_score_less(target_v_gene_score, v_gene_score):
                     logger.info(f"Target metrics are reached ({round(current_value, 6)})")
                     break
             else:

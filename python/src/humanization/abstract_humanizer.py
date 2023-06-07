@@ -17,7 +17,7 @@ class SequenceChange(NamedTuple):
 
     def __repr__(self):
         if self.is_defined():
-            return f"Position = {self.position}, aa = {self.aa}"
+            return f"Position {self.position}: {self.old_aa} -> {self.aa}"
         else:
             return "Undefined"
 
@@ -26,21 +26,22 @@ def is_change_less(left: SequenceChange, right: SequenceChange, use_aa_similarit
     left_value, right_value = left.value, right.value
     if use_aa_similarity:
         if left.is_defined():
-            left_value += 0.0001 * min(0, BLOSUM62[left.old_aa][left.aa])
+            left_value += 0.001 * min(0, BLOSUM62[left.old_aa][left.aa])
         if right.is_defined():
-            right_value += 0.0001 * min(0, BLOSUM62[right.old_aa][right.aa])
+            right_value += 0.001 * min(0, BLOSUM62[right.old_aa][right.aa])
     return left_value < right_value
 
 
 class IterationDetails(NamedTuple):
     index: int
     model_metric: float
-    v_gene_score: float
+    v_gene_score: Optional[float]
     change: Optional[SequenceChange]
 
     def __repr__(self):
         return f"Iteration {self.index}: " \
-               f"model metric = {round(self.model_metric, 5)}, v gene score = {round(self.v_gene_score, 5)}, " \
+               f"model metric = {round(self.model_metric, 5)}, " \
+               f"v gene score = {round(self.v_gene_score, 5) if self.v_gene_score is not None else 'Undefined'}, " \
                f"change = [{self.change if self.change is not None else 'Undefined'}]"
 
 
@@ -53,22 +54,23 @@ class AbstractHumanizer(ABC):
         self.model_wrapper = model_wrapper
         self.v_gene_scorer = v_gene_scorer
 
-    def _get_v_gene_score(self, current_seq: List[str], human_sample: Optional[str] = None) -> float:
+    def _get_v_gene_score(self, current_seq: List[str],
+                          human_sample: Optional[str] = None) -> Tuple[Optional[str], Optional[float]]:
         if self.v_gene_scorer is not None:
             human_sample, v_gene_score = self.v_gene_scorer.query(current_seq)
-            return v_gene_score
+            return human_sample, v_gene_score
         elif human_sample is not None:
-            return calc_score(current_seq, human_sample, self.model_wrapper.annotation)
+            return human_sample, calc_score(current_seq, human_sample, self.model_wrapper.annotation)
         else:
-            return 1.0
+            return None, None
 
     def _calc_metrics(self, current_seq: List[str], human_sample: Optional[str] = None) -> Tuple[float, float]:
         current_value = self.model_wrapper.model.predict_proba(current_seq)[1]
-        v_gene_score = self._get_v_gene_score(current_seq, human_sample)
+        _, v_gene_score = self._get_v_gene_score(current_seq, human_sample)
         return current_value, v_gene_score
 
     def query(self, sequence: str, target_model_metric: float,
-              target_v_gene_score: float) -> Tuple[str, List[IterationDetails]]:
+              target_v_gene_score: Optional[float]) -> Tuple[str, List[IterationDetails]]:
         pass
 
 
@@ -98,7 +100,7 @@ def read_humanizer_options(dataset_file):
     if dataset_file is not None:
         target_v_gene_score = float(input("Enter target V gene score: "))
     else:
-        target_v_gene_score = 0.0
+        target_v_gene_score = None
     chain_type = chain_type_class(v_gene_type)
     return chain_type, target_model_metric, target_v_gene_score
 

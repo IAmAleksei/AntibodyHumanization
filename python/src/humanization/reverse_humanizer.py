@@ -7,7 +7,7 @@ from humanization.abstract_humanizer import seq_to_str, IterationDetails, is_cha
 from humanization.annotations import annotate_single
 from humanization.models import ModelWrapper, load_model
 from humanization.utils import configure_logger, parse_list, read_sequences, write_sequences
-from humanization.v_gene_scorer import VGeneScorer, build_v_gene_scorer
+from humanization.v_gene_scorer import VGeneScorer, build_v_gene_scorer, is_v_gene_score_less
 
 config = config_loader.Config()
 logger = configure_logger(config, "Reverse humanizer")
@@ -69,7 +69,7 @@ class ReverseHumanizer(AbstractHumanizer):
                 prev_aa = current_seq[best_change.position]
                 current_seq[best_change.position] = best_change.aa
                 best_value, v_gene_score = self._calc_metrics(current_seq, human_sample)
-                if best_value < target_model_metric or v_gene_score < target_v_gene_score:
+                if not (target_model_metric <= best_value and is_v_gene_score_less(target_v_gene_score, v_gene_score)):
                     current_seq[best_change.position] = prev_aa
                     logger.info(f"Current metrics are best ({round(current_value, 6)})")
                     break

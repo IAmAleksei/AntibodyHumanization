@@ -19,6 +19,12 @@ def calc_score(seq_1: List[str], seq_2: str, annotation: Annotation) -> float:
     return same / total
 
 
+def is_v_gene_score_less(first: Optional[float], second: Optional[float]) -> bool:
+    if first is None or second is None:
+        return True
+    return first < second
+
+
 class VGeneScorer:
     def __init__(self, annotation: Annotation, human_samples: List[str]):
         self.annotation = annotation
