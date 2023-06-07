@@ -10,8 +10,7 @@ setuptools.setup(
     packages=[
         'humanization'
     ],
-    package_data={'humanization': ['humanization/config.yaml']},
-    include_package_data=True,
+    data_files=[('humanization', ['humanization/config.yaml'])],
     install_requires=[
         'pandas',
         'configloader',
