@@ -8,7 +8,7 @@ setuptools.setup(
     description='Antibody humanizer',
     url='https://github.com/Alexvsalexvsalex/AntibodyHumanization',
     packages=[
-        'humanizer'
+        'humanization'
     ],
     install_requires=[
         'pandas'
