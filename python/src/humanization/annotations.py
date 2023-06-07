@@ -167,6 +167,7 @@ def annotate_batch(sequences: List[str], annotation: Annotation) -> Tuple[List[i
             ]
             index_results.append(i)
             prepared_results.append(result_seq)
+    logger.debug(f"Anarci returned {len(index_results)} rows")
     return index_results, prepared_results
 
 
