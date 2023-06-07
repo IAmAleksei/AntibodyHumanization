@@ -15,7 +15,8 @@ setuptools.setup(
         'pandas',
         'configloader',
         'catboost',
-        'blosum'
+        'blosum',
+        'tqdm'
     ],
     license='http://www.apache.org/licenses/LICENSE-2.0',
 )
