@@ -11,7 +11,10 @@ setuptools.setup(
         'humanization'
     ],
     install_requires=[
-        'pandas'
+        'pandas',
+        'configloader',
+        'catboost',
+        'blosum'
     ],
     license='http://www.apache.org/licenses/LICENSE-2.0',
 )
