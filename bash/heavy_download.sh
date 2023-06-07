@@ -2,2396 +2,2396 @@ OUT_DIR="$1"
 mkdir -p "$OUT_DIR"
 cd "$OUT_DIR"
 
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843405_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843396_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843399_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843391_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843421_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843395_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843394_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843425_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843414_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843417_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843426_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843413_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843398_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843400_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843404_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843392_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843388_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843386_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843393_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843416_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843387_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843418_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843401_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843420_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843422_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843389_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843419_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843402_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843415_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843397_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843412_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843403_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schultheiss_2020/csv/ERR4337013_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schultheiss_2020/csv/ERR4337015_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1961400_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964795_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964801_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964787_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1960371_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964799_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964786_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1959703_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964710_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964792_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964793_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964797_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964788_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964800_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964798_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964794_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964713_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964711_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964712_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964796_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534364_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534367_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534368_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534359_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534366_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534365_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534363_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534362_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534361_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534360_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Joyce_2016/csv/SRR3350722_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Joyce_2016/csv/SRR3350725_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Joyce_2016/csv/SRR3350724_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Joyce_2016/csv/SRR3350721_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Joyce_2016/csv/SRR3350720_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Joyce_2016/csv/SRR3350723_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR886976_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR887013_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR887047_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR886975_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR886938_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR887011_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR886974_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR887012_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mroczek_2014/csv/SRR1168794_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mroczek_2014/csv/SRR1168790_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mroczek_2014/csv/SRR1168788_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mroczek_2014/csv/SRR1168779_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mroczek_2014/csv/SRR1168789_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mroczek_2014/csv/SRR1168792_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220453_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220444_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220401_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220447_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220402_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220400_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220451_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220445_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220446_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875362_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875350_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875358_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875361_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875353_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875359_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875357_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875354_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875352_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875360_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875351_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875356_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875348_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875355_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875349_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2013/csv/SRR800642_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2013/csv/SRR800641_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2013/csv/SRR800639_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2013/csv/SRR800616_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2013/csv/SRR800640_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759645_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759682_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759670_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759634_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759632_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759674_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759695_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759657_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759676_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759635_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759638_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759677_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759663_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759655_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759693_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759661_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759629_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759637_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759641_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759686_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759662_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759633_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759654_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759668_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759665_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759685_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759628_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759690_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759646_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759651_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759691_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759664_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759649_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759679_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759696_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759694_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759683_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759647_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759636_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759684_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759677_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759648_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759666_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759640_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759652_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759687_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759656_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759639_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759650_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759680_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759660_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759692_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759667_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759659_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759673_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759671_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759669_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759681_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759688_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759678_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759675_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759689_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759672_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759631_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759630_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759658_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759644_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759659_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759642_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759697_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759653_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759643_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759698_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759668_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990827_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990882_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990891_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990898_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990839_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990905_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990873_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990897_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990833_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990856_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990853_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990901_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990884_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990837_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990831_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990910_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990916_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990889_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990825_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990874_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990845_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990908_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990881_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990855_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990915_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990846_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990875_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990870_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990914_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990888_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990836_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990904_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990893_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990850_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990828_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990842_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990890_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990835_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990844_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990847_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990895_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990823_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990848_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990917_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990878_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990824_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990906_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990826_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990894_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990849_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990892_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990886_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990911_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990912_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990903_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990851_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990830_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990879_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990907_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990841_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990883_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990872_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990829_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990918_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990887_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990822_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990869_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990871_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990877_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990885_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990832_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990880_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990834_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990838_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990913_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990902_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990843_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990876_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990896_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990899_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990852_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990854_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990909_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990840_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990900_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2015/csv/greiff_2015_20435_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2015/csv/greiff_2015_20434_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266472_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266457_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266441_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266468_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266462_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266443_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266440_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266471_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266442_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turner_2021/csv/SRR14611336_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turner_2021/csv/SRR14611332_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turner_2021/csv/SRR14611333_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turner_2021/csv/SRR14611335_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turner_2021/csv/SRR14611334_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR611803_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR611802_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR1056424_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR1056423_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR611801_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR611538_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR611539_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298734_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298736_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298731_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1297001_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298739_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298383_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298732_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298741_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298730_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298742_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298738_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298740_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298737_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298743_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298735_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298733_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206386_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206380_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206382_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206376_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206381_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206374_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207006_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206369_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207005_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207008_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206384_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206373_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206370_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207012_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207002_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207014_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207011_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206372_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206371_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206379_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207010_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207007_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206377_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206378_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206375_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206383_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2015/csv/SRR1818730_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2015/csv/SRR1818728_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2015/csv/SRR1818726_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2015/csv/SRR1818729_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_1/csv/ERR3004230_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_1/csv/ERR3004232_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_1/csv/ERR3004231_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_1/csv/ERR3004229_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759435_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759436_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759421_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759429_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759426_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759418_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759423_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759422_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759419_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759428_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759425_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759433_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759417_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759416_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759427_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759432_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759431_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759420_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759415_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759434_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759430_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759424_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961718_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961725_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961719_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961713_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961723_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961716_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961727_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961710_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961715_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961722_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961714_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961726_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961712_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961720_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961721_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961728_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961724_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961717_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961711_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2014/csv/ERR346601_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2014/csv/ERR346596_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2014/csv/ERR346600_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2014/csv/ERR346599_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2014/csv/ERR346598_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2014/csv/ERR346597_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Lindner_2015/csv/ERR903872_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174999_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174992_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3173867_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175029_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175017_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175009_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175014_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175015_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175031_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175018_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175034_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174991_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3173871_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3173879_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3173868_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175030_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3173870_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174996_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175033_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175021_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174995_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175020_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175004_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175001_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175007_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175032_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175027_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175003_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174997_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175005_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3173880_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174994_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716934_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716947_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716943_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716917_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716952_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716908_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716926_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716961_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716940_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716969_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716899_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716891_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365316_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365396_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365345_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365375_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365401_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365466_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365399_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365418_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365311_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365452_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365463_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365305_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365449_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365248_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365261_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365310_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365489_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365467_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365343_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365469_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365418_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365458_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365315_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365427_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365343_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365473_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365464_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365263_4_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365400_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365349_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365447_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365300_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365287_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365471_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365372_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365282_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365469_4_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365477_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365395_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365361_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365469_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365336_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365462_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365354_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365360_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365424_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365388_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365422_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365485_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365271_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365333_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365409_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365384_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365291_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365449_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365423_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365481_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365444_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365246_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365420_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365308_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365345_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365483_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365332_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365420_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365298_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365367_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365417_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365378_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365490_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365464_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365364_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365446_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365365_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365369_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365419_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365402_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365346_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365357_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365483_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365414_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365447_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365467_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365467_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365428_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365418_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365465_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365355_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365351_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365473_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365272_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365469_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365433_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365261_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365412_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365431_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365447_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365306_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365437_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365488_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365420_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365260_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365247_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365348_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365389_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365436_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365448_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365465_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365411_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365459_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365316_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365281_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365301_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365413_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365309_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365273_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365307_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365303_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365277_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365344_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365304_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365274_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365254_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365432_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365388_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365358_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365421_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365261_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365319_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365341_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365449_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365451_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365263_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365385_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365429_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365345_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365371_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365485_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365293_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365270_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365350_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365290_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365346_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365269_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365381_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365482_4_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365457_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365471_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365480_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365296_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365278_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365456_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365361_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365263_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365466_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365450_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365263_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365271_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365339_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365424_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365302_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365485_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365250_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365471_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365379_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365416_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365320_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365249_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365374_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365474_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365470_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365399_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365312_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365453_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Prohaska_2018/csv/SRR6291226_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487238_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487235_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487219_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487237_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487248_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487240_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487231_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610495_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487230_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487228_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487249_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487246_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487234_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610498_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487241_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487214_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610496_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487216_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487225_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487247_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487211_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610497_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487221_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487243_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487232_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487218_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487222_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487227_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487220_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487212_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487210_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487213_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487236_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487223_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487224_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610505_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487242_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487239_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487215_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487226_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487229_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610504_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610499_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664762_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664756_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664757_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664774_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664766_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664746_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664755_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664745_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664764_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664770_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664749_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sevy_2019/csv/SRR10413257_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sevy_2019/csv/SRR10413259_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sevy_2019/csv/SRR10413258_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sevy_2019/csv/SRR10413256_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sevy_2019/csv/SRR10413257_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sevy_2019/csv/SRR10413255_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326775_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326738_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326723_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326744_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12546798_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326728_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518457_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518454_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326714_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326736_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326735_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326734_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326731_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326772_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518452_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326713_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12546800_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326763_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326781_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326757_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518459_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326714_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326732_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12546799_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326758_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326782_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326717_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518453_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518455_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326754_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326767_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326770_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326733_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518458_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326769_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326771_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326766_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12546797_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326745_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518456_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326776_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326748_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326777_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326750_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12546801_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326741_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326714_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326740_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12546802_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326739_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bonsignori_2016/csv/SRR2983091_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bonsignori_2016/csv/SRR2983090_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bonsignori_2016/csv/SRR2983089_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431789_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431784_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431775_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431773_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431768_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431774_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431778_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431786_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431772_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431781_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431776_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431764_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431782_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431793_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431792_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431779_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431777_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431783_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431780_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431785_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431788_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431791_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431787_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431769_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431790_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431767_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431770_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431771_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431766_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1187913_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1187922_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171338_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171340_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171336_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171343_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171346_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171345_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171339_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171337_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171341_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171342_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_2/csv/ERR3153715_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_2/csv/ERR3153722_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_2/csv/ERR3153717_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Woodruff_2020/csv/SRR12113363_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Woodruff_2020/csv/SRR12113364_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412890_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412885_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412892_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412886_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412889_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412894_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412893_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412891_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412888_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412887_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412895_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Meng_2017/csv/SRR4297341_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Meng_2017/csv/SRR4297330_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026019_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026014_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026026_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026042_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026015_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026027_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026031_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026045_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026034_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026008_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026032_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026036_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026021_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026035_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026033_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026020_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026011_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026024_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026009_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026013_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026037_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026046_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026022_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR7230358_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026040_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026023_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026016_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026017_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026028_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026038_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026030_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026012_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026018_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026044_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026007_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026029_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026010_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026043_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026025_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026041_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026039_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2012/csv/SRR520407_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2012/csv/SRR520408_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2012/csv/SRR520409_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sundling_2014/csv/SRR1045556_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sundling_2014/csv/SRR1045558_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sundling_2014/csv/SRR1045557_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Buchheim_2020/csv/SRR11586269_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620055_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620035_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620122_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620027_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620042_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620025_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620038_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620054_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620024_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620066_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620039_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620088_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620060_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620037_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620051_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620111_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620120_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620056_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620113_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620048_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620079_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620104_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620106_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620101_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620029_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620052_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620103_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620082_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620044_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620041_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620115_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620098_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620107_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620047_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620031_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620026_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620078_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620090_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620108_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620030_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620065_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620068_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620072_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620032_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620089_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620084_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620043_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620091_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620045_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620102_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620075_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620110_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620050_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620119_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620040_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620080_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620083_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620085_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620096_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620094_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620105_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620076_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620109_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620057_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620074_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620028_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620121_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620077_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620049_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620114_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620086_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620123_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620116_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620063_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620046_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620118_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620070_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620064_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620099_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620061_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620053_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620062_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620097_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620058_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620073_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620093_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620067_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620087_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620095_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620034_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620059_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620112_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620069_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620100_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620092_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620036_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620071_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620117_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620081_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620033_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099148_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099051_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099144_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099145_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099054_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099141_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099188_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099082_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099079_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099100_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099151_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099090_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099171_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099105_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099109_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099096_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099076_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099177_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099097_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099162_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099136_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099161_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099102_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099080_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099164_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099174_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099133_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099143_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099191_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099153_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099070_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099050_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099099_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099176_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099135_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099182_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099155_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099085_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099084_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099123_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099065_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099167_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099184_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099165_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099122_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099094_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099062_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099098_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099049_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099183_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099178_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099158_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099092_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099175_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099064_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099168_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099187_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099081_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099193_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099095_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099138_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099179_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099101_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099156_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099086_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099068_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099111_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099119_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099112_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099170_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099166_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099073_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099190_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099118_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099185_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099159_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099163_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099189_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099091_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099140_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099063_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099120_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099059_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099181_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099134_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099149_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099173_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099128_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099130_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099052_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099103_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099127_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099104_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099139_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099131_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099061_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099157_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099194_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099066_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099117_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099192_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099057_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099075_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099083_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099071_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099121_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099078_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099106_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099132_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099113_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099108_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099125_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099154_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099060_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099077_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099055_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099142_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099093_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099186_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099152_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099072_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099058_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099115_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099114_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099160_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099048_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099172_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099147_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099087_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099067_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099074_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099180_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099126_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099088_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099053_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099137_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099107_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099169_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099056_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099124_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099150_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099116_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471260_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471274_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471275_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471261_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471286_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471267_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471264_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471285_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471262_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471263_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471284_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2011/csv/SRR275668_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2011/csv/SRR275711_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2011/csv/SRR277211_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082915_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082951_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082916_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082948_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082935_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082924_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082923_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082946_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082921_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082911_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082955_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082940_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082913_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082922_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082941_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082936_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082938_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082954_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082952_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082939_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082934_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082920_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082918_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082950_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082927_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082919_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082928_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082926_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082953_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082933_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082912_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082949_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082945_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082917_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082944_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082942_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082931_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082914_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082930_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082929_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082943_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082937_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082947_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082925_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082932_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755674_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755645_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755669_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755673_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755644_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755663_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755648_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755660_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755657_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755668_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755684_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755683_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755691_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755667_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755653_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755677_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755654_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755665_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755686_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755675_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755638_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755641_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755692_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755658_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755649_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755690_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755671_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755670_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755666_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755652_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755685_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755682_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755646_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755672_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755647_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755661_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755681_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755659_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755651_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755688_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755687_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755680_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755676_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755655_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755678_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755640_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755650_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755679_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755689_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755642_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755664_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755643_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755662_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755637_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755656_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755639_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821323_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821313_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821322_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821337_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821319_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821330_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821325_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821331_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821338_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821336_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821335_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821334_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821320_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821333_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821328_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821318_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821326_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821332_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821329_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821317_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821321_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2016/csv/SRR3458041_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2016/csv/SRR654171_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2016/csv/SRR654170_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2016/csv/SRR654169_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2016/csv/SRR654172_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937587_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937613_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937610_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937592_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937601_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937600_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937604_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937608_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937597_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937624_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937599_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937596_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937620_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937589_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937609_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937628_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937598_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937611_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937607_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937591_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937615_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937593_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937588_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937606_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937627_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937595_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937622_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937603_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937612_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937605_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937602_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937614_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937590_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980655_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980649_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980643_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980653_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980647_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980651_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980648_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980652_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980645_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980654_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980642_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980646_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980650_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980644_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Li_2017/csv/SRR3544220_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Li_2017/csv/SRR3544218_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Li_2017/csv/SRR3544217_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812294_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812289_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812300_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812301_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812304_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812298_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812285_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812290_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812292_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812296_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812288_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812286_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812295_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812287_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812297_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812305_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812293_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812284_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812302_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812283_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812282_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812299_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812303_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812291_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283763_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283625_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283873_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283802_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283806_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283765_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283641_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283666_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283763_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283663_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283618_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283805_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283664_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283794_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283734_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283794_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283879_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283655_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283776_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283847_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283843_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283643_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283808_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283796_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283798_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283781_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283774_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283660_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283671_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283670_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283875_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283771_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283832_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283630_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283840_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283882_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283767_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283728_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283784_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283789_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283790_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283828_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283622_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283780_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283795_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283859_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283788_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283846_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283632_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283605_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283827_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283785_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283830_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283843_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283860_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283646_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283620_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283775_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283649_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283880_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283656_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283886_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283791_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283825_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283848_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283733_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283778_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283725_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283772_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283605_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283727_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283609_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283618_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283760_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283755_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283652_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283766_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283757_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283860_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283626_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283781_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283756_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283799_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283773_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283603_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283775_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283886_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283647_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283638_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283770_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283871_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283852_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283610_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283607_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283759_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283784_3_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283792_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283612_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283668_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283799_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283884_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283858_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283852_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283883_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283854_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283787_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283789_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283737_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283855_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283826_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283778_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283610_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283806_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283797_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283843_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283667_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283736_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283847_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283636_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283769_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283878_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283848_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283877_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283783_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283603_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283791_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283650_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283629_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283856_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283825_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283660_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283617_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283614_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283834_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283845_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283613_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283800_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283803_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283670_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283640_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283635_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283628_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283790_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283760_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283872_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283651_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283762_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283608_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283624_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283627_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283662_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283644_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283881_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283654_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283762_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283856_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283784_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283839_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283645_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283853_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283828_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283655_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283797_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283784_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283765_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283631_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283829_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283844_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283854_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283780_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283790_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283787_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283658_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283777_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283869_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283734_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283659_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283639_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283735_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283801_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283661_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283845_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283764_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283854_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283805_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283664_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283779_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283792_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283774_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283837_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283846_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283659_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283858_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283608_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283733_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283672_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283755_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283796_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283842_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283826_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283830_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283857_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283758_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283662_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283877_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283804_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283663_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283672_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283659_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283788_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283884_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283637_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283602_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283870_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283726_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283797_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283729_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283767_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283642_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283786_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283662_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283669_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283802_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283831_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283786_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283774_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283653_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283782_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283657_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283829_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283663_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283777_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283874_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283778_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283855_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283619_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283772_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283876_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283831_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283859_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283853_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283756_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283770_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283665_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283838_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283839_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283606_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283611_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283764_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283766_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283844_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283606_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283853_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283776_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283789_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283885_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283669_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283615_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283795_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283800_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283656_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283601_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283761_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283664_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283648_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283761_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283757_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283857_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283783_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283787_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283771_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283776_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283623_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283875_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283658_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283885_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283657_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283785_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283807_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283841_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283634_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283788_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283621_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283768_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283604_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283616_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283785_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283845_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283851_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283670_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283666_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283773_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283798_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283633_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283727_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283783_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321516_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321521_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321519_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321514_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321520_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321517_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321518_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759752_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759747_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759741_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1760498_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759739_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759753_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759745_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759738_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759736_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759744_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759746_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992942_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992941_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992924_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992904_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992944_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992902_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992935_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992914_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992905_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992929_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992897_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992939_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992912_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992927_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992952_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992917_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992918_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992895_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992903_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992928_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992923_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992900_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992925_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992896_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992916_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992936_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992910_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992908_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992921_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992915_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992907_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992913_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992901_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992947_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992906_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992930_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992898_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992911_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992919_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992945_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992899_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992926_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992909_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408019_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408015_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408011_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408025_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408018_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408013_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408005_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408009_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408023_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408008_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408026_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408014_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408010_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408022_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408024_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408028_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408017_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408021_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408029_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408007_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408012_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408016_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408006_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408027_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408020_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077959_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077982_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078008_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077999_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077977_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077974_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077992_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077965_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078003_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077963_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077985_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077988_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077969_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077972_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077997_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077993_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078006_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078004_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078007_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077964_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077987_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077962_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078011_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077983_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077971_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078005_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077986_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077978_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077976_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077967_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077975_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078000_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077973_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078012_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077960_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077966_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077998_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077990_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077968_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077996_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078002_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077961_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077995_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078001_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077979_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077984_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077970_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077989_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077958_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077991_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077980_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078013_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078009_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077994_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078010_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099420_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099379_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099453_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099409_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099454_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099464_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099481_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099389_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099388_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099398_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099385_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099455_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099465_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099467_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099445_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099434_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099399_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099426_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099396_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099423_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099415_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099416_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099433_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099405_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099387_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099475_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099417_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099422_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099403_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099424_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099408_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099457_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099469_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099447_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099440_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099439_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099480_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099483_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099462_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099460_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099432_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099442_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099402_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099393_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099450_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099448_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099456_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099419_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099384_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099386_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099380_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099441_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099392_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099413_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099446_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099461_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099414_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099401_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099436_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099382_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099406_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099470_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099430_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099421_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099476_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099435_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099407_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099383_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099473_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099377_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099411_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099390_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099431_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099474_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099418_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099397_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099425_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099394_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099452_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099472_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099463_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099428_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099468_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099427_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099444_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099381_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099479_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099391_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099400_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099459_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099438_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099477_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099378_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099437_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099429_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099410_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099449_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099466_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099458_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099482_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099404_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099451_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099443_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099412_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099478_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099395_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099471_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_09_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_10_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_06_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_07_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_05_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_03_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_08_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_01_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Halliley_2015/csv/SRR2088756_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Halliley_2015/csv/SRR2124223_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Halliley_2015/csv/SRR2124224_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Halliley_2015/csv/SRR2088759_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Halliley_2015/csv/SRR2124225_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Halliley_2015/csv/SRR2088761_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bhiman_2015/csv/SRR2126754_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bhiman_2015/csv/SRR2126755_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417619_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417620_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417631_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417629_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417625_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417615_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417616_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417621_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417630_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287149_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287144_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287155_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287189_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287159_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279076_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287157_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287188_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287187_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279073_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287153_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287171_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279053_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279070_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279072_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279058_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287163_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287166_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279054_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287195_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287147_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287196_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287151_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287198_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287146_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287201_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287202_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279050_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279068_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287193_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287148_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279060_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287174_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287176_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279069_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279051_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287194_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287172_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287192_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279077_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287207_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287169_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279057_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279055_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287170_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279080_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279078_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279061_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287200_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287206_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287164_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287181_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287150_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279071_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287161_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279066_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287167_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279067_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287190_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279063_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279065_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287204_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279049_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287162_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279079_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287152_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287173_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287165_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287182_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287191_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287203_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287160_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287154_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287197_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279074_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287199_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287180_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287156_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279059_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279062_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287183_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287179_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279075_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287168_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287145_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279052_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287158_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287205_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287175_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turchaninova_2016/csv/SRR3192716_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turchaninova_2016/csv/SRR2558612_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turchaninova_2016/csv/SRR2558608_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turchaninova_2016/csv/SRR3192715_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turchaninova_2016/csv/SRR2558611_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turchaninova_2016/csv/SRR2558607_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567187_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567266_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567196_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567263_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567180_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567198_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567201_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567267_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567272_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567269_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567241_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567252_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567225_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567254_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567248_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567203_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567214_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567207_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567224_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567223_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567268_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567194_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567208_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567253_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567261_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567211_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567257_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567186_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567179_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567240_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567256_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567182_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567243_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567209_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567178_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567230_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567218_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567197_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567188_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567193_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567232_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567204_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567249_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567236_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567265_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567221_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567216_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567212_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567233_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567251_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567242_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567250_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567210_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567206_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567220_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567183_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567226_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567215_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567271_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567189_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567219_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567222_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567270_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567231_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567229_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567244_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567245_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567202_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567205_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567217_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567255_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567237_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567273_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567200_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567239_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567195_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567264_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567234_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567277_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567192_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567199_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567181_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR924015_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR924020_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR3088951_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR924017_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR3088950_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR924018_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR3088952_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR924016_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rettig_2018/csv/rettig_2018_02_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rettig_2018/csv/rettig_2018_04_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rettig_2018/csv/rettig_2018_05_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rettig_2018/csv/rettig_2018_01_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rettig_2018/csv/rettig_2018_03_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR770500_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747761_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747760_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747758_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747766_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747763_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747759_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747256_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR765688_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747768_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747764_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747232_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747785_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747767_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754983_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755016_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754968_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755014_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755008_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755027_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755028_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754987_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755007_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754992_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755062_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755039_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754982_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755059_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755034_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755099_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755078_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755060_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754970_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755006_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754974_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755100_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755073_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755019_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754973_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754975_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755102_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755065_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755010_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755020_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755055_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755057_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754967_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755026_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755041_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755095_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755012_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755037_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754995_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754993_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754965_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754998_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754969_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755029_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755040_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755076_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755024_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754988_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754980_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755035_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754986_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755066_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754971_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755003_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755082_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755009_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755077_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754985_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755018_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754999_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755001_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754994_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755032_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754991_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754981_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755011_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755103_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755072_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755036_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755083_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755033_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755021_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755097_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755058_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754966_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755079_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755056_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754990_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755063_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754996_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754964_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755043_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755031_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755067_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755030_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755054_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755000_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755005_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755025_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754997_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755015_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755022_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754984_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755002_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755081_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755094_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754989_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754972_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755013_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755064_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755023_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755080_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755101_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755004_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755096_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755061_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755098_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755017_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190275_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190277_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190310_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190246_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190233_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190280_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190279_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190259_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190243_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190296_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190241_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190305_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190281_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190248_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190269_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190317_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190276_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190298_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190313_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190270_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190267_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190299_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190252_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190301_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190265_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190268_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190283_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190293_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190303_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190234_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190255_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190256_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190291_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190236_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190262_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190288_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190245_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190282_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190311_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190250_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190278_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190316_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190294_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190263_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190284_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190302_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190266_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190287_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190235_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190257_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190264_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190249_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190309_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190260_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190232_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190308_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190312_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190304_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190286_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190251_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190247_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190289_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190271_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190261_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190318_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190292_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190314_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190307_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190253_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190242_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190244_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190272_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190297_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190300_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190240_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190274_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190273_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190238_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190315_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190285_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190295_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190254_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190239_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190290_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190237_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190258_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190306_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905685_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905703_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905661_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905662_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905704_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905691_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905673_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905692_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905709_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905697_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905656_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905655_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905686_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905680_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905698_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905667_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905668_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905710_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905674_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905679_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_2/csv/ERR4082229_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_2/csv/ERR4082228_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Collins_2015/csv/ERR849859_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Collins_2015/csv/ERR849860_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767436_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767418_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767429_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767441_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767426_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767424_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767442_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767446_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767425_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767445_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767434_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767439_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767421_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767422_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767432_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767433_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767423_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767444_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767435_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767430_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767420_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767440_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767447_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767428_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767427_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767419_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767437_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767438_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767443_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767431_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811756_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811755_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR6387556_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811779_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811771_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811760_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811759_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811762_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811778_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811774_2_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811789_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811781_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811763_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811752_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811773_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811783_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811776_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811788_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811753_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811772_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811770_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811764_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811757_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811782_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811767_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR6387557_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811768_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811791_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811786_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811780_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811777_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811774_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811787_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811785_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811761_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811775_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811784_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811766_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811769_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811790_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811754_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811758_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811765_1_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537525_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537524_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383456_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383472_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383452_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383461_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383469_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383448_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383451_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383477_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383475_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383466_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383464_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383473_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383474_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383476_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383457_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383449_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383458_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383450_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383463_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537526_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383455_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537523_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383447_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383460_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383471_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383326_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383467_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383453_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383470_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537522_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383468_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383454_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383462_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383465_Heavy_IGHG.csv.gz
-wget -q http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383459_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843405_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843396_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843399_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843391_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843421_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843395_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843394_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843425_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843414_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843417_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843426_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843413_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843398_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843400_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843404_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843392_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843388_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843386_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843393_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843416_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843387_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843418_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843401_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843420_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843422_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843389_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843419_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843402_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843415_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843397_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843412_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Eliyahu_2018/csv/ERR2843403_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schultheiss_2020/csv/ERR4337013_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schultheiss_2020/csv/ERR4337015_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1961400_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964795_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964801_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964787_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1960371_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964799_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964786_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1959703_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964710_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964792_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964793_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964797_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964788_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964800_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964798_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964794_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964713_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964711_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964712_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tipton_2015/csv/SRR1964796_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534364_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534367_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534368_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534359_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534366_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534365_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534363_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534362_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534361_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/VanDuijn_2017/csv/SRR5534360_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Joyce_2016/csv/SRR3350722_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Joyce_2016/csv/SRR3350725_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Joyce_2016/csv/SRR3350724_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Joyce_2016/csv/SRR3350721_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Joyce_2016/csv/SRR3350720_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Joyce_2016/csv/SRR3350723_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR886976_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR887013_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR887047_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR886975_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR886938_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR887011_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR886974_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Liao_2013/csv/SRR887012_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mroczek_2014/csv/SRR1168794_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mroczek_2014/csv/SRR1168790_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mroczek_2014/csv/SRR1168788_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mroczek_2014/csv/SRR1168779_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mroczek_2014/csv/SRR1168789_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mroczek_2014/csv/SRR1168792_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220453_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220444_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220401_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220447_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220402_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220400_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220451_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220445_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bashford_2013/csv/ERR220446_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875362_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875350_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875358_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875361_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875353_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875359_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875357_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875354_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875352_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875360_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875351_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875356_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875348_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875355_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mor_2021/csv/SRR12875349_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2013/csv/SRR800642_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2013/csv/SRR800641_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2013/csv/SRR800639_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2013/csv/SRR800616_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2013/csv/SRR800640_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759645_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759682_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759670_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759634_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759632_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759674_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759695_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759657_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759676_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759635_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759638_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759677_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759663_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759655_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759693_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759661_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759629_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759637_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759641_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759686_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759662_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759633_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759654_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759668_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759665_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759685_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759628_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759690_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759646_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759651_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759691_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759664_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759649_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759679_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759696_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759694_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759683_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759647_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759636_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759684_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759677_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759648_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759666_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759640_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759652_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759687_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759656_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759639_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759650_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759680_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759660_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759692_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759667_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759659_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759673_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759671_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759669_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759681_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759688_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759678_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759675_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759689_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759672_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759631_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759630_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759658_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759644_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759659_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759642_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759697_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759653_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759643_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759698_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2017/csv/ERR1759668_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990827_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990882_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990891_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990898_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990839_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990905_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990873_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990897_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990833_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990856_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990853_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990901_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990884_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990837_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990831_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990910_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990916_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990889_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990825_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990874_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990845_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990908_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990881_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990855_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990915_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990846_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990875_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990870_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990914_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990888_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990836_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990904_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990893_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990850_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990828_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990842_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990890_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990835_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990844_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990847_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990895_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990823_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990848_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990917_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990878_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990824_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990906_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990826_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990894_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990849_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990892_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990886_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990911_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990912_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990903_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990851_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990830_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990879_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990907_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990841_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990883_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990872_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990829_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990918_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990887_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990822_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990869_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990871_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990877_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990885_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990832_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990880_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990834_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990838_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990913_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990902_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990843_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990876_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990896_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990899_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990852_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990854_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990909_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990840_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015/csv/SRR3990900_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2015/csv/greiff_2015_20435_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2015/csv/greiff_2015_20434_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266472_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266457_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266441_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266468_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266462_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266443_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266440_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266471_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Johnson_2018/csv/SRR6266442_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turner_2021/csv/SRR14611336_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turner_2021/csv/SRR14611332_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turner_2021/csv/SRR14611333_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turner_2021/csv/SRR14611335_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turner_2021/csv/SRR14611334_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR611803_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR611802_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR1056424_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR1056423_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR611801_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR611538_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Doria-Rose_2015/csv/SRR611539_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298734_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298736_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298731_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1297001_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298739_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298383_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298732_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298741_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298730_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298742_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298738_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298740_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298737_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298743_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298735_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Palanichamy_2014/csv/SRR1298733_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206386_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206380_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206382_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206376_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206381_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206374_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207006_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206369_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207005_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207008_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206384_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206373_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206370_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207012_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207002_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207014_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207011_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206372_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206371_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206379_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207010_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6207007_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206377_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206378_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206375_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Setliff_2018/csv/SRR6206383_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2015/csv/SRR1818730_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2015/csv/SRR1818728_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2015/csv/SRR1818726_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhou_2015/csv/SRR1818729_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_1/csv/ERR3004230_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_1/csv/ERR3004232_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_1/csv/ERR3004231_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_1/csv/ERR3004229_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759435_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759436_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759421_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759429_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759426_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759418_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759423_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759422_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759419_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759428_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759425_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759433_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759417_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759416_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759427_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759432_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759431_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759420_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759415_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759434_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759430_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ohm-Laursen_2018/csv/SRR7759424_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961718_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961725_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961719_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961713_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961723_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961716_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961727_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961710_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961715_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961722_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961714_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961726_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961712_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961720_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961721_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961728_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961724_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961717_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2020/csv/SRR11961711_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2014/csv/ERR346601_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2014/csv/ERR346596_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2014/csv/ERR346600_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2014/csv/ERR346599_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2014/csv/ERR346598_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Greiff_2014/csv/ERR346597_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Lindner_2015/csv/ERR903872_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174999_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174992_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3173867_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175029_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175017_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175009_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175014_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175015_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175031_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175018_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175034_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174991_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3173871_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3173879_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3173868_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175030_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3173870_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174996_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175033_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175021_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174995_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175020_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175004_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175001_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175007_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175032_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175027_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175003_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174997_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3175005_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3173880_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Khan_2016/csv/SRR3174994_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716934_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716947_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716943_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716917_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716952_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716908_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716926_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716961_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716940_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716969_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716899_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Mukhamedova_2021/csv/SRR13716891_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365316_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365396_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365345_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365375_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365401_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365466_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365399_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365418_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365311_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365452_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365463_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365305_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365449_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365248_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365261_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365310_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365489_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365467_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365343_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365469_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365418_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365458_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365315_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365427_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365343_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365473_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365464_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365263_4_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365400_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365349_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365447_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365300_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365287_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365471_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365372_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365282_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365469_4_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365477_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365395_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365361_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365469_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365336_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365462_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365354_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365360_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365424_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365388_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365422_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365485_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365271_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365333_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365409_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365384_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365291_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365449_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365423_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365481_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365444_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365246_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365420_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365308_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365345_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365483_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365332_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365420_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365298_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365367_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365417_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365378_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365490_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365464_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365364_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365446_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365365_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365369_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365419_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365402_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365346_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365357_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365483_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365414_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365447_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365467_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365467_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365428_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365418_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365465_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365355_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365351_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365473_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365272_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365469_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365433_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365261_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365412_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365431_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365447_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365306_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365437_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365488_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365420_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365260_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365247_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365348_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365389_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365436_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365448_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365465_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365411_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365459_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365316_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365281_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365301_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365413_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365309_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365273_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365307_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365303_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365277_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365344_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365304_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365274_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365254_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365432_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365388_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365358_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365421_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365261_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365319_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365341_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365449_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365451_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365263_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365385_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365429_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365345_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365371_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365485_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365293_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365270_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365350_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365290_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365346_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365269_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365381_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365482_4_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365457_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365471_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365480_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365296_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365278_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365456_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365361_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365263_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365466_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365450_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365263_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365271_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365339_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365424_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365302_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365485_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365250_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365471_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365379_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365416_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365320_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365249_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365374_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365474_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365470_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365399_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365312_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2019/csv/SRR8365453_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Prohaska_2018/csv/SRR6291226_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487238_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487235_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487219_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487237_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487248_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487240_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487231_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610495_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487230_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487228_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487249_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487246_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487234_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610498_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487241_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487214_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610496_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487216_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487225_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487247_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487211_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610497_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487221_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487243_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487232_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487218_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487222_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487227_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487220_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487212_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487210_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487213_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487236_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487223_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487224_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610505_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487242_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487239_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487215_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487226_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR12487229_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610504_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Nielsen_2020/csv/SRR11610499_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664762_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664756_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664757_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664774_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664766_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664746_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664755_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664745_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664764_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664770_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bender_2020/csv/ERR3664749_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sevy_2019/csv/SRR10413257_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sevy_2019/csv/SRR10413259_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sevy_2019/csv/SRR10413258_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sevy_2019/csv/SRR10413256_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sevy_2019/csv/SRR10413257_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sevy_2019/csv/SRR10413255_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326775_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326738_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326723_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326744_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12546798_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326728_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518457_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518454_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326714_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326736_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326735_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326734_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326731_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326772_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518452_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326713_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12546800_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326763_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326781_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326757_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518459_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326714_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326732_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12546799_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326758_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326782_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326717_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518453_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518455_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326754_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326767_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326770_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326733_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518458_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326769_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326771_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326766_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12546797_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326745_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR13518456_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326776_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326748_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326777_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326750_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12546801_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326741_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326714_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326740_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12546802_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Kim_2020/csv/SRR12326739_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bonsignori_2016/csv/SRR2983091_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bonsignori_2016/csv/SRR2983090_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bonsignori_2016/csv/SRR2983089_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431789_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431784_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431775_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431773_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431768_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431774_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431778_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431786_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431772_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431781_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431776_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431764_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431782_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431793_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431792_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431779_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431777_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431783_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431780_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431785_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431788_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431791_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431787_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431769_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431790_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431767_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431770_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431771_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gupta_2017/csv/SRR4431766_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1187913_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1187922_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171338_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171340_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171336_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171343_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171346_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171345_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171339_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171337_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171341_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2014/csv/SRR1171342_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_2/csv/ERR3153715_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_2/csv/ERR3153722_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernat_2019_2/csv/ERR3153717_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Woodruff_2020/csv/SRR12113363_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Woodruff_2020/csv/SRR12113364_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412890_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412885_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412892_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412886_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412889_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412894_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412893_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412891_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412888_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412887_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Menzel_2014/csv/ERR412895_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Meng_2017/csv/SRR4297341_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Meng_2017/csv/SRR4297330_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026019_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026014_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026026_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026042_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026015_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026027_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026031_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026045_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026034_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026008_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026032_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026036_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026021_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026035_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026033_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026020_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026011_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026024_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026009_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026013_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026037_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026046_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026022_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR7230358_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026040_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026023_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026016_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026017_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026028_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026038_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026030_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026012_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026018_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026044_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026007_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026029_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026010_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026043_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026025_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026041_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vander_Heiden_2017/csv/SRR4026039_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2012/csv/SRR520407_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2012/csv/SRR520408_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2012/csv/SRR520409_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sundling_2014/csv/SRR1045556_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sundling_2014/csv/SRR1045558_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sundling_2014/csv/SRR1045557_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Buchheim_2020/csv/SRR11586269_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620055_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620035_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620122_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620027_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620042_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620025_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620038_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620054_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620024_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620066_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620039_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620088_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620060_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620037_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620051_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620111_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620120_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620056_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620113_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620048_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620079_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620104_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620106_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620101_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620029_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620052_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620103_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620082_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620044_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620041_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620115_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620098_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620107_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620047_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620031_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620026_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620078_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620090_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620108_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620030_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620065_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620068_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620072_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620032_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620089_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620084_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620043_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620091_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620045_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620102_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620075_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620110_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620050_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620119_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620040_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620080_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620083_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620085_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620096_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620094_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620105_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620076_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620109_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620057_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620074_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620028_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620121_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620077_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620049_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620114_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620086_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620123_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620116_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620063_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620046_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620118_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620070_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620064_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620099_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620061_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620053_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620062_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620097_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620058_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620073_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620093_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620067_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620087_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620095_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620034_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620059_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620112_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620069_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620100_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620092_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620036_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620071_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620117_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620081_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ellebedy_2016/csv/SRR3620033_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099148_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099051_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099144_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099145_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099054_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099141_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099188_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099082_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099079_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099100_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099151_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099090_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099171_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099105_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099109_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099096_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099076_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099177_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099097_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099162_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099136_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099161_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099102_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099080_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099164_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099174_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099133_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099143_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099191_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099153_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099070_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099050_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099099_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099176_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099135_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099182_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099155_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099085_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099084_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099123_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099065_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099167_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099184_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099165_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099122_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099094_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099062_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099098_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099049_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099183_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099178_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099158_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099092_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099175_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099064_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099168_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099187_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099081_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099193_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099095_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099138_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099179_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099101_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099156_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099086_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099068_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099111_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099119_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099112_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099170_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099166_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099073_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099190_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099118_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099185_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099159_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099163_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099189_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099091_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099140_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099063_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099120_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099059_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099181_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099134_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099149_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099173_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099128_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099130_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099052_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099103_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099127_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099104_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099139_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099131_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099061_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099157_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099194_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099066_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099117_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099192_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099057_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099075_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099083_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099071_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099121_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099078_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099106_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099132_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099113_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099108_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099125_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099154_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099060_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099077_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099055_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099142_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099093_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099186_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099152_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099072_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099058_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099115_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099114_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099160_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099048_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099172_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099147_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099087_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099067_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099074_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099180_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099126_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099088_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099053_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099137_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099107_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099169_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099056_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099124_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099150_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016/csv/SRR3099116_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471260_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471274_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471275_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471261_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471286_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471267_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471264_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471285_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471262_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471263_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Sheng_2017/csv/SRR5471284_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2011/csv/SRR275668_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2011/csv/SRR275711_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2011/csv/SRR277211_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082915_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082951_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082916_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082948_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082935_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082924_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082923_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082946_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082921_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082911_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082955_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082940_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082913_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082922_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082941_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082936_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082938_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082954_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082952_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082939_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082934_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082920_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082918_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082950_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082927_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082919_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082928_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082926_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082953_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082933_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082912_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082949_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082945_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082917_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082944_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082942_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082931_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082914_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082930_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082929_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082943_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082937_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082947_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082925_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bernardes_2020/csv/SRR13082932_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755674_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755645_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755669_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755673_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755644_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755663_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755648_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755660_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755657_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755668_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755684_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755683_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755691_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755667_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755653_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755677_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755654_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755665_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755686_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755675_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755638_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755641_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755692_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755658_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755649_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755690_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755671_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755670_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755666_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755652_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755685_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755682_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755646_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755672_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755647_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755661_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755681_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755659_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755651_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755688_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755687_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755680_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755676_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755655_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755678_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755640_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755650_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755679_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755689_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755642_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755664_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755643_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755662_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755637_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755656_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Ghraichy_2020/csv/SRR8755639_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821323_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821313_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821322_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821337_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821319_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821330_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821325_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821331_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821338_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821336_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821335_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821334_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821320_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821333_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821328_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821318_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821326_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821332_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821329_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821317_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Tong_2017/csv/SRR5821321_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2016/csv/SRR3458041_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2016/csv/SRR654171_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2016/csv/SRR654170_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2016/csv/SRR654169_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Soto_2016/csv/SRR654172_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937587_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937613_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937610_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937592_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937601_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937600_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937604_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937608_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937597_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937624_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937599_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937596_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937620_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937589_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937609_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937628_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937598_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937611_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937607_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937591_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937615_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937593_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937588_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937606_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937627_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937595_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937622_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937603_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937612_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937605_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937602_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937614_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Chen_2020/csv/SRR11937590_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980655_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980649_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980643_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980653_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980647_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980651_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980648_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980652_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980645_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980654_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980642_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980646_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980650_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Davis_2019/csv/SRR8980644_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Li_2017/csv/SRR3544220_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Li_2017/csv/SRR3544218_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Li_2017/csv/SRR3544217_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812294_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812289_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812300_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812301_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812304_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812298_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812285_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812290_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812292_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812296_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812288_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812286_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812295_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812287_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812297_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812305_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812293_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812284_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812302_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812283_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812282_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812299_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812303_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2017/csv/ERR1812291_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283763_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283625_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283873_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283802_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283806_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283765_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283641_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283666_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283763_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283663_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283618_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283805_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283664_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283794_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283734_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283794_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283879_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283655_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283776_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283847_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283843_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283643_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283808_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283796_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283798_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283781_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283774_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283660_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283671_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283670_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283875_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283771_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283832_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283630_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283840_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283882_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283767_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283728_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283784_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283789_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283790_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283828_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283622_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283780_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283795_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283859_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283788_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283846_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283632_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283605_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283827_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283785_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283830_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283843_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283860_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283646_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283620_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283775_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283649_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283880_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283656_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283886_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283791_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283825_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283848_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283733_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283778_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283725_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283772_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283605_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283727_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283609_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283618_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283760_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283755_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283652_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283766_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283757_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283860_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283626_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283781_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283756_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283799_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283773_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283603_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283775_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283886_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283647_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283638_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283770_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283871_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283852_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283610_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283607_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283759_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283784_3_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283792_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283612_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283668_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283799_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283884_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283858_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283852_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283883_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283854_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283787_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283789_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283737_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283855_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283826_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283778_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283610_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283806_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283797_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283843_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283667_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283736_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283847_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283636_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283769_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283878_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283848_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283877_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283783_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283603_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283791_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283650_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283629_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283856_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283825_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283660_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283617_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283614_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283834_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283845_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283613_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283800_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283803_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283670_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283640_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283635_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283628_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283790_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283760_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283872_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283651_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283762_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283608_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283624_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283627_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283662_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283644_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283881_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283654_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283762_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283856_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283784_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283839_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283645_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283853_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283828_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283655_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283797_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283784_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283765_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283631_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283829_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283844_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283854_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283780_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283790_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283787_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283658_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283777_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283869_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283734_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283659_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283639_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283735_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283801_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283661_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283845_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283764_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283854_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283805_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283664_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283779_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283792_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283774_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283837_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283846_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283659_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283858_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283608_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283733_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283672_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283755_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283796_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283842_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283826_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283830_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283857_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283758_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283662_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283877_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283804_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283663_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283672_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283659_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283788_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283884_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283637_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283602_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283870_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283726_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283797_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283729_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283767_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283642_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283786_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283662_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283669_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283802_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283831_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283786_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283774_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283653_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283782_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283657_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283829_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283663_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283777_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283874_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283778_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283855_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283619_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283772_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283876_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283831_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283859_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283853_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283756_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283770_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283665_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283838_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283839_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283606_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283611_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283764_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283766_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283844_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283606_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283853_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283776_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283789_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283885_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283669_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283615_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283795_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283800_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283656_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283601_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283761_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283664_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283648_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283761_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283757_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283857_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283783_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283787_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283771_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283776_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283623_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283875_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283658_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283885_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283657_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283785_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283807_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283841_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283634_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283788_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283621_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283768_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283604_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283616_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283785_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283845_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283851_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283670_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283666_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283773_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283798_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283633_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283727_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Briney_2019/csv/SRR8283783_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321516_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321521_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321519_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321514_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321520_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321517_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Simonich_2020/csv/SRR8321518_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759752_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759747_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759741_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1760498_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759739_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759753_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759745_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759738_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759736_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759744_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Corcoran_2016/csv/ERR1759746_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992942_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992941_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992924_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992904_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992944_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992902_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992935_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992914_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992905_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992929_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992897_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992939_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992912_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992927_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992952_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992917_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992918_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992895_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992903_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992928_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992923_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992900_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992925_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992896_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992916_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992936_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992910_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992908_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992921_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992915_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992907_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992913_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992901_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992947_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992906_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992930_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992898_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992911_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992919_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992945_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992899_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992926_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2016a/csv/SRR3992909_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408019_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408015_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408011_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408025_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408018_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408013_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408005_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408009_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408023_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408008_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408026_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408014_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408010_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408022_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408024_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408028_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408017_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408021_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408029_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408007_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408012_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408016_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408006_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408027_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Vergani_2017/csv/SRR5408020_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077959_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077982_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078008_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077999_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077977_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077974_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077992_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077965_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078003_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077963_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077985_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077988_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077969_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077972_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077997_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077993_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078006_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078004_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078007_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077964_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077987_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077962_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078011_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077983_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077971_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078005_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077986_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077978_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077976_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077967_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077975_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078000_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077973_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078012_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077960_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077966_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077998_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077990_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077968_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077996_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078002_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077961_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077995_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078001_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077979_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077984_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077970_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077989_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077958_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077991_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077980_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078013_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078009_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4077994_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_1/csv/ERR4078010_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099420_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099379_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099453_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099409_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099454_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099464_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099481_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099389_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099388_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099398_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099385_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099455_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099465_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099467_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099445_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099434_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099399_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099426_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099396_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099423_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099415_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099416_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099433_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099405_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099387_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099475_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099417_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099422_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099403_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099424_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099408_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099457_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099469_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099447_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099440_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099439_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099480_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099483_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099462_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099460_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099432_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099442_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099402_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099393_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099450_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099448_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099456_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099419_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099384_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099386_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099380_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099441_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099392_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099413_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099446_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099461_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099414_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099401_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099436_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099382_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099406_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099470_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099430_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099421_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099476_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099435_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099407_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099383_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099473_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099377_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099411_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099390_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099431_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099474_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099418_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099397_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099425_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099394_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099452_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099472_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099463_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099428_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099468_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099427_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099444_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099381_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099479_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099391_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099400_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099459_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099438_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099477_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099378_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099437_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099429_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099410_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099449_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099466_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099458_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099482_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099404_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099451_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099443_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099412_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099478_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099395_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Galson_2015a/csv/SRR3099471_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_09_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_10_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_06_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_07_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_05_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_03_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_08_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Schanz_2014/csv/schanz_2014_01_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Halliley_2015/csv/SRR2088756_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Halliley_2015/csv/SRR2124223_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Halliley_2015/csv/SRR2124224_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Halliley_2015/csv/SRR2088759_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Halliley_2015/csv/SRR2124225_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Halliley_2015/csv/SRR2088761_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bhiman_2015/csv/SRR2126754_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Bhiman_2015/csv/SRR2126755_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417619_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417620_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417631_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417629_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417625_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417615_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417616_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417621_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Huang_2016/csv/SRR4417630_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287149_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287144_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287155_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287189_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287159_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279076_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287157_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287188_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287187_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279073_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287153_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287171_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279053_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279070_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279072_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279058_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287163_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287166_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279054_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287195_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287147_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287196_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287151_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287198_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287146_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287201_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287202_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279050_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279068_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287193_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287148_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279060_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287174_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287176_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279069_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279051_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287194_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287172_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287192_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279077_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287207_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287169_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279057_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279055_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287170_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279080_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279078_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279061_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287200_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287206_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287164_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287181_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287150_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279071_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287161_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279066_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287167_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279067_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287190_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279063_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279065_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287204_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279049_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287162_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279079_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287152_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287173_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287165_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287182_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287191_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287203_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287160_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287154_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287197_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279074_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287199_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287180_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287156_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279059_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279062_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287183_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287179_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279075_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287168_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287145_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1279052_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287158_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287205_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jaffe_2022/csv/1287175_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turchaninova_2016/csv/SRR3192716_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turchaninova_2016/csv/SRR2558612_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turchaninova_2016/csv/SRR2558608_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turchaninova_2016/csv/SRR3192715_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turchaninova_2016/csv/SRR2558611_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Turchaninova_2016/csv/SRR2558607_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567187_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567266_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567196_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567263_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567180_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567198_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567201_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567267_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567272_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567269_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567241_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567252_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567225_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567254_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567248_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567203_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567214_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567207_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567224_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567223_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567268_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567194_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567208_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567253_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567261_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567211_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567257_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567186_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567179_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567240_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567256_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567182_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567243_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567209_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567178_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567230_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567218_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567197_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567188_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567193_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567232_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567204_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567249_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567236_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567265_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567221_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567216_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567212_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567233_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567251_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567242_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567250_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567210_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567206_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567220_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567183_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567226_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567215_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567271_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567189_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567219_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567222_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567270_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567231_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567229_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567244_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567245_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567202_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567205_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567217_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567255_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567237_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567273_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567200_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567239_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567195_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567264_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567234_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567277_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567192_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567199_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Gidoni_2019/csv/ERR2567181_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR924015_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR924020_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR3088951_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR924017_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR3088950_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR924018_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR3088952_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Zhu_2013/csv/SRR924016_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rettig_2018/csv/rettig_2018_02_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rettig_2018/csv/rettig_2018_04_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rettig_2018/csv/rettig_2018_05_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rettig_2018/csv/rettig_2018_01_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rettig_2018/csv/rettig_2018_03_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR770500_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747761_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747760_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747758_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747766_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747763_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747759_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747256_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR765688_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747768_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747764_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747232_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747785_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Jiang_2013/csv/SRR747767_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754983_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755016_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754968_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755014_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755008_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755027_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755028_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754987_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755007_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754992_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755062_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755039_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754982_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755059_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755034_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755099_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755078_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755060_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754970_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755006_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754974_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755100_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755073_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755019_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754973_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754975_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755102_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755065_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755010_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755020_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755055_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755057_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754967_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755026_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755041_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755095_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755012_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755037_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754995_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754993_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754965_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754998_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754969_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755029_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755040_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755076_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755024_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754988_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754980_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755035_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754986_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755066_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754971_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755003_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755082_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755009_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755077_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754985_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755018_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754999_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755001_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754994_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755032_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754991_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754981_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755011_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755103_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755072_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755036_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755083_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755033_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755021_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755097_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755058_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754966_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755079_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755056_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754990_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755063_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754996_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754964_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755043_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755031_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755067_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755030_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755054_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755000_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755005_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755025_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754997_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755015_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755022_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754984_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755002_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755081_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755094_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754989_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5754972_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755013_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755064_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755023_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755080_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755101_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755004_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755096_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755061_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755098_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Levin_2016/csv/SRR5755017_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190275_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190277_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190310_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190246_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190233_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190280_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190279_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190259_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190243_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190296_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190241_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190305_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190281_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190248_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190269_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190317_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190276_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190298_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190313_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190270_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190267_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190299_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190252_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190301_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190265_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190268_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190283_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190293_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190303_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190234_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190255_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190256_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190291_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190236_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190262_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190288_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190245_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190282_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190311_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190250_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190278_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190316_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190294_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190263_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190284_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190302_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190266_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190287_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190235_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190257_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190264_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190249_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190309_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190260_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190232_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190308_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190312_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190304_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190286_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190251_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190247_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190289_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190271_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190261_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190318_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190292_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190314_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190307_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190253_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190242_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190244_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190272_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190297_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190300_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190240_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190274_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190273_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190238_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190315_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190285_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190295_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190254_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190239_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190290_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190237_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190258_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Montague_2021/csv/SRR12190306_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905685_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905703_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905661_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905662_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905704_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905691_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905673_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905692_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905709_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905697_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905656_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905655_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905686_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905680_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905698_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905667_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905668_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905710_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905674_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Rubelt_2016/csv/SRR2905679_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_2/csv/ERR4082229_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/King_2020_2/csv/ERR4082228_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Collins_2015/csv/ERR849859_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Collins_2015/csv/ERR849860_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767436_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767418_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767429_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767441_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767426_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767424_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767442_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767446_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767425_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767445_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767434_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767439_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767421_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767422_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767432_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767433_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767423_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767444_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767435_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767430_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767420_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767440_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767447_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767428_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767427_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767419_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767437_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767438_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767443_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Wu_2015/csv/SRR1767431_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811756_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811755_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR6387556_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811779_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811771_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811760_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811759_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811762_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811778_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811774_2_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811789_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811781_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811763_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811752_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811773_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811783_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811776_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811788_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811753_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811772_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811770_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811764_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811757_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811782_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811767_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR6387557_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811768_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811791_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811786_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811780_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811777_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811774_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811787_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811785_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811761_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811775_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811784_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811766_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811769_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811790_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811754_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811758_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Waltari_2018/csv/SRR5811765_1_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537525_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537524_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383456_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383472_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383452_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383461_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383469_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383448_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383451_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383477_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383475_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383466_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383464_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383473_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383474_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383476_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383457_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383449_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383458_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383450_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383463_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537526_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383455_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537523_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383447_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383460_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383471_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383326_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383467_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383453_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383470_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1537522_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383468_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383454_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383462_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383465_Heavy_IGHG.csv.gz
+wget -q -nc http://opig.stats.ox.ac.uk/webapps/ngsdb/unpaired/Stern_2014/csv/SRR1383459_Heavy_IGHG.csv.gz
 
 cd ..
