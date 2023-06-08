@@ -14,6 +14,8 @@ from humanization.utils import configure_logger
 config = config_loader.Config()
 logger = configure_logger(config, "Dataset reader")
 
+CHUNK_SIZE = 200_000
+
 
 def read_file(csv_path: str, requested_columns: List[str]) -> Tuple[pandas.DataFrame, Any]:
     metadata = json.loads(','.join(pandas.read_csv(csv_path, nrows=0).columns))
@@ -33,7 +35,13 @@ def correct_v_call(df: pandas.DataFrame, metadata: Any) -> NoReturn:
 
 def make_annotated_df(df: pandas.DataFrame, annotation: Annotation) -> pandas.DataFrame:
     aa_columns = annotation.segmented_positions
-    annotated_indexes, annotated_list = annotate_batch(df['sequence_alignment_aa'].tolist(), annotation)
+    lst = df['sequence_alignment_aa'].tolist()
+    annotated_indexes, annotated_list = [], []
+    parts = np.array_split(lst, CHUNK_SIZE)
+    for part in parts:
+        a_i, a_l = annotate_batch(part, annotation)
+        annotated_indexes.extend(a_i)
+        annotated_list.extend(a_l)
     X = pandas.DataFrame(annotated_list, columns=aa_columns)  # Make column for every aa
     y = df['v_call'][annotated_indexes].reset_index(drop=True)
     dataset = pandas.concat([X, y], axis=1)
