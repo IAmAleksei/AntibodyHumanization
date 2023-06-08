@@ -1,4 +1,5 @@
 import json
+import math
 import os
 from itertools import accumulate
 from typing import List, Tuple, Any, NoReturn, Callable
@@ -37,7 +38,8 @@ def make_annotated_df(df: pandas.DataFrame, annotation: Annotation) -> pandas.Da
     aa_columns = annotation.segmented_positions
     lst = df['sequence_alignment_aa'].tolist()
     annotated_indexes, annotated_list = [], []
-    parts = np.array_split(lst, CHUNK_SIZE)
+    num_sections = math.ceil(len(lst) / CHUNK_SIZE)
+    parts = np.array_split(lst, num_sections)
     for part in parts:
         a_i, a_l = annotate_batch(part, annotation)
         annotated_indexes.extend(a_i)
