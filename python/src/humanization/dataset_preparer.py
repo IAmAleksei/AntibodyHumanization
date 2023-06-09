@@ -65,7 +65,9 @@ def main(input_dir: str, schema: str, output_dir: str, skip_existing: bool) -> N
             df.to_csv(output_file_path, index=False)
             logger.debug(f"Result with {df.shape[0]} rows saved to {output_file_path}")
         except RuntimeError as err:
-            logger.error(f"Processing error: {str(err)}")
+            logger.error(f"Runtime processing error: {str(err)}")
+        except TypeError as err:
+            logger.error(f"Type processing error: {str(err)}")
 
 
 if __name__ == '__main__':
