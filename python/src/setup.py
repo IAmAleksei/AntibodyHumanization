@@ -16,7 +16,8 @@ setuptools.setup(
         'configloader',
         'catboost',
         'blosum',
-        'tqdm'
+        'tqdm',
+        'scikit-learn'
     ],
     license='http://www.apache.org/licenses/LICENSE-2.0',
 )
