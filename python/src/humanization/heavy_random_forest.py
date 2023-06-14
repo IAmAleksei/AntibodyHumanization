@@ -1,5 +1,5 @@
 import argparse
-from typing import List, Tuple
+from typing import List, Tuple, Generator
 
 import numpy as np
 from catboost import CatBoostClassifier, Pool
@@ -33,20 +33,17 @@ def plot_metrics(name: str, train_metrics: dict, val_metrics: dict, ax):
     plot_comparison(name, train_metrics, "Train", val_metrics, "Validation", ax)
 
 
-def build_tree(X, y_raw, v_type: int, metric: str) -> Tuple[CatBoostClassifier, float]:
-    y = make_binary_target(y_raw, v_type)
-    logger.debug(f"Dataset for V{v_type} tree contains {np.count_nonzero(y == 1)} positive samples")
-    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.15, shuffle=True)
+def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: int, metric: str) -> Tuple[CatBoostClassifier, float]:
+    y_train = make_binary_target(y_train_raw, v_type)
+    y_val = make_binary_target(y_val_raw, v_type)
+    logger.debug(f"Dataset for V{v_type} tree contains {np.count_nonzero(y_train == 1)} positive samples")
 
-    model = CatBoostClassifier(iterations=300,
-                               depth=3,
-                               loss_function='Logloss',
-                               learning_rate=0.06,
-                               verbose=25)
-    model.fit(X_train, y_train, cat_features=X.columns.tolist(), eval_set=(X_val, y_val))
+    train_pool = Pool(X_train, y_train, cat_features=X_train.columns.tolist())
+    val_pool = Pool(X_val, y_val, cat_features=X_val.columns.tolist())
+    model = CatBoostClassifier(iterations=200, depth=4, loss_function='Logloss', learning_rate=0.05, verbose=20)
+    model.fit(train_pool, eval_set=val_pool)
+    logger.debug(f"Model V{v_type} trained")
 
-    train_pool = Pool(X_train, y_train, cat_features=X.columns.tolist())
-    val_pool = Pool(X_val, y_val, cat_features=X.columns.tolist())
     train_metrics = model.eval_metrics(data=train_pool, metrics=['Logloss', 'AUC'])
     val_metrics = model.eval_metrics(data=val_pool, metrics=['Logloss', 'AUC'])
     y_val_pred_proba = model.predict_proba(X_val)[:, 1]
@@ -62,18 +59,18 @@ def build_tree(X, y_raw, v_type: int, metric: str) -> Tuple[CatBoostClassifier, 
     return model, threshold
 
 
-def build_trees(input_dir: str, schema: str, metric: str, annotated_data: bool) -> List[ModelWrapper]:
+def build_trees(input_dir: str, schema: str, metric: str, annotated_data: bool) -> Generator[ModelWrapper, None, None]:
     annotation = load_annotation(schema)
     X, y = read_any_heavy_dataset(input_dir, annotated_data, annotation)
-    X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.15, shuffle=True)
+    X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.15, shuffle=True, random_state=42)
+    X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.15, shuffle=True, random_state=42)
     logger.info(f"Train dataset: {X_.shape[0]} rows")
     logger.debug(f"Statistics:\n{y_.value_counts()}")
     logger.info(f"Test dataset: {X_test.shape[0]} rows")
     logger.debug(f"Statistics:\n{y_test.value_counts()}")
-    models = []
     for v_type in range(1, 8):
         logger.debug(f"Tree for V{v_type} is building...")
-        model, threshold = build_tree(X_, y_, v_type, metric)
+        model, threshold = build_tree(X_train, y_train, X_val, y_val, v_type, metric)
         logger.debug(f"Tree for V{v_type} was built")
         y_pred_proba = model.predict_proba(X_test)[:, 1]
         y_pred = np.where(y_pred_proba >= threshold, 1, 0)
@@ -84,13 +81,11 @@ def build_trees(input_dir: str, schema: str, metric: str, annotated_data: bool) 
                     f"Precision={round(tp / (tp + fp), 5)}. "
                     f"Accuracy={round((tp + tn) / (tp + tn + fp + fn), 5)}")
         wrapped_model = ModelWrapper(HeavyChainType(str(v_type)), model, annotation, threshold)
-        models.append(wrapped_model)
-    return models
+        yield wrapped_model
 
 
 def main(input_dir, schema, metric, output_dir, annotated_data):
-    wrapped_models = build_trees(input_dir, schema, metric, annotated_data)
-    for wrapped_model in wrapped_models:
+    for wrapped_model in build_trees(input_dir, schema, metric, annotated_data):
         save_model(output_dir, wrapped_model)
 
 

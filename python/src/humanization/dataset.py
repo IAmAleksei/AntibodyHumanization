@@ -45,11 +45,12 @@ def make_annotated_df(df: pandas.DataFrame, annotation: Annotation) -> pandas.Da
         annotated_indexes.extend(a_i)
         annotated_list.extend(a_l)
     X = pandas.DataFrame(annotated_list, columns=aa_columns)  # Make column for every aa
-    y = df['v_call'][annotated_indexes].reset_index(drop=True)
-    dataset = pandas.concat([X, y], axis=1)
+    y = df['v_call'][annotated_indexes]
+    y.reset_index(drop=True, inplace=True)
+    dataset = pandas.concat([X, y], axis=1, ignore_index=True)
     nan_errors = dataset['v_call'].isna().sum()
     if nan_errors > 0:
-        logger.error(f"Found {nan_errors} NaNs in target chain types")
+        raise RuntimeError(f"Found {nan_errors} NaNs in target chain types")
     return dataset
 
 
@@ -71,8 +72,9 @@ def read_heavy_dataset(input_dir: str, read_function: Callable[[str], pandas.Dat
         df: pandas.DataFrame = read_function(input_file_path)
         dfs.append(df)
         original_data_size += df.shape[0]
-    dataset = pandas.concat(dfs, axis=0, ignore_index=True).drop_duplicates(ignore_index=True)
+    dataset = pandas.concat(dfs, axis=0, ignore_index=True, copy=False)
     logger.info(f"Original dataset: {original_data_size} rows")
+    dataset.drop_duplicates(ignore_index=True, inplace=True)
     logger.info(f"Dataset: {dataset.shape[0]} rows (duplicates removed)")
     X = dataset.drop(['v_call'], axis=1)
     y = dataset['v_call']

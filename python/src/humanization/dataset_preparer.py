@@ -40,7 +40,8 @@ def read_any_heavy_dataset(input_dir: str, annotated_data: bool,
 def read_human_samples(dataset_file=None, annotated_data=None, annotation=None) -> Optional[List[str]]:
     if dataset_file is not None:
         X, y = read_any_heavy_dataset(dataset_file, annotated_data, annotation)
-        df = X[y != 'NOT_HUMAN'].reset_index(drop=True)
+        df = X[y != 'NOT_HUMAN']
+        df.reset_index(drop=True, inplace=True)
         human_samples = merge_all_columns(df)
         return human_samples
     else:
