@@ -40,12 +40,15 @@ def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: int, metric: str)
 
     train_pool = Pool(X_train, y_train, cat_features=X_train.columns.tolist())
     val_pool = Pool(X_val, y_val, cat_features=X_val.columns.tolist())
-    model = CatBoostClassifier(iterations=200, depth=4, loss_function='Logloss', learning_rate=0.05, verbose=20)
+    logger.debug(f"Pools prepared")
+
+    model = CatBoostClassifier(iterations=200, depth=4, loss_function='Logloss', learning_rate=0.05, verbose=10)
     model.fit(train_pool, eval_set=val_pool)
     logger.debug(f"Model V{v_type} trained")
 
     train_metrics = model.eval_metrics(data=train_pool, metrics=['Logloss', 'AUC'])
     val_metrics = model.eval_metrics(data=val_pool, metrics=['Logloss', 'AUC'])
+    logger.debug(f"Metrics evaluated")
     y_val_pred_proba = model.predict_proba(X_val)[:, 1]
 
     figure, axis = plt.subplots(2, 2, figsize=(9, 9))
