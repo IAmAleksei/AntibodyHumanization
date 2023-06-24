@@ -65,6 +65,8 @@ def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: int, metric: str)
 def build_trees(input_dir: str, schema: str, metric: str, annotated_data: bool) -> Generator[ModelWrapper, None, None]:
     annotation = load_annotation(schema)
     X, y = read_any_heavy_dataset(input_dir, annotated_data, annotation)
+    if X.isna().sum() > 0 or y.isna().sum() > 0:
+        raise RuntimeError("Found nans")
     X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.15, shuffle=True, random_state=42)
     X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.15, shuffle=True, random_state=42)
     logger.info(f"Train dataset: {X_.shape[0]} rows")
