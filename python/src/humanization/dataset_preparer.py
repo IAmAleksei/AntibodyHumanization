@@ -53,7 +53,7 @@ def main(input_dir: str, schema: str, output_dir: str, skip_existing: bool) -> N
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     annotation = load_annotation(schema)
-    file_names = ["SRR12190295_Heavy_IGHG.csv.gz"]
+    file_names = os.listdir(input_dir)
     logger.info(f"{len(file_names)} files found")
     for input_file_name in file_names:
         input_file_path = os.path.join(input_dir, input_file_name)
