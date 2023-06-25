@@ -1,5 +1,6 @@
 import argparse
 import os
+import traceback
 from typing import NoReturn, Tuple, Optional, List
 
 import pandas
@@ -17,7 +18,7 @@ logger = configure_logger(config, "Dataset preparer")
 def read_and_annotate_file(csv_file: str, annotation: Annotation) -> pandas.DataFrame:
     df, metadata = read_file(csv_file, ['sequence_alignment_aa', 'v_call'])
     correct_v_call(df, metadata)
-    df = make_annotated_df(df, annotation)
+    df = make_annotated_df(df, annotation, metadata=metadata)
     df = filter_df(df, annotation)
     return df
 
@@ -52,7 +53,7 @@ def main(input_dir: str, schema: str, output_dir: str, skip_existing: bool) -> N
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     annotation = load_annotation(schema)
-    file_names = os.listdir(input_dir)
+    file_names = ["SRR12190295_Heavy_IGHG.csv.gz"]
     logger.info(f"{len(file_names)} files found")
     for input_file_name in file_names:
         input_file_path = os.path.join(input_dir, input_file_name)
@@ -66,7 +67,7 @@ def main(input_dir: str, schema: str, output_dir: str, skip_existing: bool) -> N
             df.to_csv(output_file_path, index=False)
             logger.debug(f"Result with {df.shape[0]} rows saved to {output_file_path}")
         except Exception as err:
-            logger.error(f"Processing error: {str(err)}")
+            logger.exception(f"Processing error")
 
 
 if __name__ == '__main__':

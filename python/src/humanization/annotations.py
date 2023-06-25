@@ -1,6 +1,8 @@
 from typing import List, Tuple, Optional
 
-from anarci import run_anarci
+import anarci
+
+from humanization import patched_anarci
 
 from humanization import config_loader
 from humanization.utils import configure_logger
@@ -145,10 +147,21 @@ def load_annotation(schema: str) -> Annotation:
         raise RuntimeError("Unrecognized annotation type")
 
 
-def annotate_batch(sequences: List[str], annotation: Annotation) -> Tuple[List[int], List[List[str]]]:
+def annotate_batch(sequences: List[str], annotation: Annotation,
+                   only_human: bool = False) -> Tuple[List[int], List[List[str]]]:
     logger.debug(f"Anarci run on {len(sequences)} rows")
     sequences_ = list(enumerate(sequences))
-    temp_res = run_anarci(sequences_, ncpu=config.get(config_loader.ANARCI_NCPU), scheme=annotation.name)
+    kwargs = {
+        'ncpu': config.get(config_loader.ANARCI_NCPU),
+        'scheme': annotation.name
+    }
+    if only_human:
+        kwargs['allowed_species'] = ['human']
+    else:
+        kwargs['allowed_species'] = ['mouse', 'rat', 'rabbit', 'rhesus', 'pig', 'alpaca']
+    import sys
+    sys.modules['anarci.anarci']._parse_hmmer_query = patched_anarci._parse_hmmer_query  # Monkey patching
+    temp_res = anarci.run_anarci(sequences_, **kwargs)
     numerated_sequences = temp_res[1]
     logger.debug(f"Anarci run is finished")
     index_results = []

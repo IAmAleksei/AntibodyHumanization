@@ -15,8 +15,6 @@ from humanization.utils import configure_logger
 config = config_loader.Config()
 logger = configure_logger(config, "Dataset reader")
 
-CHUNK_SIZE = 200_000
-
 
 def read_file(csv_path: str, requested_columns: List[str]) -> Tuple[pandas.DataFrame, Any]:
     metadata = json.loads(','.join(pandas.read_csv(csv_path, nrows=0).columns))
@@ -34,20 +32,15 @@ def correct_v_call(df: pandas.DataFrame, metadata: Any) -> NoReturn:
         df['v_call'] = df['v_call'].str.slice(stop=5)
 
 
-def make_annotated_df(df: pandas.DataFrame, annotation: Annotation) -> pandas.DataFrame:
+def make_annotated_df(df: pandas.DataFrame, annotation: Annotation, metadata: Any = {}) -> pandas.DataFrame:
     aa_columns = annotation.segmented_positions
-    lst = df['sequence_alignment_aa'].tolist()
-    annotated_indexes, annotated_list = [], []
-    num_sections = math.ceil(len(lst) / CHUNK_SIZE)
-    parts = np.array_split(lst, num_sections)
-    for part in parts:
-        a_i, a_l = annotate_batch(part, annotation)
-        annotated_indexes.extend(a_i)
-        annotated_list.extend(a_l)
+    annotated_indexes, annotated_list = annotate_batch(
+        df['sequence_alignment_aa'].tolist(), annotation, only_human=metadata['Species'] == 'human'
+    )
     X = pandas.DataFrame(annotated_list, columns=aa_columns)  # Make column for every aa
     y = df['v_call'][annotated_indexes]
     y.reset_index(drop=True, inplace=True)
-    dataset = pandas.concat([X, y], axis=1, ignore_index=True)
+    dataset = pandas.concat([X, y], axis=1)
     nan_errors = dataset['v_call'].isna().sum()
     if nan_errors > 0:
         raise RuntimeError(f"Found {nan_errors} NaNs in target chain types")
