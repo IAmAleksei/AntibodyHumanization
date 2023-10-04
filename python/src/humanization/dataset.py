@@ -59,7 +59,7 @@ def read_heavy_datasets(input_dir: str, read_function: Callable[[str], pd.DataFr
     dfs = []
     original_data_size = 0
     file_names = os.listdir(input_dir)
-    for input_file_name in tqdm(file_names[:5]):
+    for input_file_name in tqdm(file_names):
         input_file_path = os.path.join(input_dir, input_file_name)
         df: pd.DataFrame = read_function(input_file_path)
         dfs.append(df)
