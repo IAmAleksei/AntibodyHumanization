@@ -2,10 +2,11 @@ import argparse
 from typing import List, Tuple, Generator
 
 import numpy as np
-from catboost import CatBoostClassifier, Pool
+from catboost import CatBoostClassifier, Pool, sum_models
 from matplotlib import pyplot as plt
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
+from sklearn.utils import gen_batches
 
 import config_loader
 from humanization.annotations import load_annotation
@@ -23,8 +24,9 @@ logger = configure_logger(config, "Heavy chain RF")
 def get_threshold(metric, y, y_pred_proba, axis) -> Tuple[float, float]:
     threshold_points = brute_force_threshold(metric, y, y_pred_proba)
     threshold, metric_score = find_optimal_threshold(threshold_points)
-    plot_thresholds(threshold_points, metric, threshold, metric_score, axis[0])
-    plot_roc_auc(y, y_pred_proba, axis[1])
+    if axis is not None:
+        plot_thresholds(threshold_points, metric, threshold, metric_score, axis[0])
+        plot_roc_auc(y, y_pred_proba, axis[1])
     return threshold, metric_score
 
 
@@ -33,49 +35,74 @@ def plot_metrics(name: str, train_metrics: dict, val_metrics: dict, ax):
     plot_comparison(name, train_metrics, "Train", val_metrics, "Validation", ax)
 
 
-def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: int, metric: str) -> Tuple[CatBoostClassifier, float]:
+def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: int, metric: str,
+               iterative_learning: bool = False, print_metrics: bool = True) -> Tuple[CatBoostClassifier, float]:
     y_train = make_binary_target(y_train_raw, v_type)
     y_val = make_binary_target(y_val_raw, v_type)
     logger.debug(f"Dataset for V{v_type} tree contains {np.count_nonzero(y_train == 1)} positive samples")
 
-    train_pool = Pool(X_train, y_train, cat_features=X_train.columns.tolist())
     val_pool = Pool(X_val, y_val, cat_features=X_val.columns.tolist())
-    logger.debug(f"Pools prepared")
+    logger.debug(f"Validation pool prepared")
+    if iterative_learning:
+        # Casted to list for length calculation
+        batches = list(gen_batches(X_train.shape[0], config.get(config_loader.LEARNING_BATCH_SIZE)))
+    else:
+        batches = [slice(X_train.shape[0])]
 
-    model = CatBoostClassifier(iterations=200, depth=4, loss_function='Logloss', learning_rate=0.05, verbose=10)
-    model.fit(train_pool, eval_set=val_pool)
-    logger.debug(f"Model V{v_type} trained")
+    final_model = None
+    for idx, batch in enumerate(batches):
+        logger.debug(f"Model V{v_type} training. Batch {idx + 1} of {len(batches)}")
+        X_train_batch = X_train[batch]
+        y_train_batch = y_train[batch]
 
-    train_metrics = model.eval_metrics(data=train_pool, metrics=['Logloss', 'AUC'])
-    val_metrics = model.eval_metrics(data=val_pool, metrics=['Logloss', 'AUC'])
-    logger.debug(f"Metrics evaluated")
-    y_val_pred_proba = model.predict_proba(X_val)[:, 1]
+        count_unique = len(np.unique(y_train_batch))
+        if count_unique <= 1:
+            logger.info("Skip batch with bad diverse target values (at most 1 unique value)")
+            continue  # Otherwise catboost will fail
 
-    figure, axis = plt.subplots(2, 2, figsize=(9, 9))
-    plt.suptitle(f'Tree IGHV{v_type}')
-    plot_metrics('Logloss', train_metrics, val_metrics, axis[0, 0])
-    plot_metrics('AUC', train_metrics, val_metrics, axis[0, 1])
-    threshold, metric_score = get_threshold(metric, y_val, y_val_pred_proba, axis[1, :])
+        train_pool = Pool(X_train_batch, y_train_batch, cat_features=X_train_batch.columns.tolist())
+
+        model = CatBoostClassifier(
+            depth=4, loss_function='Logloss', used_ram_limit=config.get(config_loader.MEMORY_LIMIT),
+            learning_rate=0.05, verbose=20, max_ctr_complexity=2, n_estimators=200)
+        model.fit(train_pool, eval_set=val_pool, early_stopping_rounds=25, init_model=final_model)
+        final_model = model
+
+    # TODO: Add train metrics
+
+    y_val_pred_proba = final_model.predict_proba(X_val)[:, 1]
+    if print_metrics:
+        val_metrics = final_model.eval_metrics(data=val_pool, metrics=['Logloss', 'AUC'])
+        logger.debug(f"Metrics evaluated")
+
+        figure, axis = plt.subplots(2, 2, figsize=(9, 9))
+        plt.suptitle(f'Tree IGHV{v_type}')
+        plot_metrics('Logloss', {}, val_metrics, axis[0, 0])
+        plot_metrics('AUC', {}, val_metrics, axis[0, 1])
+        threshold, metric_score = get_threshold(metric, y_val, y_val_pred_proba, axis[1, :])
+        plt.tight_layout()
+        plt.show()
+    else:
+        threshold, metric_score = get_threshold(metric, y_val, y_val_pred_proba, None)
     logger.info(f"Optimal threshold is {threshold}, metric score = {metric_score}")
-    plt.tight_layout()
-    plt.show()
-    return model, threshold
+    return final_model, threshold
 
 
-def build_trees(input_dir: str, schema: str, metric: str, annotated_data: bool) -> Generator[ModelWrapper, None, None]:
+def build_trees(input_dir: str, schema: str, metric: str, annotated_data: bool,
+                iterative_learning: bool, print_metrics: bool) -> Generator[ModelWrapper, None, None]:
     annotation = load_annotation(schema)
     X, y = read_any_heavy_dataset(input_dir, annotated_data, annotation)
     if X.isna().sum().sum() > 0 or y.isna().sum() > 0:
         raise RuntimeError("Found nans")
-    X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.15, shuffle=True, random_state=42)
-    X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.15, shuffle=True, random_state=42)
+    X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.1, shuffle=True, random_state=42)
+    X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.1, shuffle=True, random_state=42)
     logger.info(f"Train dataset: {X_.shape[0]} rows")
     logger.debug(f"Statistics:\n{y_.value_counts()}")
     logger.info(f"Test dataset: {X_test.shape[0]} rows")
     logger.debug(f"Statistics:\n{y_test.value_counts()}")
     for v_type in range(1, 8):
         logger.debug(f"Tree for V{v_type} is building...")
-        model, threshold = build_tree(X_train, y_train, X_val, y_val, v_type, metric)
+        model, threshold = build_tree(X_train, y_train, X_val, y_val, v_type, metric, iterative_learning, print_metrics)
         logger.debug(f"Tree for V{v_type} was built")
         y_pred_proba = model.predict_proba(X_test)[:, 1]
         y_pred = np.where(y_pred_proba >= threshold, 1, 0)
@@ -89,8 +116,8 @@ def build_trees(input_dir: str, schema: str, metric: str, annotated_data: bool) 
         yield wrapped_model
 
 
-def main(input_dir, schema, metric, output_dir, annotated_data):
-    for wrapped_model in build_trees(input_dir, schema, metric, annotated_data):
+def main(input_dir, schema, metric, output_dir, annotated_data, iterative_learning, print_metrics):
+    for wrapped_model in build_trees(input_dir, schema, metric, annotated_data, iterative_learning, print_metrics):
         save_model(output_dir, wrapped_model)
 
 
@@ -102,12 +129,19 @@ if __name__ == '__main__':
     parser.add_argument('--annotated-data', action='store_true', help='Data is annotated')
     parser.add_argument('--raw-data', dest='annotated_data', action='store_false')
     parser.set_defaults(annotated_data=True)
+    parser.add_argument('--iterative-learning', action='store_true', help='Iterative learning using data batches')
+    parser.add_argument('--single-batch-learning', dest='iterative_learning', action='store_false')
+    parser.set_defaults(iterative_learning=True)
     parser.add_argument('--schema', type=str, default="chothia", help='Annotation schema')
     parser.add_argument('--metric', type=str, default="youdens", help='Threshold optimized metric')
+    parser.add_argument('--print-metrics', action='store_true', help='Print learning metrics')
+    parser.set_defaults(print_metrics=False)
     args = parser.parse_args()
 
     main(input_dir=args.input,
          schema=args.schema,
          metric=args.metric,
          output_dir=args.output,
-         annotated_data=args.annotated_data)
+         annotated_data=args.annotated_data,
+         iterative_learning=args.iterative_learning,
+         print_metrics=args.print_metrics)

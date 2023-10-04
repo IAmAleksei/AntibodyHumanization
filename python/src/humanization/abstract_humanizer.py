@@ -39,10 +39,18 @@ class IterationDetails(NamedTuple):
     change: Optional[SequenceChange]
 
     def __repr__(self):
+        if self.v_gene_score is not None:
+            v_gene_score = f"v gene score = {round(self.v_gene_score, 5)}, "
+        else:
+            v_gene_score = ''
+        if self.change is not None:
+            change = f"change = [{self.change}]"
+        else:
+            change = ''
         return f"Iteration {self.index}: " \
                f"model metric = {round(self.model_metric, 5)}, " \
-               f"v gene score = {round(self.v_gene_score, 5) if self.v_gene_score is not None else 'Undefined'}, " \
-               f"change = [{self.change if self.change is not None else 'Undefined'}]"
+               f"{v_gene_score}" \
+               f"{change}"
 
 
 def seq_to_str(sequence: List[str], with_x: bool) -> str:

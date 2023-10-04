@@ -75,6 +75,7 @@ def plot_roc_auc(y_true: np.ndarray, y_pred_proba: np.ndarray, ax):
 
 
 def plot_comparison(key: str, metrics1: dict, name1: str, metrics2: dict, name2: str, ax):
-    ax.plot(np.array(metrics1[key]), color="#7C005A", label=name1)
+    if len(metrics1) > 0:
+        ax.plot(np.array(metrics1[key]), color="#7C005A", label=name1)
     ax.plot(np.array(metrics2[key]), color="#006B53", label=name2)
     ax.legend(loc=1)

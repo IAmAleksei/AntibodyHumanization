@@ -54,6 +54,8 @@ def get_meta_name(chain_type: ChainType) -> str:
 
 
 def save_model(model_dir: str, wrapped_model: ModelWrapper):
+    if not os.path.exists(model_dir):
+        os.makedirs(model_dir)
     model_path = os.path.join(model_dir, get_model_name(wrapped_model.chain_type))
     meta_path = os.path.join(model_dir, get_meta_name(wrapped_model.chain_type))
     wrapped_model.model.save_model(model_path)
