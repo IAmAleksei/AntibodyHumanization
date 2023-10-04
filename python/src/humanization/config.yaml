@@ -2,6 +2,6 @@ LOGGING_LEVEL: 'DEBUG'
 LOGGING_FORMAT: '%(asctime)-15s | %(levelname)s | %(filename)s | %(lineno)d: %(message)s'
 
 MAX_CHANGES: 50
-ANARCI_NCPU: 6
+ANARCI_NCPU: 14
 MEMORY_LIMIT: '100Gb'
-LEARNING_BATCH_SIZE: 10000
+LEARNING_BATCH_SIZE: 500000

@@ -1,6 +1,5 @@
 import argparse
 import os
-import traceback
 from typing import NoReturn, Tuple, Optional, List
 
 import pandas

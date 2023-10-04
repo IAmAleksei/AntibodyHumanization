@@ -7,7 +7,7 @@ from humanization.abstract_humanizer import run_humanizer, AbstractHumanizer, Se
 from humanization.annotations import annotate_single
 from humanization.models import load_model, ModelWrapper
 from humanization.utils import configure_logger, read_sequences, write_sequences, parse_list
-from humanization.v_gene_scorer import VGeneScorer, build_v_gene_scorer, calc_score, is_v_gene_score_less
+from humanization.v_gene_scorer import VGeneScorer, build_v_gene_scorer, is_v_gene_score_less
 
 config = config_loader.Config()
 logger = configure_logger(config, "Humanizer")

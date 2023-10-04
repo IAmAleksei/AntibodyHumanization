@@ -17,7 +17,8 @@ setuptools.setup(
         'catboost',
         'blosum',
         'tqdm',
-        'scikit-learn'
+        'scikit-learn',
+        'PyYAML'
     ],
     license='http://www.apache.org/licenses/LICENSE-2.0',
 )
