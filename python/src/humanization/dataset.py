@@ -5,6 +5,7 @@ from typing import List, Tuple, Any, NoReturn, Callable
 
 import numpy as np
 import pandas as pd
+from sklearn.metrics import confusion_matrix
 from tqdm import tqdm
 
 from humanization import config_loader
@@ -90,3 +91,11 @@ def merge_all_columns(df: pd.DataFrame) -> List[str]:
 
 def make_binary_target(y, target_v_type):
     return np.where(y.apply(lambda x: x == f"IGHV{target_v_type}"), 1, 0)
+
+
+def format_confusion_matrix(y_test, y_pred):
+    tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
+    recall = round(tp / (tp + fn), 5)
+    precision = round(tp / (tp + fp), 5)
+    accuracy = round((tp + tn) / (tp + tn + fp + fn), 5)
+    return f"TP={tp}, TN={tn}, FP={fp}, FN={fn}. Recall={recall}. Precision={precision}. Accuracy={accuracy}"

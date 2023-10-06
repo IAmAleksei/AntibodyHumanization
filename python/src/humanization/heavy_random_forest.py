@@ -1,16 +1,15 @@
 import argparse
-from typing import List, Tuple, Generator
+from typing import Tuple, Generator
 
 import numpy as np
-from catboost import CatBoostClassifier, Pool, sum_models
+from catboost import Pool
 from matplotlib import pyplot as plt
-from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
-from sklearn.utils import gen_batches
 
 import config_loader
+from humanization import abstract_random_forest
 from humanization.annotations import load_annotation
-from humanization.dataset import make_binary_target
+from humanization.dataset import make_binary_target, format_confusion_matrix
 from humanization.dataset_preparer import read_any_heavy_dataset
 from humanization.models import ModelWrapper, HeavyChainType, save_model
 from humanization.stats import plot_roc_auc, find_optimal_threshold, brute_force_threshold, plot_thresholds, \
@@ -36,38 +35,15 @@ def plot_metrics(name: str, train_metrics: dict, val_metrics: dict, ax):
 
 
 def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: int, metric: str,
-               iterative_learning: bool = False, print_metrics: bool = True) -> Tuple[CatBoostClassifier, float]:
+               iterative_learning: bool = False, print_metrics: bool = True):
     y_train = make_binary_target(y_train_raw, v_type)
     y_val = make_binary_target(y_val_raw, v_type)
     logger.debug(f"Dataset for V{v_type} tree contains {np.count_nonzero(y_train == 1)} positive samples")
 
     val_pool = Pool(X_val, y_val, cat_features=X_val.columns.tolist())
     logger.debug(f"Validation pool prepared")
-    if iterative_learning:
-        # Casted to list for length calculation
-        batches = list(gen_batches(X_train.shape[0], config.get(config_loader.LEARNING_BATCH_SIZE)))
-    else:
-        batches = [slice(X_train.shape[0])]
 
-    final_model = None
-    for idx, batch in enumerate(batches):
-        logger.debug(f"Model V{v_type} training. Batch {idx + 1} of {len(batches)}")
-        X_train_batch = X_train[batch]
-        y_train_batch = y_train[batch]
-
-        count_unique = len(np.unique(y_train_batch))
-        if count_unique <= 1:
-            logger.info("Skip batch with bad diverse target values (at most 1 unique value)")
-            continue  # Otherwise catboost will fail
-
-        train_pool = Pool(X_train_batch, y_train_batch, cat_features=X_train_batch.columns.tolist())
-
-        model = CatBoostClassifier(
-            depth=4, loss_function='Logloss', used_ram_limit=config.get(config_loader.MEMORY_LIMIT),
-            learning_rate=0.05, verbose=20, max_ctr_complexity=2, n_estimators=200)
-        model.fit(train_pool, eval_set=val_pool, early_stopping_rounds=25, init_model=final_model)
-        final_model = model
-
+    final_model = abstract_random_forest.build_tree(X_train, y_train, val_pool, iterative_learning)
     # TODO: Add train metrics
 
     y_val_pred_proba = final_model.predict_proba(X_val)[:, 1]
@@ -106,12 +82,8 @@ def build_trees(input_dir: str, schema: str, metric: str, annotated_data: bool,
         logger.debug(f"Tree for V{v_type} was built")
         y_pred_proba = model.predict_proba(X_test)[:, 1]
         y_pred = np.where(y_pred_proba >= threshold, 1, 0)
-        tn, fp, fn, tp = confusion_matrix(make_binary_target(y_test, v_type), y_pred).ravel()
+        logger.info(format_confusion_matrix(make_binary_target(y_test, v_type), y_pred))
         logger.info(f"Tree for V{v_type} tested.")
-        logger.info(f"TP={tp}, TN={tn}, FP={fp}, FN={fn}. "
-                    f"Recall={round(tp / (tp + fn), 5)}. "
-                    f"Precision={round(tp / (tp + fp), 5)}. "
-                    f"Accuracy={round((tp + tn) / (tp + tn + fp + fn), 5)}")
         wrapped_model = ModelWrapper(HeavyChainType(str(v_type)), model, annotation, threshold)
         yield wrapped_model
 
