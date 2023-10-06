@@ -1,7 +1,7 @@
 from abc import ABC
 from typing import List, Tuple, NamedTuple, Optional, Callable
 
-from humanization.models import LightChainType, HeavyChainType, ModelWrapper
+from humanization.models import HeavyChainType, ModelWrapper, LambdaChainType, KappaChainType
 from humanization.utils import BLOSUM62
 from humanization.v_gene_scorer import calc_score, VGeneScorer
 
@@ -99,9 +99,12 @@ def read_humanizer_options(dataset_file):
     if chain_type_str.lower() in ["h", "heavy"]:
         chain_type_class = HeavyChainType
         v_gene_type = input("V gene type (1-7): ")
-    elif chain_type_str.lower() in ["l", "light"]:
-        chain_type_class = LightChainType
-        v_gene_type = input("V gene type (kappa or lambda): ")
+    elif chain_type_str.lower() in ["k", "kappa"]:
+        chain_type_class = KappaChainType
+        v_gene_type = input("V gene type (1-7): ")
+    elif chain_type_str.lower() in ["l", "lambda"]:
+        chain_type_class = LambdaChainType
+        v_gene_type = input("V gene type (1-7): ")
     else:
         raise RuntimeError(f"Unknown chain type: {chain_type_str}")
     target_model_metric = float(input("Enter target model metric: "))

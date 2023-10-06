@@ -5,6 +5,7 @@ import anarci
 from humanization import patched_anarci
 
 from humanization import config_loader
+from humanization.models import GeneralChainType
 from humanization.utils import configure_logger
 
 config = config_loader.Config()
@@ -147,15 +148,16 @@ def load_annotation(schema: str) -> Annotation:
         raise RuntimeError("Unrecognized annotation type")
 
 
-def annotate_batch(sequences: List[str], annotation: Annotation,
-                   only_human: bool = False) -> Tuple[List[int], List[List[str]]]:
+def annotate_batch(sequences: List[str], annotation: Annotation, chain_type: GeneralChainType,
+                   is_human: bool = False) -> Tuple[List[int], List[List[str]]]:
     logger.debug(f"Anarci run on {len(sequences)} rows")
     sequences_ = list(enumerate(sequences))
     kwargs = {
         'ncpu': config.get(config_loader.ANARCI_NCPU),
-        'scheme': annotation.name
+        'scheme': annotation.name,
+        'allow': {chain_type.value}
     }
-    if only_human:
+    if is_human:
         kwargs['allowed_species'] = ['human']
     else:
         kwargs['allowed_species'] = ['mouse', 'rat', 'rabbit', 'rhesus', 'pig', 'alpaca']
@@ -184,8 +186,8 @@ def annotate_batch(sequences: List[str], annotation: Annotation,
     return index_results, prepared_results
 
 
-def annotate_single(sequence: str, annotation: Annotation) -> Optional[List[str]]:
-    _, annotated_seq = annotate_batch([sequence], annotation)
+def annotate_single(sequence: str, annotation: Annotation, chain_type: GeneralChainType) -> Optional[List[str]]:
+    _, annotated_seq = annotate_batch([sequence], annotation, chain_type)
     if len(annotated_seq) == 1:
         return annotated_seq[0]
     else:

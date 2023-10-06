@@ -6,40 +6,46 @@ import pandas
 
 from humanization import config_loader
 from humanization.annotations import load_annotation, Annotation
-from humanization.dataset import read_file, correct_v_call, make_annotated_df, filter_df, read_heavy_dataset, \
-    read_annotated_heavy_dataset, merge_all_columns
+from humanization.dataset import read_file, correct_v_call, make_annotated_df, filter_df, \
+    merge_all_columns, read_annotated_dataset, read_dataset
+from humanization.models import GeneralChainType
 from humanization.utils import configure_logger
 
 config = config_loader.Config()
 logger = configure_logger(config, "Dataset preparer")
 
 
-def read_and_annotate_file(csv_file: str, annotation: Annotation) -> pandas.DataFrame:
+def read_and_annotate_file(csv_file: str, annotation: Annotation, chain_type: GeneralChainType) -> pandas.DataFrame:
     df, metadata = read_file(csv_file, ['sequence_alignment_aa', 'v_call'])
     correct_v_call(df, metadata)
-    df = make_annotated_df(df, annotation, metadata=metadata)
+    df = make_annotated_df(df, annotation, chain_type=chain_type, metadata=metadata)
     df = filter_df(df, annotation)
     return df
 
 
-def read_raw_heavy_dataset(input_dir: str, annotation: Annotation) -> Tuple[pandas.DataFrame, pandas.Series]:
-    return read_heavy_dataset(input_dir, lambda csv_file: read_and_annotate_file(csv_file, annotation))
+def read_raw_dataset(input_dir: str, annotation: Annotation,
+                     chain_type: GeneralChainType) -> Tuple[pandas.DataFrame, pandas.Series]:
+    return read_dataset(input_dir, lambda csv_file: read_and_annotate_file(csv_file, annotation, chain_type))
 
 
-def read_any_heavy_dataset(input_dir: str, annotated_data: bool,
-                           annotation: Annotation) -> Tuple[pandas.DataFrame, pandas.Series]:
+def read_any_dataset(input_dir: str, annotated_data: bool, annotation: Annotation,
+                     chain_type: GeneralChainType) -> Tuple[pandas.DataFrame, pandas.Series]:
     if annotated_data:
         logger.info(f"Use annotated-data mode")
         logger.info(f"Please check that `{annotation.name}` is defined correctly")
-        return read_annotated_heavy_dataset(input_dir)
+        X, y = read_annotated_dataset(input_dir)
     else:
         logger.info(f"Use raw-data mode")
-        return read_raw_heavy_dataset(input_dir, annotation)
+        X, y = read_raw_dataset(input_dir, annotation, chain_type)
+    if X.isna().sum().sum() > 0 or y.isna().sum() > 0:
+        raise RuntimeError("Found nans")
+    return X, y
 
 
-def read_human_samples(dataset_file=None, annotated_data=None, annotation=None) -> Optional[List[str]]:
+def read_human_samples(dataset_file=None, annotated_data=None, annotation=None,
+                       chain_type=None) -> Optional[List[str]]:
     if dataset_file is not None:
-        X, y = read_any_heavy_dataset(dataset_file, annotated_data, annotation)
+        X, y = read_any_dataset(dataset_file, annotated_data, annotation, chain_type)
         df = X[y != 'NOT_HUMAN']
         df.reset_index(drop=True, inplace=True)
         human_samples = merge_all_columns(df)

@@ -42,13 +42,15 @@ class ReverseHumanizer(AbstractHumanizer):
 
     def query(self, sequence: str, target_model_metric: float,
               target_v_gene_score: float = 0.0, human_sample: str = None) -> Tuple[str, List[IterationDetails]]:
-        current_seq = annotate_single(sequence, self.model_wrapper.annotation)
+        current_seq = annotate_single(sequence, self.model_wrapper.annotation,
+                                      self.model_wrapper.chain_type.general_type())
         if current_seq is None:
             raise RuntimeError(f"{sequence} cannot be annotated")
         original_seq = [x for x in current_seq]
         logger.debug(f"Annotated sequence: {seq_to_str(current_seq, True)}")
         if human_sample:
-            human_sample = annotate_single(human_sample, self.model_wrapper.annotation)
+            human_sample = annotate_single(human_sample, self.model_wrapper.annotation,
+                                           self.model_wrapper.chain_type.general_type())
         if not human_sample:
             logger.debug(f"Retrieve human sample from V Gene scorer")
             human_sample, _ = self.v_gene_scorer.query(current_seq)
@@ -87,9 +89,7 @@ def main(models_dir, input_file, dataset_file, annotated_data, human_sample, ski
     chain_type, target_model_metric, target_v_gene_score = read_humanizer_options(dataset_file)
     model_wrapper = load_model(models_dir, chain_type)
     v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, annotated_data)
-    humanizer = ReverseHumanizer(
-        model_wrapper, v_gene_scorer, parse_list(skip_positions), use_aa_similarity
-    )
+    humanizer = ReverseHumanizer(model_wrapper, v_gene_scorer, parse_list(skip_positions), use_aa_similarity)
     sequences = read_sequences(input_file)
     results = run_humanizer(sequences,
                             lambda seq: humanizer.query(seq, target_model_metric, target_v_gene_score, human_sample))

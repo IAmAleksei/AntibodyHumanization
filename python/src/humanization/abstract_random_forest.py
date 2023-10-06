@@ -1,15 +1,47 @@
+import argparse
+from typing import Tuple, List, Generator
+
 import numpy as np
 from catboost import CatBoostClassifier, Pool
+from matplotlib import pyplot as plt
+from sklearn.model_selection import train_test_split
 from sklearn.utils import gen_batches
 
 from humanization import config_loader
+from humanization.annotations import Annotation, load_annotation
+from humanization.dataset import format_confusion_matrix, make_binary_target
+from humanization.dataset_preparer import read_any_dataset
+from humanization.models import ChainType, ModelWrapper, GeneralChainType
+from humanization.stats import brute_force_threshold, find_optimal_threshold, plot_thresholds, plot_roc_auc, \
+    plot_comparison
 from humanization.utils import configure_logger
 
 config = config_loader.Config()
 logger = configure_logger(config, "Abstract chain RF")
 
 
-def build_tree(X_train, y_train, val_pool, iterative_learning: bool = False) -> CatBoostClassifier:
+def get_threshold(metric, y, y_pred_proba, axis) -> Tuple[float, float]:
+    threshold_points = brute_force_threshold(metric, y, y_pred_proba)
+    threshold, metric_score = find_optimal_threshold(threshold_points)
+    if axis is not None:
+        plot_thresholds(threshold_points, metric, threshold, metric_score, axis[0])
+        plot_roc_auc(y, y_pred_proba, axis[1])
+    return threshold, metric_score
+
+
+def plot_metrics(name: str, train_metrics: dict, val_metrics: dict, ax):
+    ax.set_title(name)
+    plot_comparison(name, train_metrics, "Train", val_metrics, "Validation", ax)
+
+
+def log_data_stats(X_, y_, X_test, y_test):
+    logger.info(f"Train dataset: {X_.shape[0]} rows")
+    logger.debug(f"Statistics:\n{y_.value_counts()}")
+    logger.info(f"Test dataset: {X_test.shape[0]} rows")
+    logger.debug(f"Statistics:\n{y_test.value_counts()}")
+
+
+def build_tree_impl(X_train, y_train, val_pool, iterative_learning: bool = False) -> CatBoostClassifier:
     if iterative_learning:
         # Cast to list for length calculation
         batches = list(gen_batches(X_train.shape[0], config.get(config_loader.LEARNING_BATCH_SIZE)))
@@ -40,3 +72,73 @@ def build_tree(X_train, y_train, val_pool, iterative_learning: bool = False) -> 
         del train_pool
 
     return final_model
+
+
+def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: ChainType, metric: str,
+               iterative_learning: bool = False, print_metrics: bool = True):
+    y_train = make_binary_target(y_train_raw, v_type.full_type())
+    y_val = make_binary_target(y_val_raw, v_type.full_type())
+    logger.debug(f"Dataset for {v_type.full_type()} tree contains {np.count_nonzero(y_train == 1)} positive samples")
+
+    val_pool = Pool(X_val, y_val, cat_features=X_val.columns.tolist())
+    logger.debug(f"Validation pool prepared")
+
+    final_model = build_tree_impl(X_train, y_train, val_pool, iterative_learning)
+
+    y_val_pred_proba = final_model.predict_proba(X_val)[:, 1]
+    if print_metrics:
+        val_metrics = final_model.eval_metrics(data=val_pool, metrics=['Logloss', 'AUC'])
+        logger.debug(f"Metrics evaluated")
+
+        # TODO: Add train metrics
+        figure, axis = plt.subplots(2, 2, figsize=(9, 9))
+        plt.suptitle(f'Tree IG{v_type.full_type()}')
+        plot_metrics('Logloss', {}, val_metrics, axis[0, 0])
+        plot_metrics('AUC', {}, val_metrics, axis[0, 1])
+        threshold, metric_score = get_threshold(metric, y_val, y_val_pred_proba, axis[1, :])
+        plt.tight_layout()
+        plt.show()
+    else:
+        threshold, metric_score = get_threshold(metric, y_val, y_val_pred_proba, None)
+    logger.info(f"Optimal threshold is {threshold}, metric score = {metric_score}")
+    return final_model, threshold
+
+
+def make_model(X_train, y_train, X_val, y_val, X_test, y_test, annotation: Annotation, v_type: ChainType,
+               metric: str, iterative_learning: bool, print_metrics: bool):
+    logger.debug(f"Tree for {v_type.full_type()} is building...")
+    model, threshold = build_tree(X_train, y_train, X_val, y_val, v_type, metric, iterative_learning, print_metrics)
+    logger.debug(f"Tree for {v_type.full_type()} was built")
+    y_pred_proba = model.predict_proba(X_test)[:, 1]
+    y_pred = np.where(y_pred_proba >= threshold, 1, 0)
+    logger.info(format_confusion_matrix(make_binary_target(y_test, v_type.full_type()), y_pred))
+    logger.info(f"Tree for {v_type.full_type()} tested.")
+    return ModelWrapper(v_type, model, annotation, threshold)
+
+
+def make_models(input_dir: str, annotated_data: bool, schema: str,
+                chain_type: GeneralChainType, v_types: List[int],
+                metric: str, iterative_learning: bool, print_metrics: bool) -> Generator[ModelWrapper, None, None]:
+    annotation = load_annotation(schema)
+    X, y = read_any_dataset(input_dir, annotated_data, annotation, chain_type)
+    X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.1, shuffle=True, random_state=42)
+    X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.1, shuffle=True, random_state=42)
+    log_data_stats(X_, y_, X_test, y_test)
+    for v_type in v_types:
+        yield make_model(X_train, y_train, X_val, y_val, X_test, y_test, annotation, chain_type.specific_type(v_type),
+                         metric, iterative_learning, print_metrics)
+
+
+def configure_abstract_parser(parser: argparse.ArgumentParser):
+    parser.add_argument('input', type=str, help='Path to directory where all .csv (or .csv.gz) are listed')
+    parser.add_argument('output', type=str, help='Output models location')
+    parser.add_argument('--annotated-data', action='store_true', help='Data is annotated')
+    parser.add_argument('--raw-data', dest='annotated_data', action='store_false')
+    parser.set_defaults(annotated_data=True)
+    parser.add_argument('--iterative-learning', action='store_true', help='Iterative learning using data batches')
+    parser.add_argument('--single-batch-learning', dest='iterative_learning', action='store_false')
+    parser.set_defaults(iterative_learning=True)
+    parser.add_argument('--schema', type=str, default="chothia", help='Annotation schema')
+    parser.add_argument('--metric', type=str, default="youdens", help='Threshold optimized metric')
+    parser.add_argument('--print-metrics', action='store_true', help='Print learning metrics')
+    parser.set_defaults(print_metrics=False)

@@ -5,7 +5,7 @@ from humanization import config_loader, utils
 from humanization.abstract_humanizer import run_humanizer, AbstractHumanizer, SequenceChange, is_change_less, \
     IterationDetails, read_humanizer_options, seq_to_str, abstract_humanizer_parser_options
 from humanization.annotations import annotate_single
-from humanization.models import load_model, ModelWrapper
+from humanization.models import load_model, ModelWrapper, GeneralChainType
 from humanization.utils import configure_logger, read_sequences, write_sequences, parse_list
 from humanization.v_gene_scorer import VGeneScorer, build_v_gene_scorer, is_v_gene_score_less
 
@@ -54,7 +54,8 @@ class Humanizer(AbstractHumanizer):
 
     def query(self, sequence: str, target_model_metric: float,
               target_v_gene_score: Optional[float] = None) -> Tuple[str, List[IterationDetails]]:
-        current_seq = annotate_single(sequence, self.model_wrapper.annotation)
+        current_seq = annotate_single(sequence, self.model_wrapper.annotation,
+                                      self.model_wrapper.chain_type.general_type())
         if current_seq is None:
             raise RuntimeError(f"{sequence} cannot be annotated")
         if self.v_gene_scorer is None and target_v_gene_score is not None:
@@ -94,8 +95,7 @@ def main(models_dir, input_file, dataset_file, annotated_data, modify_cdr, skip_
         parse_list(skip_positions), parse_list(deny_use_aa), parse_list(deny_change_aa), use_aa_similarity
     )
     sequences = read_sequences(input_file)
-    results = run_humanizer(sequences,
-                            lambda seq: humanizer.query(seq, target_model_metric, target_v_gene_score))
+    results = run_humanizer(sequences, lambda seq: humanizer.query(seq, target_model_metric, target_v_gene_score))
     write_sequences(output_file, results)
 
 

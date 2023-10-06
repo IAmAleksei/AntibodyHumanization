@@ -10,6 +10,7 @@ from tqdm import tqdm
 
 from humanization import config_loader
 from humanization.annotations import Annotation, annotate_batch
+from humanization.models import GeneralChainType
 from humanization.utils import configure_logger
 
 config = config_loader.Config()
@@ -29,13 +30,15 @@ def correct_v_call(df: pd.DataFrame, metadata: Any) -> NoReturn:
     if metadata['Species'] != 'human':
         df['v_call'] = 'NOT_HUMAN'
     else:
-        df['v_call'] = df['v_call'].str.slice(stop=5)
+        df['v_call'].replace(r'^(....\d+).*$', r'\1', regex=True, inplace=True)
 
 
-def make_annotated_df(df: pd.DataFrame, annotation: Annotation, metadata: Any = {}) -> pd.DataFrame:
+def make_annotated_df(df: pd.DataFrame, annotation: Annotation,
+                      chain_type: GeneralChainType, metadata: Any = {}) -> pd.DataFrame:
     aa_columns = annotation.segmented_positions
     annotated_indexes, annotated_list = annotate_batch(
-        df['sequence_alignment_aa'].tolist(), annotation, only_human=metadata['Species'] == 'human'
+        df['sequence_alignment_aa'].tolist(), annotation, chain_type,
+        is_human=metadata['Species'] == 'human'
     )
     X = pd.DataFrame(annotated_list, columns=aa_columns)  # Make column for every aa
     y = df['v_call'][annotated_indexes]
@@ -55,7 +58,7 @@ def filter_df(df: pd.DataFrame, annotation: Annotation) -> pd.DataFrame:
     return df
 
 
-def read_heavy_datasets(input_dir: str, read_function: Callable[[str], pd.DataFrame]) -> List[pd.DataFrame]:
+def read_datasets(input_dir: str, read_function: Callable[[str], pd.DataFrame]) -> List[pd.DataFrame]:
     logger.info("Dataset reading...")
     dfs = []
     original_data_size = 0
@@ -69,8 +72,8 @@ def read_heavy_datasets(input_dir: str, read_function: Callable[[str], pd.DataFr
     return dfs
 
 
-def read_heavy_dataset(*args, **kwargs) -> Tuple[pd.DataFrame, pd.Series]:
-    dfs = read_heavy_datasets(*args, **kwargs)
+def read_dataset(*args, **kwargs) -> Tuple[pd.DataFrame, pd.Series]:
+    dfs = read_datasets(*args, **kwargs)
     dataset = pd.concat(dfs, axis=0, ignore_index=True, copy=False)
     dataset.drop_duplicates(ignore_index=True, inplace=True)
     logger.info(f"Dataset: {dataset.shape[0]} rows (duplicates removed)")
@@ -79,8 +82,8 @@ def read_heavy_dataset(*args, **kwargs) -> Tuple[pd.DataFrame, pd.Series]:
     return X, y
 
 
-def read_annotated_heavy_dataset(input_dir: str) -> Tuple[pd.DataFrame, pd.Series]:
-    return read_heavy_dataset(input_dir, pd.read_csv)
+def read_annotated_dataset(input_dir: str) -> Tuple[pd.DataFrame, pd.Series]:
+    return read_dataset(input_dir, pd.read_csv)
 
 
 def merge_all_columns(df: pd.DataFrame) -> List[str]:
@@ -90,7 +93,7 @@ def merge_all_columns(df: pd.DataFrame) -> List[str]:
 
 
 def make_binary_target(y, target_v_type):
-    return np.where(y.apply(lambda x: x == f"IGHV{target_v_type}"), 1, 0)
+    return np.where(y.apply(lambda x: x == f"IG{target_v_type}"), 1, 0)
 
 
 def format_confusion_matrix(y_test, y_pred):

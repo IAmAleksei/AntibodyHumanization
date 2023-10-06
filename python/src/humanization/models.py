@@ -8,8 +8,29 @@ from catboost import CatBoostClassifier
 from humanization.annotations import Annotation, load_annotation
 
 
+class GeneralChainType(Enum):
+    HEAVY = "H"
+    KAPPA = "K"
+    LAMBDA = "L"
+
+    def specific_type(self, v_type):
+        if self == GeneralChainType.HEAVY:
+            return HeavyChainType(str(v_type))
+        elif self == GeneralChainType.KAPPA:
+            return KappaChainType(str(v_type))
+        elif self == GeneralChainType.LAMBDA:
+            return LambdaChainType(str(v_type))
+        else:
+            raise RuntimeError("Unrecognized chain type")
+
+
 class ChainType(Enum):
-    pass
+    @classmethod
+    def general_type(cls):
+        ...
+
+    def full_type(self):
+        return f"{self.general_type().value}V{self.value}"
 
 
 class HeavyChainType(ChainType):
@@ -21,10 +42,26 @@ class HeavyChainType(ChainType):
     V6 = "6"
     V7 = "7"
 
+    def general_type(self):
+        return GeneralChainType.HEAVY
+
 
 class LightChainType(ChainType):
-    KAPPA = "kappa"
-    LAMBDA = "lambda"
+    pass
+
+
+class KappaChainType(LightChainType):
+    V1 = "1"
+
+    def general_type(self):
+        return GeneralChainType.KAPPA
+
+
+class LambdaChainType(LightChainType):
+    V1 = "1"
+
+    def general_type(self):
+        return GeneralChainType.LAMBDA
 
 
 class ModelWrapper:
@@ -36,21 +73,11 @@ class ModelWrapper:
 
 
 def get_model_name(chain_type: ChainType) -> str:
-    if isinstance(chain_type, HeavyChainType):
-        return f"heavy_v{chain_type.value}.cbm"
-    elif isinstance(chain_type, LightChainType):
-        return f"light_{chain_type.value}.cbm"
-    else:
-        raise RuntimeError("Unrecognized chain type")
+    return f"{chain_type.full_type()}.cbm"
 
 
 def get_meta_name(chain_type: ChainType) -> str:
-    if isinstance(chain_type, HeavyChainType):
-        return f"heavy_v{chain_type.value}_meta.json"
-    elif isinstance(chain_type, LightChainType):
-        return f"light_{chain_type.value}_meta.json"
-    else:
-        raise RuntimeError("Unrecognized chain type")
+    return f"{chain_type.full_type()}_meta.json"
 
 
 def save_model(model_dir: str, wrapped_model: ModelWrapper):
