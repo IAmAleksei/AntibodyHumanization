@@ -40,7 +40,6 @@ def make_annotated_df(df: pd.DataFrame, annotation: Annotation, metadata: Any = 
     )
     X = pd.DataFrame(annotated_list, columns=aa_columns)  # Make column for every aa
     y = df['v_call'][annotated_indexes]
-    logger.debug(f"{annotated_list}")
     y.reset_index(drop=True, inplace=True)
     dataset = pd.concat([X, y], axis=1)
     nan_errors = dataset['v_call'].isna().sum()
