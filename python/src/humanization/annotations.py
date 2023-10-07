@@ -64,6 +64,11 @@ class ChainType(Enum):
     def full_type(self):
         return f"{self.general_type().value}V{self.value}"
 
+    @staticmethod
+    def from_full_type(s):
+        # {H,K,L}V[1-10]
+        return GeneralChainType(s[0]).specific_type(s[2:])
+
 
 class HeavyChainType(ChainType):
     V1 = "1"
@@ -148,8 +153,8 @@ class ChothiaLight(Annotation):
         ("fwr4", get_position_segment(positions, "98", "110")),
     ]
     segmented_positions = segments_to_columns(segments)
-    required_positions = {'fwr1_23': 'C', 'fwr2_15': 'W', 'fwr3_39': 'C'}
-    v_gene_end = segmented_positions.index('fwr3_30')
+    required_positions = {'fwr1_24': 'C', 'fwr2_1': 'W', 'fwr3_32': 'C'}
+    v_gene_end = segmented_positions.index('fwr3_32')
 
 
 class ChothiaHeavy(Annotation):
@@ -224,9 +229,7 @@ def annotate_batch(sequences: List[str], annotation: Annotation, chain_type: Gen
     prepared_results = []
     for i, numerated_seq in enumerate(numerated_sequences):
         assert sequences_[i][0] == temp_res[0][i][0]
-        if numerated_seq is None:
-            logger.warn(f"Bad sequence found #{i} {sequences[i]}")
-        else:
+        if numerated_seq is not None:
             a = numerated_seq[0]
             b = a[0]
             seq_dict = {f"{idx}{letter.strip()}": aa for (idx, letter), aa in b if aa != "-"}

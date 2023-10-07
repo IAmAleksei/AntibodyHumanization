@@ -66,14 +66,14 @@ class Humanizer(AbstractHumanizer):
         iterations.append(IterationDetails(0, current_value, v_gene_score, None))
         for it in range(1, config.get(config_loader.MAX_CHANGES) + 1):
             current_value, v_gene_score = self._calc_metrics(current_seq)
-            logger.info(f"Iteration {it}. "
-                        f"Current model metric = {round(current_value, 6)}, V Gene score = {v_gene_score}")
+            logger.debug(f"Iteration {it}. "
+                         f"Current model metric = {round(current_value, 6)}, V Gene score = {v_gene_score}")
             best_change = self._find_best_change(current_seq)
             if best_change.is_defined():
                 prev_aa = current_seq[best_change.position]
                 current_seq[best_change.position] = best_change.aa
                 column_name = self.model_wrapper.annotation.segmented_positions[best_change.position]
-                logger.info(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
+                logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
                 best_value, v_gene_score = self._calc_metrics(current_seq)
                 iterations.append(IterationDetails(it, best_value, v_gene_score, best_change))
                 if target_model_metric <= current_value and is_v_gene_score_less(target_v_gene_score, v_gene_score):
@@ -85,17 +85,27 @@ class Humanizer(AbstractHumanizer):
         return seq_to_str(current_seq, False), iterations
 
 
-def main(models_dir, input_file, dataset_file, annotated_data, modify_cdr, skip_positions,
-         deny_use_aa, deny_change_aa, use_aa_similarity, output_file):
-    chain_type, target_model_metric, target_v_gene_score = read_humanizer_options(dataset_file)
+def process_sequences(models_dir, sequences, chain_type, target_model_metric, dataset_file=None, annotated_data=None,
+                      modify_cdr=False, skip_positions="", deny_use_aa="", deny_change_aa="", use_aa_similarity=True,
+                      target_v_gene_score=None):
     model_wrapper = load_model(models_dir, chain_type)
     v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, annotated_data)
     humanizer = Humanizer(
         model_wrapper, v_gene_scorer, modify_cdr,
         parse_list(skip_positions), parse_list(deny_use_aa), parse_list(deny_change_aa), use_aa_similarity
     )
+    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score)
+    return results
+
+
+def main(models_dir, input_file, dataset_file, annotated_data, modify_cdr, skip_positions,
+         deny_use_aa, deny_change_aa, use_aa_similarity, output_file):
     sequences = read_sequences(input_file)
-    results = run_humanizer(sequences, lambda seq: humanizer.query(seq, target_model_metric, target_v_gene_score))
+    chain_type, target_model_metric, target_v_gene_score = read_humanizer_options(dataset_file)
+    results = process_sequences(
+        models_dir, sequences, chain_type, target_model_metric, dataset_file, annotated_data, modify_cdr,
+        skip_positions, deny_use_aa, deny_change_aa, use_aa_similarity, target_v_gene_score
+    )
     write_sequences(output_file, results)
 
 

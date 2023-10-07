@@ -86,13 +86,12 @@ class ReverseHumanizer(AbstractHumanizer):
 
 def main(models_dir, input_file, dataset_file, annotated_data, human_sample, skip_positions,
          use_aa_similarity, output_file):
+    sequences = read_sequences(input_file)
     chain_type, target_model_metric, target_v_gene_score = read_humanizer_options(dataset_file)
     model_wrapper = load_model(models_dir, chain_type)
     v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, annotated_data)
     humanizer = ReverseHumanizer(model_wrapper, v_gene_scorer, parse_list(skip_positions), use_aa_similarity)
-    sequences = read_sequences(input_file)
-    results = run_humanizer(sequences,
-                            lambda seq: humanizer.query(seq, target_model_metric, target_v_gene_score, human_sample))
+    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score, human_sample)
     write_sequences(output_file, results)
 
 

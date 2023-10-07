@@ -1,3 +1,4 @@
+import traceback
 from abc import ABC
 from typing import List, Tuple, NamedTuple, Optional, Callable
 
@@ -83,13 +84,13 @@ class AbstractHumanizer(ABC):
         pass
 
 
-def run_humanizer(sequences: List[Tuple[str, str]],
-                  humanization: Callable[[str], Tuple[str, List[IterationDetails]]]) -> List[Tuple[str, str]]:
+def run_humanizer(sequences: List[Tuple[str, str]], humanizer: AbstractHumanizer, *args) -> List[Tuple[str, str]]:
     results = []
     for name, sequence in sequences:
         try:
-            result, _ = humanization(sequence)
+            result, _ = humanizer.query(sequence, *args)
         except RuntimeError as _:
+            traceback.print_exc()
             result = ""
         results.append((name, result))
     return results

@@ -16,8 +16,9 @@ logger = configure_logger(config, "Dataset preparer")
 
 def read_and_annotate_file(csv_file: str, annotation: Annotation) -> pandas.DataFrame:
     df, metadata = read_file(csv_file, ['sequence_alignment_aa', 'v_call'])
+    logger.debug(f"File contains {df.shape[0]} rows")
     correct_v_call(df, metadata)
-    df = make_annotated_df(df, annotation, metadata=metadata)
+    df = make_annotated_df(df.iloc[:1000], annotation, metadata=metadata)
     df = filter_df(df, annotation)
     return df
 
@@ -68,6 +69,7 @@ def main(input_dir: str, chain_kind: ChainKind, schema: str, output_dir: str, sk
             df = read_and_annotate_file(input_file_path, annotation)
             df.to_csv(output_file_path, index=False)
             logger.debug(f"Result with {df.shape[0]} rows saved to {output_file_path}")
+            break
         except Exception:
             logger.exception(f"Processing error")
 
