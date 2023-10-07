@@ -6,8 +6,9 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 from humanization import config_loader
+from humanization.annotations import HeavyChainType
 from humanization.humanizer import common_parser_options, Humanizer
-from humanization.models import HeavyChainType, load_model
+from humanization.models import load_model
 from humanization.utils import configure_logger
 
 config = config_loader.Config()

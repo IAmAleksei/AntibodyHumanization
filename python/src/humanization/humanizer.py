@@ -5,7 +5,7 @@ from humanization import config_loader, utils
 from humanization.abstract_humanizer import run_humanizer, AbstractHumanizer, SequenceChange, is_change_less, \
     IterationDetails, read_humanizer_options, seq_to_str, abstract_humanizer_parser_options
 from humanization.annotations import annotate_single
-from humanization.models import load_model, ModelWrapper, GeneralChainType
+from humanization.models import load_model, ModelWrapper
 from humanization.utils import configure_logger, read_sequences, write_sequences, parse_list
 from humanization.v_gene_scorer import VGeneScorer, build_v_gene_scorer, is_v_gene_score_less
 

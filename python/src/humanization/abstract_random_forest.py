@@ -1,5 +1,5 @@
 import argparse
-from typing import Tuple, List, Generator
+from typing import Tuple, Generator
 
 import numpy as np
 from catboost import CatBoostClassifier, Pool
@@ -8,10 +8,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.utils import gen_batches
 
 from humanization import config_loader
-from humanization.annotations import Annotation, load_annotation
+from humanization.annotations import Annotation, load_annotation, GeneralChainType, ChainType
 from humanization.dataset import format_confusion_matrix, make_binary_target
 from humanization.dataset_preparer import read_any_dataset
-from humanization.models import ChainType, ModelWrapper, GeneralChainType
+from humanization.models import ModelWrapper
 from humanization.stats import brute_force_threshold, find_optimal_threshold, plot_thresholds, plot_roc_auc, \
     plot_comparison
 from humanization.utils import configure_logger
@@ -116,15 +116,14 @@ def make_model(X_train, y_train, X_val, y_val, X_test, y_test, annotation: Annot
     return ModelWrapper(v_type, model, annotation, threshold)
 
 
-def make_models(input_dir: str, annotated_data: bool, schema: str,
-                chain_type: GeneralChainType, v_types: List[int],
+def make_models(input_dir: str, annotated_data: bool, schema: str, chain_type: GeneralChainType,
                 metric: str, iterative_learning: bool, print_metrics: bool) -> Generator[ModelWrapper, None, None]:
-    annotation = load_annotation(schema)
-    X, y = read_any_dataset(input_dir, annotated_data, annotation, chain_type)
+    annotation = load_annotation(schema, chain_type.kind())
+    X, y = read_any_dataset(input_dir, annotated_data, annotation)
     X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.1, shuffle=True, random_state=42)
     X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.1, shuffle=True, random_state=42)
     log_data_stats(X_, y_, X_test, y_test)
-    for v_type in v_types:
+    for v_type in chain_type.available_specific_types():
         yield make_model(X_train, y_train, X_val, y_val, X_test, y_test, annotation, chain_type.specific_type(v_type),
                          metric, iterative_learning, print_metrics)
 

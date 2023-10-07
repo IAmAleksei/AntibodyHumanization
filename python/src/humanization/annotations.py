@@ -1,15 +1,99 @@
-from typing import List, Tuple, Optional
+import re
+from enum import Enum
+from typing import List, Tuple, Optional, Dict
 
 import anarci
 
-from humanization import patched_anarci
+from humanization import patched_anarci, annotation_const
 
 from humanization import config_loader
-from humanization.models import GeneralChainType
 from humanization.utils import configure_logger
 
 config = config_loader.Config()
 logger = configure_logger(config, "Annotations")
+
+
+class ChainKind(Enum):
+    HEAVY = "H"
+    LIGHT = "L"
+
+    def sub_types(self):
+        if self == ChainKind.HEAVY:
+            return [GeneralChainType.HEAVY]
+        elif self == ChainKind.LIGHT:
+            return [GeneralChainType.KAPPA, GeneralChainType.LAMBDA]
+        else:
+            raise RuntimeError("Unrecognized chain kind")
+
+
+class GeneralChainType(Enum):
+    HEAVY = "H"
+    KAPPA = "K"
+    LAMBDA = "L"
+
+    def specific_type_class(self):
+        if self == GeneralChainType.HEAVY:
+            return HeavyChainType
+        elif self == GeneralChainType.KAPPA:
+            return KappaChainType
+        elif self == GeneralChainType.LAMBDA:
+            return LambdaChainType
+        else:
+            raise RuntimeError("Unrecognized chain type")
+
+    def specific_type(self, v_type):
+        return self.specific_type_class()(str(v_type))
+
+    def kind(self):
+        if self == GeneralChainType.HEAVY:
+            return ChainKind.HEAVY
+        elif self == GeneralChainType.KAPPA or self == GeneralChainType.LAMBDA:
+            return ChainKind.LIGHT
+        else:
+            raise RuntimeError("Unrecognized chain type")
+
+    def available_specific_types(self):
+        return [specific_type.value for specific_type in self.specific_type_class()]
+
+
+class ChainType(Enum):
+    @classmethod
+    def general_type(cls) -> GeneralChainType:
+        ...
+
+    def full_type(self):
+        return f"{self.general_type().value}V{self.value}"
+
+
+class HeavyChainType(ChainType):
+    V1 = "1"
+    V2 = "2"
+    V3 = "3"
+    V4 = "4"
+    V5 = "5"
+    V6 = "6"
+    V7 = "7"
+
+    def general_type(self):
+        return GeneralChainType.HEAVY
+
+
+class LightChainType(ChainType):
+    pass
+
+
+class KappaChainType(LightChainType):
+    V1 = "1"
+
+    def general_type(self):
+        return GeneralChainType.KAPPA
+
+
+class LambdaChainType(LightChainType):
+    V1 = "1"
+
+    def general_type(self):
+        return GeneralChainType.LAMBDA
 
 
 def segments_to_columns(segments: List[Tuple[str, List[str]]]) -> List[str]:
@@ -18,115 +102,6 @@ def segments_to_columns(segments: List[Tuple[str, List[str]]]) -> List[str]:
         for idx, _ in enumerate(segment_positions):
             result.append(f"{segment_name}_{idx + 1}")
     return result
-
-
-class Annotation:
-    name = "-"
-    positions = []
-    segments = []
-    segmented_positions = []
-    required_positions = {}
-    v_gene_end = ""
-
-
-class Chothia(Annotation):
-    name = "chothia"
-    positions = [
-        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
-        "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "31A", "31B", "32", "33", "34", "35",
-        "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "52A",
-        "52B", "52C", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68",
-        "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "82A", "82B", "82C", "83",
-        "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "100A",
-        "100B", "100C", "100D", "100E", "100F", "100G", "100H", "100I", "100J", "100K", "101", "102", "103", "104",
-        "105", "106", "107", "108", "109", "110", "111", "112", "113"
-    ]
-    segments = [
-        (
-            "fwr1",
-            ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17",
-             "18", "19", "20", "21", "22", "23", "24", "25"]
-        ),
-        (
-            "cdr1",
-            ["26", "27", "28", "29", "30", "31", "31A", "31B", "32"]
-        ),
-        (
-            "fwr2",
-            ["33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
-             "50", "51"]
-        ),
-        (
-            "cdr2",
-            ["52", "52A", "52B", "52C", "53", "54", "55", "56"]
-        ),
-        (
-            "fwr3",
-            ["57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73",
-             "74", "75", "76", "77", "78", "79", "80", "81", "82", "82A", "82B", "82C", "83", "84", "85", "86", "87",
-             "88", "89", "90", "91", "92", "93", "94"]
-        ),
-        (
-            "cdr3",
-            ["95", "96", "97", "98", "99", "100", "100A", "100B", "100C", "100D", "100E", "100F", "100G", "100H",
-             "100I", "100J", "100K", "101", "102"]
-        ),
-        (
-            "fwr4",
-            ["103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113"]
-        ),
-    ]
-    segmented_positions = segments_to_columns(segments)
-    required_positions = {'fwr1_23': 'C', 'fwr2_15': 'W', 'fwr3_39': 'C'}
-    v_gene_end = segmented_positions.index('fwr3_41')
-
-
-class Imgt(Annotation):
-    name = "imgt"
-    positions = [
-        '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19',
-        '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37',
-        '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55',
-        '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73',
-        '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91',
-        '92', '93', '94', '95', '96', '97', '98', '99', '100', '101', '102', '103', '104', '105', '106', '107', '108',
-        '109', '110', '111', '112', '113', '114', '115', '116', '117', '118', '119', '120', '121', '122', '123', '124',
-        '125', '126', '127', '128']
-    segments = [
-        (
-            "fwr1",
-            ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19',
-             '20', '21', '22', '23', '24', '25']
-        ),
-        (
-            "cdr1",
-            ['26', '27', '28', '29', '30', '31', '32', '33']
-        ),
-        (
-            "fwr2",
-            ['34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50']
-        ),
-        (
-            "cdr2",
-            ['51', '52', '53', '54', '55', '56']
-        ),
-        (
-            "fwr3",
-            ['57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73',
-             '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90',
-             '91', '92']
-        ),
-        (
-            "cdr3",
-            ['93', '94', '95', '96', '97', '98', '99', '100', '101', '102']
-        ),
-        (
-            "fwr4",
-            ['103', '104', '105', '106', '107', '108', '109', '110', '111', '112', '113', '114', '115', '116', '117',
-             '118', '119', '120', '121', '122', '123', '124', '125', '126', '127', '128']
-        ),
-    ]
-    segmented_positions = segments_to_columns(segments)
 
 
 SEGMENTS_ORDER = ["fwr1", "cdr1", "fwr2", "cdr2", "fwr3", "cdr3", "fwr4"]
@@ -139,30 +114,109 @@ def compare_positions(first: str, second: str):
         return SEGMENTS_ORDER.index(first[:4]) < SEGMENTS_ORDER.index(second[:4])
 
 
-def load_annotation(schema: str) -> Annotation:
+class Annotation:
+    name = "-"
+    positions: List[str] = []
+    kind: ChainKind = None
+    segments: List[Tuple[str, List[str]]] = []
+    segmented_positions: List[str] = []
+    required_positions: Dict[str, str] = {}
+    v_gene_end: int = None
+
+
+def get_position_segment(positions: List[str], start: str, end: str) -> List[str]:
+    def compare(fst, snd):
+        fst_ = re.sub(r'\D', '', fst)
+        snd_ = re.sub(r'\D', '', snd)
+        return len(fst_) < len(snd_) if len(fst_) != len(snd_) else fst < snd
+
+    res = [position for position in positions if not compare(position, start) and compare(position, end)]
+    return res
+
+
+class ChothiaLight(Annotation):
+    name = "chothia"
+    positions = annotation_const.CHOTHIA_LIGHT_POSITIONS
+    kind = ChainKind.LIGHT
+    segments = [
+        ("fwr1", get_position_segment(positions, "0", "24")),
+        ("cdr1", get_position_segment(positions, "24", "35")),
+        ("fwr2", get_position_segment(positions, "35", "50")),
+        ("cdr2", get_position_segment(positions, "50", "57")),
+        ("fwr3", get_position_segment(positions, "57", "89")),
+        ("cdr3", get_position_segment(positions, "89", "98")),
+        ("fwr4", get_position_segment(positions, "98", "110")),
+    ]
+    segmented_positions = segments_to_columns(segments)
+    required_positions = {'fwr1_23': 'C', 'fwr2_15': 'W', 'fwr3_39': 'C'}
+    v_gene_end = segmented_positions.index('fwr3_30')
+
+
+class ChothiaHeavy(Annotation):
+    name = "chothia"
+    positions = annotation_const.CHOTHIA_HEAVY_POSITIONS
+    kind = ChainKind.HEAVY
+    segments = [
+        ("fwr1", get_position_segment(positions, "0", "26")),
+        ("cdr1", get_position_segment(positions, "26", "33")),
+        ("fwr2", get_position_segment(positions, "33", "52")),
+        ("cdr2", get_position_segment(positions, "52", "57")),
+        ("fwr3", get_position_segment(positions, "57", "95")),
+        ("cdr3", get_position_segment(positions, "95", "103")),
+        ("fwr4", get_position_segment(positions, "103", "114")),
+    ]
+    segmented_positions = segments_to_columns(segments)
+    required_positions = {'fwr1_23': 'C', 'fwr2_15': 'W', 'fwr3_39': 'C'}
+    v_gene_end = segmented_positions.index('fwr3_41')
+
+
+class Imgt(Annotation):
+    name = "imgt"
+    positions = annotation_const.IMGT_HEAVY_POSITIONS
+    kind = ChainKind.HEAVY
+    segments = [
+        ("fwr1", get_position_segment(positions, '1', '26')),
+        ("cdr1", get_position_segment(positions, '26', '34')),
+        ("fwr2", get_position_segment(positions, '34', '51')),
+        ("cdr2", get_position_segment(positions, '51', '57')),
+        ("fwr3", get_position_segment(positions, '57', '93')),
+        ("cdr3", get_position_segment(positions, '93', '103')),
+        ("fwr4", get_position_segment(positions, '103', '129')),
+    ]
+    segmented_positions = segments_to_columns(segments)
+
+
+def load_annotation(schema: str, kind: ChainKind) -> Annotation:
     if schema == "chothia":
-        return Chothia()
+        if kind == ChainKind.HEAVY:
+            return ChothiaHeavy()
+        elif kind == ChainKind.LIGHT:
+            return ChothiaLight()
     elif schema == "imgt":
-        return Imgt()
-    else:
-        raise RuntimeError("Unrecognized annotation type")
+        if kind == ChainKind.HEAVY:
+            return Imgt()
+    raise RuntimeError("Unrecognized annotation type")
 
 
-def annotate_batch(sequences: List[str], annotation: Annotation, chain_type: GeneralChainType,
+def annotate_batch(sequences: List[str], annotation: Annotation, chain_type: GeneralChainType = None,
                    is_human: bool = False) -> Tuple[List[int], List[List[str]]]:
-    logger.debug(f"Anarci run on {len(sequences)} rows")
     sequences_ = list(enumerate(sequences))
     kwargs = {
         'ncpu': config.get(config_loader.ANARCI_NCPU),
         'scheme': annotation.name,
-        'allow': {chain_type.value}
     }
+    if chain_type:
+        kwargs['allow'] = {chain_type.value}
+    else:
+        kwargs['allow'] = {chain_type.value for chain_type in annotation.kind.sub_types()}
     if is_human:
         kwargs['allowed_species'] = ['human']
     else:
         kwargs['allowed_species'] = ['mouse', 'rat', 'rabbit', 'rhesus', 'pig', 'alpaca']
     import sys
     sys.modules['anarci.anarci']._parse_hmmer_query = patched_anarci._parse_hmmer_query  # Monkey patching
+    logger.debug(f"Anarci run on {len(sequences)} rows (kwargs: {kwargs})")
+    # 'SSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQSYSTPRFGQGT' fails anarci
     temp_res = anarci.run_anarci(sequences_, **kwargs)
     numerated_sequences = temp_res[1]
     logger.debug(f"Anarci run is finished")
@@ -187,8 +241,16 @@ def annotate_batch(sequences: List[str], annotation: Annotation, chain_type: Gen
 
 
 def annotate_single(sequence: str, annotation: Annotation, chain_type: GeneralChainType) -> Optional[List[str]]:
-    _, annotated_seq = annotate_batch([sequence], annotation, chain_type)
+    _, annotated_seq = annotate_batch([sequence], annotation, chain_type=chain_type)
     if len(annotated_seq) == 1:
         return annotated_seq[0]
     else:
         return None
+
+
+if __name__ == '__main__':
+    res = annotate_single(
+        'AIRMTQSPSSFSASTGDRVSITCRASQGISSYLAWYQQKPGTAPKLLIYAASTLQSGVPSRFSGSGSGTDFTLTISCLQSEDFATYYCQQYYTYPWTFGLGTKVEVK',
+        load_annotation("chothia", ChainKind.LIGHT), GeneralChainType.KAPPA
+    )
+    print(res)

@@ -1,7 +1,8 @@
 from abc import ABC
 from typing import List, Tuple, NamedTuple, Optional, Callable
 
-from humanization.models import HeavyChainType, ModelWrapper, LambdaChainType, KappaChainType
+from humanization.annotations import GeneralChainType
+from humanization.models import ModelWrapper
 from humanization.utils import BLOSUM62
 from humanization.v_gene_scorer import calc_score, VGeneScorer
 
@@ -95,24 +96,14 @@ def run_humanizer(sequences: List[Tuple[str, str]],
 
 
 def read_humanizer_options(dataset_file):
-    chain_type_str = input("Enter chain type (heavy or light): ")
-    if chain_type_str.lower() in ["h", "heavy"]:
-        chain_type_class = HeavyChainType
-        v_gene_type = input("V gene type (1-7): ")
-    elif chain_type_str.lower() in ["k", "kappa"]:
-        chain_type_class = KappaChainType
-        v_gene_type = input("V gene type (1-7): ")
-    elif chain_type_str.lower() in ["l", "lambda"]:
-        chain_type_class = LambdaChainType
-        v_gene_type = input("V gene type (1-7): ")
-    else:
-        raise RuntimeError(f"Unknown chain type: {chain_type_str}")
+    general_chain_type = GeneralChainType(input("Enter chain type (H, K or L): "))
+    v_gene_type = input(f"V gene type {general_chain_type.available_specific_types()}")
+    chain_type = general_chain_type.specific_type(v_gene_type)
     target_model_metric = float(input("Enter target model metric: "))
     if dataset_file is not None:
         target_v_gene_score = float(input("Enter target V gene score: "))
     else:
         target_v_gene_score = None
-    chain_type = chain_type_class(v_gene_type)
     return chain_type, target_model_metric, target_v_gene_score
 
 

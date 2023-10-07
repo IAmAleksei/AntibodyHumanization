@@ -10,7 +10,6 @@ from tqdm import tqdm
 
 from humanization import config_loader
 from humanization.annotations import Annotation, annotate_batch
-from humanization.models import GeneralChainType
 from humanization.utils import configure_logger
 
 config = config_loader.Config()
@@ -33,15 +32,15 @@ def correct_v_call(df: pd.DataFrame, metadata: Any) -> NoReturn:
         df['v_call'].replace(r'^(....\d+).*$', r'\1', regex=True, inplace=True)
 
 
-def make_annotated_df(df: pd.DataFrame, annotation: Annotation,
-                      chain_type: GeneralChainType, metadata: Any = {}) -> pd.DataFrame:
+def make_annotated_df(df: pd.DataFrame, annotation: Annotation, metadata: Any = {}) -> pd.DataFrame:
     aa_columns = annotation.segmented_positions
     annotated_indexes, annotated_list = annotate_batch(
-        df['sequence_alignment_aa'].tolist(), annotation, chain_type,
+        df['sequence_alignment_aa'].tolist(), annotation,
         is_human=metadata['Species'] == 'human'
     )
     X = pd.DataFrame(annotated_list, columns=aa_columns)  # Make column for every aa
     y = df['v_call'][annotated_indexes]
+    logger.debug(f"{annotated_list}")
     y.reset_index(drop=True, inplace=True)
     dataset = pd.concat([X, y], axis=1)
     nan_errors = dataset['v_call'].isna().sum()

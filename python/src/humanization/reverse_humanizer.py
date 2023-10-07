@@ -97,8 +97,7 @@ def main(models_dir, input_file, dataset_file, annotated_data, human_sample, ski
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description='''Reverse humanizer''')
+    parser = argparse.ArgumentParser(description='''Reverse humanizer''')
     abstract_humanizer_parser_options(parser)
     parser.add_argument('--input', type=str, required=False, help='Path to input fasta file')
     parser.add_argument('--output', type=str, required=False, help='Path to output fasta file')
