@@ -69,7 +69,7 @@ def build_tree_impl(X_train, y_train, val_pool, iterative_learning: bool = False
         model.fit(train_pool, eval_set=val_pool, early_stopping_rounds=25, init_model=final_model)
         final_model = model
 
-        del train_pool
+        del train_pool, X_train_batch, y_train_batch
 
     return final_model
 
@@ -100,6 +100,7 @@ def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: ChainType, metric
         plt.show()
     else:
         threshold, metric_score = get_threshold(metric, y_val, y_val_pred_proba, None)
+    del val_pool
     logger.info(f"Optimal threshold is {threshold}, metric score = {metric_score}")
     return final_model, threshold
 
@@ -117,13 +118,14 @@ def make_model(X_train, y_train, X_val, y_val, X_test, y_test, annotation: Annot
 
 
 def make_models(input_dir: str, annotated_data: bool, schema: str, chain_type: GeneralChainType,
-                metric: str, iterative_learning: bool, print_metrics: bool) -> Generator[ModelWrapper, None, None]:
+                metric: str, iterative_learning: bool, print_metrics: bool, tree_types: str = None) -> Generator[ModelWrapper, None, None]:
     annotation = load_annotation(schema, chain_type.kind())
     X, y = read_any_dataset(input_dir, annotated_data, annotation)
     X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.1, shuffle=True, random_state=42)
     X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.1, shuffle=True, random_state=42)
     log_data_stats(X_, y_, X_test, y_test)
-    for v_type in chain_type.available_specific_types():
+    used_types = tree_types.split(",") if tree_types else chain_type.available_specific_types()
+    for v_type in used_types:
         yield make_model(X_train, y_train, X_val, y_val, X_test, y_test, annotation, chain_type.specific_type(v_type),
                          metric, iterative_learning, print_metrics)
 
@@ -141,3 +143,4 @@ def configure_abstract_parser(parser: argparse.ArgumentParser):
     parser.add_argument('--metric', type=str, default="youdens", help='Threshold optimized metric')
     parser.add_argument('--print-metrics', action='store_true', help='Print learning metrics')
     parser.set_defaults(print_metrics=False)
+    parser.add_argument('--types', type=str, default=None, help='Build only specified types')
