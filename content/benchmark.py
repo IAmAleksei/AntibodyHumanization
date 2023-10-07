@@ -3,7 +3,7 @@ import os.path
 from termcolor import colored
 from typing import Dict
 
-from humanization import humanizer
+from humanization import humanizer, reverse_humanizer
 from humanization.annotations import ChainType
 
 
@@ -37,8 +37,11 @@ def process_sequence(models_dir: str, name: str, seq_dict: Dict[str, str], targe
     remove_minuses('hu_m')
 
     chain_type = ChainType.from_full_type(seq_dict['type'])
-    _, res = humanizer.process_sequences(models_dir, [(name, seq_dict['sequ']), ], chain_type, target_model_metric)[0]
-    seq_dict["tool"] = res
+    _, res1 = humanizer.process_sequences(models_dir, [(name, seq_dict['sequ']), ], chain_type, target_model_metric,
+                                          use_aa_similarity=True)[0]
+    seq_dict["tl_1"] = res1
+    # _, res2 = reverse_humanizer.process_sequences(models_dir, [(name, seq_dict['sequ']), ], chain_type, target_model_metric)[0]
+    # seq_dict["tl_2"] = res2
 
 
 def analyze(seq_dict: Dict[str, str]):
@@ -66,7 +69,8 @@ def analyze(seq_dict: Dict[str, str]):
 
     print_hamming_distance('ther', 'sequ')
     print_hamming_distance('ther', 'hu_m')
-    print_hamming_distance('ther', 'tool')
+    print_hamming_distance('ther', 'tl_1')
+    # print_hamming_distance('ther', 'tl_2')
 
 
 def main():
@@ -83,6 +87,7 @@ def main():
     print("Analyze")
     for antibody in samples:
         name = antibody["name"]
+        print('---')
         print(f'Processing antibody {name}')
         analyze(antibody["heavy"])
 

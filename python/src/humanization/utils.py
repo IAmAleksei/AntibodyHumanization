@@ -11,8 +11,8 @@ from humanization import config_loader
 
 
 AA_ALPHABET = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y', 'X']
-TABOO_INSERT_AA = ['C', 'P', 'X']
-TABOO_DELETE_AA = ['C', 'P', 'X']
+TABOO_INSERT_AA = 'C,P,X'
+TABOO_DELETE_AA = 'C,P,X'
 BLOSUM62 = blosum.BLOSUM(62)
 
 

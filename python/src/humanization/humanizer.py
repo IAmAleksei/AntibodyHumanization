@@ -86,8 +86,8 @@ class Humanizer(AbstractHumanizer):
 
 
 def process_sequences(models_dir, sequences, chain_type, target_model_metric, dataset_file=None, annotated_data=None,
-                      modify_cdr=False, skip_positions="", deny_use_aa="", deny_change_aa="", use_aa_similarity=True,
-                      target_v_gene_score=None):
+                      modify_cdr=False, skip_positions="", deny_use_aa=utils.TABOO_INSERT_AA,
+                      deny_change_aa=utils.TABOO_DELETE_AA, use_aa_similarity=True, target_v_gene_score=None):
     model_wrapper = load_model(models_dir, chain_type)
     v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, annotated_data)
     humanizer = Humanizer(
@@ -114,9 +114,9 @@ def common_parser_options(parser):
     parser.add_argument('--modify-cdr', action='store_true', help='Allow CDR modifications')
     parser.add_argument('--skip-cdr', dest='modify_cdr', action='store_false', help='Deny CDR modifications')
     parser.set_defaults(modify_cdr=True)
-    parser.add_argument('--deny-use-aa', type=str, default=",".join(utils.TABOO_INSERT_AA), required=False,
+    parser.add_argument('--deny-use-aa', type=str, default=utils.TABOO_INSERT_AA, required=False,
                         help='Amino acids that could not be used')
-    parser.add_argument('--deny-change-aa', type=str,  default=",".join(utils.TABOO_DELETE_AA), required=False,
+    parser.add_argument('--deny-change-aa', type=str,  default=utils.TABOO_DELETE_AA, required=False,
                         help='Amino acids that could not be changed')
 
 
