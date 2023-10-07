@@ -105,12 +105,12 @@ def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: ChainType, metric
     return final_model, threshold
 
 
-def make_model(X_train, y_train, X_val, y_val, X_test, y_test, annotation: Annotation, v_type: ChainType,
+def make_model(X_train, y_train, X_val, y_val, test_pool, y_test, annotation: Annotation, v_type: ChainType,
                metric: str, iterative_learning: bool, print_metrics: bool):
     logger.debug(f"Tree for {v_type.full_type()} is building...")
     model, threshold = build_tree(X_train, y_train, X_val, y_val, v_type, metric, iterative_learning, print_metrics)
     logger.debug(f"Tree for {v_type.full_type()} was built")
-    y_pred_proba = model.predict_proba(X_test)[:, 1]
+    y_pred_proba = model.predict_proba(test_pool)[:, 1]
     y_pred = np.where(y_pred_proba >= threshold, 1, 0)
     logger.info(format_confusion_matrix(make_binary_target(y_test, v_type.full_type()), y_pred))
     logger.info(f"Tree for {v_type.full_type()} tested.")
@@ -122,11 +122,12 @@ def make_models(input_dir: str, annotated_data: bool, schema: str, chain_type: G
     annotation = load_annotation(schema, chain_type.kind())
     X, y = read_any_dataset(input_dir, annotated_data, annotation)
     X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.1, shuffle=True, random_state=42)
-    X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.1, shuffle=True, random_state=42)
     log_data_stats(X_, y_, X_test, y_test)
+    X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.1, shuffle=True, random_state=42)
     used_types = tree_types.split(",") if tree_types else chain_type.available_specific_types()
+    test_pool = Pool(X_test, cat_features=X_test.columns.tolist())
     for v_type in used_types:
-        yield make_model(X_train, y_train, X_val, y_val, X_test, y_test, annotation, chain_type.specific_type(v_type),
+        yield make_model(X_train, y_train, X_val, y_val, test_pool, y_test, annotation, chain_type.specific_type(v_type),
                          metric, iterative_learning, print_metrics)
 
 
