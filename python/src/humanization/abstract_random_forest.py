@@ -63,10 +63,15 @@ def build_tree_impl(X_train, y_train, val_pool, iterative_learning: bool = False
         train_pool = Pool(X_train_batch, y_train_batch, cat_features=X_train_batch.columns.tolist())
 
         model = CatBoostClassifier(
-            depth=5, loss_function='Logloss', used_ram_limit=config.get(config_loader.MEMORY_LIMIT),
-            learning_rate=0.05, verbose=config.get(config_loader.VERBOSE_FREQUENCY),
-            max_ctr_complexity=3, n_estimators=batch_estimators)
-        model.fit(train_pool, eval_set=val_pool, early_stopping_rounds=25, init_model=final_model)
+            depth=config.get(config_loader.TREE_DEPTH),
+            loss_function='Logloss',
+            used_ram_limit=config.get(config_loader.MEMORY_LIMIT),
+            learning_rate=config.get(config_loader.TREE_LEARNING_RATE),
+            verbose=config.get(config_loader.VERBOSE_FREQUENCY),
+            max_ctr_complexity=config.get(config_loader.MAX_CTR_COMPLEXITY),
+            n_estimators=batch_estimators
+        )
+        model.fit(train_pool, eval_set=val_pool, early_stopping_rounds=10, init_model=final_model)
         final_model = model
 
         del train_pool, X_train_batch, y_train_batch

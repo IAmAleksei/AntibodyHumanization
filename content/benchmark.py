@@ -37,8 +37,7 @@ def process_sequence(models_dir: str, name: str, seq_dict: Dict[str, str], targe
     remove_minuses('hu_m')
 
     chain_type = ChainType.from_full_type(seq_dict['type'])
-    _, res1 = humanizer.process_sequences(models_dir, [(name, seq_dict['sequ']), ], chain_type, target_model_metric,
-                                          use_aa_similarity=True)[0]
+    _, res1 = humanizer.process_sequences(models_dir, [(name, seq_dict['sequ']), ], chain_type, target_model_metric)[0]
     seq_dict["tl_1"] = res1
     # _, res2 = reverse_humanizer.process_sequences(models_dir, [(name, seq_dict['sequ']), ], chain_type, target_model_metric)[0]
     # seq_dict["tl_2"] = res2
