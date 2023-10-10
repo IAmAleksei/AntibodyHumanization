@@ -43,7 +43,7 @@ def read_sequences(input_file):
 
 def write_sequences(output_file, sequences):
     if not output_file:
-        for name, result in sequences:
+        for name, result, _ in sequences:
             print(f'>{name}')
             print(result)
     else:

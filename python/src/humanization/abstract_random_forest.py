@@ -130,6 +130,7 @@ def make_models(input_dir: str, annotated_data: bool, schema: str, chain_type: G
     log_data_stats(X_, y_, X_test, y_test)
     X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.07, shuffle=True, random_state=42)
     used_types = tree_types.split(",") if tree_types else chain_type.available_specific_types()
+    logger.debug(f"Forests for types {used_types} will be built")
     test_pool = Pool(X_test, cat_features=X_test.columns.tolist())
     for v_type in used_types:
         yield make_model(X_train, y_train, X_val, y_val, test_pool, y_test, annotation, chain_type.specific_type(v_type),

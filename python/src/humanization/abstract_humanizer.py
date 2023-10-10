@@ -28,9 +28,9 @@ def is_change_less(left: SequenceChange, right: SequenceChange, use_aa_similarit
     left_value, right_value = left.value, right.value
     if use_aa_similarity:
         if left.is_defined():
-            left_value += 0.01 * min(0, BLOSUM62[left.old_aa][left.aa])
+            left_value += 0.001 * min(0, BLOSUM62[left.old_aa][left.aa])
         if right.is_defined():
-            right_value += 0.01 * min(0, BLOSUM62[right.old_aa][right.aa])
+            right_value += 0.001 * min(0, BLOSUM62[right.old_aa][right.aa])
     return left_value < right_value
 
 
@@ -84,15 +84,16 @@ class AbstractHumanizer(ABC):
         pass
 
 
-def run_humanizer(sequences: List[Tuple[str, str]], humanizer: AbstractHumanizer, *args) -> List[Tuple[str, str]]:
+def run_humanizer(sequences: List[Tuple[str, str]], humanizer: AbstractHumanizer,
+                  *args) -> List[Tuple[str, str, List[IterationDetails]]]:
     results = []
     for name, sequence in sequences:
         try:
-            result, _ = humanizer.query(sequence, *args)
+            result, its = humanizer.query(sequence, *args)
         except RuntimeError as _:
             traceback.print_exc()
-            result = ""
-        results.append((name, result))
+            result, its = "", []
+        results.append((name, result, its))
     return results
 
 
