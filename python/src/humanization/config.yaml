@@ -3,7 +3,7 @@ LOGGING_FORMAT: '%(asctime)-15s | %(levelname)s | %(filename)s | %(lineno)d: %(m
 
 MAX_CHANGES: 50
 ANARCI_NCPU: 14
-MEMORY_LIMIT: '100Gb'
+MEMORY_LIMIT: '120Gb'
 TREE_DEPTH: 3
 MAX_CTR_COMPLEXITY: 4
 TREE_LEARNING_RATE: 0.35

@@ -41,8 +41,10 @@ def process_sequence(models_dir: str, name: str, seq_dict: Dict[str, str], targe
 
     # chain_type = ChainType.from_full_type(seq_dict['type'])
     for i in range(1, 8):
-        _, res1, its = humanizer.process_sequences(models_dir, [(name, seq_dict['sequ']), ],
-                                              ChainType.from_full_type(f'HV{i}'), target_model_metric)[0]
+        _, res1, its = humanizer.process_sequences(
+            models_dir, [(name, seq_dict['sequ']), ], ChainType.from_full_type(f'HV{i}'),
+            target_model_metric, aligned_result=True
+        )[0]
         seq_dict[f"tl_{i}"] = res1
         seq_dict[f"ti_{i}"] = its
     # _, res2 = reverse_humanizer.process_sequences(models_dir, [(name, seq_dict['sequ']), ], chain_type, target_model_metric)[0]
@@ -50,8 +52,13 @@ def process_sequence(models_dir: str, name: str, seq_dict: Dict[str, str], targe
 
 
 def analyze(seq_dict: Dict[str, str]):
+    diff_poses = set([i for i in range(len(seq_dict['ther'])) if seq_dict['ther'] != seq_dict['sequ']])
+
+    def remove_xs(key):
+        return seq_dict[key].replace('X', '')
+
     def print_hamming_distance(key2):
-        seq1, seq2, seq3 = seq_dict['ther'], seq_dict[key2], seq_dict['sequ']
+        seq1, seq2, seq3 = seq_dict['ther'], remove_xs(seq_dict[key2]), seq_dict['sequ']
         if len(seq1) != len(seq2):
             print(f"Different lengths between `{key2}`")
             print()
@@ -104,9 +111,8 @@ def main():
     print()
     print("Analyze")
     for antibody in samples[1:]:
-        name = antibody["name"]
         print('---')
-        print(f'Processing antibody {name}')
+        print(f'Processing antibody {antibody["name"]} {antibody["heavy"]["type"]}')
         analyze(antibody["heavy"])
 
 
