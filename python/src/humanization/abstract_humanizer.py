@@ -64,9 +64,9 @@ class AbstractHumanizer(ABC):
         self.model_wrapper = model_wrapper
         self.v_gene_scorer = v_gene_scorer
 
-    def _get_v_gene_score(self, current_seq: List[str],
-                          human_sample: Optional[str] = None) -> Tuple[Optional[str], Optional[float]]:
-        if self.v_gene_scorer is not None:
+    def _get_v_gene_score(self, current_seq: List[str], human_sample: Optional[str] = None,
+                          prefer_human_sample: bool = False) -> Tuple[Optional[str], Optional[float]]:
+        if self.v_gene_scorer is not None and (not prefer_human_sample or human_sample is None):
             human_sample, v_gene_score = self.v_gene_scorer.query(current_seq)
             return human_sample, v_gene_score
         elif human_sample is not None:
@@ -74,9 +74,10 @@ class AbstractHumanizer(ABC):
         else:
             return None, None
 
-    def _calc_metrics(self, current_seq: List[str], human_sample: Optional[str] = None) -> Tuple[float, float]:
+    def _calc_metrics(self, current_seq: List[str], human_sample: Optional[str] = None,
+                      prefer_human_sample: bool = False) -> Tuple[float, float]:
         current_value = self.model_wrapper.model.predict_proba(current_seq)[1]
-        _, v_gene_score = self._get_v_gene_score(current_seq, human_sample)
+        _, v_gene_score = self._get_v_gene_score(current_seq, human_sample, prefer_human_sample)
         return current_value, v_gene_score
 
     def query(self, sequence: str, target_model_metric: float,

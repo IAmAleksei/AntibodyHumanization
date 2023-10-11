@@ -91,7 +91,6 @@ def print_hamming_distance(seq_dict, key2, pluses=""):
 
 
 def analyze(seq_dict: Dict[str, str]):
-
     remove_minuses(seq_dict, 'sequ')
     remove_minuses(seq_dict, 'ther')
     remove_minuses(seq_dict, 'hu_m')
@@ -193,8 +192,8 @@ def main(models_dir, dataset_dir, humanizer_type):
             remove_minuses(heavy_chain, 'sequ')
             seq = (antibody['name'], heavy_chain['sequ'])
             ans = reverse_humanizer.process_sequences(
-                models_dir, [seq], ChainType.from_full_type(tp),
-                0.5, target_v_gene_score=0.85, dataset_file=dataset_dir, annotated_data=True, aligned_result=True
+                models_dir, [seq], ChainType.from_full_type(tp), 0.5, target_v_gene_score=0.85,
+                dataset_file=dataset_dir, annotated_data=True, aligned_result=True, prefer_human_sample=True
             )[0]
             _, res1, its = ans
             res1 = remove_xs(res1)
@@ -211,7 +210,7 @@ def main(models_dir, dataset_dir, humanizer_type):
                         ch_ther += 1
             print(pretty_key("sequ"), heavy_chain['sequ'])
             print(pretty_key("ther"), heavy_chain['ther'])
-            print(pretty_key("hu_m"), hum)
+            print(pretty_key(f"tl_{tp}"), hum)
             print(f"VGeneScore={its[-1].v_gene_score}", f"Changes={changes}",
                   f"ChangesFracWithTher={round(ch_ther / changes * 100, 1)}%")
 

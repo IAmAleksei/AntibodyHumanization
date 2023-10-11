@@ -41,7 +41,8 @@ class ReverseHumanizer(AbstractHumanizer):
         return best_change
 
     def query(self, sequence: str, target_model_metric: float, target_v_gene_score: float = 0.0,
-              human_sample: str = None, aligned_result: bool = False) -> Tuple[str, List[IterationDetails]]:
+              human_sample: str = None, aligned_result: bool = False,
+              prefer_human_sample: bool = False) -> Tuple[str, List[IterationDetails]]:
         current_seq = annotate_single(sequence, self.model_wrapper.annotation,
                                       self.model_wrapper.chain_type.general_type())
         if current_seq is None:
@@ -60,17 +61,17 @@ class ReverseHumanizer(AbstractHumanizer):
                 current_seq[idx] = human_sample[idx]
         logger.info(f"Chimeric sequence: {seq_to_str(current_seq, True)}")
         iterations = []
-        current_value, v_gene_score = self._calc_metrics(current_seq, human_sample)
+        current_value, v_gene_score = self._calc_metrics(current_seq, human_sample, prefer_human_sample)
         iterations.append(IterationDetails(0, current_value, v_gene_score, None))
         for it in range(1, config.get(config_loader.MAX_CHANGES) + 1):
-            current_value, v_gene_score = self._calc_metrics(current_seq, human_sample)
+            current_value, v_gene_score = self._calc_metrics(current_seq, human_sample, prefer_human_sample)
             logger.debug(f"Iteration {it}. "
-                        f"Current model metric = {round(current_value, 6)}, V Gene score = {v_gene_score}")
+                         f"Current model metric = {round(current_value, 6)}, V Gene score = {v_gene_score}")
             best_change = self._find_best_change(current_seq, original_seq)
             if best_change.is_defined():
                 prev_aa = current_seq[best_change.position]
                 current_seq[best_change.position] = best_change.aa
-                best_value, v_gene_score = self._calc_metrics(current_seq, human_sample)
+                best_value, v_gene_score = self._calc_metrics(current_seq, human_sample, prefer_human_sample)
                 if not (target_model_metric <= best_value and is_v_gene_score_less(target_v_gene_score, v_gene_score)):
                     current_seq[best_change.position] = prev_aa
                     logger.info(f"Current metrics are best ({round(current_value, 6)})")
@@ -86,11 +87,12 @@ class ReverseHumanizer(AbstractHumanizer):
 
 def process_sequences(models_dir, sequences, chain_type, target_model_metric, dataset_file=None, annotated_data=None,
                       human_sample=None, skip_positions="",  use_aa_similarity=True, target_v_gene_score=None,
-                      aligned_result=False):
+                      aligned_result=False, prefer_human_sample=False):
     model_wrapper = load_model(models_dir, chain_type)
     v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, annotated_data, chain_type)
     humanizer = ReverseHumanizer(model_wrapper, v_gene_scorer, parse_list(skip_positions), use_aa_similarity)
-    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score, human_sample, aligned_result)
+    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score,
+                            human_sample, aligned_result, prefer_human_sample)
     return results
 
 
