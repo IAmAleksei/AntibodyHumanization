@@ -1,7 +1,7 @@
 from typing import List, Tuple, Optional
 
 from humanization import config_loader
-from humanization.annotations import Annotation
+from humanization.annotations import Annotation, ChainType
 from humanization.dataset_preparer import read_human_samples
 from humanization.utils import configure_logger
 
@@ -40,10 +40,12 @@ class VGeneScorer:
         return self.human_samples[best_sample_idx], best_v_gene_score
 
 
-def build_v_gene_scorer(annotation: Annotation, dataset_file: str, annotated_data: bool) -> Optional[VGeneScorer]:
-    human_samples = read_human_samples(dataset_file, annotated_data, annotation)
+def build_v_gene_scorer(annotation: Annotation, dataset_file: str, annotated_data: bool,
+                        v_type: ChainType) -> Optional[VGeneScorer]:
+    human_samples = read_human_samples(dataset_file, annotated_data, annotation, v_type)
     if human_samples is not None:
         v_gene_scorer = VGeneScorer(annotation, human_samples)
+        logger.info(f"Created VGeneScorer with {len(human_samples)} samples")
         return v_gene_scorer
     else:
         return None

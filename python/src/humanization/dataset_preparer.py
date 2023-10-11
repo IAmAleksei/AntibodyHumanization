@@ -5,7 +5,7 @@ from typing import NoReturn, Tuple, Optional, List
 import pandas
 
 from humanization import config_loader
-from humanization.annotations import load_annotation, Annotation, ChainKind
+from humanization.annotations import load_annotation, Annotation, ChainKind, ChainType
 from humanization.dataset import read_file, correct_v_call, make_annotated_df, filter_df, \
     merge_all_columns, read_annotated_dataset, read_dataset
 from humanization.utils import configure_logger
@@ -41,10 +41,14 @@ def read_any_dataset(input_dir: str, annotated_data: bool,
     return X, y
 
 
-def read_human_samples(dataset_file=None, annotated_data=None, annotation=None) -> Optional[List[str]]:
+def read_human_samples(dataset_file=None, annotated_data=None, annotation=None,
+                       v_type: ChainType = None) -> Optional[List[str]]:
     if dataset_file is not None:
         X, y = read_any_dataset(dataset_file, annotated_data, annotation)
-        df = X[y != 'NOT_HUMAN']
+        if v_type is None:
+            df = X[y != 'NOT_HUMAN']
+        else:
+            df = X[y == f'IG{v_type.full_type()}']
         df.reset_index(drop=True, inplace=True)
         human_samples = merge_all_columns(df)
         return human_samples
