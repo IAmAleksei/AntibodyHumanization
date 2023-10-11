@@ -39,6 +39,13 @@ def remove_minuses(seq_dict, key):
 SUMMARY = []
 
 
+def pretty_key(key):
+    mp = {"sequ": "Seq ", "hu_m": "HMab", "ther": "Exp "}
+    if key in mp:
+        return mp[key]
+    return f"Cl_{key[-1]}"
+
+
 def analyze(seq_dict: Dict[str, str]):
     def remove_xs(sss):
         return sss.replace('X', '')
@@ -53,7 +60,7 @@ def analyze(seq_dict: Dict[str, str]):
 
     diff_poses = set([i for i in range(len(seq_dict['ther'])) if seq_dict['ther'][i] != seq_dict['sequ'][i]])
 
-    def print_hamming_distance(key2):
+    def print_hamming_distance(key2, pluses=""):
         seq1, seq2, seq3 = seq_dict['ther'], remove_xs(seq_dict[key2]), seq_dict['sequ']
         if len(seq1) != len(seq2):
             print(f"Different lengths between `{key2}`")
@@ -76,7 +83,7 @@ def analyze(seq_dict: Dict[str, str]):
                     delete_errors[c3] += 1
                 insert_errors[c2] += 1
         beautiful_str = "".join(snd_str)
-        print(beautiful_str, key2, eq, group)
+        print(beautiful_str, pretty_key(key2), f"={eq}", f"~{group}", pluses)
         return eq, beautiful_str
 
     def analyze_its(i):
@@ -88,19 +95,18 @@ def analyze(seq_dict: Dict[str, str]):
                 changed_pos = itr.change.position - sq[:itr.change.position].count('X')
                 ch_ther = seq_dict['ther'][changed_pos] != seq_dict['sequ'][changed_pos]
                 result += "+" if ch_ther else "-"
-        print(result)
         return result, details[-1]
 
-    print(seq_dict['ther'], len(diff_poses))
-    print_hamming_distance('sequ')
+    sequ_eq, _ = print_hamming_distance('sequ')
+    print(seq_dict['ther'], f"Diff={len(diff_poses)}")
     print_hamming_distance('hu_m')
     max_eq = 0
     max_r = "", ""
     for i in range(1, 8):
-        eq, b = print_hamming_distance(f'tl_{i}')
         res, last_det = analyze_its(i)
+        eq, b = print_hamming_distance(f'tl_{i}', res)
         if eq > max_eq:
-            max_r = b, res, last_det
+            max_r = b, res, last_det, (eq - sequ_eq)
             max_eq = eq
     SUMMARY.append((seq_dict['sequ'], seq_dict['ther'], max_r))
     # print_hamming_distance('ther', 'tl_2')
@@ -112,12 +118,11 @@ def analyze_summary():
     positions_count = [0 for _ in range(mx_len)]
     v_gene_scores = []
     for t in SUMMARY:
-        sequ, ther, (beautiful_result, result, last_det) = t
+        sequ, ther, (beautiful_result, result, last_det, inc_eq) = t
         print("Seq.", sequ)
         print("Exp.", ther)
         print("Hum.", beautiful_result)
-        metric = round(result.count('+') / len(result), 2)
-        print(metric, result, last_det.v_gene_score)
+        print(result, f"VGeneScore={last_det.v_gene_score}", f"+{inc_eq}")
         if last_det.v_gene_score is not None:
             v_gene_scores.append(last_det.v_gene_score)
         for i, r in enumerate(result):
@@ -138,7 +143,7 @@ def analyze_summary():
 def main(models_dir, dataset_dir):
     models_dir = os.path.abspath(models_dir)
     with open('thera_antibodies.json', 'r') as fp:
-        samples = json.load(fp)
+        samples = json.load(fp)[:1]
 
     for i in range(1, 8):
         print(f'Processing HV{i}')
