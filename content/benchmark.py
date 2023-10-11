@@ -6,7 +6,7 @@ from typing import Dict, List
 
 from termcolor import colored
 
-from humanization import humanizer
+from humanization import humanizer, reverse_humanizer
 from humanization.abstract_humanizer import IterationDetails
 from humanization.annotations import ChainType
 
@@ -140,7 +140,7 @@ def analyze_summary():
         print("V gene score not calculated")
 
 
-def main(models_dir, dataset_dir):
+def main(models_dir, dataset_dir, humanizer_type):
     models_dir = os.path.abspath(models_dir)
     with open('thera_antibodies.json', 'r') as fp:
         samples = json.load(fp)
@@ -151,10 +151,16 @@ def main(models_dir, dataset_dir):
         for antibody in samples:
             remove_minuses(antibody['heavy'], 'sequ')
             prep_seqs.append((antibody['name'], antibody['heavy']['sequ']))
-        ans = humanizer.process_sequences(
-            models_dir, prep_seqs, ChainType.from_full_type(f'HV{i}'),
-            0.9, dataset_file=dataset_dir, annotated_data=True, aligned_result=True
-        )
+        if humanizer_type == "direct":
+            ans = humanizer.process_sequences(
+                models_dir, prep_seqs, ChainType.from_full_type(f'HV{i}'),
+                0.9, dataset_file=dataset_dir, annotated_data=True, aligned_result=True
+            )
+        else:
+            ans = reverse_humanizer.process_sequences(
+                models_dir, prep_seqs, ChainType.from_full_type(f'HV{i}'),
+                0.9, target_v_gene_score=0.85, dataset_file=dataset_dir, annotated_data=True, aligned_result=True
+            )
         for j, antibody in enumerate(samples):
             _, res1, its = ans[j]
             antibody['heavy'][f"tl_{i}"] = res1
@@ -176,5 +182,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''Benchmark direct humanizer''')
     parser.add_argument('--models', type=str, default="../models", help='Path to directory with models')
     parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
+    parser.add_argument('--humanizer', type=str, default='direct', choices=["direct", "reverse"], help='Humanizer type')
     args = parser.parse_args()
-    main(models_dir=args.models, dataset_dir=args.dataset)
+    main(models_dir=args.models, dataset_dir=args.dataset, humanizer_type=args.humanizer)

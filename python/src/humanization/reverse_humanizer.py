@@ -40,8 +40,8 @@ class ReverseHumanizer(AbstractHumanizer):
                 best_change = candidate_change
         return best_change
 
-    def query(self, sequence: str, target_model_metric: float,
-              target_v_gene_score: float = 0.0, human_sample: str = None) -> Tuple[str, List[IterationDetails]]:
+    def query(self, sequence: str, target_model_metric: float, target_v_gene_score: float = 0.0,
+              human_sample: str = None, aligned_result: bool = False) -> Tuple[str, List[IterationDetails]]:
         current_seq = annotate_single(sequence, self.model_wrapper.annotation,
                                       self.model_wrapper.chain_type.general_type())
         if current_seq is None:
@@ -81,15 +81,16 @@ class ReverseHumanizer(AbstractHumanizer):
             else:
                 logger.info(f"No effective changes found. Stop algorithm on model metric = {round(current_value, 6)}")
                 break
-        return seq_to_str(current_seq, False), iterations
+        return seq_to_str(current_seq, aligned_result), iterations
 
 
 def process_sequences(models_dir, sequences, chain_type, target_model_metric, dataset_file=None, annotated_data=None,
-                      human_sample=None, skip_positions="",  use_aa_similarity=True, target_v_gene_score=None):
+                      human_sample=None, skip_positions="",  use_aa_similarity=True, target_v_gene_score=None,
+                      aligned_result=False):
     model_wrapper = load_model(models_dir, chain_type)
     v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, annotated_data)
     humanizer = ReverseHumanizer(model_wrapper, v_gene_scorer, parse_list(skip_positions), use_aa_similarity)
-    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score, human_sample)
+    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score, human_sample, aligned_result)
     return results
 
 
