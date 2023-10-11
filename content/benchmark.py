@@ -209,6 +209,9 @@ def main(models_dir, dataset_dir, humanizer_type):
                 _, res1, its = ans
                 res1 = remove_xs(res1)
                 heavy_chain[f"tl_{tp}"] = res1
+                print(pretty_key("sequ"), heavy_chain['sequ'])
+                print(pretty_key("ther"), heavy_chain['ther'])
+                print(pretty_key(f"tl_{tp}"), res1)
                 eq, hum = print_hamming_distance(heavy_chain, f"tl_{tp}")
                 if eq == -1:
                     continue
@@ -219,9 +222,6 @@ def main(models_dir, dataset_dir, humanizer_type):
                         changes += 1
                         if heavy_chain[f"ther"][i] != heavy_chain['sequ'][i]:
                             ch_ther += 1
-                print(pretty_key("sequ"), heavy_chain['sequ'])
-                print(pretty_key("ther"), heavy_chain['ther'])
-                print(pretty_key(f"tl_{tp}"), hum)
                 print(f"VGeneScore={its[-1].v_gene_score}", f"Changes={changes}",
                       f"ChangesFracWithTher={round(ch_ther / changes * 100, 1)}%")
 
