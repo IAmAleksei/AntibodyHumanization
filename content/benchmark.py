@@ -1,7 +1,6 @@
 import argparse
 import json
 import os.path
-from collections import defaultdict
 from typing import Dict, List
 
 from termcolor import colored
@@ -40,14 +39,16 @@ SUMMARY = []
 
 
 def pretty_key(key):
-    mp = {"sequ": "Seq ", "hu_m": "HMab", "ther": "Exp "}
+    mp = {"sequ": "Original",
+          "hu_m": "Hu-Mab  ",
+          "ther": "Therap. "}
     if key in mp:
         return mp[key]
-    return f"Cl_{key[-1]}"
+    return f"TClass-{key[-1]}"
 
 
-def get_diff_indirect(seq_dict, i):
-    pass
+# def get_diff_indirect(seq_dict, i):
+#     pass
 
 
 def analyze_its_direct(seq_dict, i):
@@ -101,9 +102,9 @@ def analyze(seq_dict: Dict[str, str]):
 
     diff_poses = set([i for i in range(len(seq_dict['ther'])) if seq_dict['ther'][i] != seq_dict['sequ'][i]])
 
-    sequ_eq, _ = print_hamming_distance('sequ')
+    sequ_eq, _ = print_hamming_distance(seq_dict, 'sequ')
     print(seq_dict['ther'], f"Diff={len(diff_poses)}")
-    print_hamming_distance('hu_m')
+    print_hamming_distance(seq_dict, 'hu_m')
     max_eq = 0
     max_r = None
     for i in range(1, 8):
@@ -113,7 +114,7 @@ def analyze(seq_dict: Dict[str, str]):
             print('Bad alignment')
             continue
         res, last_det = analyze_its_direct(seq_dict, i)
-        eq, b = print_hamming_distance(f'tl_{i}', res)
+        eq, b = print_hamming_distance(seq_dict, f'tl_{i}', res)
         if eq > max_eq:
             max_r = b, res, last_det, (eq - sequ_eq)
             max_eq = eq
@@ -131,9 +132,9 @@ def analyze_summary():
             print("Skipped summary")
             continue
         beautiful_result, result, last_det, inc_eq = ress
-        print("Seq.", sequ)
-        print("Exp.", ther)
-        print("Hum.", beautiful_result)
+        print(pretty_key("sequ"), sequ)
+        print(pretty_key("ther"), ther)
+        print(pretty_key("hu_m"), beautiful_result)
         print(result, f"VGeneScore={last_det.v_gene_score}", f"+{inc_eq}")
         if last_det.v_gene_score is not None:
             v_gene_scores.append(last_det.v_gene_score)
@@ -208,9 +209,9 @@ def main(models_dir, dataset_dir, humanizer_type):
                     changes += 1
                     if heavy_chain[f"ther"][i] != heavy_chain['sequ'][i]:
                         ch_ther += 1
-            print("Seq.", heavy_chain['sequ'])
-            print("Exp.", heavy_chain['ther'])
-            print("Hum.", hum)
+            print(pretty_key("sequ"), heavy_chain['sequ'])
+            print(pretty_key("ther"), heavy_chain['ther'])
+            print(pretty_key("hu_m"), hum)
             print(f"VGeneScore={its[-1].v_gene_score}", f"Changes={changes}",
                   f"ChangesFracWithTher={round(ch_ther / changes * 100, 1)}%")
 

@@ -64,7 +64,7 @@ class ReverseHumanizer(AbstractHumanizer):
         iterations.append(IterationDetails(0, current_value, v_gene_score, None))
         for it in range(1, config.get(config_loader.MAX_CHANGES) + 1):
             current_value, v_gene_score = self._calc_metrics(current_seq, human_sample)
-            logger.info(f"Iteration {it}. "
+            logger.debug(f"Iteration {it}. "
                         f"Current model metric = {round(current_value, 6)}, V Gene score = {v_gene_score}")
             best_change = self._find_best_change(current_seq, original_seq)
             if best_change.is_defined():
@@ -76,7 +76,7 @@ class ReverseHumanizer(AbstractHumanizer):
                     logger.info(f"Current metrics are best ({round(current_value, 6)})")
                     break
                 column_name = self.model_wrapper.annotation.segmented_positions[best_change.position]
-                logger.info(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
+                logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
                 iterations.append(IterationDetails(it, best_value, v_gene_score, best_change))
             else:
                 logger.info(f"No effective changes found. Stop algorithm on model metric = {round(current_value, 6)}")
