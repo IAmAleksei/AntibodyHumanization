@@ -122,8 +122,7 @@ def common_parser_options(parser):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description='''Humanizer''')
+    parser = argparse.ArgumentParser(description='''Humanizer''')
     parser.add_argument('--input', type=str, required=False, help='Path to input fasta file')
     parser.add_argument('--output', type=str, required=False, help='Path to output fasta file')
     common_parser_options(parser)

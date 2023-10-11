@@ -1,11 +1,12 @@
+import argparse
 import json
 import os.path
 from collections import defaultdict
-
-from termcolor import colored
 from typing import Dict, List
 
-from humanization import humanizer, reverse_humanizer
+from termcolor import colored
+
+from humanization import humanizer
 from humanization.abstract_humanizer import IterationDetails
 from humanization.annotations import ChainType
 
@@ -31,31 +32,26 @@ def same_group_aa(aa1, aa2):
     return False
 
 
-def process_sequence(models_dir: str, name: str, seq_dict: Dict[str, str], target_model_metric: float):
-    def remove_minuses(key):
-        seq_dict[key] = seq_dict[key].replace('-', '')
+def remove_minuses(seq_dict, key):
+    seq_dict[key] = seq_dict[key].replace('-', '')
 
-    remove_minuses('sequ')
-    remove_minuses('ther')
-    remove_minuses('hu_m')
 
-    # chain_type = ChainType.from_full_type(seq_dict['type'])
-    for i in range(1, 8):
-        _, res1, its = humanizer.process_sequences(
-            models_dir, [(name, seq_dict['sequ']), ], ChainType.from_full_type(f'HV{i}'),
-            target_model_metric, aligned_result=True
-        )[0]
-        seq_dict[f"tl_{i}"] = res1
-        seq_dict[f"ti_{i}"] = its
-    # _, res2 = reverse_humanizer.process_sequences(models_dir, [(name, seq_dict['sequ']), ], chain_type, target_model_metric)[0]
-    # seq_dict["tl_2"] = res2
+SUMMARY = []
 
 
 def analyze(seq_dict: Dict[str, str]):
-    diff_poses = set([i for i in range(len(seq_dict['ther'])) if seq_dict['ther'] != seq_dict['sequ']])
+    def remove_xs(sss):
+        return sss.replace('X', '')
 
-    def remove_xs(key):
-        return seq_dict[key].replace('X', '')
+    remove_minuses(seq_dict, 'sequ')
+    remove_minuses(seq_dict, 'ther')
+    remove_minuses(seq_dict, 'hu_m')
+
+    if len(remove_xs(seq_dict['tl_1'])) != len(seq_dict['ther']) or len(seq_dict['ther']) != len(seq_dict['sequ']):
+        print('Bad alignment')
+        return
+
+    diff_poses = set([i for i in range(len(seq_dict['ther'])) if seq_dict['ther'][i] != seq_dict['sequ'][i]])
 
     def print_hamming_distance(key2):
         seq1, seq2, seq3 = seq_dict['ther'], remove_xs(seq_dict[key2]), seq_dict['sequ']
@@ -79,43 +75,101 @@ def analyze(seq_dict: Dict[str, str]):
                 if same_group_aa(c1, c3):
                     delete_errors[c3] += 1
                 insert_errors[c2] += 1
-        print("".join(snd_str), key2, eq, group, delete_errors, insert_errors)
-        # print(f"Distance between `{key1}` and `{key2}`:", "eq =", eq, "; group =", group)
-        # print()
+        beautiful_str = "".join(snd_str)
+        print(beautiful_str, key2, eq, group)
+        return eq, beautiful_str
 
-    # def analyze_its(i):
-    #     details: List[IterationDetails] = seq_dict[f"ti_{i}"]
-    #     for itr in details:
-    #         if itr.change:
-    #             print(itr.change.position, itr.change.old_aa, itr.change.aa)
+    def analyze_its(i):
+        sq = seq_dict[f"tl_{i}"]
+        details: List[IterationDetails] = seq_dict[f"ti_{i}"]
+        result = ""
+        for itr in details:
+            if itr.change:
+                changed_pos = itr.change.position - sq[:itr.change.position].count('X')
+                ch_ther = seq_dict['ther'][changed_pos] != seq_dict['sequ'][changed_pos]
+                result += "+" if ch_ther else "-"
+        print(result)
+        return result, details[-1]
 
-    print(seq_dict['ther'])
+    print(seq_dict['ther'], len(diff_poses))
     print_hamming_distance('sequ')
     print_hamming_distance('hu_m')
+    max_eq = 0
+    max_r = "", ""
     for i in range(1, 8):
-        print_hamming_distance(f'tl_{i}')
-        # analyze_its(i)
+        eq, b = print_hamming_distance(f'tl_{i}')
+        res, last_det = analyze_its(i)
+        if eq > max_eq:
+            max_r = b, res, last_det
+            max_eq = eq
+    SUMMARY.append((seq_dict['sequ'], seq_dict['ther'], max_r))
     # print_hamming_distance('ther', 'tl_2')
 
 
-def main():
-    models_dir = os.path.abspath("../models")
+def analyze_summary():
+    mx_len = max(len(SUMMARY[i][2][1]) for i in range(len(SUMMARY)))
+    positions_correct = [0 for _ in range(mx_len)]
+    positions_count = [0 for _ in range(mx_len)]
+    v_gene_scores = []
+    for t in SUMMARY:
+        sequ, ther, (beautiful_result, result, last_det) = t
+        print("Seq.", sequ)
+        print("Exp.", ther)
+        print("Hum.", beautiful_result)
+        metric = round(result.count('+') / len(result), 2)
+        print(metric, result, last_det.v_gene_score)
+        if last_det.v_gene_score is not None:
+            v_gene_scores.append(last_det.v_gene_score)
+        for i, r in enumerate(result):
+            if r == "+":
+                positions_correct[i] += 1
+            positions_count[i] += 1
+    sm_correct, sm_count = sum(positions_correct), sum(positions_count)
+    correct_fraction = [round(positions_correct[i] / positions_count[i] * 100, 1) for i in range(mx_len)]
+    print("Correct positions", sm_correct, "of", sm_count, f"({round(sm_correct / sm_count * 100, 1)}%)")
+    print("Count of correct", positions_correct, "and of all", positions_count)
+    print("Fraction of correct", correct_fraction)
+    if len(v_gene_scores) > 0:
+        print(f"Average v gene score", sum(v_gene_scores) / len(v_gene_scores))
+    else:
+        print("V gene score not calculated")
+
+
+def main(models_dir, dataset_dir):
+    models_dir = os.path.abspath(models_dir)
     with open('thera_antibodies.json', 'r') as fp:
         samples = json.load(fp)
 
-    for antibody in samples[1:]:
-        name = antibody["name"]
-        print(f'Processing antibody {name}')
-        process_sequence(models_dir, name, antibody["heavy"], 0.99)
-        # process_sequence(models_dir, name, antibody["light"], 0.99)
+    for i in range(1, 8):
+        print(f'Processing HV{i}')
+        prep_seqs = []
+        for antibody in samples:
+            remove_minuses(antibody['heavy'], 'sequ')
+            prep_seqs.append((antibody['name'], antibody['heavy']['sequ']))
+        ans = humanizer.process_sequences(
+            models_dir, prep_seqs, ChainType.from_full_type(f'HV{i}'),
+            0.9, dataset_file=dataset_dir, annotated_data=True, aligned_result=True
+        )
+        for j, antibody in enumerate(samples):
+            _, res1, its = ans[j]
+            antibody['heavy'][f"tl_{i}"] = res1
+            antibody['heavy'][f"ti_{i}"] = its
+
     print()
     print("Analyze")
-    for antibody in samples[1:]:
+    for antibody in samples:
         print('---')
         print(f'Processing antibody {antibody["name"]} {antibody["heavy"]["type"]}')
         analyze(antibody["heavy"])
 
+    print()
+    print("Summary")
+    analyze_summary()
+
 
 if __name__ == '__main__':
-    main()
-
+    parser = argparse.ArgumentParser(description='''Benchmark direct humanizer''')
+    parser.add_argument('--models', type=str, default="../models", help='Path to directory with models')
+    parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
+    args = parser.parse_args()
+    main(models_dir=args.models, dataset_dir=args.dataset)
