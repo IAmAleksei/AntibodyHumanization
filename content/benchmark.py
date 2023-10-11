@@ -210,6 +210,8 @@ def main(models_dir, dataset_dir, humanizer_type):
             )
             for j, ans in enumerate(ansss):
                 heavy_chain = saved_seqs[j]
+                print('***')
+                print(f'Processing antibody {prep_seqs[j][0]} {tp}')
                 _, res1, its = ans
                 res1 = remove_xs(res1)
                 heavy_chain[f"tl_{tp}"] = res1
