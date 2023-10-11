@@ -185,34 +185,45 @@ def main(models_dir, dataset_dir, humanizer_type):
         print("Summary")
         analyze_summary()
     else:
-        for antibody in samples:
-            heavy_chain = antibody['heavy']
-            tp = heavy_chain['type']
-            remove_minuses(heavy_chain, 'ther')
-            remove_minuses(heavy_chain, 'sequ')
-            seq = (antibody['name'], heavy_chain['sequ'])
-            ans = reverse_humanizer.process_sequences(
-                models_dir, [seq], ChainType.from_full_type(tp), 0.5, target_v_gene_score=0.85,
-                dataset_file=dataset_dir, annotated_data=True, aligned_result=True, prefer_human_sample=True
-            )[0]
-            _, res1, its = ans
-            res1 = remove_xs(res1)
-            heavy_chain[f"tl_{tp}"] = res1
-            eq, hum = print_hamming_distance(heavy_chain, f"tl_{tp}")
-            if eq == -1:
+        for i in range(1, 8):
+            tp = f'HV{i}'
+            print(f'Processing {tp}')
+            print("Humanizer type", humanizer_type)
+            prep_seqs = []
+            saved_seqs = []
+            for antibody in samples:
+                if antibody['heavy']['type'] == tp:
+                    heavy_chain = antibody['heavy']
+                    remove_minuses(heavy_chain, 'sequ')
+                    remove_minuses(heavy_chain, 'ther')
+                    prep_seqs.append((antibody['name'], antibody['heavy']['sequ']))
+                    saved_seqs.append(heavy_chain)
+            if len(prep_seqs) == 0:
                 continue
-            changes = 0
-            ch_ther = 0
-            for i in range(len(heavy_chain['ther'])):
-                if res1[i] != heavy_chain['sequ'][i]:
-                    changes += 1
-                    if heavy_chain[f"ther"][i] != heavy_chain['sequ'][i]:
-                        ch_ther += 1
-            print(pretty_key("sequ"), heavy_chain['sequ'])
-            print(pretty_key("ther"), heavy_chain['ther'])
-            print(pretty_key(f"tl_{tp}"), hum)
-            print(f"VGeneScore={its[-1].v_gene_score}", f"Changes={changes}",
-                  f"ChangesFracWithTher={round(ch_ther / changes * 100, 1)}%")
+            ansss = reverse_humanizer.process_sequences(
+                models_dir, prep_seqs, ChainType.from_full_type(tp), 0.5, target_v_gene_score=0.85,
+                dataset_file=dataset_dir, annotated_data=True, aligned_result=True, prefer_human_sample=True
+            )
+            for j, ans in enumerate(ansss):
+                heavy_chain = saved_seqs[j]
+                _, res1, its = ans
+                res1 = remove_xs(res1)
+                heavy_chain[f"tl_{tp}"] = res1
+                eq, hum = print_hamming_distance(heavy_chain, f"tl_{tp}")
+                if eq == -1:
+                    continue
+                changes = 0
+                ch_ther = 0
+                for i in range(len(heavy_chain['ther'])):
+                    if res1[i] != heavy_chain['sequ'][i]:
+                        changes += 1
+                        if heavy_chain[f"ther"][i] != heavy_chain['sequ'][i]:
+                            ch_ther += 1
+                print(pretty_key("sequ"), heavy_chain['sequ'])
+                print(pretty_key("ther"), heavy_chain['ther'])
+                print(pretty_key(f"tl_{tp}"), hum)
+                print(f"VGeneScore={its[-1].v_gene_score}", f"Changes={changes}",
+                      f"ChangesFracWithTher={round(ch_ther / changes * 100, 1)}%")
 
 
 if __name__ == '__main__':
