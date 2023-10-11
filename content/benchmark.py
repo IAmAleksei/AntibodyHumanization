@@ -86,7 +86,7 @@ def print_hamming_distance(seq_dict, key2, pluses=""):
         else:
             snd_str.append(colored(c2, 'red'))
     beautiful_str = "".join(snd_str)
-    print(beautiful_str, pretty_key(key2), f"={eq}", f"~{group}", pluses)
+    print(pretty_key(key2), beautiful_str, f"={eq}", f"~{group}", pluses)
     return eq, beautiful_str
 
 
@@ -103,7 +103,7 @@ def analyze(seq_dict: Dict[str, str]):
     diff_poses = set([i for i in range(len(seq_dict['ther'])) if seq_dict['ther'][i] != seq_dict['sequ'][i]])
 
     sequ_eq, _ = print_hamming_distance(seq_dict, 'sequ')
-    print(seq_dict['ther'], f"Diff={len(diff_poses)}")
+    print(pretty_key('ther'), seq_dict['ther'], f"Diff={len(diff_poses)}")
     print_hamming_distance(seq_dict, 'hu_m')
     max_eq = 0
     max_r = None
