@@ -143,7 +143,7 @@ def analyze_summary():
 def main(models_dir, dataset_dir):
     models_dir = os.path.abspath(models_dir)
     with open('thera_antibodies.json', 'r') as fp:
-        samples = json.load(fp)[:1]
+        samples = json.load(fp)
 
     for i in range(1, 8):
         print(f'Processing HV{i}')
