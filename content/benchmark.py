@@ -67,10 +67,9 @@ def remove_xs(sss):
     return sss.replace('X', '')
 
 
-def print_hamming_distance(seq_dict, key2, pluses=""):
-    seq1, seq2, seq3 = seq_dict['ther'], remove_xs(seq_dict[key2]), seq_dict['sequ']
+def print_hamming_distance2(seq1, seq2, seq3, label, pluses=""):
     if len(seq1) != len(seq2):
-        print(f"Different lengths between `{key2}`")
+        print(f"Different lengths")
         print()
         return -1, ""
     eq, group = 0, 0
@@ -86,8 +85,13 @@ def print_hamming_distance(seq_dict, key2, pluses=""):
         else:
             snd_str.append(colored(c2, 'red'))
     beautiful_str = "".join(snd_str)
-    print(pretty_key(key2), beautiful_str, f"={eq}", f"~{group}", pluses)
+    print(label, beautiful_str, f"={eq}", f"~{group}", pluses)
     return eq, beautiful_str
+
+
+def print_hamming_distance(seq_dict, key2, pluses=""):
+    seq1, seq2, seq3 = seq_dict['ther'], remove_xs(seq_dict[key2]), seq_dict['sequ']
+    return print_hamming_distance2(seq1, seq2, seq3, pretty_key(key2), pluses)
 
 
 def analyze(seq_dict: Dict[str, str]):
@@ -222,7 +226,7 @@ def main(models_dir, dataset_dir, humanizer_type):
                         changes += 1
                         if heavy_chain[f"ther"][i] != heavy_chain['sequ'][i]:
                             ch_ther += 1
-                print(f"VGeneScore={its[-1].v_gene_score}", f"Changes={changes}",
+                print(f"VGeneScore={its[-1].v_gene_score}", f"ChangesWithTher={ch_ther}", f"Changes={changes}",
                       f"ChangesFracWithTher={round(ch_ther / changes * 100, 1)}%")
 
 

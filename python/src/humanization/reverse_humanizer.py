@@ -72,6 +72,7 @@ class ReverseHumanizer(AbstractHumanizer):
                 prev_aa = current_seq[best_change.position]
                 current_seq[best_change.position] = best_change.aa
                 best_value, v_gene_score = self._calc_metrics(current_seq, human_sample, prefer_human_sample)
+                logger.debug(f"Trying apply metric {best_value} and v_gene_score {v_gene_score}")
                 if not (target_model_metric <= best_value and is_v_gene_score_less(target_v_gene_score, v_gene_score)):
                     current_seq[best_change.position] = prev_aa
                     logger.info(f"Current metrics are best ({round(current_value, 6)})")
