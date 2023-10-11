@@ -163,7 +163,7 @@ def main(models_dir, dataset_dir):
     print()
     print("Analyze")
     for antibody in samples:
-        print('---')
+        print('***')
         print(f'Processing antibody {antibody["name"]} {antibody["heavy"]["type"]}')
         analyze(antibody["heavy"])
 
