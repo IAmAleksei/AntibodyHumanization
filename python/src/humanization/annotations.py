@@ -64,6 +64,9 @@ class ChainType(Enum):
     def full_type(self):
         return f"{self.general_type().value}V{self.value}"
 
+    def oas_type(self):
+        return f"IG{self.full_type()}"
+
     @staticmethod
     def from_full_type(s):
         # {H,K,L}V[1-10]
@@ -207,7 +210,7 @@ def annotate_batch(sequences: List[str], annotation: Annotation, chain_type: Gen
                    is_human: bool = False) -> Tuple[List[int], List[List[str]]]:
     sequences_ = list(enumerate(sequences))
     kwargs = {
-        'ncpu': config.get(config_loader.ANARCI_NCPU),
+        'ncpu': config.get(config_loader.NCPU),
         'scheme': annotation.name,
     }
     if chain_type:

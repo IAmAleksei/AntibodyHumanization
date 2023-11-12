@@ -156,7 +156,7 @@ def analyze_summary():
         print("V gene score not calculated")
 
 
-def main(models_dir, dataset_dir, humanizer_type):
+def main(models_dir, dataset_dir, humanizer_type, fasta_output):
     models_dir = os.path.abspath(models_dir)
     with open('thera_antibodies.json', 'r') as fp:
         samples = json.load(fp)
@@ -189,6 +189,8 @@ def main(models_dir, dataset_dir, humanizer_type):
         print("Summary")
         analyze_summary()
     else:
+        if fasta_output is not None:
+            open(fasta_output, 'w').close()
         for i in range(1, 8):
             tp = f'HV{i}'
             print(f'Processing {tp}')
@@ -200,13 +202,14 @@ def main(models_dir, dataset_dir, humanizer_type):
                     heavy_chain = antibody['heavy']
                     remove_minuses(heavy_chain, 'sequ')
                     remove_minuses(heavy_chain, 'ther')
+                    remove_minuses(heavy_chain, 'hu_m')
                     prep_seqs.append((antibody['name'], antibody['heavy']['sequ']))
                     saved_seqs.append(heavy_chain)
             if len(prep_seqs) == 0:
                 continue
             ansss = reverse_humanizer.process_sequences(
                 models_dir, prep_seqs, ChainType.from_full_type(tp), 0.5, target_v_gene_score=0.85,
-                dataset_file=dataset_dir, annotated_data=True, aligned_result=True, prefer_human_sample=True
+                dataset_file=dataset_dir, annotated_data=True, aligned_result=True
             )
             for j, ans in enumerate(ansss):
                 heavy_chain = saved_seqs[j]
@@ -218,6 +221,20 @@ def main(models_dir, dataset_dir, humanizer_type):
                 print(pretty_key("sequ"), heavy_chain['sequ'])
                 print(pretty_key("ther"), heavy_chain['ther'])
                 print(pretty_key(f"tl_{tp}"), res1)
+                if fasta_output is not None:
+                    with open(fasta_output, 'a') as f:
+                        lines = [
+                            f">{prep_seqs[j][0]}_{pretty_key('sequ')}",
+                            heavy_chain['sequ'],
+                            f">{prep_seqs[j][0]}_{pretty_key('ther')}",
+                            heavy_chain['ther'],
+                            f">{prep_seqs[j][0]}_{pretty_key('hu_m')}",
+                            heavy_chain['hu_m'],
+                            f">{prep_seqs[j][0]}_{pretty_key(f'tl_{tp}')}",
+                            res1,
+                            ""
+                        ]
+                        f.writelines("\n".join(lines))
                 eq, hum = print_hamming_distance(heavy_chain, f"tl_{tp}")
                 if eq == -1:
                     continue
@@ -237,5 +254,7 @@ if __name__ == '__main__':
     parser.add_argument('--models', type=str, default="../models", help='Path to directory with models')
     parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
     parser.add_argument('--humanizer', type=str, default='direct', choices=["direct", "reverse"], help='Humanizer type')
+    parser.add_argument('--fasta-output', type=str, default=None, help='Generate fasta with all sequences')
     args = parser.parse_args()
-    main(models_dir=args.models, dataset_dir=args.dataset, humanizer_type=args.humanizer)
+    main(models_dir=args.models, dataset_dir=args.dataset, humanizer_type=args.humanizer,
+         fasta_output=args.fasta_output)

@@ -49,5 +49,3 @@ def write_sequences(output_file, sequences):
     else:
         seqs = [SeqRecord(Seq(seq), id=name, description='') for name, seq in sequences]
         SeqIO.write(seqs, output_file, 'fasta')
-
-

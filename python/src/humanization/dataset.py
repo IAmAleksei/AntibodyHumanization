@@ -1,7 +1,7 @@
 import json
 import os
 from itertools import accumulate
-from typing import List, Tuple, Any, NoReturn, Callable
+from typing import List, Tuple, Any, NoReturn, Callable, Optional
 
 import numpy as np
 import pandas as pd
@@ -9,7 +9,7 @@ from sklearn.metrics import confusion_matrix
 from tqdm import tqdm
 
 from humanization import config_loader
-from humanization.annotations import Annotation, annotate_batch
+from humanization.annotations import Annotation, annotate_batch, ChainType
 from humanization.utils import configure_logger
 
 config = config_loader.Config()
@@ -70,8 +70,13 @@ def read_datasets(input_dir: str, read_function: Callable[[str], pd.DataFrame]) 
     return dfs
 
 
-def read_dataset(*args, **kwargs) -> Tuple[pd.DataFrame, pd.Series]:
-    dfs = read_datasets(*args, **kwargs)
+def read_dataset(*args, only_human: bool = False, v_type: Optional[ChainType] = None) -> Tuple[pd.DataFrame, pd.Series]:
+    dfs = read_datasets(*args)
+    if v_type is not None:  # Only specific v type
+        dfs = [df[df['v_call'] == v_type.oas_type()] for i, df in enumerate(dfs)]
+    elif only_human:  # Only human samples
+        dfs = [df[df['v_call'] != 'NOT_HUMAN'] for i, df in enumerate(dfs)]
+
     dataset = pd.concat(dfs, axis=0, ignore_index=True, copy=False)
     dataset.drop_duplicates(ignore_index=True, inplace=True)
     logger.info(f"Dataset: {dataset.shape[0]} rows (duplicates removed)")
@@ -80,8 +85,8 @@ def read_dataset(*args, **kwargs) -> Tuple[pd.DataFrame, pd.Series]:
     return X, y
 
 
-def read_annotated_dataset(input_dir: str) -> Tuple[pd.DataFrame, pd.Series]:
-    return read_dataset(input_dir, pd.read_csv)
+def read_annotated_dataset(input_dir: str, **kwargs) -> Tuple[pd.DataFrame, pd.Series]:
+    return read_dataset(input_dir, pd.read_csv, **kwargs)
 
 
 def merge_all_columns(df: pd.DataFrame) -> List[str]:

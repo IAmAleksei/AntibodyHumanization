@@ -23,34 +23,34 @@ def read_and_annotate_file(csv_file: str, annotation: Annotation) -> pandas.Data
     return df
 
 
-def read_raw_dataset(input_dir: str, annotation: Annotation) -> Tuple[pandas.DataFrame, pandas.Series]:
-    return read_dataset(input_dir, lambda csv_file: read_and_annotate_file(csv_file, annotation))
+def read_raw_dataset(input_dir: str, annotation: Annotation, **kwargs) -> Tuple[pandas.DataFrame, pandas.Series]:
+    return read_dataset(input_dir, lambda csv_file: read_and_annotate_file(csv_file, annotation), **kwargs)
 
 
-def read_any_dataset(input_dir: str, annotated_data: bool,
-                     annotation: Annotation) -> Tuple[pandas.DataFrame, pandas.Series]:
+def read_any_dataset(input_dir: str, annotated_data: bool, annotation: Annotation, only_human: bool = False,
+                     v_type: Optional[ChainType] = None) -> Tuple[pandas.DataFrame, pandas.Series]:
     if annotated_data:
         logger.info(f"Use annotated-data mode")
         logger.info(f"Please check that `{annotation.name}` is defined correctly")
-        X, y = read_annotated_dataset(input_dir)
+        X, y = read_annotated_dataset(input_dir, only_human=only_human, v_type=v_type)
     else:
         logger.info(f"Use raw-data mode")
-        X, y = read_raw_dataset(input_dir, annotation)
+        X, y = read_raw_dataset(input_dir, annotation, only_human=only_human, v_type=v_type)
     if X.isna().sum().sum() > 0 or y.isna().sum() > 0:
         raise RuntimeError("Found nans")
+    if X.shape[0] != y.shape[0]:
+        raise RuntimeError(f"X has shape {X.shape}, but y has shape {y.shape}")
+    if v_type is not None and not y.eq(v_type.oas_type()).all():
+        raise RuntimeError("If v gene is specified then all v_call values must be equal to that")
     return X, y
 
 
 def read_human_samples(dataset_file=None, annotated_data=None, annotation=None,
                        v_type: ChainType = None) -> Optional[List[str]]:
     if dataset_file is not None:
-        X, y = read_any_dataset(dataset_file, annotated_data, annotation)
-        if v_type is None:
-            df = X[y != 'NOT_HUMAN']
-        else:
-            df = X[y == f'IG{v_type.full_type()}']
-        df.reset_index(drop=True, inplace=True)
-        human_samples = merge_all_columns(df)
+        X, y = read_any_dataset(dataset_file, annotated_data, annotation, only_human=True, v_type=v_type)
+        X.reset_index(drop=True, inplace=True)
+        human_samples = merge_all_columns(X)
         return human_samples
     else:
         return None

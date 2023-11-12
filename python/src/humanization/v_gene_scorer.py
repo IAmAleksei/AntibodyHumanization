@@ -1,3 +1,4 @@
+from multiprocessing import Pool
 from typing import List, Tuple, Optional
 
 from humanization import config_loader
@@ -25,6 +26,16 @@ def is_v_gene_score_less(first: Optional[float], second: Optional[float]) -> boo
     return first < second
 
 
+def calc_score_wrapper(sample):
+    return calc_score(sequence, sample, annotation)
+
+
+def worker_init(seq, ann):
+    global sequence, annotation
+    sequence = seq
+    annotation = ann
+
+
 class VGeneScorer:
     def __init__(self, annotation: Annotation, human_samples: List[str]):
         self.annotation = annotation
@@ -32,8 +43,10 @@ class VGeneScorer:
 
     def query(self, sequence: List[str]) -> Tuple[str, float]:
         best_sample_idx, best_v_gene_score = None, 0
-        for idx, human_sample in enumerate(self.human_samples):
-            v_gene_score = calc_score(sequence, human_sample, self.annotation)
+        worker_args = sequence, self.annotation
+        with Pool(processes=config.get(config_loader.NCPU), initializer=worker_init, initargs=worker_args) as pool:
+            v_gene_scores = pool.map(calc_score_wrapper, self.human_samples)
+        for idx, v_gene_score in enumerate(v_gene_scores):
             if v_gene_score > best_v_gene_score:
                 best_sample_idx = idx
                 best_v_gene_score = v_gene_score
