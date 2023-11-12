@@ -81,8 +81,8 @@ def build_tree_impl(X_train, y_train, val_pool, iterative_learning: bool = False
 
 def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: ChainType, metric: str,
                iterative_learning: bool = False, print_metrics: bool = True):
-    y_train = make_binary_target(y_train_raw, v_type.full_type())
-    y_val = make_binary_target(y_val_raw, v_type.full_type())
+    y_train = make_binary_target(y_train_raw, v_type.oas_type())
+    y_val = make_binary_target(y_val_raw, v_type.oas_type())
     logger.debug(f"Dataset for {v_type.full_type()} tree contains {np.count_nonzero(y_train == 1)} positive samples")
 
     val_pool = Pool(X_val, y_val, cat_features=X_val.columns.tolist())
@@ -117,7 +117,7 @@ def make_model(X_train, y_train, X_val, y_val, test_pool, y_test, annotation: An
     logger.debug(f"Tree for {v_type.full_type()} was built")
     y_pred_proba = model.predict_proba(test_pool)[:, 1]
     y_pred = np.where(y_pred_proba >= threshold, 1, 0)
-    logger.info(format_confusion_matrix(make_binary_target(y_test, v_type.full_type()), y_pred))
+    logger.info(format_confusion_matrix(make_binary_target(y_test, v_type.oas_type()), y_pred))
     logger.info(f"Tree for {v_type.full_type()} tested.")
     return ModelWrapper(v_type, model, annotation, threshold)
 

@@ -96,7 +96,7 @@ def merge_all_columns(df: pd.DataFrame) -> List[str]:
 
 
 def make_binary_target(y, target_v_type):
-    return np.where(y.apply(lambda x: x == f"IG{target_v_type}"), 1, 0)
+    return np.where(y.apply(lambda x: x == target_v_type), 1, 0)
 
 
 def format_confusion_matrix(y_test, y_pred):
