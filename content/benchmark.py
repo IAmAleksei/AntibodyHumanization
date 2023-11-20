@@ -39,9 +39,11 @@ SUMMARY = []
 
 
 def pretty_key(key):
-    mp = {"sequ": "Original",
+    mp = {"sequ": "Wild    ",
           "hu_m": "Hu-Mab  ",
-          "ther": "Therap. "}
+          "ther": "Therap. ",
+          "sap1": "Sap-1i. ",
+          "sap3": "Sap-3i. "}
     if key in mp:
         return mp[key]
     return f"TClass-{key[-1]}"
@@ -232,6 +234,10 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                             heavy_chain['hu_m'],
                             f">{prep_seqs[j][0]}_{pretty_key(f'tl_{tp}')}",
                             res1,
+                            f">{prep_seqs[j][0]}_{pretty_key('sap1')}",
+                            heavy_chain['sap1'],
+                            f">{prep_seqs[j][0]}_{pretty_key('sap3')}",
+                            heavy_chain['sap3'],
                             ""
                         ]
                         f.writelines("\n".join(lines))
