@@ -9,6 +9,7 @@ from humanization.annotations import ChainType
 
 
 logger = logging.getLogger(__name__)
+logger.setLevel('debug')
 
 
 def main(models_dir, dataset_dir, humanizer_type, fasta_output):
@@ -17,7 +18,7 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
     with open('thera_antibodies.json', 'r') as fp:
         samples = json.load(fp)
 
-    for model_metric in [0.5, 0.75, 0.9, 0.95, 0.99]:
+    for model_metric in [0.5, 0.75, 0.9, 0.95, 0.99, 1.00]:
         logger.info(f"Starting processing metric {model_metric}")
         for i in range(1, 8):
             tp = f'HV{i}'
