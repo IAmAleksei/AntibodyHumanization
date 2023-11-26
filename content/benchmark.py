@@ -9,7 +9,7 @@ from humanization.annotations import ChainType
 
 
 logger = logging.getLogger(__name__)
-logger.setLevel('debug')
+logger.setLevel('DEBUG')
 
 
 def main(models_dir, dataset_dir, humanizer_type, fasta_output):
