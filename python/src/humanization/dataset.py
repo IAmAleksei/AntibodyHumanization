@@ -72,7 +72,7 @@ def read_datasets(input_dir: str, read_function: Callable[[str], pd.DataFrame],
             df.reset_index(drop=True, inplace=True)
             return df
 
-        dfs = list(executor.map(worker_thread, file_names))
+        dfs = list(tqdm(executor.map(worker_thread, file_names), total=len(file_names)))
     for df in dfs:
         original_data_size += df.shape[0]
     logger.info(f"Original dataset: {original_data_size} rows")
