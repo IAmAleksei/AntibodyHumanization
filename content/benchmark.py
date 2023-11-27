@@ -6,10 +6,11 @@ import os.path
 
 from humanization import humanizer, reverse_humanizer
 from humanization.annotations import ChainType
-
+from humanization.models import load_model
+from humanization.v_gene_scorer import build_v_gene_scorer
 
 logger = logging.getLogger(__name__)
-logger.setLevel('DEBUG')
+logger.setLevel('INFO')
 
 
 def main(models_dir, dataset_dir, humanizer_type, fasta_output):
@@ -18,10 +19,15 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
     with open('thera_antibodies.json', 'r') as fp:
         samples = json.load(fp)
 
-    for model_metric in [0.5, 0.75, 0.9, 0.95, 0.99, 1.00]:
-        logger.info(f"Starting processing metric {model_metric}")
-        for i in range(1, 8):
-            tp = f'HV{i}'
+    for i in range(1, 8):
+        tp = f'HV{i}'
+        chain_type = ChainType.from_full_type(tp)
+        logger.info(f"Starting processing type {tp}")
+        model_wrapper = load_model(models_dir, chain_type)
+        v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_dir, True, chain_type)
+        logger.info(f"Resources loaded")
+        for model_metric in [0.5, 0.75, 0.9, 0.95, 0.99, 1.00]:
+            logger.info(f"Starting processing metric {model_metric}")
             logger.info(f'Processing metric={model_metric} type={tp}')
             prep_seqs = []
             for antibody in samples:
@@ -31,13 +37,13 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                 continue
             direct_result, reverse_result = [], []
             if humanizer_type is None or humanizer_type == "direct":
-                direct_result = humanizer.process_sequences(
-                    models_dir, prep_seqs, ChainType.from_full_type(tp), model_metric,
-                    dataset_file=dataset_dir, annotated_data=True, aligned_result=True)
+                direct_result = humanizer._process_sequences(
+                    model_wrapper, v_gene_scorer, prep_seqs, model_metric, aligned_result=True
+                )
             if humanizer_type is None or humanizer_type == "reverse":
-                reverse_result = reverse_humanizer.process_sequences(
-                    models_dir, prep_seqs, ChainType.from_full_type(tp), model_metric,
-                    target_v_gene_score=0.85, dataset_file=dataset_dir, annotated_data=True, aligned_result=True)
+                reverse_result = reverse_humanizer._process_sequences(
+                    model_wrapper, v_gene_scorer, prep_seqs, model_metric, target_v_gene_score=0.85, aligned_result=True
+                )
             with open(fasta_output, 'a') as f:
                 lines = []
                 for name, res, _ in direct_result:

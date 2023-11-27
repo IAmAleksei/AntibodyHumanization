@@ -2,7 +2,7 @@ LOGGING_LEVEL: 'DEBUG'
 LOGGING_FORMAT: '%(asctime)-15s | %(levelname)s | %(filename)s | %(lineno)d: %(message)s'
 
 MAX_CHANGES: 50
-NCPU: 28
+NCPU: 16
 MEMORY_LIMIT: '120Gb'
 TREE_DEPTH: 3
 MAX_CTR_COMPLEXITY: 4

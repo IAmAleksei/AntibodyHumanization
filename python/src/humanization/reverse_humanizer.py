@@ -86,15 +86,23 @@ class ReverseHumanizer(AbstractHumanizer):
         return seq_to_str(current_seq, aligned_result), iterations
 
 
+def _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric,
+                       human_sample=None, skip_positions="",  use_aa_similarity=True, target_v_gene_score=None,
+                       aligned_result=False, prefer_human_sample=False):
+    humanizer = ReverseHumanizer(model_wrapper, v_gene_scorer, parse_list(skip_positions), use_aa_similarity)
+    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score,
+                            human_sample, aligned_result, prefer_human_sample)
+    return results
+
+
 def process_sequences(models_dir, sequences, chain_type, target_model_metric, dataset_file=None, annotated_data=None,
                       human_sample=None, skip_positions="",  use_aa_similarity=True, target_v_gene_score=None,
                       aligned_result=False, prefer_human_sample=False):
     model_wrapper = load_model(models_dir, chain_type)
     v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, annotated_data, chain_type)
-    humanizer = ReverseHumanizer(model_wrapper, v_gene_scorer, parse_list(skip_positions), use_aa_similarity)
-    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score,
-                            human_sample, aligned_result, prefer_human_sample)
-    return results
+    return _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric, human_sample,
+                              skip_positions,  use_aa_similarity, target_v_gene_score, aligned_result,
+                              prefer_human_sample)
 
 
 def main(models_dir, input_file, dataset_file, annotated_data, human_sample, skip_positions,
