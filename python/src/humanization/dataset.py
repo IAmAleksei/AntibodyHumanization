@@ -72,8 +72,6 @@ def read_datasets(input_dir: str, read_function: Callable[[str], pd.DataFrame],
         df.reset_index(drop=True, inplace=True)
         dfs.append(df)
         original_data_size += df.shape[0]
-    for df in dfs:
-        original_data_size += df.shape[0]
     logger.info(f"Original dataset: {original_data_size} rows")
     return dfs
 
