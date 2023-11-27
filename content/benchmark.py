@@ -39,7 +39,7 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
             direct_result, reverse_result = [], []
             if humanizer_type is None or humanizer_type == "direct":
                 direct_result = humanizer._process_sequences(
-                    model_wrapper, v_gene_scorer, prep_seqs, model_metric, aligned_result=True
+                    model_wrapper, None, prep_seqs, model_metric, aligned_result=True
                 )
             if humanizer_type is None or humanizer_type == "reverse":
                 reverse_result = reverse_humanizer._process_sequences(

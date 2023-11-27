@@ -1,6 +1,5 @@
 import json
 import os
-from concurrent.futures import ThreadPoolExecutor
 from itertools import accumulate
 from typing import List, Tuple, Any, NoReturn, Callable, Optional
 
@@ -62,17 +61,17 @@ def read_datasets(input_dir: str, read_function: Callable[[str], pd.DataFrame],
     logger.info("Dataset reading...")
     original_data_size = 0
     file_names = os.listdir(input_dir)
-    with ThreadPoolExecutor(config.get(config_loader.NCPU)) as executor:
-        def worker_thread(input_file_name):
-            df = read_function(os.path.join(input_dir, input_file_name))
-            if v_type is not None:  # Only specific v type
-                df = df[df['v_call'] == v_type.oas_type()]
-            elif only_human:  # Only human samples
-                df = df[df['v_call'] != 'NOT_HUMAN']
-            df.reset_index(drop=True, inplace=True)
-            return df
-
-        dfs = list(tqdm(executor.map(worker_thread, file_names), total=len(file_names)))
+    dfs = []
+    for input_file_name in tqdm(file_names):
+        input_file_path = os.path.join(input_dir, input_file_name)
+        df: pd.DataFrame = read_function(input_file_path)
+        if v_type is not None:  # Only specific v type
+            df = df[df['v_call'] == v_type.oas_type()]
+        elif only_human:  # Only human samples
+            df = df[df['v_call'] != 'NOT_HUMAN']
+        df.reset_index(drop=True, inplace=True)
+        dfs.append(df)
+        original_data_size += df.shape[0]
     for df in dfs:
         original_data_size += df.shape[0]
     logger.info(f"Original dataset: {original_data_size} rows")
