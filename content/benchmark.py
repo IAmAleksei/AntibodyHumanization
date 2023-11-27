@@ -1,16 +1,17 @@
 import argparse
 import datetime
 import json
-import logging
 import os.path
 
-from humanization import humanizer, reverse_humanizer
+from humanization import humanizer, reverse_humanizer, config_loader
 from humanization.annotations import ChainType
 from humanization.models import load_model
+from humanization.utils import configure_logger
 from humanization.v_gene_scorer import build_v_gene_scorer
 
-logger = logging.getLogger(__name__)
-logger.setLevel('INFO')
+
+config = config_loader.Config()
+logger = configure_logger(config, "Benchmark")
 
 
 def main(models_dir, dataset_dir, humanizer_type, fasta_output):
