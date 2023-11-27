@@ -1,5 +1,6 @@
 import json
 import os
+from concurrent.futures import ThreadPoolExecutor
 from itertools import accumulate
 from typing import List, Tuple, Any, NoReturn, Callable, Optional
 
@@ -56,27 +57,30 @@ def filter_df(df: pd.DataFrame, annotation: Annotation) -> pd.DataFrame:
     return df
 
 
-def read_datasets(input_dir: str, read_function: Callable[[str], pd.DataFrame]) -> List[pd.DataFrame]:
+def read_datasets(input_dir: str, read_function: Callable[[str], pd.DataFrame],
+                  only_human: bool = False, v_type: Optional[ChainType] = None) -> List[pd.DataFrame]:
     logger.info("Dataset reading...")
-    dfs = []
     original_data_size = 0
     file_names = os.listdir(input_dir)
-    for input_file_name in tqdm(file_names):
-        input_file_path = os.path.join(input_dir, input_file_name)
-        df: pd.DataFrame = read_function(input_file_path)
-        dfs.append(df)
+    with ThreadPoolExecutor(config.get(config_loader.NCPU)) as executor:
+        def worker_thread(input_file_name):
+            df = read_function(os.path.join(input_dir, input_file_name))
+            if v_type is not None:  # Only specific v type
+                df = df[df['v_call'] == v_type.oas_type()]
+            elif only_human:  # Only human samples
+                df = df[df['v_call'] != 'NOT_HUMAN']
+            df.reset_index(drop=True, inplace=True)
+            return df
+
+        dfs = list(executor.map(worker_thread, file_names))
+    for df in dfs:
         original_data_size += df.shape[0]
     logger.info(f"Original dataset: {original_data_size} rows")
     return dfs
 
 
-def read_dataset(*args, only_human: bool = False, v_type: Optional[ChainType] = None) -> Tuple[pd.DataFrame, pd.Series]:
-    dfs = read_datasets(*args)
-    if v_type is not None:  # Only specific v type
-        dfs = [df[df['v_call'] == v_type.oas_type()] for i, df in enumerate(dfs)]
-    elif only_human:  # Only human samples
-        dfs = [df[df['v_call'] != 'NOT_HUMAN'] for i, df in enumerate(dfs)]
-
+def read_dataset(*args, **kwargs) -> Tuple[pd.DataFrame, pd.Series]:
+    dfs = read_datasets(*args, **kwargs)
     dataset = pd.concat(dfs, axis=0, ignore_index=True, copy=False)
     dataset.drop_duplicates(ignore_index=True, inplace=True)
     logger.info(f"Dataset: {dataset.shape[0]} rows (duplicates removed)")
