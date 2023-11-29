@@ -53,7 +53,7 @@ class Humanizer(AbstractHumanizer):
         return best_change
 
     def query(self, sequence: str, target_model_metric: float, target_v_gene_score: Optional[float] = None,
-              aligned_result: bool = False) -> Tuple[str, List[IterationDetails]]:
+              aligned_result: bool = False, limit_changes: int = 999) -> Tuple[str, List[IterationDetails]]:
         current_seq = annotate_single(sequence, self.model_wrapper.annotation,
                                       self.model_wrapper.chain_type.general_type())
         if current_seq is None:
@@ -64,7 +64,7 @@ class Humanizer(AbstractHumanizer):
         iterations = []
         current_value, v_gene_score = self._calc_metrics(current_seq)
         iterations.append(IterationDetails(0, current_value, v_gene_score, None))
-        for it in range(1, config.get(config_loader.MAX_CHANGES) + 1):
+        for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
             current_value, v_gene_score = self._calc_metrics(current_seq)
             logger.debug(f"Iteration {it}. "
                          f"Current model metric = {round(current_value, 6)}, V Gene score = {v_gene_score}")
@@ -88,23 +88,25 @@ class Humanizer(AbstractHumanizer):
 def _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric,
                        modify_cdr=False, skip_positions="", deny_use_aa=utils.TABOO_INSERT_AA,
                        deny_change_aa=utils.TABOO_DELETE_AA, use_aa_similarity=True, target_v_gene_score=None,
-                       aligned_result=False):
+                       aligned_result=False, limit_changes=999):
     humanizer = Humanizer(
         model_wrapper, v_gene_scorer, modify_cdr,
         parse_list(skip_positions), parse_list(deny_use_aa), parse_list(deny_change_aa), use_aa_similarity
     )
-    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score, aligned_result)
+    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score, aligned_result,
+                            limit_changes)
     return results
 
 
 def process_sequences(models_dir, sequences, chain_type, target_model_metric, dataset_file=None, annotated_data=None,
                       modify_cdr=False, skip_positions="", deny_use_aa=utils.TABOO_INSERT_AA,
                       deny_change_aa=utils.TABOO_DELETE_AA, use_aa_similarity=True, target_v_gene_score=None,
-                      aligned_result=False):
+                      aligned_result=False, limit_changes=999):
     model_wrapper = load_model(models_dir, chain_type)
     v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, annotated_data, chain_type)
     return _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric, modify_cdr, skip_positions,
-                              deny_use_aa, deny_change_aa, use_aa_similarity, target_v_gene_score, aligned_result)
+                              deny_use_aa, deny_change_aa, use_aa_similarity, target_v_gene_score, aligned_result,
+                              limit_changes)
 
 
 def main(models_dir, input_file, dataset_file, annotated_data, modify_cdr, skip_positions,

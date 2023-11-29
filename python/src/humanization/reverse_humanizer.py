@@ -42,7 +42,7 @@ class ReverseHumanizer(AbstractHumanizer):
 
     def query(self, sequence: str, target_model_metric: float, target_v_gene_score: float = 0.0,
               human_sample: str = None, aligned_result: bool = False,
-              prefer_human_sample: bool = False) -> Tuple[str, List[IterationDetails]]:
+              prefer_human_sample: bool = False, limit_changes: int = 999) -> Tuple[str, List[IterationDetails]]:
         current_seq = annotate_single(sequence, self.model_wrapper.annotation,
                                       self.model_wrapper.chain_type.general_type())
         if current_seq is None:
@@ -63,7 +63,7 @@ class ReverseHumanizer(AbstractHumanizer):
         iterations = []
         current_value, v_gene_score = self._calc_metrics(current_seq, human_sample, prefer_human_sample)
         iterations.append(IterationDetails(0, current_value, v_gene_score, None))
-        for it in range(1, config.get(config_loader.MAX_CHANGES) + 1):
+        for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
             current_value, v_gene_score = self._calc_metrics(current_seq, human_sample, prefer_human_sample)
             logger.debug(f"Iteration {it}. "
                          f"Current model metric = {round(current_value, 6)}, V Gene score = {v_gene_score}")
@@ -88,21 +88,21 @@ class ReverseHumanizer(AbstractHumanizer):
 
 def _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric,
                        human_sample=None, skip_positions="",  use_aa_similarity=True, target_v_gene_score=None,
-                       aligned_result=False, prefer_human_sample=False):
+                       aligned_result=False, prefer_human_sample=False, limit_changes=999):
     humanizer = ReverseHumanizer(model_wrapper, v_gene_scorer, parse_list(skip_positions), use_aa_similarity)
     results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score,
-                            human_sample, aligned_result, prefer_human_sample)
+                            human_sample, aligned_result, prefer_human_sample, limit_changes)
     return results
 
 
 def process_sequences(models_dir, sequences, chain_type, target_model_metric, dataset_file=None, annotated_data=None,
                       human_sample=None, skip_positions="",  use_aa_similarity=True, target_v_gene_score=None,
-                      aligned_result=False, prefer_human_sample=False):
+                      aligned_result=False, prefer_human_sample=False, limit_changes=999):
     model_wrapper = load_model(models_dir, chain_type)
     v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, annotated_data, chain_type)
     return _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric, human_sample,
                               skip_positions,  use_aa_similarity, target_v_gene_score, aligned_result,
-                              prefer_human_sample)
+                              prefer_human_sample, limit_changes)
 
 
 def main(models_dir, input_file, dataset_file, annotated_data, human_sample, skip_positions,

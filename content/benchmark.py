@@ -27,32 +27,34 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
         model_wrapper = load_model(models_dir, chain_type)
         v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_dir, True, chain_type)
         logger.info(f"Resources loaded")
-        for model_metric in [0.5, 0.75, 0.9, 0.95, 0.99, 1.00]:
-            logger.info(f"Starting processing metric {model_metric}")
-            logger.info(f'Processing metric={model_metric} type={tp}')
-            prep_seqs = []
-            for antibody in samples:
-                if antibody['heavy']['type'] == tp:
-                    prep_seqs.append((antibody['name'], antibody['heavy']['sequ'].replace('-', '')))
-            if len(prep_seqs) == 0:
-                continue
-            direct_result, reverse_result = [], []
-            if humanizer_type is None or humanizer_type == "direct":
-                direct_result = humanizer._process_sequences(
-                    model_wrapper, None, prep_seqs, model_metric, aligned_result=True
-                )
-            if humanizer_type is None or humanizer_type == "reverse":
-                reverse_result = reverse_humanizer._process_sequences(
-                    model_wrapper, v_gene_scorer, prep_seqs, model_metric, target_v_gene_score=0.85, aligned_result=True
-                )
-            with open(fasta_output, 'a') as f:
-                lines = []
-                for name, res, _ in direct_result:
-                    lines.extend([f"> {name}_direct_{model_metric}", res])
-                for name, res, _ in reverse_result:
-                    lines.extend([f"> {name}_reverse_{model_metric}", res])
-                lines.append("")
-                f.writelines("\n".join(lines))
+        for limit_changes in [5, 10, 50]:
+            for model_metric in [0.9]:
+                logger.info(f"Starting processing metric {model_metric}")
+                logger.info(f'Processing metric={model_metric} type={tp}')
+                prep_seqs = []
+                for antibody in samples:
+                    if antibody['heavy']['type'] == tp:
+                        prep_seqs.append((antibody['name'], antibody['heavy']['sequ'].replace('-', '')))
+                if len(prep_seqs) == 0:
+                    continue
+                direct_result, reverse_result = [], []
+                if humanizer_type is None or humanizer_type == "direct":
+                    direct_result = humanizer._process_sequences(
+                        model_wrapper, None, prep_seqs, model_metric, aligned_result=True, limit_changes=limit_changes
+                    )
+                if humanizer_type is None or humanizer_type == "reverse":
+                    reverse_result = reverse_humanizer._process_sequences(
+                        model_wrapper, v_gene_scorer, prep_seqs, model_metric, target_v_gene_score=0.85,
+                        aligned_result=True, limit_changes=limit_changes
+                    )
+                with open(fasta_output, 'a') as f:
+                    lines = []
+                    for name, res, _ in direct_result:
+                        lines.extend([f"> {name}_direct_{model_metric}_{limit_changes}ch", res])
+                    for name, res, _ in reverse_result:
+                        lines.extend([f"> {name}_reverse_{model_metric}_{limit_changes}ch", res])
+                    lines.append("")
+                    f.writelines("\n".join(lines))
 
 
 if __name__ == '__main__':
