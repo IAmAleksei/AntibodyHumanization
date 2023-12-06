@@ -47,6 +47,7 @@ class VGeneScorer:
             v_gene_scores = pool.map(calc_score_wrapper, self.human_samples)
         result = []
         for idx, v_gene_score in sorted(enumerate(v_gene_scores), key=lambda x: x[1], reverse=True)[:3]:
+            logger.info(idx, v_gene_score)
             result.append((self.human_samples[idx], v_gene_score))
         return result
 
