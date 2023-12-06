@@ -40,28 +40,17 @@ class ReverseHumanizer(AbstractHumanizer):
                 best_change = candidate_change
         return best_change
 
-    def query(self, sequence: str, target_model_metric: float, target_v_gene_score: float = 0.0,
-              human_sample: str = None, aligned_result: bool = False,
-              prefer_human_sample: bool = False, limit_changes: int = 999) -> Tuple[str, List[IterationDetails]]:
-        current_seq = annotate_single(sequence, self.model_wrapper.annotation,
-                                      self.model_wrapper.chain_type.general_type())
-        if current_seq is None:
-            raise RuntimeError(f"{sequence} cannot be annotated")
-        original_seq = [x for x in current_seq]
-        logger.debug(f"Annotated sequence: {seq_to_str(current_seq, True)}")
-        if human_sample:
-            human_sample = annotate_single(human_sample, self.model_wrapper.annotation,
-                                           self.model_wrapper.chain_type.general_type())
-        if not human_sample:
-            logger.debug(f"Retrieve human sample from V Gene scorer")
-            human_sample, _ = self.v_gene_scorer.query(current_seq)
-        logger.info(f"Used human sample: {human_sample}")
+    def _query_one(self, original_seq, cur_human_sample, target_model_metric: float, target_v_gene_score: float,
+                   aligned_result: bool, prefer_human_sample: bool,
+                   limit_changes: int) -> Tuple[str, List[IterationDetails]]:
+        current_seq = original_seq.copy()
+        logger.info(f"Used human sample: {cur_human_sample}")
         for idx, column_name in enumerate(self.model_wrapper.annotation.segmented_positions):
             if column_name.startswith("fwr"):
-                current_seq[idx] = human_sample[idx]
+                current_seq[idx] = cur_human_sample[idx]
         logger.info(f"Chimeric sequence: {seq_to_str(current_seq, True)}")
         iterations = []
-        current_value, v_gene_score = self._calc_metrics(current_seq, human_sample, prefer_human_sample)
+        current_value, v_gene_score = self._calc_metrics(current_seq, cur_human_sample, prefer_human_sample)
         iterations.append(IterationDetails(0, current_value, v_gene_score, None))
         for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
             logger.debug(f"Iteration {it}. "
@@ -70,7 +59,7 @@ class ReverseHumanizer(AbstractHumanizer):
             if best_change.is_defined():
                 prev_aa = current_seq[best_change.position]
                 current_seq[best_change.position] = best_change.aa
-                best_value, best_v_gene_score = self._calc_metrics(current_seq, human_sample, prefer_human_sample)
+                best_value, best_v_gene_score = self._calc_metrics(current_seq, cur_human_sample, prefer_human_sample)
                 logger.debug(f"Trying apply metric {best_value} and v_gene_score {best_v_gene_score}")
                 if not (target_model_metric <= best_value and is_v_gene_score_less(target_v_gene_score, best_v_gene_score)):
                     current_seq[best_change.position] = prev_aa
@@ -84,6 +73,29 @@ class ReverseHumanizer(AbstractHumanizer):
                 logger.info(f"No effective changes found. Stop algorithm on model metric = {round(current_value, 6)}")
                 break
         return seq_to_str(current_seq, aligned_result), iterations
+
+    def query(self, sequence: str, target_model_metric: float, target_v_gene_score: float = 0.0,
+              human_sample: str = None, aligned_result: bool = False,
+              prefer_human_sample: bool = False, limit_changes: int = 999) -> List[Tuple[str, List[IterationDetails]]]:
+        current_seq = annotate_single(sequence, self.model_wrapper.annotation,
+                                      self.model_wrapper.chain_type.general_type())
+        if current_seq is None:
+            raise RuntimeError(f"{sequence} cannot be annotated")
+        original_seq = [x for x in current_seq]
+        logger.debug(f"Annotated sequence: {seq_to_str(current_seq, True)}")
+        if not human_sample:
+            logger.debug(f"Retrieve human sample from V Gene scorer")
+            v_gene_samples = self.v_gene_scorer.query(current_seq)
+            human_samples = [human_sample for human_sample, _ in v_gene_samples]
+        else:
+            human_sample = annotate_single(human_sample, self.model_wrapper.annotation,
+                                           self.model_wrapper.chain_type.general_type())
+            human_samples = [human_sample]
+        result = []
+        for cur_human_sample in human_samples:
+            result.append(self._query_one(original_seq, cur_human_sample, target_model_metric, target_v_gene_score,
+                          aligned_result, prefer_human_sample, limit_changes))
+        return result
 
 
 def _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric,

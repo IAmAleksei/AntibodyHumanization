@@ -53,7 +53,7 @@ class Humanizer(AbstractHumanizer):
         return best_change
 
     def query(self, sequence: str, target_model_metric: float, target_v_gene_score: Optional[float] = None,
-              aligned_result: bool = False, limit_changes: int = 999) -> Tuple[str, List[IterationDetails]]:
+              aligned_result: bool = False, limit_changes: int = 999) -> List[Tuple[str, List[IterationDetails]]]:
         current_seq = annotate_single(sequence, self.model_wrapper.annotation,
                                       self.model_wrapper.chain_type.general_type())
         if current_seq is None:
@@ -82,7 +82,7 @@ class Humanizer(AbstractHumanizer):
             else:
                 logger.info(f"No effective changes found. Stop algorithm on model metric = {round(current_value, 6)}")
                 break
-        return seq_to_str(current_seq, aligned_result), iterations
+        return [(seq_to_str(current_seq, aligned_result), iterations)]
 
 
 def _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric,

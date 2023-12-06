@@ -41,16 +41,14 @@ class VGeneScorer:
         self.annotation = annotation
         self.human_samples = human_samples
 
-    def query(self, sequence: List[str]) -> Tuple[str, float]:
-        best_sample_idx, best_v_gene_score = None, 0
+    def query(self, sequence: List[str]) -> List[Tuple[str, float]]:
         worker_args = sequence, self.annotation
         with Pool(processes=config.get(config_loader.NCPU), initializer=worker_init, initargs=worker_args) as pool:
             v_gene_scores = pool.map(calc_score_wrapper, self.human_samples)
-        for idx, v_gene_score in enumerate(v_gene_scores):
-            if v_gene_score > best_v_gene_score:
-                best_sample_idx = idx
-                best_v_gene_score = v_gene_score
-        return self.human_samples[best_sample_idx], best_v_gene_score
+        result = []
+        for idx, v_gene_score in sorted(enumerate(v_gene_scores), key=lambda x: x[1], reverse=True)[:3]:
+            result.append((self.human_samples[idx], v_gene_score))
+        return result
 
 
 def build_v_gene_scorer(annotation: Annotation, dataset_file: str, annotated_data: bool,

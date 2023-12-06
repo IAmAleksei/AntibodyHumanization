@@ -67,7 +67,7 @@ class AbstractHumanizer(ABC):
     def _get_v_gene_score(self, current_seq: List[str], human_sample: Optional[str] = None,
                           prefer_human_sample: bool = False) -> Tuple[Optional[str], Optional[float]]:
         if self.v_gene_scorer is not None and (not prefer_human_sample or human_sample is None):
-            human_sample, v_gene_score = self.v_gene_scorer.query(current_seq)
+            human_sample, v_gene_score = self.v_gene_scorer.query(current_seq)[0]
             return human_sample, v_gene_score
         elif human_sample is not None:
             return human_sample, calc_score(current_seq, human_sample, self.model_wrapper.annotation)
@@ -81,7 +81,7 @@ class AbstractHumanizer(ABC):
         return current_value, v_gene_score
 
     def query(self, sequence: str, target_model_metric: float,
-              target_v_gene_score: Optional[float]) -> Tuple[str, List[IterationDetails]]:
+              target_v_gene_score: Optional[float]) -> List[Tuple[str, List[IterationDetails]]]:
         pass
 
 
@@ -90,11 +90,12 @@ def run_humanizer(sequences: List[Tuple[str, str]], humanizer: AbstractHumanizer
     results = []
     for name, sequence in sequences:
         try:
-            result, its = humanizer.query(sequence, *args)
+            result_one = humanizer.query(sequence, *args)
         except RuntimeError as _:
             traceback.print_exc()
-            result, its = "", []
-        results.append((name, result, its))
+            result_one = [("", [])]
+        for i, (result, its) in enumerate(result_one):
+            results.append((f"{name}_cand{i + 1}", result, its))
     return results
 
 
