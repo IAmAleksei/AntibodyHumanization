@@ -46,12 +46,12 @@ def read_any_dataset(input_dir: str, annotated_data: bool, annotation: Annotatio
 
 
 def read_human_samples(dataset_file=None, annotated_data=None, annotation=None,
-                       v_type: ChainType = None) -> Optional[List[str]]:
+                       v_type: ChainType = None) -> Optional[Tuple[List[str], List[str]]]:
     if dataset_file is not None:
         X, y = read_any_dataset(dataset_file, annotated_data, annotation, only_human=True, v_type=v_type)
         X.reset_index(drop=True, inplace=True)
         human_samples = merge_all_columns(X)
-        return human_samples
+        return human_samples, y.tolist()
     else:
         return None
 

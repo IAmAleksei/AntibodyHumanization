@@ -72,6 +72,11 @@ class ChainType(Enum):
         # {H,K,L}V[1-10]
         return GeneralChainType(s[0]).specific_type(s[2:])
 
+    @staticmethod
+    def from_oas_type(s):
+        # IG{H,K,L}V[1-10]
+        return ChainType.from_full_type(s[2:])
+
 
 class HeavyChainType(ChainType):
     V1 = "1"

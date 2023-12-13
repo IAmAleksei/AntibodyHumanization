@@ -4,10 +4,10 @@ import json
 import os.path
 
 from humanization import humanizer, reverse_humanizer, config_loader
-from humanization.annotations import ChainType
+from humanization.annotations import ChainType, GeneralChainType, load_annotation, ChainKind
 from humanization.models import load_model
 from humanization.utils import configure_logger
-from humanization.v_gene_scorer import build_v_gene_scorer
+from humanization.v_gene_scorer import build_v_gene_scorer, get_similar_human_samples
 
 
 config = config_loader.Config()
@@ -20,6 +20,17 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
     with open('thera_antibodies.json', 'r') as fp:
         samples = json.load(fp)
 
+    temp_seqs = [antibody['heavy']['sequ'].replace('-', '') for antibody in samples]
+    annotation = load_annotation("chothia", ChainKind.HEAVY)
+    human_samples = get_similar_human_samples(annotation, dataset_dir, True, temp_seqs, GeneralChainType.HEAVY)
+    for idx, antibody in enumerate(samples):
+        antibody['heavy']['my_type'] = []
+        if human_samples[idx] is not None:
+            logger.info(f"For {antibody['name']} found human samples")
+            for iii, h_s in enumerate(human_samples[idx]):
+                logger.info(f"{iii + 1}. Human sample: {h_s[0]} V_gene: {h_s[1]} Type: {h_s[2]}")
+                antibody['heavy']['my_type'].append(ChainType.from_oas_type(h_s[2]).full_type())
+
     for i in range(1, 8):
         tp = f'HV{i}'
         chain_type = ChainType.from_full_type(tp)
@@ -27,13 +38,13 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
         model_wrapper = load_model(models_dir, chain_type)
         v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_dir, True, chain_type)
         logger.info(f"Resources loaded")
-        for limit_changes in [0, 5, 10]:
+        for limit_changes in [0, 7, 50]:
             for model_metric in [0.9]:
                 logger.info(f"Starting processing metric {model_metric}")
                 logger.info(f'Processing metric={model_metric} type={tp}')
                 prep_seqs = []
                 for antibody in samples:
-                    if antibody['heavy']['type'] == tp:
+                    if tp in antibody['heavy']['my_type']:
                         prep_seqs.append((antibody['name'], antibody['heavy']['sequ'].replace('-', '')))
                 if len(prep_seqs) == 0:
                     continue
@@ -49,10 +60,16 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                     )
                 with open(fasta_output, 'a') as f:
                     lines = []
-                    for name, res, _ in direct_result:
-                        lines.extend([f"> {name}_direct_{model_metric}_{limit_changes}ch", res])
-                    for name, res, _ in reverse_result:
-                        lines.extend([f"> {name}_reverse_{model_metric}_{limit_changes}ch", res])
+                    for name, res, its in direct_result:
+                        lines.extend(
+                            [f"> {name}_d_{model_metric}_{limit_changes}ch_{i}t "
+                             f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",
+                             res])
+                    for name, res, its in reverse_result:
+                        lines.extend(
+                            [f"> {name}_r_{model_metric}_{limit_changes}ch_{i}t "
+                             f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",
+                             res])
                     lines.append("")
                     f.writelines("\n".join(lines))
 
