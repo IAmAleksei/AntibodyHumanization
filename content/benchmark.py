@@ -26,7 +26,7 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
     for idx, antibody in enumerate(samples):
         antibody['heavy']['my_type'] = []
         if human_samples[idx] is not None:
-            logger.info(f"For {antibody['name']} found human samples")
+            logger.info(f"{antibody['name']} human samples:")
             for iii, h_s in enumerate(human_samples[idx]):
                 logger.info(f"{iii + 1}. Human sample: {h_s[0]} V_gene: {h_s[1]} Type: {h_s[2]}")
                 antibody['heavy']['my_type'].append(ChainType.from_oas_type(h_s[2]).full_type())

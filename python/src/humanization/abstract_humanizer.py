@@ -2,10 +2,15 @@ import traceback
 from abc import ABC
 from typing import List, Tuple, NamedTuple, Optional, Callable
 
+from humanization import config_loader
 from humanization.annotations import GeneralChainType
 from humanization.models import ModelWrapper
-from humanization.utils import BLOSUM62
+from humanization.utils import BLOSUM62, configure_logger
 from humanization.v_gene_scorer import calc_score, VGeneScorer
+
+
+config = config_loader.Config()
+logger = configure_logger(config, "Abstract humanizer")
 
 
 class SequenceChange(NamedTuple):
@@ -67,7 +72,7 @@ class AbstractHumanizer(ABC):
     def _get_v_gene_score(self, current_seq: List[str], human_sample: Optional[str] = None,
                           prefer_human_sample: bool = False) -> Tuple[Optional[str], Optional[float]]:
         if self.v_gene_scorer is not None and (not prefer_human_sample or human_sample is None):
-            human_sample, v_gene_score = self.v_gene_scorer.query(current_seq)[0]
+            human_sample, v_gene_score, _ = self.v_gene_scorer.query(current_seq)[0]
             return human_sample, v_gene_score
         elif human_sample is not None:
             return human_sample, calc_score(current_seq, human_sample, self.model_wrapper.annotation)
@@ -89,6 +94,7 @@ def run_humanizer(sequences: List[Tuple[str, str]], humanizer: AbstractHumanizer
                   *args) -> List[Tuple[str, str, List[IterationDetails]]]:
     results = []
     for name, sequence in sequences:
+        logger.info(f"Processing {name}")
         try:
             result_one = humanizer.query(sequence, *args)
         except RuntimeError as _:

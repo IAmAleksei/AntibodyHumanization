@@ -70,7 +70,7 @@ def get_similar_human_samples(annotation: Annotation, dataset_file: str, annotat
                               chain_type: GeneralChainType) -> List[Optional[List[Tuple[str, float, str]]]]:
     v_gene_scorer = build_v_gene_scorer(annotation, dataset_file, annotated_data)
     result = []
-    for sequence in sequences:
-        aligned_seq = annotate_single(sequence, annotation, chain_type)
+    for seq in sequences:
+        aligned_seq = annotate_single(seq, annotation, chain_type)
         result.append(v_gene_scorer.query(aligned_seq) if aligned_seq is not None else None)
     return result

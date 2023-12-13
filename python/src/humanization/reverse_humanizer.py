@@ -86,7 +86,7 @@ class ReverseHumanizer(AbstractHumanizer):
         if not human_sample:
             logger.debug(f"Retrieve human sample from V Gene scorer")
             v_gene_samples = self.v_gene_scorer.query(current_seq)
-            human_samples = [human_sample for human_sample, _ in v_gene_samples]
+            human_samples = [human_sample for human_sample, _, _ in v_gene_samples]
         else:
             human_sample = annotate_single(human_sample, self.model_wrapper.annotation,
                                            self.model_wrapper.chain_type.general_type())
