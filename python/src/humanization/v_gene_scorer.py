@@ -55,9 +55,9 @@ class VGeneScorer:
         return result
 
 
-def build_v_gene_scorer(annotation: Annotation, dataset_file: str, annotated_data: bool,
+def build_v_gene_scorer(annotation: Annotation, dataset_file: str,
                         v_type: ChainType = None) -> Optional[VGeneScorer]:
-    human_dataset = read_human_samples(dataset_file, annotated_data, annotation, v_type)
+    human_dataset = read_human_samples(dataset_file, annotation, v_type)
     if human_dataset is not None:
         v_gene_scorer = VGeneScorer(annotation, human_dataset[0], human_dataset[1])
         logger.info(f"Created VGeneScorer with {len(human_dataset[0])} samples")
@@ -66,9 +66,9 @@ def build_v_gene_scorer(annotation: Annotation, dataset_file: str, annotated_dat
         return None
 
 
-def get_similar_human_samples(annotation: Annotation, dataset_file: str, annotated_data: bool, sequences: List[str],
+def get_similar_human_samples(annotation: Annotation, dataset_file: str, sequences: List[str],
                               chain_type: GeneralChainType) -> List[Optional[List[Tuple[str, float, str]]]]:
-    v_gene_scorer = build_v_gene_scorer(annotation, dataset_file, annotated_data)
+    v_gene_scorer = build_v_gene_scorer(annotation, dataset_file)
     result = []
     for seq in sequences:
         aligned_seq = annotate_single(seq, annotation, chain_type)

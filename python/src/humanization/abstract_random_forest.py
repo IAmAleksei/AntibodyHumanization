@@ -122,10 +122,11 @@ def make_model(X_train, y_train, X_val, y_val, test_pool, y_test, annotation: An
     return ModelWrapper(v_type, model, annotation, threshold)
 
 
-def make_models(input_dir: str, annotated_data: bool, schema: str, chain_type: GeneralChainType,
-                metric: str, iterative_learning: bool, print_metrics: bool, tree_types: str = None) -> Generator[ModelWrapper, None, None]:
+def make_models(input_dir: str, schema: str, chain_type: GeneralChainType,
+                metric: str, iterative_learning: bool, print_metrics: bool,
+                tree_types: str = None) -> Generator[ModelWrapper, None, None]:
     annotation = load_annotation(schema, chain_type.kind())
-    X, y = read_any_dataset(input_dir, annotated_data, annotation)
+    X, y = read_any_dataset(input_dir, annotation)
     X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.07, shuffle=True, random_state=42)
     log_data_stats(X_, y_, X_test, y_test)
     X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.07, shuffle=True, random_state=42)
@@ -140,9 +141,6 @@ def make_models(input_dir: str, annotated_data: bool, schema: str, chain_type: G
 def configure_abstract_parser(parser: argparse.ArgumentParser):
     parser.add_argument('input', type=str, help='Path to directory where all .csv (or .csv.gz) are listed')
     parser.add_argument('output', type=str, help='Output models location')
-    parser.add_argument('--annotated-data', action='store_true', help='Data is annotated')
-    parser.add_argument('--raw-data', dest='annotated_data', action='store_false')
-    parser.set_defaults(annotated_data=True)
     parser.add_argument('--iterative-learning', action='store_true', help='Iterative learning using data batches')
     parser.add_argument('--single-batch-learning', dest='iterative_learning', action='store_false')
     parser.set_defaults(iterative_learning=True)

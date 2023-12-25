@@ -107,22 +107,21 @@ def _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_met
     return results
 
 
-def process_sequences(models_dir, sequences, chain_type, target_model_metric, dataset_file=None, annotated_data=None,
-                      human_sample=None, skip_positions="",  use_aa_similarity=True, target_v_gene_score=None,
+def process_sequences(models_dir, sequences, chain_type, target_model_metric, dataset_file=None,
+                      human_sample=None, skip_positions="", use_aa_similarity=True, target_v_gene_score=None,
                       aligned_result=False, prefer_human_sample=False, limit_changes=999):
     model_wrapper = load_model(models_dir, chain_type)
-    v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, annotated_data, chain_type)
+    v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, chain_type)
     return _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric, human_sample,
                               skip_positions,  use_aa_similarity, target_v_gene_score, aligned_result,
                               prefer_human_sample, limit_changes)
 
 
-def main(models_dir, input_file, dataset_file, annotated_data, human_sample, skip_positions,
-         use_aa_similarity, output_file):
+def main(models_dir, input_file, dataset_file, human_sample, skip_positions, use_aa_similarity, output_file):
     sequences = read_sequences(input_file)
     chain_type, target_model_metric, target_v_gene_score = read_humanizer_options(dataset_file)
     results = process_sequences(
-        models_dir, sequences, chain_type, target_model_metric, dataset_file, annotated_data, human_sample,
+        models_dir, sequences, chain_type, target_model_metric, dataset_file, human_sample,
         skip_positions, use_aa_similarity, target_v_gene_score
     )
     write_sequences(output_file, results)
@@ -141,7 +140,6 @@ if __name__ == '__main__':
     main(models_dir=args.models,
          input_file=args.input,
          dataset_file=args.dataset,
-         annotated_data=args.annotated_data,
          human_sample=args.human_sample,
          skip_positions=args.skip_positions,
          use_aa_similarity=args.use_aa_similarity,

@@ -16,27 +16,33 @@ config = config_loader.Config()
 logger = configure_logger(config, "Dataset reader")
 
 
-def read_file(csv_path: str, requested_columns: List[str]) -> Tuple[pd.DataFrame, Any]:
+def read_imgt_file(csv_path: str) -> Tuple[pd.DataFrame, Any]:
+    df: pd.DataFrame = pd.read_csv(csv_path, names=['v_call', 'sequence_alignment_aa'], header=None)
+    df.dropna(inplace=True)
+    return df, True
+
+
+def read_oas_file(csv_path: str, requested_columns: List[str]) -> Tuple[pd.DataFrame, Any]:
     metadata = json.loads(','.join(pd.read_csv(csv_path, nrows=0).columns))
     df: pd.DataFrame = pd.read_csv(csv_path, skiprows=1)  # Drop row with running info
     if requested_columns is not None:
         df = df[requested_columns]
     df.dropna(inplace=True)
-    return df, metadata
+    return df, metadata['Species'] == 'human'
 
 
-def correct_v_call(df: pd.DataFrame, metadata: Any) -> NoReturn:
-    if metadata['Species'] != 'human':
+def correct_v_call(df: pd.DataFrame, is_human: bool) -> NoReturn:
+    if not is_human:
         df['v_call'] = 'NOT_HUMAN'
     else:
         df['v_call'].replace(r'^(....\d+).*$', r'\1', regex=True, inplace=True)
 
 
-def make_annotated_df(df: pd.DataFrame, annotation: Annotation, metadata: Any = {}) -> pd.DataFrame:
+def make_annotated_df(df: pd.DataFrame, annotation: Annotation, is_human: bool = False) -> pd.DataFrame:
     aa_columns = annotation.segmented_positions
     annotated_indexes, annotated_list = annotate_batch(
         df['sequence_alignment_aa'].tolist(), annotation,
-        is_human=metadata['Species'] == 'human'
+        is_human=is_human
     )
     X = pd.DataFrame(annotated_list, columns=aa_columns)  # Make column for every aa
     y = df['v_call'][annotated_indexes]

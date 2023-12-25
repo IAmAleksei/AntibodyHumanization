@@ -6,8 +6,8 @@ import pandas
 
 from humanization import config_loader
 from humanization.annotations import load_annotation, Annotation, ChainKind, ChainType
-from humanization.dataset import read_file, correct_v_call, make_annotated_df, filter_df, \
-    merge_all_columns, read_annotated_dataset, read_dataset
+from humanization.dataset import read_oas_file, correct_v_call, make_annotated_df, filter_df, \
+    merge_all_columns, read_annotated_dataset, read_dataset, read_imgt_file
 from humanization.utils import configure_logger
 
 config = config_loader.Config()
@@ -15,10 +15,13 @@ logger = configure_logger(config, "Dataset preparer")
 
 
 def read_and_annotate_file(csv_file: str, annotation: Annotation) -> pandas.DataFrame:
-    df, metadata = read_file(csv_file, ['sequence_alignment_aa', 'v_call'])
+    if csv_file.endswith(".imgt"):
+        df, is_human = read_imgt_file(csv_file)
+    else:
+        df, is_human = read_oas_file(csv_file, ['sequence_alignment_aa', 'v_call'])
     logger.debug(f"File contains {df.shape[0]} rows")
-    correct_v_call(df, metadata)
-    df = make_annotated_df(df.iloc[:1000], annotation, metadata=metadata)
+    correct_v_call(df, is_human)
+    df = make_annotated_df(df.iloc[:1000], annotation, is_human=is_human)
     df = filter_df(df, annotation)
     return df
 
@@ -27,8 +30,9 @@ def read_raw_dataset(input_dir: str, annotation: Annotation, **kwargs) -> Tuple[
     return read_dataset(input_dir, lambda csv_file: read_and_annotate_file(csv_file, annotation), **kwargs)
 
 
-def read_any_dataset(input_dir: str, annotated_data: bool, annotation: Annotation, only_human: bool = False,
+def read_any_dataset(input_dir: str, annotation: Annotation, only_human: bool = False,
                      v_type: Optional[ChainType] = None) -> Tuple[pandas.DataFrame, pandas.Series]:
+    annotated_data = "_annotated" in os.path.basename(input_dir)
     if annotated_data:
         logger.info(f"Use annotated-data mode")
         logger.info(f"Please check that `{annotation.name}` is defined correctly")
@@ -45,10 +49,10 @@ def read_any_dataset(input_dir: str, annotated_data: bool, annotation: Annotatio
     return X, y
 
 
-def read_human_samples(dataset_file=None, annotated_data=None, annotation=None,
+def read_human_samples(dataset_file=None, annotation=None,
                        v_type: ChainType = None) -> Optional[Tuple[List[str], List[str]]]:
     if dataset_file is not None:
-        X, y = read_any_dataset(dataset_file, annotated_data, annotation, only_human=True, v_type=v_type)
+        X, y = read_any_dataset(dataset_file, annotation, only_human=True, v_type=v_type)
         X.reset_index(drop=True, inplace=True)
         human_samples = merge_all_columns(X)
         return human_samples, y.tolist()

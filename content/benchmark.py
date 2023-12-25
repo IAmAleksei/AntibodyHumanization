@@ -22,7 +22,7 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
 
     temp_seqs = [antibody['heavy']['sequ'].replace('-', '') for antibody in samples]
     annotation = load_annotation("chothia", ChainKind.HEAVY)
-    human_samples = get_similar_human_samples(annotation, dataset_dir, True, temp_seqs, GeneralChainType.HEAVY)
+    human_samples = get_similar_human_samples(annotation, dataset_dir, temp_seqs, GeneralChainType.HEAVY)
     for idx, antibody in enumerate(samples):
         antibody['heavy']['my_type'] = []
         if human_samples[idx] is not None:
@@ -62,12 +62,12 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                     lines = []
                     for name, res, its in direct_result:
                         lines.extend(
-                            [f"> {name}_d_{model_metric}_{limit_changes}ch_{i}t "
+                            [f"> {name}_d_{model_metric}_{limit_changes:02d}ch_{i}t "
                              f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",
                              res])
                     for name, res, its in reverse_result:
                         lines.extend(
-                            [f"> {name}_r_{model_metric}_{limit_changes}ch_{i}t "
+                            [f"> {name}_r_{model_metric}_{limit_changes:02d}ch_{i}t "
                              f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",
                              res])
                     lines.append("")

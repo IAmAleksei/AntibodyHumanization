@@ -60,7 +60,7 @@ def humanize_gen(humanizers: List[Humanizer]):
     return humanize
 
 
-def main(models_dir, dataset_file, annotated_data, modify_cdr,
+def main(models_dir, dataset_file, modify_cdr,
          skip_positions, deny_use_aa, deny_change_aa, use_aa_similarity) -> None:
     humanizers = []
     for i in range(1, 8):
@@ -89,7 +89,6 @@ if __name__ == "__main__":
 
     main(models_dir=args.models,
          dataset_file=args.dataset,
-         annotated_data=args.annotated_data,
          modify_cdr=args.modify_cdr,
          skip_positions=args.skip_positions,
          deny_use_aa=args.deny_use_aa,
