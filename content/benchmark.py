@@ -36,7 +36,7 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
         chain_type = ChainType.from_full_type(tp)
         logger.info(f"Starting processing type {tp}")
         model_wrapper = load_model(models_dir, chain_type)
-        v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_dir, True, chain_type)
+        v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_dir, chain_type)
         logger.info(f"Resources loaded")
         for limit_changes in [0, 7, 50]:
             for model_metric in [0.9]:
@@ -51,7 +51,8 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                 direct_result, reverse_result = [], []
                 if humanizer_type is None or humanizer_type == "direct":
                     direct_result = humanizer._process_sequences(
-                        model_wrapper, None, prep_seqs, model_metric, aligned_result=True, limit_changes=limit_changes
+                        model_wrapper, v_gene_scorer, prep_seqs, model_metric, aligned_result=True,
+                        limit_changes=limit_changes, non_decreasing_v_gene=True
                     )
                 if humanizer_type is None or humanizer_type == "reverse":
                     reverse_result = reverse_humanizer._process_sequences(
