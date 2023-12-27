@@ -65,11 +65,17 @@ def filter_df(df: pd.DataFrame, annotation: Annotation) -> pd.DataFrame:
 def read_datasets(input_dir: str, read_function: Callable[[str], pd.DataFrame],
                   only_human: bool = False, v_type: Optional[ChainType] = None) -> List[pd.DataFrame]:
     logger.info("Dataset reading...")
+    file_paths = []
+    if os.path.isdir(input_dir):
+        for input_file_name in os.listdir(input_dir):
+            file_paths.append(os.path.join(input_dir, input_file_name))
+    elif os.path.isfile(input_dir):
+        file_paths.append(input_dir)
+    else:
+        raise RuntimeError(f"Unexpected dataset path: {input_dir}")
     original_data_size = 0
-    file_names = os.listdir(input_dir)
     dfs = []
-    for input_file_name in tqdm(file_names):
-        input_file_path = os.path.join(input_dir, input_file_name)
+    for input_file_path in tqdm(file_paths):
         df: pd.DataFrame = read_function(input_file_path)
         if v_type is not None:  # Only specific v type
             df = df[df['v_call'] == v_type.oas_type()]
