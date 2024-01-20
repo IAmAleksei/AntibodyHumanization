@@ -1,6 +1,6 @@
 import argparse
 import traceback
-from typing import Any
+from typing import Any, List
 
 from transformers import RoFormerForMaskedLM, RoFormerTokenizer, pipeline
 
@@ -14,43 +14,52 @@ config = config_loader.Config()
 logger = configure_logger(config, "AntiBERTa2 humanizer")
 
 
-def mask_sequence(models, dataset, sequence: str) -> str:
+def mask_sequence(models, dataset, sequence: str) -> List[str]:
     annotation = load_annotation("chothia", ChainKind.HEAVY)
     human_samples = get_similar_human_samples(annotation, dataset, [sequence], GeneralChainType.HEAVY)
-    str_type = human_samples[0][0][2]
-    _, result, its = humanizer.process_sequences(models, [("S", sequence)], ChainType.from_oas_type(str_type),
-                                                 0.999, aligned_result=True, limit_changes=1)[0]
-    diff_pos = -1
-    if its[-1].change is not None and its[-1].change.position is not None:
-        diff_pos = its[-1].change.position
-    if diff_pos >= 0:
-        logger.info(f"Found diff position: {diff_pos}")
-        result_list = list(result)
-        result_list[diff_pos] = "[MASK]"
-        masked = " ".join(filter(lambda aa: aa != "X", result_list))
-        logger.debug(f"Masked: {masked}")
-        return masked
-    else:
-        logger.info(f"No diff position")
-        return sequence
+    chain_type = ChainType.from_oas_type(human_samples[0][0][2])
+    skip_positions = []
+    masked_sequences = []
+    for i in range(3):
+        _, result, its = humanizer.process_sequences(models, [("S", sequence)], chain_type,
+                                                     0.999, skip_positions=",".join(skip_positions),
+                                                     aligned_result=True, limit_changes=1)[0]
+        if its[-1].change is not None and its[-1].change.position is not None:
+            diff_pos = its[-1].change.position
+            logger.info(f"Found diff position: {diff_pos}")
+            result_list = list(result)
+            result_list[diff_pos] = "[MASK]"
+            masked = " ".join(filter(lambda aa: aa != "X", result_list))
+            logger.debug(f"Masked: {masked}")
+            skip_positions.append(annotation.segmented_positions[diff_pos])
+            masked_sequences.append(masked)
+        else:
+            logger.info(f"No diff position")
+            break
+    return masked_sequences
 
 
-def humanize(seq: str) -> Any:
+def humanize(seq: str) -> str:
     tokenizer = RoFormerTokenizer.from_pretrained("alchemab/antiberta2")
     model = RoFormerForMaskedLM.from_pretrained("alchemab/antiberta2")
     filler = pipeline("fill-mask", model=model, tokenizer=tokenizer)
     result = filler(seq)
-    return result
+    logger.debug(f"Selected candidate: {result[0]['token_str']}")
+    return result[0]['sequence'].replace(' ', '').replace('Ḣ', 'H')
 
 
 def process_sequence(models, dataset, sequence):
     last_sequence = ""
     while last_sequence != sequence:
-        logger.info("New iteration")
+        logger.info(f"New iteration. Sequence: {sequence}")
         last_sequence = sequence
-        masked_sequence = mask_sequence(models, dataset, sequence)
-        candidates = humanize(masked_sequence)
-        sequence = candidates[0]['sequence'].replace(' ', '')
+        masked_sequences = mask_sequence(models, dataset, sequence)
+        for masked_sequence in masked_sequences:
+            humanized_sequence = humanize(masked_sequence)
+            if humanized_sequence != last_sequence:
+                logger.info(f"Created new sequence: {humanized_sequence}")
+                sequence = humanized_sequence
+                break
     return sequence
 
 
