@@ -60,7 +60,7 @@ def process_sequences(models, dataset, sequences):
     for name, sequence in sequences:
         logger.info(f"Processing {name}")
         try:
-            result_one = process_sequence(models, dataset, sequence)
+            result_one = [process_sequence(models, dataset, sequence)]
         except RuntimeError as _:
             traceback.print_exc()
             result_one = [""]
