@@ -3,7 +3,7 @@ import datetime
 import json
 import os.path
 
-from humanization import humanizer, reverse_humanizer, config_loader
+from humanization import humanizer, reverse_humanizer, config_loader, antiberta2_humanizer
 from humanization.annotations import ChainType, GeneralChainType, load_annotation, ChainKind
 from humanization.models import load_model
 from humanization.utils import configure_logger
@@ -48,7 +48,9 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                         prep_seqs.append((antibody['name'], antibody['heavy']['sequ'].replace('-', '')))
                 if len(prep_seqs) == 0:
                     continue
-                direct_result, reverse_result = [], []
+                antiberta_result, direct_result, reverse_result = [], [], []
+                if humanizer_type is None or humanizer_type == "antiberta":
+                    antiberta_result = antiberta2_humanizer.process_sequence(models_dir, dataset_dir, prep_seqs)
                 if humanizer_type is None or humanizer_type == "direct":
                     direct_result = humanizer._process_sequences(
                         model_wrapper, v_gene_scorer, prep_seqs, model_metric, aligned_result=True,
@@ -61,6 +63,10 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                     )
                 with open(fasta_output, 'a') as f:
                     lines = []
+                    for name, res in antiberta_result:
+                        lines.extend(
+                            [f"> {name}_a_{i}t",
+                             res])
                     for name, res, its in direct_result:
                         lines.extend(
                             [f"> {name}_d_{model_metric}_{limit_changes:02d}ch_{i}t "
