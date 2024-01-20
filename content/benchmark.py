@@ -50,7 +50,7 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                     continue
                 antiberta_result, direct_result, reverse_result = [], [], []
                 if humanizer_type is None or humanizer_type == "antiberta":
-                    antiberta_result = antiberta2_humanizer.process_sequence(models_dir, dataset_dir, prep_seqs)
+                    antiberta_result = antiberta2_humanizer.process_sequences(models_dir, dataset_dir, prep_seqs)
                 if humanizer_type is None or humanizer_type == "direct":
                     direct_result = humanizer._process_sequences(
                         model_wrapper, v_gene_scorer, prep_seqs, model_metric, aligned_result=True,
