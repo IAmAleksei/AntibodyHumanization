@@ -86,7 +86,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''Benchmark direct humanizer''')
     parser.add_argument('--models', type=str, default="../models", help='Path to directory with models')
     parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
-    parser.add_argument('--humanizer', type=str, default=None, choices=[None, "direct", "reverse"], help='Humanizer type')
+    parser.add_argument('--humanizer', type=str, default=None, choices=[None, "antiberta", "direct", "reverse"], help='Humanizer type')
     parser.add_argument('--fasta-output', type=str, default=f"h_{date}.fasta", help='Generate fasta with all sequences')
     args = parser.parse_args()
     main(models_dir=args.models, dataset_dir=args.dataset, humanizer_type=args.humanizer,
