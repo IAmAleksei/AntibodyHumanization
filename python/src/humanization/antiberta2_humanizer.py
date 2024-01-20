@@ -1,4 +1,5 @@
 import argparse
+from typing import Any
 
 from transformers import RoFormerForMaskedLM, RoFormerTokenizer, pipeline
 
@@ -26,17 +27,20 @@ def mask_sequence(args, s: str) -> str:
     for i, (c1, c2) in enumerate(zip(s, direct_result)):
         if c1 != c2:
             diff_pos = i
+            break
     if diff_pos >= 0:
-        logger.info(f"Found diff position: {diff_pos}")
-        return s[:diff_pos] + "[MASK]" + s[diff_pos + 1:]
+        logger.info(f"Found diff position: {diff_pos // 2}")
+        result = s[:diff_pos] + "[MASK]" + s[diff_pos + 1:]
+        logger.debug(f"Result: {result}")
+        return result
     else:
         return s
 
 
-def humanize(seq: str) -> str:
+def humanize(seq: str) -> Any:
     tokenizer = RoFormerTokenizer.from_pretrained("alchemab/antiberta2")
     model = RoFormerForMaskedLM.from_pretrained("alchemab/antiberta2")
-    filler = pipeline(model=model, tokenizer=tokenizer)
+    filler = pipeline("fill-mask", model=model, tokenizer=tokenizer)
     result = filler(seq)
     return result
 
@@ -48,7 +52,9 @@ def main(args):
         logger.info("New iteration")
         last_sequence = sequence
         masked_sequence = mask_sequence(args, sequence)
-        sequence = humanize(masked_sequence)
+        cands = humanize(masked_sequence)
+        logger.debug(f"Candidates: {cands}")
+        sequence = cands[0]['sequence'].replace(' ', '')
     print(sequence)
 
 
