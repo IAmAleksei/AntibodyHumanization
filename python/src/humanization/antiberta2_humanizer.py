@@ -28,7 +28,7 @@ def mask_sequence(models, dataset, sequence: str) -> str:
         logger.info(f"Found diff position: {diff_pos}")
         sequence_list = list(sequence)
         sequence_list[diff_pos] = "[MASK]"
-        result = "".join(filter(lambda aa: aa != "X", sequence_list))
+        result = " ".join(filter(lambda aa: aa != "X", sequence_list))
         logger.debug(f"Result: {result}")
         return result
     else:
