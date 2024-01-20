@@ -16,7 +16,7 @@ logger = configure_logger(config, "AntiBERTa2 humanizer")
 def mask_sequence(args, s: str) -> str:
     annotation = load_annotation("chothia", ChainKind.HEAVY)
     human_samples = get_similar_human_samples(annotation, args.dataset, [s], GeneralChainType.HEAVY)
-    tp = ChainType.from_oas_type(human_samples[0][0][2]).full_type()
+    tp = ChainType.from_oas_type(human_samples[0][0][2])
     model_wrapper = load_model(args.models, tp)
     direct_result = humanizer._process_sequences(model_wrapper, None, [("S", s)], 0.999, aligned_result=True,
                                                  limit_changes=1)[0][1]
@@ -42,7 +42,7 @@ def humanize(seq: str) -> str:
 
 
 def main(args):
-    sequence = input()
+    sequence = input("Enter sequence:")
     last_sequence = ""
     while last_sequence != sequence:
         logger.info("New iteration")
