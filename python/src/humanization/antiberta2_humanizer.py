@@ -21,7 +21,7 @@ def mask_sequence(models, dataset, sequence: str) -> List[str]:
     skip_positions = []
     masked_sequences = []
     for i in range(3):
-        _, result, its = humanizer.process_sequences(models, [("S", sequence)], chain_type,
+        _, result, its = humanizer.process_sequences(models, [(f"S{i}", sequence)], chain_type,
                                                      0.999, skip_positions=",".join(skip_positions),
                                                      aligned_result=True, limit_changes=1)[0]
         if its[-1].change is not None and its[-1].change.position is not None:
@@ -30,7 +30,7 @@ def mask_sequence(models, dataset, sequence: str) -> List[str]:
             result_list = list(result)
             result_list[diff_pos] = "[MASK]"
             masked = " ".join(filter(lambda aa: aa != "X", result_list))
-            logger.debug(f"Masked: {masked}")
+            # logger.debug(f"Masked: {masked}")
             skip_positions.append(annotation.segmented_positions[diff_pos])
             masked_sequences.append(masked)
         else:
@@ -44,7 +44,7 @@ def humanize(seq: str) -> str:
     model = RoFormerForMaskedLM.from_pretrained("alchemab/antiberta2")
     filler = pipeline("fill-mask", model=model, tokenizer=tokenizer)
     result = filler(seq)
-    logger.debug(f"Selected candidate: {result[0]['token_str']}")
+    # logger.debug(f"Selected candidate: {result[0]['token_str']}")
     return result[0]['sequence'].replace(' ', '').replace('Ḣ', 'H')
 
 
@@ -54,12 +54,13 @@ def process_sequence(models, dataset, sequence):
         logger.info(f"New iteration. Sequence: {sequence}")
         last_sequence = sequence
         masked_sequences = mask_sequence(models, dataset, sequence)
-        for masked_sequence in masked_sequences:
+        for i, masked_sequence in enumerate(masked_sequences):
             humanized_sequence = humanize(masked_sequence)
             if humanized_sequence != last_sequence:
-                logger.info(f"Created new sequence: {humanized_sequence}")
+                logger.info(f"Created new sequence for {i} tries")
                 sequence = humanized_sequence
                 break
+    logger.info("Changes established")
     return sequence
 
 
