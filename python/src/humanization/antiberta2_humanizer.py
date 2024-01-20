@@ -20,17 +20,16 @@ def mask_sequence(models, dataset, sequence: str) -> str:
     str_type = human_samples[0][0][2]
     _, result, its = humanizer.process_sequences(models, [("S", sequence)], ChainType.from_oas_type(str_type),
                                                  0.999, aligned_result=True, limit_changes=1)[0]
-
     diff_pos = -1
     if its[-1].change is not None and its[-1].change.position is not None:
         diff_pos = its[-1].change.position
     if diff_pos >= 0:
         logger.info(f"Found diff position: {diff_pos}")
-        sequence_list = list(sequence)
-        sequence_list[diff_pos] = "[MASK]"
-        result = " ".join(filter(lambda aa: aa != "X", sequence_list))
-        logger.debug(f"Result: {result}")
-        return result
+        result_list = list(result)
+        result_list[diff_pos] = "[MASK]"
+        masked = " ".join(filter(lambda aa: aa != "X", result_list))
+        logger.debug(f"Masked: {masked}")
+        return masked
     else:
         logger.info(f"No diff position")
         return sequence
