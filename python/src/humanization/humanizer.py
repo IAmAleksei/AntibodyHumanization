@@ -68,9 +68,10 @@ class Humanizer(AbstractHumanizer):
             raise RuntimeError(f"{sequence} cannot be annotated")
         if self.v_gene_scorer is None and target_v_gene_score is not None:
             logger.warning(f"V Gene scorer not defined, so target score ignored")
-        logger.info(f"Annotated sequence: {seq_to_str(current_seq, True)}")
+        logger.debug(f"Annotated sequence: {seq_to_str(current_seq, True)}")
         iterations = []
         current_value, v_gene_score = self._calc_metrics(current_seq)
+        logger.info(f"Start model metric: ({round(current_value, 6)})")
         iterations.append(IterationDetails(0, current_value, v_gene_score, None))
         for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
             logger.debug(f"Iteration {it}. "
@@ -84,12 +85,13 @@ class Humanizer(AbstractHumanizer):
                 best_value, best_v_gene_score = self._calc_metrics(current_seq)
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change))
                 if target_model_metric <= current_value and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
-                    logger.info(f"Target metrics are reached ({round(current_value, 6)})")
+                    logger.info(f"Target metrics are reached")
                     break
                 current_value, v_gene_score = best_value, best_v_gene_score
             else:
-                logger.info(f"No effective changes found. Stop algorithm on model metric = {round(current_value, 6)}")
+                logger.info(f"No effective changes found")
                 break
+        logger.info(f"Final model metric: ({round(current_value, 6)})")
         return [(seq_to_str(current_seq, aligned_result), iterations)]
 
 

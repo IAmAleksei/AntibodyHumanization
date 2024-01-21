@@ -20,7 +20,7 @@ def mask_sequence(models, dataset, sequence: str):
     chain_type = ChainType.from_oas_type(human_samples[0][0][2])
     skip_positions = []
     for i in range(3):
-        _, result, its = humanizer.process_sequences(models, [(f"S{i}", sequence)], chain_type,
+        _, result, its = humanizer.process_sequences(models, [(f"S_{i + 1}", sequence)], chain_type,
                                                      0.999, skip_positions=",".join(skip_positions),
                                                      aligned_result=True, limit_changes=1)[0]
         if its[-1].change is not None and its[-1].change.position is not None:
@@ -49,12 +49,12 @@ def humanize(seq: str) -> str:
 def process_sequence(models, dataset, sequence):
     last_sequence = ""
     while last_sequence != sequence:
-        logger.info(f"New iteration. Sequence: {sequence}")
+        logger.info(f"New iteration. Current sequence: {sequence}")
         last_sequence = sequence
         for i, masked_sequence in enumerate(mask_sequence(models, dataset, sequence)):
             humanized_sequence = humanize(masked_sequence)
             if humanized_sequence != last_sequence:
-                logger.info(f"Created new sequence for {i} tries")
+                logger.info(f"Created new sequence for {i + 1} tries")
                 sequence = humanized_sequence
                 break
     logger.info("Changes established")
