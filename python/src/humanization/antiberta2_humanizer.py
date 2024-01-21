@@ -14,12 +14,11 @@ config = config_loader.Config()
 logger = configure_logger(config, "AntiBERTa2 humanizer")
 
 
-def mask_sequence(models, dataset, sequence: str) -> List[str]:
+def mask_sequence(models, dataset, sequence: str):
     annotation = load_annotation("chothia", ChainKind.HEAVY)
     human_samples = get_similar_human_samples(annotation, dataset, [sequence], GeneralChainType.HEAVY)
     chain_type = ChainType.from_oas_type(human_samples[0][0][2])
     skip_positions = []
-    masked_sequences = []
     for i in range(3):
         _, result, its = humanizer.process_sequences(models, [(f"S{i}", sequence)], chain_type,
                                                      0.999, skip_positions=",".join(skip_positions),
@@ -32,11 +31,10 @@ def mask_sequence(models, dataset, sequence: str) -> List[str]:
             masked = " ".join(filter(lambda aa: aa != "X", result_list))
             # logger.debug(f"Masked: {masked}")
             skip_positions.append(annotation.segmented_positions[diff_pos])
-            masked_sequences.append(masked)
+            yield masked
         else:
             logger.info(f"No diff position")
             break
-    return masked_sequences
 
 
 def humanize(seq: str) -> str:
@@ -53,8 +51,7 @@ def process_sequence(models, dataset, sequence):
     while last_sequence != sequence:
         logger.info(f"New iteration. Sequence: {sequence}")
         last_sequence = sequence
-        masked_sequences = mask_sequence(models, dataset, sequence)
-        for i, masked_sequence in enumerate(masked_sequences):
+        for i, masked_sequence in enumerate(mask_sequence(models, dataset, sequence)):
             humanized_sequence = humanize(masked_sequence)
             if humanized_sequence != last_sequence:
                 logger.info(f"Created new sequence for {i} tries")
