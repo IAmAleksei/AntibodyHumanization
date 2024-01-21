@@ -19,7 +19,7 @@ def mask_sequence(models, dataset, sequence: str):
     human_samples = get_similar_human_samples(annotation, dataset, [sequence], GeneralChainType.HEAVY)
     chain_type = ChainType.from_oas_type(human_samples[0][0][2])
     skip_positions = []
-    for i in range(3):
+    for i in range(config.get(config_loader.ANTIBERTA_CANDIDATES)):
         _, result, its = humanizer.process_sequences(models, [(f"S_{i + 1}", sequence)], chain_type,
                                                      0.999, skip_positions=",".join(skip_positions),
                                                      aligned_result=True, limit_changes=1)[0]
