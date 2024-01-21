@@ -48,7 +48,9 @@ def humanize(seq: str) -> str:
 
 def process_sequence(models, dataset, sequence):
     last_sequence = ""
+    its = 0
     while last_sequence != sequence:
+        its += 1
         logger.info(f"New iteration. Current sequence: {sequence}")
         last_sequence = sequence
         for i, masked_sequence in enumerate(mask_sequence(models, dataset, sequence)):
@@ -57,7 +59,7 @@ def process_sequence(models, dataset, sequence):
                 logger.info(f"Created new sequence for {i + 1} tries")
                 sequence = humanized_sequence
                 break
-    logger.info("Changes established")
+    logger.info(f"Changes established for {its} iterations")
     return sequence
 
 
