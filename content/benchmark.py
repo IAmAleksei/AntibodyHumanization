@@ -38,7 +38,7 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
         model_wrapper = load_model(models_dir, chain_type)
         v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_dir, chain_type)
         logger.info(f"Resources loaded")
-        for limit_changes in [0, 7, 50]:
+        for limit_changes in [20]:
             for model_metric in [0.9]:
                 logger.info(f"Starting processing metric {model_metric}")
                 logger.info(f'Processing metric={model_metric} type={tp}')
@@ -50,7 +50,9 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                     continue
                 antiberta_result, direct_result, reverse_result = [], [], []
                 if humanizer_type is None or humanizer_type == "antiberta":
-                    antiberta_result = antiberta2_humanizer.process_sequences(models_dir, dataset_dir, prep_seqs)
+                    antiberta_result = antiberta2_humanizer.process_sequences(
+                        model_wrapper, v_gene_scorer, prep_seqs, limit_changes=limit_changes
+                    )
                 if humanizer_type is None or humanizer_type == "direct":
                     direct_result = humanizer._process_sequences(
                         model_wrapper, v_gene_scorer, prep_seqs, model_metric, aligned_result=True,
@@ -65,7 +67,7 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                     lines = []
                     for name, res in antiberta_result:
                         lines.extend(
-                            [f"> {name}_a_{i}t",
+                            [f"> {name}_a_{limit_changes:02d}ch_{i}t",
                              res])
                     for name, res, its in direct_result:
                         lines.extend(
