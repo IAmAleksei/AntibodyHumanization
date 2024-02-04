@@ -1,10 +1,8 @@
 import argparse
 import traceback
-from typing import Any, List
-
-from transformers import RoFormerForMaskedLM, RoFormerTokenizer, pipeline
 
 from humanization import config_loader, humanizer
+from humanization.antiberta_utils import get_antiberta_filler, fill_mask
 from humanization.annotations import load_annotation, ChainKind, GeneralChainType, ChainType
 from humanization.humanizer import common_parser_options
 from humanization.models import load_model
@@ -36,15 +34,6 @@ def mask_sequence(model_wrapper, v_gene_scorer, sequence: str, limit_changes):
             break
 
 
-def humanize(seq: str) -> str:
-    tokenizer = RoFormerTokenizer.from_pretrained("alchemab/antiberta2")
-    model = RoFormerForMaskedLM.from_pretrained("alchemab/antiberta2")
-    filler = pipeline("fill-mask", model=model, tokenizer=tokenizer)
-    result = filler(seq)
-    # logger.debug(f"Selected candidate: {result[0]['token_str']}")
-    return result[0]['sequence'].replace(' ', '').replace('Ḣ', 'H')
-
-
 def process_sequence(model_wrapper, v_gene_scorer, sequence, limit_changes):
     last_sequence = ""
     its = 0
@@ -53,7 +42,7 @@ def process_sequence(model_wrapper, v_gene_scorer, sequence, limit_changes):
         logger.info(f"New iteration. Current sequence: {sequence}")
         last_sequence = sequence
         for i, masked_sequence in enumerate(mask_sequence(model_wrapper, v_gene_scorer, sequence, limit_changes)):
-            humanized_sequence = humanize(masked_sequence)
+            humanized_sequence = fill_mask(get_antiberta_filler(), masked_sequence)
             if humanized_sequence != last_sequence:
                 logger.info(f"Created new sequence for {i + 1} tries")
                 sequence = humanized_sequence

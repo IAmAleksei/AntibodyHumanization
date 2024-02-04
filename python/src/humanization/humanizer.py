@@ -84,7 +84,7 @@ class Humanizer(AbstractHumanizer):
                 logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
                 best_value, best_v_gene_score = self._calc_metrics(current_seq)
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change))
-                if target_model_metric <= current_value and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
+                if target_model_metric <= best_value and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
                     logger.info(f"Target metrics are reached")
                     break
                 current_value, v_gene_score = best_value, best_v_gene_score
@@ -127,7 +127,7 @@ def main(models_dir, input_file, dataset_file, modify_cdr, skip_positions,
     results = process_sequences(
         models_dir, sequences, chain_type, target_model_metric, dataset_file, modify_cdr,
         skip_positions, deny_use_aa, deny_change_aa, use_aa_similarity, target_v_gene_score,
-        non_decreasing_v_gene
+        non_decreasing_v_gene=non_decreasing_v_gene
     )
     write_sequences(output_file, results)
 

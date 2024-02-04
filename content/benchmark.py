@@ -3,7 +3,8 @@ import datetime
 import json
 import os.path
 
-from humanization import humanizer, reverse_humanizer, config_loader, antiberta2_humanizer
+from humanization import humanizer, reverse_humanizer, config_loader, antiberta2_humanizer, \
+    inovative_antiberta_humanizer
 from humanization.annotations import ChainType, GeneralChainType, load_annotation, ChainKind
 from humanization.models import load_model
 from humanization.utils import configure_logger
@@ -38,7 +39,7 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
         model_wrapper = load_model(models_dir, chain_type)
         v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_dir, chain_type)
         logger.info(f"Resources loaded")
-        for limit_changes in [20]:
+        for limit_changes in [30]:
             for model_metric in [0.9]:
                 logger.info(f"Starting processing metric {model_metric}")
                 logger.info(f'Processing metric={model_metric} type={tp}')
@@ -48,10 +49,15 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                         prep_seqs.append((antibody['name'], antibody['heavy']['sequ'].replace('-', '')))
                 if len(prep_seqs) == 0:
                     continue
-                antiberta_result, direct_result, reverse_result = [], [], []
+                antiberta_result, innovative_result, direct_result, reverse_result = [], [], [], []
                 if humanizer_type is None or humanizer_type == "antiberta":
                     antiberta_result = antiberta2_humanizer.process_sequences(
                         model_wrapper, v_gene_scorer, prep_seqs, limit_changes=limit_changes
+                    )
+                if humanizer_type is None or humanizer_type == "innovative":
+                    innovative_result = inovative_antiberta_humanizer.process_sequences(
+                        v_gene_scorer, prep_seqs, limit_delta=15.0, target_v_gene_score=0.85,
+                        prefer_human_sample=True, limit_changes=limit_changes
                     )
                 if humanizer_type is None or humanizer_type == "direct":
                     direct_result = humanizer._process_sequences(
@@ -68,6 +74,10 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                     for name, res in antiberta_result:
                         lines.extend(
                             [f"> {name}_a_{limit_changes:02d}ch_{i}t",
+                             res])
+                    for name, res, _ in innovative_result:
+                        lines.extend(
+                            [f"> {name}_i_{limit_changes:02d}ch_{i}t",
                              res])
                     for name, res, its in direct_result:
                         lines.extend(
@@ -88,7 +98,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''Benchmark direct humanizer''')
     parser.add_argument('--models', type=str, default="../models", help='Path to directory with models')
     parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
-    parser.add_argument('--humanizer', type=str, default=None, choices=[None, "antiberta", "direct", "reverse"], help='Humanizer type')
+    parser.add_argument('--humanizer', type=str, default=None,
+                        choices=[None, "antiberta", "innovative", "direct", "reverse"], help='Humanizer type')
     parser.add_argument('--fasta-output', type=str, default=f"h_{date}.fasta", help='Generate fasta with all sequences')
     args = parser.parse_args()
     main(models_dir=args.models, dataset_dir=args.dataset, humanizer_type=args.humanizer,

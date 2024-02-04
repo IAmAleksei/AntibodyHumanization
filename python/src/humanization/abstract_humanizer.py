@@ -3,7 +3,7 @@ from abc import ABC
 from typing import List, Tuple, NamedTuple, Optional, Callable
 
 from humanization import config_loader
-from humanization.annotations import GeneralChainType
+from humanization.annotations import GeneralChainType, Annotation
 from humanization.models import ModelWrapper
 from humanization.utils import BLOSUM62, configure_logger
 from humanization.v_gene_scorer import calc_score, VGeneScorer
@@ -60,14 +60,16 @@ class IterationDetails(NamedTuple):
                f"{change}"
 
 
-def seq_to_str(sequence: List[str], with_x: bool) -> str:
-    return "".join(c for c in sequence if c != 'X' or with_x)
+def seq_to_str(sequence: List[str], with_x: bool, sep: str = "") -> str:
+    return sep.join(c for c in sequence if c != 'X' or with_x)
 
 
-class AbstractHumanizer(ABC):
-    def __init__(self, model_wrapper: ModelWrapper, v_gene_scorer: Optional[VGeneScorer]):
-        self.model_wrapper = model_wrapper
+class BaseHumanizer(ABC):
+    def __init__(self, v_gene_scorer: Optional[VGeneScorer]):
         self.v_gene_scorer = v_gene_scorer
+
+    def get_annotation(self) -> Annotation:
+        pass
 
     def _get_v_gene_score(self, current_seq: List[str], human_sample: Optional[str] = None,
                           prefer_human_sample: bool = False) -> Tuple[Optional[str], Optional[float]]:
@@ -75,9 +77,22 @@ class AbstractHumanizer(ABC):
             human_sample, v_gene_score, _ = self.v_gene_scorer.query(current_seq)[0]
             return human_sample, v_gene_score
         elif human_sample is not None:
-            return human_sample, calc_score(current_seq, human_sample, self.model_wrapper.annotation)
+            return human_sample, calc_score(current_seq, human_sample, self.get_annotation())
         else:
             return None, None
+
+    def query(self, sequence: str, target_model_metric: float,
+              target_v_gene_score: Optional[float]) -> List[Tuple[str, List[IterationDetails]]]:
+        pass
+
+
+class AbstractHumanizer(BaseHumanizer):
+    def __init__(self, model_wrapper: ModelWrapper, v_gene_scorer: Optional[VGeneScorer]):
+        super().__init__(v_gene_scorer)
+        self.model_wrapper = model_wrapper
+
+    def get_annotation(self) -> Annotation:
+        return self.model_wrapper.annotation
 
     def _calc_metrics(self, current_seq: List[str], human_sample: Optional[str] = None,
                       prefer_human_sample: bool = False) -> Tuple[float, float]:
@@ -85,12 +100,8 @@ class AbstractHumanizer(ABC):
         _, v_gene_score = self._get_v_gene_score(current_seq, human_sample, prefer_human_sample)
         return current_value, v_gene_score
 
-    def query(self, sequence: str, target_model_metric: float,
-              target_v_gene_score: Optional[float]) -> List[Tuple[str, List[IterationDetails]]]:
-        pass
 
-
-def run_humanizer(sequences: List[Tuple[str, str]], humanizer: AbstractHumanizer,
+def run_humanizer(sequences: List[Tuple[str, str]], humanizer: BaseHumanizer,
                   *args) -> List[Tuple[str, str, List[IterationDetails]]]:
     results = []
     for name, sequence in sequences:
@@ -107,7 +118,7 @@ def run_humanizer(sequences: List[Tuple[str, str]], humanizer: AbstractHumanizer
 
 def read_humanizer_options(dataset_file):
     general_chain_type = GeneralChainType(input("Enter chain type (H, K or L): "))
-    v_gene_type = input(f"V gene type {general_chain_type.available_specific_types()}")
+    v_gene_type = input(f"V gene type {general_chain_type.available_specific_types()}: ")
     chain_type = general_chain_type.specific_type(v_gene_type)
     target_model_metric = float(input("Enter target model metric: "))
     if dataset_file is not None:
