@@ -89,17 +89,18 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                 logger.debug(f"Trying apply metric {best_value} and v_gene_score {best_v_gene_score}")
                 if best_value >= limit_delta:
                     current_seq[best_change.position] = prev_aa
-                    logger.info(f"Current metrics are best ({round(current_value, 6)})")
+                    logger.info(f"It {it}. Current metrics are best ({round(current_value, 6)})")
                     break
                 column_name = self.get_annotation().segmented_positions[best_change.position]
                 logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change))
                 if best_value < limit_delta and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
-                    logger.info(f"Target metrics are reached")
+                    logger.info(f"It {it}. Target metrics are reached (v_gene_score = {best_v_gene_score})")
                     break
                 current_value, v_gene_score = best_value, best_v_gene_score
             else:
-                logger.info(f"No effective changes found. Stop algorithm on model metric = {round(current_value, 6)}")
+                logger.info(f"It {it}. No effective changes found."
+                            f" Stop algorithm on model metric = {round(current_value, 6)}")
                 break
         return seq_to_str(current_seq, aligned_result), iterations
 
