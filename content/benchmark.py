@@ -28,9 +28,12 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
         antibody['heavy']['my_type'] = []
         if human_samples[idx] is not None:
             logger.info(f"{antibody['name']} human samples:")
-            for iii, h_s in enumerate(human_samples[idx]):
-                logger.info(f"{iii + 1}. Human sample: {h_s[0]} V_gene: {h_s[1]} Type: {h_s[2]}")
-                antibody['heavy']['my_type'].append(ChainType.from_oas_type(h_s[2]).full_type())
+            for iii, (s, vg, tp) in enumerate(human_samples[idx]):
+                logger.info(f"{iii + 1}. Human sample: {s} V_gene: {vg} Type: {tp}")
+                if vg < 0.4:
+                    logger.warn("Extremely low v gene score, this sample will not be used")
+                else:
+                    antibody['heavy']['my_type'].append(ChainType.from_oas_type(tp).full_type())
 
     for i in range(1, 8):
         tp = f'HV{i}'

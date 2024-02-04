@@ -21,7 +21,7 @@ def read_and_annotate_file(csv_file: str, annotation: Annotation) -> pandas.Data
         df, is_human = read_oas_file(csv_file, ['sequence_alignment_aa', 'v_call'])
     logger.debug(f"File contains {df.shape[0]} rows")
     correct_v_call(df, is_human)
-    df = make_annotated_df(df.iloc[:1000], annotation, is_human=is_human)
+    df = make_annotated_df(df, annotation, is_human=is_human)
     df = filter_df(df, annotation)
     return df
 

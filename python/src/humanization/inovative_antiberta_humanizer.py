@@ -102,6 +102,7 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                 logger.info(f"It {it}. No effective changes found."
                             f" Stop algorithm on model metric = {round(current_value, 6)}")
                 break
+        logger.info(f"Process took {len(iterations)} iterations")
         return seq_to_str(current_seq, aligned_result), iterations
 
     def query(self, sequence: str, limit_delta: float = 15, target_v_gene_score: float = 0.0, human_sample: str = None,
