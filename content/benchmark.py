@@ -76,20 +76,21 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                     lines = []
                     for name, res in antiberta_result:
                         lines.extend(
-                            [f"> {name}_a_{limit_changes:02d}ch_{i}t",
+                            [f"> {name}_a_{limit_changes:02d}pch_{i}t",
                              res])
-                    for name, res, _ in innovative_result:
+                    for name, res, its in innovative_result:
                         lines.extend(
-                            [f"> {name}_i_{limit_changes:02d}ch_{i}t",
+                            [f"> {name}_i_{len(its):02d}ch_{i}t"
+                             f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",
                              res])
                     for name, res, its in direct_result:
                         lines.extend(
-                            [f"> {name}_d_{model_metric}_{limit_changes:02d}ch_{i}t "
+                            [f"> {name}_d_{model_metric}_{len(its):02d}ch_{i}t "
                              f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",
                              res])
                     for name, res, its in reverse_result:
                         lines.extend(
-                            [f"> {name}_r_{model_metric}_{limit_changes:02d}ch_{i}t "
+                            [f"> {name}_r_{model_metric}_{len(its):02d}ch_{i}t "
                              f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",
                              res])
                     lines.append("")
