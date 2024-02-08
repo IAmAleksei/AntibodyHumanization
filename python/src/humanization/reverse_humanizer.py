@@ -72,6 +72,7 @@ class ReverseHumanizer(AbstractHumanizer):
             else:
                 logger.info(f"No effective changes found. Stop algorithm on model metric = {round(current_value, 6)}")
                 break
+        logger.info(f"Process took {len(iterations)} iterations")
         return seq_to_str(current_seq, aligned_result), iterations
 
     def query(self, sequence: str, target_model_metric: float, target_v_gene_score: float = 0.0,

@@ -87,7 +87,7 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
                             [f"> {name}_i_{len(its):02d}ch_{i}t"
                              f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",
                              res])
-                    for name, res in rev_antiberta_result:
+                    for name, res, its in rev_antiberta_result:
                         lines.extend(
                             [f"> {name}_b_{model_metric}_{limit_changes:02d}pch_{i}t",
                              res])

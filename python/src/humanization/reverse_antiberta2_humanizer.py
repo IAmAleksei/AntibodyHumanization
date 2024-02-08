@@ -89,6 +89,7 @@ class ReverseAntibertaHumanizer(AbstractHumanizer):
                 logger.info(f"No effective changes found")
                 break
         logger.info(f"Final model metric: ({round(current_value, 6)})")
+        logger.info(f"Process took {len(iterations)} iterations")
         return [(seq_to_str(current_seq, aligned_result), iterations)]
 
 
