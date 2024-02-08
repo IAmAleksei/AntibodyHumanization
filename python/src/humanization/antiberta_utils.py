@@ -5,6 +5,7 @@ from transformers import pipeline, RoFormerForMaskedLM, AutoTokenizer, RoFormerT
 
 antiberta_tokenizer = RoFormerTokenizer.from_pretrained("alchemab/antiberta2")
 antiberta_model = RoFormerForMaskedLM.from_pretrained("alchemab/antiberta2")
+filler = pipeline("fill-mask", model=antiberta_model, tokenizer=antiberta_tokenizer)
 
 
 def get_antiberta_embeddings(seqs: List[str]) -> np.array:
@@ -18,21 +19,17 @@ def get_embeddings_delta(a, b) -> float:
     return np.linalg.norm(a - b)
 
 
-def get_antiberta_filler():
-    return pipeline("fill-mask", model=antiberta_model, tokenizer=antiberta_tokenizer)
-
-
-def fill_mask(filler, seq: str) -> str:
+def fill_mask(seq: str) -> str:
     result = filler(seq)
     return result[0]['sequence'].replace(' ', '').replace('Ḣ', 'H')
 
 
-def get_mask_values(filler, seq: List[str]) -> List[str]:
+def get_mask_values(seq: List[str]) -> List[str]:
     result = filler(seq)
     if len(seq) == 1:
         result = [result]
     return [res[0]['token_str'].replace('Ḣ', 'H') for res in result]
 
 
-def get_mask_value(filler, seq: str) -> str:
-    return get_mask_values(filler, [seq])[0]
+def get_mask_value(seq: str) -> str:
+    return get_mask_values([seq])[0]

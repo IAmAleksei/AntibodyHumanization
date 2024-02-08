@@ -1,14 +1,12 @@
-import argparse
-import traceback
 from typing import Optional, List, Tuple
 
 from humanization import config_loader, utils
 from humanization.abstract_humanizer import AbstractHumanizer, IterationDetails, seq_to_str, SequenceChange, \
     is_change_less, run_humanizer
-from humanization.antiberta_utils import get_antiberta_filler, get_mask_value, get_mask_values
 from humanization.annotations import annotate_single
+from humanization.antiberta_utils import get_mask_values
 from humanization.models import ModelWrapper
-from humanization.utils import configure_logger, parse_list, read_sequences
+from humanization.utils import configure_logger, parse_list
 from humanization.v_gene_scorer import VGeneScorer, is_v_gene_score_less
 
 config = config_loader.Config()
@@ -31,7 +29,6 @@ class ReverseAntibertaHumanizer(AbstractHumanizer):
         self.deny_delete_aa = deny_change_aa
         self.use_aa_similarity = False
         self.increasing_v_gene = True
-        self.filler = get_antiberta_filler()
 
     def _test_single_change(self, sequence: List[str], column_idx: int,
                             current_v_gene_score: float = None) -> Tuple[List[str], SequenceChange]:
