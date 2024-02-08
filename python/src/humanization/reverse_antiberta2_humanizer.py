@@ -1,3 +1,4 @@
+import argparse
 import traceback
 from typing import Optional, List, Tuple
 
@@ -7,7 +8,7 @@ from humanization.abstract_humanizer import AbstractHumanizer, IterationDetails,
 from humanization.antiberta_utils import get_antiberta_filler, get_mask_value
 from humanization.annotations import annotate_single
 from humanization.models import ModelWrapper
-from humanization.utils import configure_logger, parse_list
+from humanization.utils import configure_logger, parse_list, read_sequences
 from humanization.v_gene_scorer import VGeneScorer, is_v_gene_score_less
 
 config = config_loader.Config()
@@ -80,8 +81,7 @@ class ReverseAntibertaHumanizer(AbstractHumanizer):
                 logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
                 best_value, best_v_gene_score = self._calc_metrics(current_seq)
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change))
-                if target_model_metric <= current_value and is_v_gene_score_less(target_v_gene_score,
-                                                                                 best_v_gene_score):
+                if target_model_metric <= current_value and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
                     logger.info(f"Target metrics are reached")
                     break
                 current_value, v_gene_score = best_value, best_v_gene_score
@@ -92,13 +92,11 @@ class ReverseAntibertaHumanizer(AbstractHumanizer):
         return [(seq_to_str(current_seq, aligned_result), iterations)]
 
 
-def _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric,
-                       deny_use_aa=utils.TABOO_INSERT_AA,
+def _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric, deny_use_aa=utils.TABOO_INSERT_AA,
                        deny_change_aa=utils.TABOO_DELETE_AA, target_v_gene_score=None,
                        aligned_result=False, limit_changes=999):
     humanizer = ReverseAntibertaHumanizer(
         model_wrapper, v_gene_scorer, parse_list(deny_use_aa), parse_list(deny_change_aa)
     )
-    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score, aligned_result,
-                            limit_changes)
+    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score, aligned_result, limit_changes)
     return results
