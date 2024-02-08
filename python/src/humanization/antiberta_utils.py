@@ -27,6 +27,12 @@ def fill_mask(filler, seq: str) -> str:
     return result[0]['sequence'].replace(' ', '').replace('Ḣ', 'H')
 
 
-def get_mask_value(filler, seq: str) -> str:
+def get_mask_values(filler, seq: List[str]) -> List[str]:
     result = filler(seq)
-    return result[0]['token_str'].replace('Ḣ', 'H')
+    if len(seq) == 1:
+        result = [result]
+    return [res[0]['token_str'].replace('Ḣ', 'H') for res in result]
+
+
+def get_mask_value(filler, seq: str) -> str:
+    return get_mask_values(filler, [seq])[0]

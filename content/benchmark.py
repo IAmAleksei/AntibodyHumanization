@@ -43,7 +43,7 @@ def main(models_dir, dataset_dir, humanizer_type, fasta_output):
         v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_dir, chain_type)
         logger.info(f"Resources loaded")
         for limit_changes in [30]:
-            for model_metric in [0.9]:
+            for model_metric in [0.99]:
                 logger.info(f"Starting processing metric {model_metric}")
                 logger.info(f'Processing metric={model_metric} type={tp}')
                 prep_seqs = []
