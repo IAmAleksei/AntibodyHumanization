@@ -73,10 +73,11 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         return best_change
 
     def _calc_metrics(self, original_embedding: np.array, current_seq: List[str], human_sample: Optional[str] = None,
-                      prefer_human_sample: bool = False) -> Tuple[float, float]:
+                      prefer_human_sample: bool = False) -> Tuple[float, float, float]:
         current_value = get_embeddings_delta(original_embedding, _get_embedding(current_seq))
         _, v_gene_score = self._get_v_gene_score(current_seq, human_sample, prefer_human_sample)
-        return current_value, v_gene_score
+        _, wild_v_gene_score, _ = self.wild_v_gene_scorer.query(current_seq)[0]
+        return current_value, v_gene_score, wild_v_gene_score
 
     def _query_one(self, original_seq, cur_human_sample, limit_delta: float, target_v_gene_score: float,
                    aligned_result: bool, prefer_human_sample: bool,
@@ -85,18 +86,20 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         current_seq = original_seq.copy()
         logger.info(f"Used human sample: {cur_human_sample}")
         iterations = []
-        current_value, v_gene_score = self._calc_metrics(original_embedding, current_seq, cur_human_sample,
-                                                         prefer_human_sample)
+        current_value, v_gene_score, wild_v_gene_score = \
+            self._calc_metrics(original_embedding, current_seq, cur_human_sample, prefer_human_sample)
         iterations.append(IterationDetails(0, current_value, v_gene_score, None))
+        logger.info(f"Start metrics. V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
         for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
             logger.debug(f"Iteration {it}. "
-                         f"Current delta = {round(current_value, 6)}, V Gene score = {v_gene_score}")
+                         f"Current delta = {round(current_value, 6)},"
+                         f" V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
             best_change = self._find_best_change(current_seq, original_embedding, cur_human_sample, v_gene_score)
             if best_change.is_defined():
                 prev_aa = current_seq[best_change.position]
                 current_seq[best_change.position] = best_change.aa
-                best_value, best_v_gene_score = self._calc_metrics(original_embedding, current_seq, cur_human_sample,
-                                                                   prefer_human_sample)
+                best_value, best_v_gene_score, best_wild_v_gene_score = \
+                    self._calc_metrics(original_embedding, current_seq, cur_human_sample, prefer_human_sample)
                 logger.debug(f"Trying apply metric {best_value} and v_gene_score {best_v_gene_score}")
                 if best_value >= limit_delta:
                     current_seq[best_change.position] = prev_aa
@@ -106,7 +109,8 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                 logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change))
                 if best_value < limit_delta and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
-                    logger.info(f"It {it}. Target metrics are reached (v_gene_score = {best_v_gene_score})")
+                    logger.info(f"It {it}. Target metrics are reached"
+                                f" (v_gene_score = {best_v_gene_score}, wild_v_gene_score = {best_wild_v_gene_score})")
                     break
                 current_value, v_gene_score = best_value, best_v_gene_score
             else:
