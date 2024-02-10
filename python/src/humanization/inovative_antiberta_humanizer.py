@@ -76,7 +76,10 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                       prefer_human_sample: bool = False) -> Tuple[float, float, float]:
         current_value = get_embeddings_delta(original_embedding, _get_embedding(current_seq))
         _, v_gene_score = self._get_v_gene_score(current_seq, human_sample, prefer_human_sample)
-        _, wild_v_gene_score, _ = self.wild_v_gene_scorer.query(current_seq)[0]
+        if self.wild_v_gene_scorer:
+            _, wild_v_gene_score, _ = self.wild_v_gene_scorer.query(current_seq)[0]
+        else:
+            wild_v_gene_score = None
         return current_value, v_gene_score, wild_v_gene_score
 
     def _query_one(self, original_seq, cur_human_sample, limit_delta: float, target_v_gene_score: float,
