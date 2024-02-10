@@ -50,7 +50,7 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         if self.wild_v_gene_scorer is None:
             return 0.0
         _, wild_v_gene_score, _ = self.wild_v_gene_scorer.query(mod_seq)[0]
-        return max(0.0, wild_v_gene_score - cur_v_gene_score) * 10  # ~0.01 * 10 = ~0.1
+        return max(0.0, wild_v_gene_score - cur_v_gene_score) * 5  # ~0.01 * 5 = ~0.05
 
     def _find_best_change(self, current_seq: List[str], original_embedding: np.array,
                           cur_human_sample: List[str], cur_v_gene_score: float):
@@ -109,7 +109,8 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                     logger.info(f"It {it}. Current metrics are best ({round(current_value, 6)})")
                     break
                 column_name = self.get_annotation().segmented_positions[best_change.position]
-                logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
+                logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}."
+                             f" Value: {best_change.value}")
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change))
                 if best_value < limit_delta and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
                     logger.info(f"It {it}. Target metrics are reached"
