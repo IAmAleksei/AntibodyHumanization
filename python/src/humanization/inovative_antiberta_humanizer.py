@@ -112,7 +112,7 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                     logger.info(f"It {it}. Target metrics are reached"
                                 f" (v_gene_score = {best_v_gene_score}, wild_v_gene_score = {best_wild_v_gene_score})")
                     break
-                current_value, v_gene_score = best_value, best_v_gene_score
+                current_value, v_gene_score, wild_v_gene_score = best_value, best_v_gene_score, best_wild_v_gene_score
             else:
                 logger.info(f"It {it}. No effective changes found."
                             f" Stop algorithm on model metric = {round(current_value, 6)}")
