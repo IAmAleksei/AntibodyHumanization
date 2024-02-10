@@ -30,11 +30,7 @@ def _parse_hmmer_query(query, bit_score_threshold=80, hmmer_species=None):
                         if hsp.hit_id.startswith(species):
                             hit_correct_species.append(hsp)
 
-            if hit_correct_species:
-                hsp_list = hit_correct_species
-            else:
-                print("Drop limiting, empty result")
-                hsp_list = hit_correct_species
+            hsp_list = hit_correct_species
         else:
             hsp_list = query.hsps
 
