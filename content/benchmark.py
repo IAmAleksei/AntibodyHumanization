@@ -20,6 +20,8 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
     open(fasta_output, 'w').close()
     with open('thera_antibodies.json', 'r') as fp:
         samples = json.load(fp)
+    with open('extra_thera_antibodies.json', 'r') as fp:
+        samples += json.load(fp)
 
     temp_seqs = [antibody['heavy']['sequ'].replace('-', '') for antibody in samples]
     annotation = load_annotation("chothia", ChainKind.HEAVY)
@@ -90,7 +92,8 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                              res])
                     for name, res, its in rev_antiberta_result:
                         lines.extend(
-                            [f"> {name}_b_{model_metric}_{limit_changes:02d}pch_{i}t",
+                            [f"> {name}_b_{model_metric}_{limit_changes:02d}pch_{i}t"
+                             f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",
                              res])
                     for name, res, its in direct_result:
                         lines.extend(
