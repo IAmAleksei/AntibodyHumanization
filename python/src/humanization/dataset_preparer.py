@@ -49,10 +49,10 @@ def read_any_dataset(input_dir: str, annotation: Annotation, only_human: bool = 
     return X, y
 
 
-def read_human_samples(dataset_file=None, annotation=None,
-                       v_type: ChainType = None) -> Optional[Tuple[List[str], List[str]]]:
+def read_v_gene_dataset(dataset_file=None, annotation=None, only_human=True,
+                        v_type: ChainType = None) -> Optional[Tuple[List[str], List[str]]]:
     if dataset_file is not None:
-        X, y = read_any_dataset(dataset_file, annotation, only_human=True, v_type=v_type)
+        X, y = read_any_dataset(dataset_file, annotation, only_human=only_human, v_type=v_type)
         X.reset_index(drop=True, inplace=True)
         human_samples = merge_all_columns(X)
         return human_samples, y.tolist()

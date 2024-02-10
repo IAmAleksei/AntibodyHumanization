@@ -24,8 +24,10 @@ def _get_embedding(seq: List[str]) -> np.array:
 
 
 class InovativeAntibertaHumanizer(BaseHumanizer):
-    def __init__(self, v_gene_scorer: VGeneScorer, deny_use_aa: List[str], deny_change_aa: List[str]):
+    def __init__(self, v_gene_scorer: VGeneScorer, wild_v_gene_scorer: VGeneScorer,
+                 deny_use_aa: List[str], deny_change_aa: List[str]):
         super().__init__(v_gene_scorer)
+        self.wild_v_gene_scorer = wild_v_gene_scorer
         self.annotation = ChothiaHeavy()
         self.deny_insert_aa = deny_use_aa
         self.deny_delete_aa = deny_change_aa
@@ -44,7 +46,14 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         sequence[column_idx] = aa_backup
         return seq_copy, candidate_change
 
-    def _find_best_change(self, current_seq: List[str], original_embedding: np.array, cur_human_sample: List[str]):
+    def _get_v_gene_penalty(self, mod_seq: List[str], cur_v_gene_score: float) -> float:
+        if self.wild_v_gene_scorer is None:
+            return 0.0
+        _, wild_v_gene_score, _ = self.wild_v_gene_scorer.query(mod_seq)[0]
+        return max(0.0, wild_v_gene_score - cur_v_gene_score) * 10  # ~0.01 * 10 = ~0.1
+
+    def _find_best_change(self, current_seq: List[str], original_embedding: np.array,
+                          cur_human_sample: List[str], cur_v_gene_score: float):
         best_change = SequenceChange(None, None, None, 10e9)
         all_candidates = []
         for idx, column_name in enumerate(self.get_annotation().segmented_positions):
@@ -55,8 +64,10 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                 all_candidates.append((mod_seq, candidate_change))
         logger.debug(f"Get embeddings for {len(all_candidates)} sequences")
         embeddings = _get_embeddings([mod_seq for mod_seq, _ in all_candidates])
-        for idx, (_, candidate_change) in enumerate(all_candidates):
-            candidate_change = candidate_change._replace(value=get_embeddings_delta(original_embedding, embeddings[idx]))
+        for idx, (mod_seq, candidate_change) in enumerate(all_candidates):
+            embeddings_delta = get_embeddings_delta(original_embedding, embeddings[idx]) + \
+                               self._get_v_gene_penalty(mod_seq, cur_v_gene_score)
+            candidate_change = candidate_change._replace(value=embeddings_delta)
             if is_change_less(candidate_change, best_change, self.use_aa_similarity):
                 best_change = candidate_change
         return best_change
@@ -80,7 +91,7 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
             logger.debug(f"Iteration {it}. "
                          f"Current delta = {round(current_value, 6)}, V Gene score = {v_gene_score}")
-            best_change = self._find_best_change(current_seq, original_embedding, cur_human_sample)
+            best_change = self._find_best_change(current_seq, original_embedding, cur_human_sample, v_gene_score)
             if best_change.is_defined():
                 prev_aa = current_seq[best_change.position]
                 current_seq[best_change.position] = best_change.aa
@@ -128,23 +139,26 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         return result
 
 
-def process_sequences(v_gene_scorer, sequences, limit_delta=16.0, human_sample=None, deny_use_aa=utils.TABOO_INSERT_AA,
-                      deny_change_aa=utils.TABOO_DELETE_AA, target_v_gene_score=None,
+def process_sequences(v_gene_scorer=None, wild_v_gene_scorer=None, sequences=None, limit_delta=16.0, human_sample=None,
+                      deny_use_aa=utils.TABOO_INSERT_AA, deny_change_aa=utils.TABOO_DELETE_AA, target_v_gene_score=None,
                       aligned_result=False, prefer_human_sample=False, limit_changes=999):
-    humanizer = InovativeAntibertaHumanizer(v_gene_scorer, parse_list(deny_use_aa), parse_list(deny_change_aa))
+    humanizer = InovativeAntibertaHumanizer(v_gene_scorer, wild_v_gene_scorer,
+                                            parse_list(deny_use_aa), parse_list(deny_change_aa))
     results = run_humanizer(sequences, humanizer, limit_delta, target_v_gene_score,
                             human_sample, aligned_result, prefer_human_sample, limit_changes)
     return results
 
 
-def main(input_file, dataset_file, deny_use_aa, deny_change_aa, human_sample, limit_changes, output_file):
+def main(input_file, dataset_file, wild_dataset_file, deny_use_aa, deny_change_aa, human_sample,
+         limit_changes, output_file):
     sequences = read_sequences(input_file)
     _, target_delta, target_v_gene_score = read_humanizer_options(dataset_file)
     v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), dataset_file)
+    wild_v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), wild_dataset_file)
     assert v_gene_scorer is not None
     results = process_sequences(
-        v_gene_scorer, sequences, target_delta, human_sample, deny_use_aa, deny_change_aa, target_v_gene_score,
-        limit_changes=limit_changes
+        v_gene_scorer, wild_v_gene_scorer, sequences, target_delta, human_sample, deny_use_aa, deny_change_aa,
+        target_v_gene_score, limit_changes=limit_changes
     )
     write_sequences(output_file, results)
 
@@ -156,6 +170,7 @@ if __name__ == '__main__':
     parser.add_argument('--human-sample', type=str, required=False,
                         help='Human sample used for creation chimeric sequence')
     parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
+    parser.add_argument('--wild-dataset', type=str, required=False, help='Path to dataset for wildness calculation')
     parser.add_argument('--deny-use-aa', type=str, default=utils.TABOO_INSERT_AA, required=False,
                         help='Amino acids that could not be used')
     parser.add_argument('--deny-change-aa', type=str, default=utils.TABOO_DELETE_AA, required=False,
@@ -166,6 +181,7 @@ if __name__ == '__main__':
 
     main(input_file=args.input,
          dataset_file=args.dataset,
+         wild_dataset_file=args.wild_dataset,
          deny_use_aa=args.deny_use_aa,
          deny_change_aa=args.deny_change_aa,
          human_sample=args.human_sample,
