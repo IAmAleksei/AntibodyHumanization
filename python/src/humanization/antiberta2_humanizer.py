@@ -7,7 +7,7 @@ from humanization.annotations import load_annotation, ChainKind, GeneralChainTyp
 from humanization.humanizer import common_parser_options
 from humanization.models import load_model
 from humanization.utils import configure_logger
-from humanization.v_gene_scorer import get_similar_human_samples, build_v_gene_scorer
+from humanization.v_gene_scorer import get_similar_samples, build_v_gene_scorer
 
 config = config_loader.Config()
 logger = configure_logger(config, "AntiBERTa2 humanizer")
@@ -68,7 +68,7 @@ def process_sequences(model_wrapper, v_gene_scorer, sequences, limit_changes):
 def main(args):
     sequence = input("Enter sequence:")
     annotation = load_annotation("chothia", ChainKind.HEAVY)
-    human_samples = get_similar_human_samples(annotation, args.dataset, [sequence], GeneralChainType.HEAVY)
+    human_samples = get_similar_samples(annotation, args.dataset, [sequence], GeneralChainType.HEAVY)
     chain_type = ChainType.from_oas_type(human_samples[0][0][2])
     model_wrapper = load_model(args.models, chain_type)
     v_gene_scorer = build_v_gene_scorer(annotation, args.dataset, chain_type)

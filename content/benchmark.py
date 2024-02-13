@@ -8,7 +8,7 @@ from humanization import humanizer, reverse_humanizer, config_loader, antiberta2
 from humanization.annotations import ChainType, GeneralChainType, load_annotation, ChainKind
 from humanization.models import load_model
 from humanization.utils import configure_logger
-from humanization.v_gene_scorer import build_v_gene_scorer, get_similar_human_samples
+from humanization.v_gene_scorer import build_v_gene_scorer, get_similar_samples
 
 
 config = config_loader.Config()
@@ -25,7 +25,7 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
 
     temp_seqs = [antibody['heavy']['sequ'].replace('-', '') for antibody in samples]
     annotation = load_annotation("chothia", ChainKind.HEAVY)
-    human_samples = get_similar_human_samples(annotation, dataset_dir, temp_seqs, GeneralChainType.HEAVY)
+    human_samples = get_similar_samples(annotation, dataset_dir, temp_seqs, chain_type=GeneralChainType.HEAVY)
     for idx, antibody in enumerate(samples):
         antibody['heavy']['my_type'] = []
         if human_samples[idx] is not None:

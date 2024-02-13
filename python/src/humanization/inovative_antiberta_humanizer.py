@@ -50,7 +50,8 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         if self.wild_v_gene_scorer is None:
             return 0.0
         _, wild_v_gene_score, _ = self.wild_v_gene_scorer.query(mod_seq)[0]
-        return max(0.0, wild_v_gene_score - cur_v_gene_score) * 5  # ~0.01 * 5 = ~0.05
+        mult = 180 * (cur_v_gene_score - 0.85) + 50  # Increasing penalty when v gene score is increasing
+        return max(0.0, wild_v_gene_score - cur_v_gene_score) * mult
 
     def _find_best_change(self, current_seq: List[str], original_embedding: np.array,
                           cur_human_sample: List[str], cur_v_gene_score: float):
@@ -115,7 +116,9 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                 if best_value < limit_delta and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
                     logger.info(f"It {it}. Target metrics are reached"
                                 f" (v_gene_score = {best_v_gene_score}, wild_v_gene_score = {best_wild_v_gene_score})")
-                    break
+                    if is_v_gene_score_less(best_wild_v_gene_score, best_v_gene_score):
+                        logger.info(f"Wild v gene score {best_wild_v_gene_score} is less human {best_v_gene_score}")
+                        break
                 current_value, v_gene_score, wild_v_gene_score = best_value, best_v_gene_score, best_wild_v_gene_score
             else:
                 logger.info(f"It {it}. No effective changes found."

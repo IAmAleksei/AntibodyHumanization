@@ -1,10 +1,11 @@
+import argparse
 from multiprocessing import Pool
 from typing import List, Tuple, Optional
 
 from humanization import config_loader
-from humanization.annotations import Annotation, ChainType, GeneralChainType, annotate_single
+from humanization.annotations import Annotation, ChainType, GeneralChainType, annotate_single, ChothiaHeavy
 from humanization.dataset_preparer import read_v_gene_dataset
-from humanization.utils import configure_logger
+from humanization.utils import configure_logger, read_sequences, write_sequences
 
 config = config_loader.Config()
 logger = configure_logger(config, "V Gene Scorer")
@@ -65,11 +66,39 @@ def build_v_gene_scorer(annotation: Annotation, dataset_file: str, only_human: b
         return None
 
 
-def get_similar_human_samples(annotation: Annotation, dataset_file: str, sequences: List[str],
-                              chain_type: GeneralChainType) -> List[Optional[List[Tuple[str, float, str]]]]:
+def get_similar_samples(annotation: Annotation, dataset_file: str, sequences: List[str], only_human: bool = True,
+                        chain_type: GeneralChainType = None) -> List[Optional[List[Tuple[str, float, str]]]]:
     v_gene_scorer = build_v_gene_scorer(annotation, dataset_file)
+    assert v_gene_scorer is not None
     result = []
     for seq in sequences:
         aligned_seq = annotate_single(seq, annotation, chain_type)
         result.append(v_gene_scorer.query(aligned_seq) if aligned_seq is not None else None)
     return result
+
+
+def main(input_file, dataset_file, output_file):
+    sequences = read_sequences(input_file)
+    similar_samples = get_similar_samples(ChothiaHeavy(), dataset_file, sequences, only_human=False)
+    out_sequences = []
+    for idx, sample in enumerate(similar_samples):
+        name = sequences[idx][0]
+        if sample is None:
+            logger.debug(f"Error while evaluating sample#{idx + 1} '{name}'")
+        else:
+            for nearest_seq, score, tp in sample:
+                out_sequences.append((f"{name} Score={score}", nearest_seq, None))
+    write_sequences(output_file, out_sequences)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='''VGeneScore calculator''')
+    parser.add_argument('--input', type=str, required=False, help='Path to input fasta file')
+    parser.add_argument('--output', type=str, required=False, help='Path to output fasta file')
+    parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
+
+    args = parser.parse_args()
+
+    main(input_file=args.input,
+         dataset_file=args.dataset,
+         output_file=args.output)
