@@ -1,10 +1,11 @@
 import json
 import os.path
 from datetime import datetime
+from typing import Dict
 
 from catboost import CatBoostClassifier
 
-from humanization.annotations import Annotation, load_annotation, ChainType
+from humanization.annotations import Annotation, load_annotation, ChainType, GeneralChainType
 
 
 class ModelWrapper:
@@ -50,3 +51,14 @@ def load_model(model_dir, chain_type: ChainType) -> ModelWrapper:
     model.load_model(model_path)
     model_wrapper = ModelWrapper(chain_type, model, annotation, desc['threshold'])
     return model_wrapper
+
+
+def load_all_models(model_dir, general_type: GeneralChainType) -> Dict[ChainType, ModelWrapper]:
+    chain_types = [general_type.specific_type(v_type) for v_type in general_type.available_specific_types()]
+    models = {}
+    for chain_type in chain_types:
+        try:
+            models[chain_type] = load_model(model_dir, chain_type)
+        except Exception:
+            pass
+    return models
