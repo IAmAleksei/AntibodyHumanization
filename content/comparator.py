@@ -34,12 +34,12 @@ def main(files, dataset):
         if thera is None or wild is None:
             print("No therapeutic or wild seq")
             continue
-        seq_emb_thera = antiberta_utils.get_antiberta_embedding(thera)
-        seq_emb_wild = antiberta_utils.get_antiberta_embedding(wild)
+        seq_emb_thera = antiberta_utils.get_antiberta_embedding(" ".join(thera))
+        seq_emb_wild = antiberta_utils.get_antiberta_embedding(" ".join(wild))
         struct_emb_thera = immunebuilder_utils.get_immunebuilder_embedding(thera)
         struct_emb_wild = immunebuilder_utils.get_immunebuilder_embedding(wild)
         print(wild[:30] + "...", "Wild.")
-        print(thera[:30] + "...", "Therap.", edit_distance.SequenceMatcher(wild, thera),
+        print(thera[:30] + "...", "Therap.", edit_distance.SequenceMatcher(wild, thera).distance(),
               round(np.linalg.norm(seq_emb_thera - seq_emb_wild), 2),
               round(np.linalg.norm(struct_emb_thera - struct_emb_wild), 2),
               sep=",")
@@ -48,7 +48,7 @@ def main(files, dataset):
                 continue
             sm_thera = edit_distance.SequenceMatcher(seq, thera)
             sm_wild = edit_distance.SequenceMatcher(seq, wild)
-            seq_emb_seq = antiberta_utils.get_antiberta_embedding(seq)
+            seq_emb_seq = antiberta_utils.get_antiberta_embedding(" ".join(seq))
             diff_seq_emb_thera = np.linalg.norm(seq_emb_thera - seq_emb_seq)
             diff_seq_emb_wild = np.linalg.norm(seq_emb_wild - seq_emb_seq)
             struct_emb_seq = immunebuilder_utils.get_immunebuilder_embedding(seq)
