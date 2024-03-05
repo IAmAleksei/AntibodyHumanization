@@ -34,26 +34,34 @@ def main(files, dataset):
         if thera is None or wild is None:
             print("No therapeutic or wild seq")
             continue
-        print(thera, "Therap.")
-        print(wild, "Wild.")
+        seq_emb_thera = antiberta_utils.get_antiberta_embedding(thera)
+        seq_emb_wild = antiberta_utils.get_antiberta_embedding(wild)
+        struct_emb_thera = immunebuilder_utils.get_immunebuilder_embedding(thera)
+        struct_emb_wild = immunebuilder_utils.get_immunebuilder_embedding(wild)
+        print(wild[:30] + "...", "Wild.")
+        print(thera[:30] + "...", "Therap.", edit_distance.SequenceMatcher(wild, thera),
+              round(np.linalg.norm(seq_emb_thera - seq_emb_wild), 2),
+              round(np.linalg.norm(struct_emb_thera - struct_emb_wild), 2),
+              sep=",")
         for i, (way, seq) in enumerate(lst):
             if way in ["Therap.", "Wild"]:
                 continue
             sm_thera = edit_distance.SequenceMatcher(seq, thera)
             sm_wild = edit_distance.SequenceMatcher(seq, wild)
-            seq_emb_seq = antiberta_utils.get_antiberta_embeddings([seq])
-            seq_emb_thera = np.linalg.norm(antiberta_utils.get_antiberta_embeddings([thera]) - seq_emb_seq)
-            seq_emb_wild = np.linalg.norm(antiberta_utils.get_antiberta_embeddings([wild]) - seq_emb_seq)
+            seq_emb_seq = antiberta_utils.get_antiberta_embedding(seq)
+            diff_seq_emb_thera = np.linalg.norm(seq_emb_thera - seq_emb_seq)
+            diff_seq_emb_wild = np.linalg.norm(seq_emb_wild - seq_emb_seq)
             struct_emb_seq = immunebuilder_utils.get_immunebuilder_embedding(seq)
-            struct_emb_thera = np.linalg.norm(immunebuilder_utils.get_immunebuilder_embedding(thera) - struct_emb_seq)
-            struct_emb_wild = np.linalg.norm(immunebuilder_utils.get_immunebuilder_embedding(wild) - struct_emb_seq)
+            diff_struct_emb_thera = np.linalg.norm(struct_emb_thera - struct_emb_seq)
+            diff_struct_emb_wild = np.linalg.norm(struct_emb_wild - struct_emb_seq)
             aligned_seq = annotate_single(seq, ChothiaHeavy(), GeneralChainType.HEAVY)
             if aligned_seq is None:
                 continue
             score = v_gene_scorer.query(aligned_seq)[0][1]
-            print(seq[30:] + "...", way,
+            print(seq[:30] + "...", way,
                   sm_thera.distance(), sm_wild.distance(), round(score, 2),
-                  round(seq_emb_thera, 1), round(seq_emb_wild, 1), round(struct_emb_thera, 1), round(struct_emb_wild, 1),
+                  round(diff_seq_emb_thera, 2), round(diff_seq_emb_wild, 2),
+                  round(diff_struct_emb_thera, 2), round(diff_struct_emb_wild, 2),
                   sep=",")
 
 

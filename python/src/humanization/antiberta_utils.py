@@ -1,7 +1,7 @@
 from typing import List
 
 import numpy as np
-from transformers import pipeline, RoFormerForMaskedLM, AutoTokenizer, RoFormerTokenizer
+from transformers import pipeline, RoFormerForMaskedLM, RoFormerTokenizer
 
 antiberta_tokenizer = RoFormerTokenizer.from_pretrained("alchemab/antiberta2")
 antiberta_model = RoFormerForMaskedLM.from_pretrained("alchemab/antiberta2")
@@ -13,6 +13,10 @@ def get_antiberta_embeddings(seqs: List[str]) -> np.array:
     outputs = antiberta_model(**inputs, output_hidden_states=True)
     embedding_2d = outputs.hidden_states[-1][:, 0, :].detach().numpy()
     return embedding_2d
+
+
+def get_antiberta_embedding(seq: str) -> np.array:
+    return get_antiberta_embeddings([seq])[0, :]
 
 
 def get_embeddings_delta(a, b) -> float:
