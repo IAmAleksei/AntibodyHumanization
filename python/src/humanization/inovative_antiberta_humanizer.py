@@ -7,7 +7,7 @@ from humanization import config_loader, utils
 from humanization.abstract_humanizer import seq_to_str, IterationDetails, is_change_less, SequenceChange, \
     run_humanizer, BaseHumanizer, read_humanizer_options
 from humanization.annotations import annotate_single, ChothiaHeavy, GeneralChainType, Annotation, ChainType
-from humanization.antiberta_utils import get_embeddings_delta, get_antiberta_embeddings
+from humanization.antiberta_utils import diff_embeddings, get_antiberta_embeddings
 from humanization.models import load_model, load_all_models, ModelWrapper
 from humanization.utils import configure_logger, parse_list, read_sequences, write_sequences, BLOSUM62
 from humanization.v_gene_scorer import VGeneScorer, is_v_gene_score_less, build_v_gene_scorer
@@ -77,7 +77,7 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         logger.debug(f"Get embeddings for {len(all_candidates)} sequences")
         embeddings = _get_embeddings([mod_seq for mod_seq, _ in all_candidates])
         for idx, (mod_seq, candidate_change) in enumerate(all_candidates):
-            embeddings_delta = get_embeddings_delta(original_embedding, embeddings[idx]) + \
+            embeddings_delta = diff_embeddings(original_embedding, embeddings[idx]) + \
                                self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score) + \
                                self._get_random_forest_penalty(mod_seq, cur_chain_type) + \
                                BLOSUM62[candidate_change.old_aa][candidate_change.aa] * (-0.04)
@@ -88,7 +88,7 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
 
     def _calc_metrics(self, original_embedding: np.array, current_seq: List[str], human_sample: Optional[str] = None,
                       prefer_human_sample: bool = False) -> Tuple[float, float, float]:
-        current_value = get_embeddings_delta(original_embedding, _get_embedding(current_seq))
+        current_value = diff_embeddings(original_embedding, _get_embedding(current_seq))
         _, v_gene_score = self._get_v_gene_score(current_seq, human_sample, prefer_human_sample)
         if self.wild_v_gene_scorer:
             _, wild_v_gene_score, _ = self.wild_v_gene_scorer.query(current_seq)[0]

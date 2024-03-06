@@ -19,7 +19,7 @@ def get_antiberta_embedding(seq: str) -> np.array:
     return get_antiberta_embeddings([seq])[0, :]
 
 
-def get_embeddings_delta(a, b) -> float:
+def diff_embeddings(a, b) -> float:
     return np.linalg.norm(a - b)
 
 
