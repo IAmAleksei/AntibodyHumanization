@@ -32,7 +32,10 @@ def main(files, dataset):
             mab = seq.name.split("_")[0]
             way = seq.name.split("_")[2]
             seqs[mab].append((way, str(seq.seq).replace('X', '')))
+    print("Seq", "Type", "ThDist", "WDist", "VGScore", "ThBerta", "WBerta", "ThAbody", "WAbody",
+          "ThSap", "WSap", "ThAblang", "WAblang", sep=",")
     for mab, lst in seqs.items():
+        print()
         print(mab)
         thera = None
         wild = None
@@ -52,9 +55,9 @@ def main(files, dataset):
         sap_emb_wild = get_sapiens_embedding(wild)
         abl_emb_thera = get_ablang_embedding(thera)
         abl_emb_wild = get_ablang_embedding(wild)
-        print(wild[:30] + "...", "Wild.")
-        print(thera[:30] + "...", "Therap.", "", edit_distance.SequenceMatcher(wild, thera).distance(),
-              optional_v_gene_score(v_gene_scorer, thera), "",
+        print(wild[:25] + "...", "Wild.", sep=",")
+        print(thera[:25] + "...", "Therap.", "", edit_distance.SequenceMatcher(wild, thera).distance(),
+              round(optional_v_gene_score(v_gene_scorer, thera), 2), "",
               round(diff_embeddings(seq_emb_thera, seq_emb_wild), 2), "",
               round(diff_embeddings(struct_emb_thera, struct_emb_wild), 2), "",
               round(diff_embeddings(sap_emb_thera, sap_emb_wild), 2), "",
@@ -65,28 +68,20 @@ def main(files, dataset):
                 continue
             sm_thera = edit_distance.SequenceMatcher(seq, thera)
             sm_wild = edit_distance.SequenceMatcher(seq, wild)
-
             seq_emb_seq = get_antiberta_embedding(" ".join(seq))
-            diff_seq_emb_thera = diff_embeddings(seq_emb_thera, seq_emb_seq)
-            diff_seq_emb_wild = diff_embeddings(seq_emb_wild, seq_emb_seq)
-
             struct_emb_seq = get_immunebuilder_embedding(seq)
-            diff_struct_emb_thera = diff_embeddings(struct_emb_thera, struct_emb_seq)
-            diff_struct_emb_wild = diff_embeddings(struct_emb_wild, struct_emb_seq)
-
             sap_emb_seq = get_sapiens_embedding(seq)
-            diff_sap_emb_thera = diff_embeddings(sap_emb_thera, sap_emb_seq)
-            diff_sap_emb_wild = diff_embeddings(sap_emb_wild, sap_emb_seq)
-
             abl_emb_seq = get_ablang_embedding(seq)
-            diff_abl_emb_thera = diff_embeddings(abl_emb_thera, abl_emb_seq)
-            diff_abl_emb_wild = diff_embeddings(abl_emb_wild, abl_emb_seq)
-
-            score = optional_v_gene_score(v_gene_scorer, seq)
-            print(seq[:30] + "...", way, sm_thera.distance(), sm_wild.distance(), round(score, 2),
-                  round(diff_seq_emb_thera, 2), round(diff_seq_emb_wild, 2), round(diff_struct_emb_thera, 2),
-                  round(diff_struct_emb_wild, 2), round(diff_sap_emb_thera, 2), round(diff_sap_emb_wild, 2),
-                  round(diff_abl_emb_thera, 2), round(diff_abl_emb_wild, 2),
+            print(seq[:30] + "...", way, sm_thera.distance(), sm_wild.distance(),
+                  round(optional_v_gene_score(v_gene_scorer, seq), 2),
+                  round(diff_embeddings(seq_emb_thera, seq_emb_seq), 2),
+                  round(diff_embeddings(seq_emb_wild, seq_emb_seq), 2),
+                  round(diff_embeddings(struct_emb_thera, struct_emb_seq), 2),
+                  round(diff_embeddings(struct_emb_wild, struct_emb_seq), 2),
+                  round(diff_embeddings(sap_emb_thera, sap_emb_seq), 2),
+                  round(diff_embeddings(sap_emb_wild, sap_emb_seq), 2),
+                  round(diff_embeddings(abl_emb_thera, abl_emb_seq), 2),
+                  round(diff_embeddings(abl_emb_wild, abl_emb_seq), 2),
                   sep=",")
 
 
