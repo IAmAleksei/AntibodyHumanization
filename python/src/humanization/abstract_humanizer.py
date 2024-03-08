@@ -1,6 +1,6 @@
 import traceback
 from abc import ABC
-from typing import List, Tuple, NamedTuple, Optional, Callable
+from typing import List, Tuple, NamedTuple, Optional, Callable, Dict
 
 from humanization import config_loader
 from humanization.annotations import GeneralChainType, Annotation
@@ -18,13 +18,17 @@ class SequenceChange(NamedTuple):
     old_aa: Optional[str]
     aa: Optional[str]
     value: float
+    values: Optional[Dict[str, float]] = None
 
     def is_defined(self):
         return self.position is not None
 
     def __repr__(self):
         if self.is_defined():
-            return f"Pos#{self.position} {self.old_aa}->{self.aa} with value {round(self.value, 5)}"
+            values_str = ""
+            if self.values:
+                values_str = f" (from {[k + ':' + str(round(v, 2)) for k, v in self.values.items()]})"
+            return f"Pos#{self.position} {self.old_aa}->{self.aa} with value {round(self.value, 5)}{values_str}"
         else:
             return "Undefined"
 

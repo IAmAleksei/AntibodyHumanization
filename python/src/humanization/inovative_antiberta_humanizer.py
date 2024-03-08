@@ -81,11 +81,13 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         humanness_degree = self._get_random_forest_penalty([mod_seq for mod_seq, _ in unevaluated_all_candidates], cur_chain_type)
         all_candidates = []
         for idx, (mod_seq, candidate_change) in enumerate(unevaluated_all_candidates):
-            embeddings_delta = diff_embeddings(original_embedding, embeddings[idx]) + \
-                               self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score) + \
-                               humanness_degree[idx] + \
-                               BLOSUM62[candidate_change.old_aa][candidate_change.aa] * (-0.04)
-            candidate_change = candidate_change._replace(value=embeddings_delta)
+            penalties = {
+                'embeds': diff_embeddings(original_embedding, embeddings[idx]),
+                'v_gene': self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score),
+                'humanness': humanness_degree[idx],
+                'blosum': BLOSUM62[candidate_change.old_aa][candidate_change.aa] * (-0.04)
+            }
+            candidate_change = candidate_change._replace(value=sum(penalties.values()), values=penalties)
             all_candidates.append(candidate_change)
         for candidate_change in all_candidates:
             if is_change_less(candidate_change, best_change, self.use_aa_similarity):
@@ -131,7 +133,7 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                     break
                 column_name = self.get_annotation().segmented_positions[best_change.position]
                 logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}."
-                             f" Value: {best_change.value}")
+                             f" Value: {best_change.value} {best_change.values}")
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change, all_changes))
                 if best_value < limit_delta and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
                     logger.info(f"It {it}. Target metrics are reached"
