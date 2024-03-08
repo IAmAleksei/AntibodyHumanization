@@ -46,9 +46,12 @@ class VGeneScorer:
             raise RuntimeError(f"Lengths are different. Samples: {len(self.human_samples)}, labels: {len(self.labels)}")
 
     def query(self, sequence: List[str]) -> List[Tuple[str, float, str]]:
-        worker_args = sequence, self.annotation
-        with Pool(processes=config.get(config_loader.NCPU), initializer=worker_init, initargs=worker_args) as pool:
-            v_gene_scores = pool.map(calc_score_wrapper, self.human_samples)
+        if len(self.human_samples) < 2000:
+            v_gene_scores = [calc_score(sequence, sample, self.annotation) for sample in self.human_samples]
+        else:
+            worker_args = sequence, self.annotation
+            with Pool(processes=config.get(config_loader.NCPU), initializer=worker_init, initargs=worker_args) as pool:
+                v_gene_scores = pool.map(calc_score_wrapper, self.human_samples)
         result = []
         for idx, v_gene_score in sorted(enumerate(v_gene_scores), key=lambda x: x[1], reverse=True)[:2]:
             result.append((self.human_samples[idx], v_gene_score, self.labels[idx]))
