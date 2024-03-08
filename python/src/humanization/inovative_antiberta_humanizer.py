@@ -54,21 +54,21 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
             return 0.0
         _, wild_v_gene_score, _ = self.wild_v_gene_scorer.query(mod_seq)[0]
         if wild_v_gene_score > 0.84 and wild_v_gene_score - cur_wild_v_gene_score > 0.001 and cur_v_gene_score > 0.8:
-            return 100000  # Reject change
+            return 1e6  # Reject change
         else:
             # mult = 76 * (cur_v_gene_score - 0.85) + 20  # Increasing penalty when v gene score is increasing
             mult = 10
             return max(0.0, wild_v_gene_score + 0.01 - cur_v_gene_score) * mult
 
-    def _get_random_forest_penalty(self, sequence: List[str], chain_type: ChainType) -> float:
+    def _get_random_forest_penalty(self, sequences: List[List[str]], chain_type: ChainType) -> List[float]:
         if self.models is not None:
-            return 1 - self.models[chain_type].model.predict_proba(sequence)[1]
+            return 1 - self.models[chain_type].model.predict_proba(sequences)[:, 1]
         else:
-            return 0.0
+            return [0.0] * len(sequences)
 
     def _find_best_change(self, current_seq: List[str], original_embedding: np.array, cur_human_sample: List[str],
                           cur_chain_type: ChainType, cur_v_gene_score: float, wild_v_gene_score: float):
-        best_change = SequenceChange(None, None, None, 10e9)
+        best_change = SequenceChange(None, None, None, 10e5)
         unevaluated_all_candidates = []
         for idx, column_name in enumerate(self.get_annotation().segmented_positions):
             if column_name.startswith('cdr'):
@@ -78,11 +78,12 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                 unevaluated_all_candidates.append((mod_seq, candidate_change))
         logger.debug(f"Get embeddings for {len(unevaluated_all_candidates)} sequences")
         embeddings = _get_embeddings([mod_seq for mod_seq, _ in unevaluated_all_candidates])
+        humanness_degree = self._get_random_forest_penalty([mod_seq for mod_seq, _ in unevaluated_all_candidates], cur_chain_type)
         all_candidates = []
         for idx, (mod_seq, candidate_change) in enumerate(unevaluated_all_candidates):
             embeddings_delta = diff_embeddings(original_embedding, embeddings[idx]) + \
                                self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score) + \
-                               self._get_random_forest_penalty(mod_seq, cur_chain_type) + \
+                               humanness_degree[idx] + \
                                BLOSUM62[candidate_change.old_aa][candidate_change.aa] * (-0.04)
             candidate_change = candidate_change._replace(value=embeddings_delta)
             all_candidates.append(candidate_change)
