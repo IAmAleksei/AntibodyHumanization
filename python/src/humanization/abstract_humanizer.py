@@ -24,7 +24,7 @@ class SequenceChange(NamedTuple):
 
     def __repr__(self):
         if self.is_defined():
-            return f"Position {self.position}: {self.old_aa} -> {self.aa}"
+            return f"Pos#{self.position} {self.old_aa}->{self.aa} with value {round(self.value, 5)}"
         else:
             return "Undefined"
 
@@ -42,8 +42,9 @@ def is_change_less(left: SequenceChange, right: SequenceChange, use_aa_similarit
 class IterationDetails(NamedTuple):
     index: int
     model_metric: float
-    v_gene_score: Optional[float]
-    change: Optional[SequenceChange]
+    v_gene_score: Optional[float] = None
+    change: Optional[SequenceChange] = None
+    all_changes: Optional[List[SequenceChange]] = None
 
     def __repr__(self):
         if self.v_gene_score is not None:

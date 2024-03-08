@@ -72,7 +72,7 @@ class Humanizer(AbstractHumanizer):
         iterations = []
         current_value, v_gene_score = self._calc_metrics(current_seq)
         logger.info(f"Start model metric: ({round(current_value, 6)})")
-        iterations.append(IterationDetails(0, current_value, v_gene_score, None))
+        iterations.append(IterationDetails(0, current_value, v_gene_score))
         for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
             logger.debug(f"Iteration {it}. "
                          f"Current model metric = {round(current_value, 6)}, V Gene score = {v_gene_score}")

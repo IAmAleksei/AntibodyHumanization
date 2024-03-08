@@ -72,7 +72,7 @@ def main(files, dataset):
             struct_emb_seq = get_immunebuilder_embedding(seq)
             sap_emb_seq = get_sapiens_embedding(seq)
             abl_emb_seq = get_ablang_embedding(seq)
-            print(seq[:30] + "...", way, sm_thera.distance(), sm_wild.distance(),
+            print(seq[:25] + "...", way, sm_thera.distance(), sm_wild.distance(),
                   round(optional_v_gene_score(v_gene_scorer, seq), 2),
                   round(diff_embeddings(seq_emb_thera, seq_emb_seq), 2),
                   round(diff_embeddings(seq_emb_wild, seq_emb_seq), 2),

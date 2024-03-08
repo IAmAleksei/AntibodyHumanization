@@ -40,6 +40,24 @@ def read_sequences(input_file):
     return result
 
 
+def generate_report(report_file, sequences):
+    with open(report_file, 'w') as file:
+        for name, result, iterations in sequences:
+            file.write("++++++++++++++")
+            file.write(f"Sequence name: {name}\n")
+            for iteration in iterations:
+                file.write(f"   Iteration {iteration.index}\n")
+                if iteration.all_changes:
+                    file.write(f"List of all changes:\n")
+                    for candidate_change in iteration.all_changes:
+                        file.write(f"--- {candidate_change}\n")
+                file.write(f"! Selected change: {iteration.change}")
+                if iteration.v_gene_score:
+                    file.write(f" with VGScore {iteration.v_gene_score}")
+                file.write("\n")
+            file.write("\n")
+
+
 def write_sequences(output_file, sequences):
     if not output_file:
         for name, result, _ in sequences:

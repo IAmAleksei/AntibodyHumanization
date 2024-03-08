@@ -9,7 +9,7 @@ from humanization.abstract_humanizer import seq_to_str, IterationDetails, is_cha
 from humanization.annotations import annotate_single, ChothiaHeavy, GeneralChainType, Annotation, ChainType
 from humanization.antiberta_utils import diff_embeddings, get_antiberta_embeddings
 from humanization.models import load_model, load_all_models, ModelWrapper
-from humanization.utils import configure_logger, parse_list, read_sequences, write_sequences, BLOSUM62
+from humanization.utils import configure_logger, parse_list, read_sequences, write_sequences, BLOSUM62, generate_report
 from humanization.v_gene_scorer import VGeneScorer, is_v_gene_score_less, build_v_gene_scorer
 
 config = config_loader.Config()
@@ -26,7 +26,7 @@ def _get_embedding(seq: List[str]) -> np.array:
 
 class InovativeAntibertaHumanizer(BaseHumanizer):
     def __init__(self, v_gene_scorer: VGeneScorer, wild_v_gene_scorer: VGeneScorer,
-                 models: Dict[ChainType, ModelWrapper], deny_use_aa: List[str], deny_change_aa: List[str]):
+                 models: Optional[Dict[ChainType, ModelWrapper]], deny_use_aa: List[str], deny_change_aa: List[str]):
         super().__init__(v_gene_scorer)
         self.wild_v_gene_scorer = wild_v_gene_scorer
         self.annotation = ChothiaHeavy()
@@ -38,10 +38,11 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
     def get_annotation(self) -> Annotation:
         return self.annotation
 
-    def _test_single_change(self, sequence: List[str], column_idx: int, new_aa: str) -> Tuple[List[str], SequenceChange]:
+    def _test_single_change(self, sequence: List[str], column_idx: int,
+                            new_aa: str) -> Tuple[List[str], Optional[SequenceChange]]:
         aa_backup = sequence[column_idx]
         if aa_backup in self.deny_delete_aa or aa_backup == new_aa or new_aa in self.deny_insert_aa:
-            return [], SequenceChange(None, aa_backup, None, 10e9)
+            return [], None
         sequence[column_idx] = new_aa
         seq_copy = sequence.copy()
         candidate_change = SequenceChange(column_idx, aa_backup, new_aa, None)
@@ -53,10 +54,11 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
             return 0.0
         _, wild_v_gene_score, _ = self.wild_v_gene_scorer.query(mod_seq)[0]
         if wild_v_gene_score > 0.84 and wild_v_gene_score - cur_wild_v_gene_score > 0.001 and cur_v_gene_score > 0.8:
-            mult = 100000  # Reject change
+            return 100000  # Reject change
         else:
-            mult = 72 * (cur_v_gene_score - 0.85) + 20  # Increasing penalty when v gene score is increasing
-        return max(0.0, wild_v_gene_score + 0.01 - cur_v_gene_score) * mult
+            # mult = 76 * (cur_v_gene_score - 0.85) + 20  # Increasing penalty when v gene score is increasing
+            mult = 10
+            return max(0.0, wild_v_gene_score + 0.01 - cur_v_gene_score) * mult
 
     def _get_random_forest_penalty(self, sequence: List[str], chain_type: ChainType) -> float:
         if self.models is not None:
@@ -67,24 +69,27 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
     def _find_best_change(self, current_seq: List[str], original_embedding: np.array, cur_human_sample: List[str],
                           cur_chain_type: ChainType, cur_v_gene_score: float, wild_v_gene_score: float):
         best_change = SequenceChange(None, None, None, 10e9)
-        all_candidates = []
+        unevaluated_all_candidates = []
         for idx, column_name in enumerate(self.get_annotation().segmented_positions):
             if column_name.startswith('cdr'):
                 continue
             mod_seq, candidate_change = self._test_single_change(current_seq, idx, cur_human_sample[idx])
-            if candidate_change.position is not None:
-                all_candidates.append((mod_seq, candidate_change))
-        logger.debug(f"Get embeddings for {len(all_candidates)} sequences")
-        embeddings = _get_embeddings([mod_seq for mod_seq, _ in all_candidates])
-        for idx, (mod_seq, candidate_change) in enumerate(all_candidates):
+            if candidate_change is not None:
+                unevaluated_all_candidates.append((mod_seq, candidate_change))
+        logger.debug(f"Get embeddings for {len(unevaluated_all_candidates)} sequences")
+        embeddings = _get_embeddings([mod_seq for mod_seq, _ in unevaluated_all_candidates])
+        all_candidates = []
+        for idx, (mod_seq, candidate_change) in enumerate(unevaluated_all_candidates):
             embeddings_delta = diff_embeddings(original_embedding, embeddings[idx]) + \
                                self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score) + \
                                self._get_random_forest_penalty(mod_seq, cur_chain_type) + \
                                BLOSUM62[candidate_change.old_aa][candidate_change.aa] * (-0.04)
             candidate_change = candidate_change._replace(value=embeddings_delta)
+            all_candidates.append(candidate_change)
+        for candidate_change in all_candidates:
             if is_change_less(candidate_change, best_change, self.use_aa_similarity):
                 best_change = candidate_change
-        return best_change
+        return best_change, all_candidates
 
     def _calc_metrics(self, original_embedding: np.array, current_seq: List[str], human_sample: Optional[str] = None,
                       prefer_human_sample: bool = False) -> Tuple[float, float, float]:
@@ -111,8 +116,8 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
             logger.debug(f"Iteration {it}. "
                          f"Current delta = {round(current_value, 6)}, "
                          f"V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
-            best_change = self._find_best_change(current_seq, original_embedding, cur_human_sample, cur_chain_type,
-                                                 v_gene_score, wild_v_gene_score)
+            best_change, all_changes = self._find_best_change(current_seq, original_embedding, cur_human_sample,
+                                                              cur_chain_type, v_gene_score, wild_v_gene_score)
             if best_change.is_defined():
                 prev_aa = current_seq[best_change.position]
                 current_seq[best_change.position] = best_change.aa
@@ -126,7 +131,7 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                 column_name = self.get_annotation().segmented_positions[best_change.position]
                 logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}."
                              f" Value: {best_change.value}")
-                iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change))
+                iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change, all_changes))
                 if best_value < limit_delta and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
                     logger.info(f"It {it}. Target metrics are reached"
                                 f" (v_gene_score = {best_v_gene_score}, wild_v_gene_score = {best_wild_v_gene_score})")
@@ -176,7 +181,7 @@ def process_sequences(v_gene_scorer=None, models=None, wild_v_gene_scorer=None, 
 
 
 def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, deny_change_aa, human_sample,
-         limit_changes, output_file):
+         limit_changes, report, output_file):
     sequences = read_sequences(input_file)
     _, target_delta, target_v_gene_score = read_humanizer_options(dataset_file)
     v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), dataset_file)
@@ -188,6 +193,7 @@ def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, de
         v_gene_scorer, models, wild_v_gene_scorer, sequences, target_delta, human_sample, deny_use_aa, deny_change_aa,
         target_v_gene_score, limit_changes=limit_changes
     )
+    generate_report(report, results)
     write_sequences(output_file, results)
 
 
@@ -205,6 +211,7 @@ if __name__ == '__main__':
     parser.add_argument('--deny-change-aa', type=str, default=utils.TABOO_DELETE_AA, required=False,
                         help='Amino acids that could not be changed')
     parser.add_argument('--limit-changes', type=int, default=30, required=False, help='Limit count of changes')
+    parser.add_argument('--report', type=str, default=None, required=False, help='Path to report file')
 
     args = parser.parse_args()
 
@@ -216,4 +223,5 @@ if __name__ == '__main__':
          deny_change_aa=args.deny_change_aa,
          human_sample=args.human_sample,
          limit_changes=args.limit_changes,
+         report=args.report,
          output_file=args.output)

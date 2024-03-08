@@ -6,7 +6,7 @@ import os.path
 from humanization import humanizer, reverse_humanizer, config_loader, antiberta2_humanizer, \
     inovative_antiberta_humanizer, reverse_antiberta2_humanizer
 from humanization.annotations import ChainType, GeneralChainType, load_annotation, ChainKind
-from humanization.models import load_model
+from humanization.models import load_model, load_all_models
 from humanization.utils import configure_logger
 from humanization.v_gene_scorer import build_v_gene_scorer, get_similar_samples
 
@@ -37,6 +37,7 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                 else:
                     antibody['heavy']['my_type'].append(ChainType.from_oas_type(tp).full_type())
 
+    all_models = load_all_models(models_dir, GeneralChainType.HEAVY)
     for i in range(1, 8):
         tp = f'HV{i}'
         chain_type = ChainType.from_full_type(tp)
@@ -62,8 +63,8 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                     )
                 if humanizer_type is None or humanizer_type == "innovative":
                     innovative_result = inovative_antiberta_humanizer.process_sequences(
-                        v_gene_scorer, wild_v_gene_scorer, prep_seqs, limit_delta=15.0, target_v_gene_score=0.85,
-                        prefer_human_sample=True, limit_changes=limit_changes
+                        v_gene_scorer, all_models, wild_v_gene_scorer, prep_seqs, limit_delta=15.0,
+                        target_v_gene_score=0.85, prefer_human_sample=True, limit_changes=limit_changes
                     )
                 if humanizer_type is None or humanizer_type == "rev-antiberta":
                     rev_antiberta_result = reverse_antiberta2_humanizer._process_sequences(
