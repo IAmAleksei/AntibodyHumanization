@@ -79,6 +79,7 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         logger.debug(f"Get embeddings for {len(unevaluated_all_candidates)} sequences")
         embeddings = _get_embeddings([mod_seq for mod_seq, _ in unevaluated_all_candidates])
         humanness_degree = self._get_random_forest_penalty([mod_seq for mod_seq, _ in unevaluated_all_candidates], cur_chain_type)
+        logger.debug(f"Calculating penalties")
         all_candidates = []
         for idx, (mod_seq, candidate_change) in enumerate(unevaluated_all_candidates):
             penalties = {
