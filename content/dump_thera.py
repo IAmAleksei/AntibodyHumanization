@@ -17,7 +17,7 @@ def dump(fasta_output):
     with open(fasta_output, 'w') as file:
         for antibody in samples:
             for tp in mapper.keys():
-                file.write(f"> {antibody['name']}_{mapper[tp]}\n")
+                file.write(f"> {antibody['name']}__{mapper[tp]}\n")
                 file.write(antibody['heavy'][tp].replace('-', '') + "\n")
 
 
