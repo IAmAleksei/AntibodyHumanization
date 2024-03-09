@@ -55,6 +55,8 @@ def generate_report(report_file, sequences):
                 if iteration.v_gene_score:
                     file.write(f" with VGScore {iteration.v_gene_score}")
                 file.write("\n")
+            file.write("   Result\n")
+            file.write(result + "\n")
             file.write("\n")
 
 
