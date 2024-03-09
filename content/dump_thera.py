@@ -5,7 +5,7 @@ import json
 def dump(fasta_output):
     mapper = {
         "sequ": "Wild",
-        "ther": "Therap",
+        "ther": "Therap.",
         "hu_m": "HuMab",
         "sap1": "Sapiens1",
         "sap3": "Sapiens3"
