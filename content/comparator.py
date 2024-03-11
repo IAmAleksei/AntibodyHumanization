@@ -63,7 +63,7 @@ def main(files, dataset, biophi_path):
               round(diff_embeddings(seq_emb_thera, seq_emb_wild), 2), "",
               round(diff_embeddings(struct_emb_thera, struct_emb_wild), 2), "",
               round(diff_embeddings(sap_emb_thera, sap_emb_wild), 2), "",
-              round(diff_embeddings(abl_emb_thera, abl_emb_wild), 2), "",
+              round(diff_embeddings(abl_emb_thera, abl_emb_wild), 2),
               round(oasis_ident_thera.get_oasis_identity(0.5), 2),
               round(oasis_ident_thera.get_oasis_percentile(0.5), 2),
               sep=",")
