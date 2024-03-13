@@ -19,8 +19,11 @@ def get_antiberta_embedding(seq: str) -> np.array:
     return get_antiberta_embeddings([seq])[0, :]
 
 
-def diff_embeddings(a, b) -> float:
-    return np.linalg.norm(a - b)
+def diff_embeddings(a, b, dist='cosine') -> float:
+    if dist == 'cosine':
+        return 1.0 - np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+    else:
+        return np.linalg.norm(a - b)
 
 
 def fill_mask(seq: str) -> str:
