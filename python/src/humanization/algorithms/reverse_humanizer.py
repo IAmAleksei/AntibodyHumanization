@@ -1,13 +1,13 @@
 import argparse
 from typing import Optional, List, Tuple
 
-from humanization import config_loader
-from humanization.abstract_humanizer import seq_to_str, IterationDetails, is_change_less, SequenceChange, \
+from humanization.algorithms.abstract_humanizer import seq_to_str, IterationDetails, is_change_less, SequenceChange, \
     AbstractHumanizer, read_humanizer_options, run_humanizer, abstract_humanizer_parser_options
-from humanization.annotations import annotate_single
-from humanization.models import ModelWrapper, load_model
-from humanization.utils import configure_logger, parse_list, read_sequences, write_sequences
-from humanization.v_gene_scorer import VGeneScorer, build_v_gene_scorer, is_v_gene_score_less
+from humanization.common import config_loader
+from humanization.common.annotations import annotate_single
+from humanization.common.utils import configure_logger, parse_list, read_sequences, write_sequences
+from humanization.common.v_gene_scorer import VGeneScorer, build_v_gene_scorer, is_v_gene_score_less
+from humanization.humanness_calculator.model_wrapper import ModelWrapper, load_model
 
 config = config_loader.Config()
 logger = configure_logger(config, "Reverse humanizer")
@@ -61,7 +61,8 @@ class ReverseHumanizer(AbstractHumanizer):
                 current_seq[best_change.position] = best_change.aa
                 best_value, best_v_gene_score = self._calc_metrics(current_seq, cur_human_sample, prefer_human_sample)
                 logger.debug(f"Trying apply metric {best_value} and v_gene_score {best_v_gene_score}")
-                if not (target_model_metric <= best_value and is_v_gene_score_less(target_v_gene_score, best_v_gene_score)):
+                if not (target_model_metric <= best_value and is_v_gene_score_less(target_v_gene_score,
+                                                                                   best_v_gene_score)):
                     current_seq[best_change.position] = prev_aa
                     logger.info(f"Current metrics are best ({round(current_value, 6)})")
                     break
@@ -95,12 +96,12 @@ class ReverseHumanizer(AbstractHumanizer):
         result = []
         for cur_human_sample in human_samples:
             result.append(self._query_one(original_seq, cur_human_sample, target_model_metric, target_v_gene_score,
-                          aligned_result, prefer_human_sample, limit_changes))
+                                          aligned_result, prefer_human_sample, limit_changes))
         return result
 
 
 def _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric,
-                       human_sample=None, skip_positions="",  use_aa_similarity=True, target_v_gene_score=None,
+                       human_sample=None, skip_positions="", use_aa_similarity=True, target_v_gene_score=None,
                        aligned_result=False, prefer_human_sample=False, limit_changes=999):
     humanizer = ReverseHumanizer(model_wrapper, v_gene_scorer, parse_list(skip_positions), use_aa_similarity)
     results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score,
@@ -114,7 +115,7 @@ def process_sequences(models_dir, sequences, chain_type, target_model_metric, da
     model_wrapper = load_model(models_dir, chain_type)
     v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_file, chain_type)
     return _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric, human_sample,
-                              skip_positions,  use_aa_similarity, target_v_gene_score, aligned_result,
+                              skip_positions, use_aa_similarity, target_v_gene_score, aligned_result,
                               prefer_human_sample, limit_changes)
 
 

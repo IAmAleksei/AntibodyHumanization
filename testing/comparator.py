@@ -4,15 +4,16 @@ from collections import defaultdict
 import edit_distance
 from Bio import SeqIO
 
-from humanization import config_loader
-from humanization.ablang_utils import get_ablang_embedding
-from humanization.annotations import ChothiaHeavy, annotate_single, GeneralChainType
-from humanization.antiberta_utils import get_antiberta_embedding, diff_embeddings
-from humanization.biophi_utils import get_oasis_humanness
-from humanization.immunebuilder_utils import get_immunebuilder_embedding
-from humanization.sapiens_utils import get_sapiens_embedding
-from humanization.utils import configure_logger
-from humanization.v_gene_scorer import build_v_gene_scorer
+from humanization.common import config_loader
+from humanization.common.annotations import ChothiaHeavy, annotate_single, GeneralChainType
+from humanization.common.utils import configure_logger
+from humanization.common.v_gene_scorer import build_v_gene_scorer
+from humanization.external_models.ablang_utils import get_ablang_embedding
+from humanization.external_models.antiberta_utils import get_antiberta_embedding
+from humanization.external_models.biophi_utils import get_oasis_humanness
+from humanization.external_models.embedding_utils import diff_embeddings
+from humanization.external_models.immunebuilder_utils import get_immunebuilder_embedding
+from humanization.external_models.sapiens_utils import get_sapiens_embedding
 
 config = config_loader.Config()
 logger = configure_logger(config, "Comparator")
@@ -57,15 +58,24 @@ def main(files, dataset, biophi_path):
         abl_emb_thera = get_ablang_embedding(thera)
         abl_emb_wild = get_ablang_embedding(wild)
         oasis_ident_thera = get_oasis_humanness(biophi_path, thera)
-        print(wild[:25] + "...", "Wild.", sep=",")
-        print(thera[:25] + "...", "Therap.", "", edit_distance.SequenceMatcher(wild, thera).distance(),
-              round(optional_v_gene_score(v_gene_scorer, thera), 2), "",
-              round(diff_embeddings(seq_emb_thera, seq_emb_wild), 2), "",
-              round(diff_embeddings(struct_emb_thera, struct_emb_wild), 2), "",
-              round(diff_embeddings(sap_emb_thera, sap_emb_wild), 2), "",
-              round(diff_embeddings(abl_emb_thera, abl_emb_wild), 2),
-              round(oasis_ident_thera.get_oasis_identity(0.5), 2),
-              round(oasis_ident_thera.get_oasis_percentile(0.5), 2),
+        oasis_ident_wild = get_oasis_humanness(biophi_path, wild)
+        print(wild[:25] + "...", "Wild.",
+              "", "",
+              round(optional_v_gene_score(v_gene_scorer, wild), 2),
+              "", "",
+              "", "",
+              "", "",
+              "", "",
+              round(oasis_ident_wild.get_oasis_identity(0.5), 2), round(oasis_ident_wild.get_oasis_percentile(0.5), 2),
+              sep=",")
+        print(thera[:25] + "...", "Therap.",
+              "", edit_distance.SequenceMatcher(wild, thera).distance(),
+              round(optional_v_gene_score(v_gene_scorer, thera), 2),
+              "", round(diff_embeddings(seq_emb_thera, seq_emb_wild), 3),
+              "", round(diff_embeddings(struct_emb_thera, struct_emb_wild), 3),
+              "", round(diff_embeddings(sap_emb_thera, sap_emb_wild), 3),
+              "", round(diff_embeddings(abl_emb_thera, abl_emb_wild), 3),
+              round(oasis_ident_thera.get_oasis_identity(0.5), 2), round(oasis_ident_thera.get_oasis_percentile(0.5), 2),
               sep=",")
         for i, (way, seq) in enumerate(lst):
             if way in ["Therap.", "Wild"]:
@@ -77,18 +87,14 @@ def main(files, dataset, biophi_path):
             sap_emb_seq = get_sapiens_embedding(seq)
             abl_emb_seq = get_ablang_embedding(seq)
             oasis_ident_seq = get_oasis_humanness(biophi_path, seq)
-            print(seq[:25] + "...", way, sm_thera.distance(), sm_wild.distance(),
+            print(seq[:25] + "...", way,
+                  sm_thera.distance(), sm_wild.distance(),
                   round(optional_v_gene_score(v_gene_scorer, seq), 2),
-                  round(diff_embeddings(seq_emb_thera, seq_emb_seq), 2),
-                  round(diff_embeddings(seq_emb_wild, seq_emb_seq), 2),
-                  round(diff_embeddings(struct_emb_thera, struct_emb_seq), 2),
-                  round(diff_embeddings(struct_emb_wild, struct_emb_seq), 2),
-                  round(diff_embeddings(sap_emb_thera, sap_emb_seq), 2),
-                  round(diff_embeddings(sap_emb_wild, sap_emb_seq), 2),
-                  round(diff_embeddings(abl_emb_thera, abl_emb_seq), 2),
-                  round(diff_embeddings(abl_emb_wild, abl_emb_seq), 2),
-                  round(oasis_ident_seq.get_oasis_identity(0.5), 2),
-                  round(oasis_ident_seq.get_oasis_percentile(0.5), 2),
+                  round(diff_embeddings(seq_emb_thera, seq_emb_seq), 3), round(diff_embeddings(seq_emb_wild, seq_emb_seq), 3),
+                  round(diff_embeddings(struct_emb_thera, struct_emb_seq), 3), round(diff_embeddings(struct_emb_wild, struct_emb_seq), 3),
+                  round(diff_embeddings(sap_emb_thera, sap_emb_seq), 3), round(diff_embeddings(sap_emb_wild, sap_emb_seq), 3),
+                  round(diff_embeddings(abl_emb_thera, abl_emb_seq), 3), round(diff_embeddings(abl_emb_wild, abl_emb_seq), 3),
+                  round(oasis_ident_seq.get_oasis_identity(0.5), 2), round(oasis_ident_seq.get_oasis_percentile(0.5), 2),
                   sep=",")
 
 

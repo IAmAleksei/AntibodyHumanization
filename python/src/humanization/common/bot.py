@@ -5,11 +5,11 @@ from typing import List
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-from humanization import config_loader
-from humanization.annotations import HeavyChainType
-from humanization.humanizer import common_parser_options, Humanizer
-from humanization.models import load_model
-from humanization.utils import configure_logger
+from humanization.algorithms.direct_humanizer import common_parser_options, Humanizer
+from humanization.common import config_loader
+from humanization.common.annotations import HeavyChainType
+from humanization.common.utils import configure_logger
+from humanization.humanness_calculator.model_wrapper import load_model
 
 config = config_loader.Config()
 logger = configure_logger(config, "Telegram bot")
@@ -81,8 +81,7 @@ def main(models_dir, dataset_file, modify_cdr,
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description='''Humanizer telegram bot''')
+    parser = argparse.ArgumentParser(description='''Humanizer telegram bot''')
     common_parser_options(parser)
 
     args = parser.parse_args()

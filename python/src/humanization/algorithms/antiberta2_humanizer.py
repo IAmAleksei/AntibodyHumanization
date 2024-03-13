@@ -1,13 +1,13 @@
 import argparse
 import traceback
 
-from humanization import config_loader, humanizer
-from humanization.antiberta_utils import fill_mask
-from humanization.annotations import load_annotation, ChainKind, GeneralChainType, ChainType
-from humanization.humanizer import common_parser_options
-from humanization.models import load_model
-from humanization.utils import configure_logger
-from humanization.v_gene_scorer import get_similar_samples, build_v_gene_scorer
+from humanization.algorithms import direct_humanizer
+from humanization.common import config_loader
+from humanization.common.annotations import load_annotation, ChainKind, GeneralChainType, ChainType
+from humanization.common.utils import configure_logger
+from humanization.common.v_gene_scorer import get_similar_samples, build_v_gene_scorer
+from humanization.external_models.antiberta_utils import fill_mask
+from humanization.humanness_calculator.model_wrapper import load_model
 
 config = config_loader.Config()
 logger = configure_logger(config, "AntiBERTa2 humanizer")
@@ -17,9 +17,9 @@ def mask_sequence(model_wrapper, v_gene_scorer, sequence: str, limit_changes):
     annotation = load_annotation("chothia", ChainKind.HEAVY)
     skip_positions = []
     for i in range(min(limit_changes, config.get(config_loader.ANTIBERTA_CANDIDATES))):
-        _, result, its = humanizer._process_sequences(model_wrapper, v_gene_scorer, [(f"S_{i + 1}", sequence)],
-                                                      0.999, skip_positions=",".join(skip_positions),
-                                                      aligned_result=True, limit_changes=1)[0]
+        _, result, its = direct_humanizer._process_sequences(model_wrapper, v_gene_scorer, [(f"S_{i + 1}", sequence)],
+                                                             0.999, skip_positions=",".join(skip_positions),
+                                                             aligned_result=True, limit_changes=1)[0]
         if its[-1].change is not None and its[-1].change.position is not None:
             diff_pos = its[-1].change.position
             logger.info(f"Found diff position: {diff_pos}")
@@ -68,7 +68,7 @@ def process_sequences(model_wrapper, v_gene_scorer, sequences, limit_changes):
 def main(args):
     sequence = input("Enter sequence:")
     annotation = load_annotation("chothia", ChainKind.HEAVY)
-    human_samples = get_similar_samples(annotation, args.dataset, [sequence], GeneralChainType.HEAVY)
+    human_samples = get_similar_samples(annotation, args.dataset, [sequence], chain_type=GeneralChainType.HEAVY)
     chain_type = ChainType.from_oas_type(human_samples[0][0][2])
     model_wrapper = load_model(args.models, chain_type)
     v_gene_scorer = build_v_gene_scorer(annotation, args.dataset, chain_type)
@@ -77,7 +77,7 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''AntiBERTa2 humanizer''')
-    common_parser_options(parser)
+    direct_humanizer.common_parser_options(parser)
     args = parser.parse_args()
 
     main(args)

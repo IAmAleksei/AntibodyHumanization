@@ -4,10 +4,8 @@ from typing import List, Tuple, Optional, Dict
 
 import anarci
 
-from humanization import patched_anarci, annotation_const
-
-from humanization import config_loader
-from humanization.utils import configure_logger
+from humanization.common import patched_anarci, annotation_const, config_loader
+from humanization.common.utils import configure_logger
 
 config = config_loader.Config()
 logger = configure_logger(config, "Annotations")

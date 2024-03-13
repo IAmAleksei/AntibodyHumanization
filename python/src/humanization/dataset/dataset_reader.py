@@ -4,11 +4,11 @@ from typing import NoReturn, Tuple, Optional, List
 
 import pandas
 
-from humanization import config_loader
-from humanization.annotations import load_annotation, Annotation, ChainKind, ChainType
-from humanization.dataset import read_oas_file, correct_v_call, make_annotated_df, filter_df, \
+from humanization.common import config_loader
+from humanization.common.annotations import load_annotation, Annotation, ChainKind, ChainType
+from humanization.common.utils import configure_logger
+from humanization.dataset.dataset_preparer import read_oas_file, correct_v_call, make_annotated_df, filter_df, \
     merge_all_columns, read_annotated_dataset, read_dataset, read_imgt_file
-from humanization.utils import configure_logger
 
 config = config_loader.Config()
 logger = configure_logger(config, "Dataset preparer")

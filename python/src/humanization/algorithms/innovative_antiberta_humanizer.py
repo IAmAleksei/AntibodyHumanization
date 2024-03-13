@@ -3,14 +3,16 @@ from typing import Optional, List, Tuple, Dict
 
 import numpy as np
 
-from humanization import config_loader, utils
-from humanization.abstract_humanizer import seq_to_str, IterationDetails, is_change_less, SequenceChange, \
+from humanization.algorithms.abstract_humanizer import seq_to_str, IterationDetails, is_change_less, SequenceChange, \
     run_humanizer, BaseHumanizer, read_humanizer_options
-from humanization.annotations import annotate_single, ChothiaHeavy, GeneralChainType, Annotation, ChainType
-from humanization.antiberta_utils import diff_embeddings, get_antiberta_embeddings
-from humanization.models import load_model, load_all_models, ModelWrapper
-from humanization.utils import configure_logger, parse_list, read_sequences, write_sequences, BLOSUM62, generate_report
-from humanization.v_gene_scorer import VGeneScorer, is_v_gene_score_less, build_v_gene_scorer
+from humanization.common import config_loader, utils
+from humanization.common.annotations import annotate_single, ChothiaHeavy, GeneralChainType, Annotation, ChainType
+from humanization.common.utils import configure_logger, parse_list, read_sequences, write_sequences, BLOSUM62, \
+    generate_report
+from humanization.common.v_gene_scorer import VGeneScorer, is_v_gene_score_less, build_v_gene_scorer
+from humanization.external_models.antiberta_utils import get_antiberta_embeddings
+from humanization.external_models.embedding_utils import diff_embeddings
+from humanization.humanness_calculator.model_wrapper import load_all_models, ModelWrapper
 
 config = config_loader.Config()
 logger = configure_logger(config, "Inovative AntiBERTa2 humanizer")
@@ -78,7 +80,8 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                 unevaluated_all_candidates.append((mod_seq, candidate_change))
         logger.debug(f"Get embeddings for {len(unevaluated_all_candidates)} sequences")
         embeddings = _get_embeddings([mod_seq for mod_seq, _ in unevaluated_all_candidates])
-        humanness_degree = self._get_random_forest_penalty([mod_seq for mod_seq, _ in unevaluated_all_candidates], cur_chain_type)
+        humanness_degree = self._get_random_forest_penalty([mod_seq for mod_seq, _ in unevaluated_all_candidates],
+                                                           cur_chain_type)
         logger.debug(f"Calculating penalties")
         all_candidates = []
         for idx, (mod_seq, candidate_change) in enumerate(unevaluated_all_candidates):

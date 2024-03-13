@@ -7,14 +7,14 @@ from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.utils import gen_batches
 
-from humanization import config_loader
-from humanization.annotations import Annotation, load_annotation, GeneralChainType, ChainType
-from humanization.dataset import format_confusion_matrix, make_binary_target
-from humanization.dataset_preparer import read_any_dataset
-from humanization.models import ModelWrapper
-from humanization.stats import brute_force_threshold, find_optimal_threshold, plot_thresholds, plot_roc_auc, \
-    plot_comparison
-from humanization.utils import configure_logger
+from humanization.common import config_loader
+from humanization.common.annotations import Annotation, load_annotation, GeneralChainType, ChainType
+from humanization.common.utils import configure_logger
+from humanization.dataset.dataset_preparer import format_confusion_matrix, make_binary_target
+from humanization.dataset.dataset_reader import read_any_dataset
+from humanization.humanness_calculator.model_wrapper import ModelWrapper
+from humanization.humanness_calculator.stats import brute_force_threshold, find_optimal_threshold, plot_thresholds, \
+    plot_roc_auc, plot_comparison
 
 config = config_loader.Config()
 logger = configure_logger(config, "Abstract chain RF")
@@ -134,7 +134,8 @@ def make_models(input_dir: str, schema: str, chain_type: GeneralChainType,
     logger.debug(f"Forests for types {used_types} will be built")
     test_pool = Pool(X_test, cat_features=X_test.columns.tolist())
     for v_type in used_types:
-        yield make_model(X_train, y_train, X_val, y_val, test_pool, y_test, annotation, chain_type.specific_type(v_type),
+        yield make_model(X_train, y_train, X_val, y_val, test_pool, y_test, annotation,
+                         chain_type.specific_type(v_type),
                          metric, iterative_learning, print_metrics)
 
 

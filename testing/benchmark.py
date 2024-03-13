@@ -3,12 +3,13 @@ import datetime
 import json
 import os.path
 
-from humanization import humanizer, reverse_humanizer, config_loader, antiberta2_humanizer, \
-    inovative_antiberta_humanizer, reverse_antiberta2_humanizer
-from humanization.annotations import ChainType, GeneralChainType, load_annotation, ChainKind
-from humanization.models import load_model, load_all_models
-from humanization.utils import configure_logger
-from humanization.v_gene_scorer import build_v_gene_scorer, get_similar_samples
+from humanization.algorithms import direct_humanizer, reverse_humanizer, antiberta2_humanizer, \
+    reverse_antiberta2_humanizer, innovative_antiberta_humanizer
+from humanization.common import config_loader
+from humanization.common.annotations import ChainType, GeneralChainType, load_annotation, ChainKind
+from humanization.humanness_calculator.model_wrapper import load_model, load_all_models
+from humanization.common.utils import configure_logger
+from humanization.common.v_gene_scorer import build_v_gene_scorer, get_similar_samples
 
 
 config = config_loader.Config()
@@ -62,7 +63,7 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                         model_wrapper, v_gene_scorer, prep_seqs, limit_changes=limit_changes
                     )
                 if humanizer_type is None or humanizer_type == "innovative":
-                    innovative_result = inovative_antiberta_humanizer.process_sequences(
+                    innovative_result = innovative_antiberta_humanizer.process_sequences(
                         v_gene_scorer, all_models, wild_v_gene_scorer, prep_seqs, limit_delta=15.0,
                         target_v_gene_score=0.85, prefer_human_sample=True, limit_changes=limit_changes
                     )
@@ -71,7 +72,7 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                         model_wrapper, v_gene_scorer, prep_seqs, model_metric, limit_changes=limit_changes
                     )
                 if humanizer_type is None or humanizer_type == "direct":
-                    direct_result = humanizer._process_sequences(
+                    direct_result = direct_humanizer._process_sequences(
                         model_wrapper, v_gene_scorer, prep_seqs, model_metric, aligned_result=True,
                         limit_changes=limit_changes, non_decreasing_v_gene=True
                     )

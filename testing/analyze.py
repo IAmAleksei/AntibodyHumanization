@@ -5,9 +5,9 @@ from typing import Dict, List
 
 from termcolor import colored
 
-from humanization import humanizer, reverse_humanizer
-from humanization.abstract_humanizer import IterationDetails
-from humanization.annotations import ChainType
+from humanization.algorithms import reverse_humanizer
+from humanization.algorithms.abstract_humanizer import IterationDetails
+from humanization.common.annotations import ChainType
 
 
 def hamming_distance(s1, s2):
@@ -47,10 +47,6 @@ def pretty_key(key):
     if key in mp:
         return mp[key]
     return f"TClass-{key[-1]}"
-
-
-# def get_diff_indirect(seq_dict, i):
-#     pass
 
 
 def analyze_its_direct(seq_dict, i):

@@ -47,7 +47,7 @@ optional arguments:
 
 Example:
 ```shell
-python3 dataset_preparer.py bash/raw_dataset chothia bash/annotated_dataset
+python3 dataset_reader.py bash/raw_dataset chothia bash/annotated_dataset
 ```
 
 ### Classifiers builder
@@ -114,7 +114,7 @@ optional arguments:
 
 Example:
 ```shell
-python3 humanizer.py models --input input.fasta --dataset bash/annotated_dataset --skip-cdr
+python3 direct_humanizer.py models --input input.fasta --dataset bash/annotated_dataset --skip-cdr
 ```
 
 ### Reverse humanizer

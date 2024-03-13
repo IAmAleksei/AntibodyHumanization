@@ -8,9 +8,9 @@ import pandas as pd
 from sklearn.metrics import confusion_matrix
 from tqdm import tqdm
 
-from humanization import config_loader
-from humanization.annotations import Annotation, annotate_batch, ChainType
-from humanization.utils import configure_logger
+from humanization.common import config_loader
+from humanization.common.annotations import Annotation, annotate_batch, ChainType
+from humanization.common.utils import configure_logger
 
 config = config_loader.Config()
 logger = configure_logger(config, "Dataset reader")

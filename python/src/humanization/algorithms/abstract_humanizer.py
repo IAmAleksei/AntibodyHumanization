@@ -1,13 +1,12 @@
 import traceback
 from abc import ABC
-from typing import List, Tuple, NamedTuple, Optional, Callable, Dict
+from typing import List, Tuple, NamedTuple, Optional, Dict
 
-from humanization import config_loader
-from humanization.annotations import GeneralChainType, Annotation
-from humanization.models import ModelWrapper
-from humanization.utils import BLOSUM62, configure_logger
-from humanization.v_gene_scorer import calc_score, VGeneScorer
-
+from humanization.common import config_loader
+from humanization.common.annotations import GeneralChainType, Annotation
+from humanization.common.utils import BLOSUM62, configure_logger
+from humanization.common.v_gene_scorer import calc_score, VGeneScorer
+from humanization.humanness_calculator.model_wrapper import ModelWrapper
 
 config = config_loader.Config()
 logger = configure_logger(config, "Abstract humanizer")

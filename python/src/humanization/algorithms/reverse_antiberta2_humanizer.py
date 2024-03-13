@@ -1,13 +1,13 @@
 from typing import Optional, List, Tuple
 
-from humanization import config_loader, utils
-from humanization.abstract_humanizer import AbstractHumanizer, IterationDetails, seq_to_str, SequenceChange, \
-    is_change_less, run_humanizer
-from humanization.annotations import annotate_single
-from humanization.antiberta_utils import get_mask_values
-from humanization.models import ModelWrapper
-from humanization.utils import configure_logger, parse_list
-from humanization.v_gene_scorer import VGeneScorer, is_v_gene_score_less
+from humanization.algorithms.abstract_humanizer import AbstractHumanizer, IterationDetails, seq_to_str, \
+    SequenceChange, is_change_less, run_humanizer
+from humanization.common import config_loader, utils
+from humanization.common.annotations import annotate_single
+from humanization.common.utils import configure_logger, parse_list
+from humanization.common.v_gene_scorer import VGeneScorer, is_v_gene_score_less
+from humanization.external_models.antiberta_utils import get_mask_values
+from humanization.humanness_calculator.model_wrapper import ModelWrapper
 
 config = config_loader.Config()
 logger = configure_logger(config, "Reverse AntiBERTa2 humanizer")
@@ -30,8 +30,7 @@ class ReverseAntibertaHumanizer(AbstractHumanizer):
         self.use_aa_similarity = False
         self.increasing_v_gene = True
 
-    def _test_single_change(self, sequence: List[str], column_idx: int,
-                            current_v_gene_score: float = None) -> Tuple[List[str], SequenceChange]:
+    def _test_single_change(self, sequence: List[str], column_idx: int) -> Tuple[List[str], SequenceChange]:
         aa_backup = sequence[column_idx]
         best_change = SequenceChange(None, aa_backup, None, 0.0)
         if aa_backup in self.deny_delete_aa:
@@ -49,7 +48,7 @@ class ReverseAntibertaHumanizer(AbstractHumanizer):
         for idx, column_name in enumerate(self.model_wrapper.annotation.segmented_positions):
             if column_name.startswith('cdr'):
                 continue
-            mod_seq, candidate_change = self._test_single_change(current_seq, idx, current_v_gene_score)
+            mod_seq, candidate_change = self._test_single_change(current_seq, idx)
             if candidate_change.position is not None:
                 all_candidates.append((mod_seq, candidate_change))
         logger.debug(f"Get masks for {len(all_candidates)} sequences")
@@ -90,7 +89,8 @@ class ReverseAntibertaHumanizer(AbstractHumanizer):
                 logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
                 best_value, best_v_gene_score = self._calc_metrics(current_seq)
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change))
-                if target_model_metric <= current_value and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
+                if target_model_metric <= current_value and is_v_gene_score_less(target_v_gene_score,
+                                                                                 best_v_gene_score):
                     logger.info(f"Target metrics are reached")
                     break
                 current_value, v_gene_score = best_value, best_v_gene_score
@@ -108,5 +108,6 @@ def _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_met
     humanizer = ReverseAntibertaHumanizer(
         model_wrapper, v_gene_scorer, parse_list(deny_use_aa), parse_list(deny_change_aa)
     )
-    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score, aligned_result, limit_changes)
+    results = run_humanizer(sequences, humanizer, target_model_metric, target_v_gene_score, aligned_result,
+                            limit_changes)
     return results

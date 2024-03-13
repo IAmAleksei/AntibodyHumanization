@@ -2,10 +2,10 @@ import argparse
 from multiprocessing import Pool
 from typing import List, Tuple, Optional
 
-from humanization import config_loader
-from humanization.annotations import Annotation, ChainType, GeneralChainType, annotate_single, ChothiaHeavy
-from humanization.dataset_preparer import read_v_gene_dataset
-from humanization.utils import configure_logger, read_sequences, write_sequences
+from humanization.common import config_loader
+from humanization.common.annotations import Annotation, ChainType, GeneralChainType, annotate_single, ChothiaHeavy
+from humanization.common.utils import configure_logger, read_sequences, write_sequences
+from humanization.dataset.dataset_reader import read_v_gene_dataset
 
 config = config_loader.Config()
 logger = configure_logger(config, "V Gene Scorer")

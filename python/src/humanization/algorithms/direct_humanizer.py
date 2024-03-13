@@ -1,13 +1,13 @@
 import argparse
 from typing import List, Optional, Tuple
 
-from humanization import config_loader, utils
-from humanization.abstract_humanizer import run_humanizer, AbstractHumanizer, SequenceChange, is_change_less, \
-    IterationDetails, read_humanizer_options, seq_to_str, abstract_humanizer_parser_options
-from humanization.annotations import annotate_single
-from humanization.models import load_model, ModelWrapper
-from humanization.utils import configure_logger, read_sequences, write_sequences, parse_list
-from humanization.v_gene_scorer import VGeneScorer, build_v_gene_scorer, is_v_gene_score_less
+from humanization.algorithms.abstract_humanizer import run_humanizer, AbstractHumanizer, SequenceChange, \
+    is_change_less, IterationDetails, read_humanizer_options, seq_to_str, abstract_humanizer_parser_options
+from humanization.common import config_loader, utils
+from humanization.common.annotations import annotate_single
+from humanization.common.utils import configure_logger, read_sequences, write_sequences, parse_list
+from humanization.common.v_gene_scorer import VGeneScorer, build_v_gene_scorer, is_v_gene_score_less
+from humanization.humanness_calculator.model_wrapper import load_model, ModelWrapper
 
 config = config_loader.Config()
 logger = configure_logger(config, "Humanizer")
@@ -141,7 +141,7 @@ def common_parser_options(parser):
     parser.set_defaults(non_decreasing_v_gene=False)
     parser.add_argument('--deny-use-aa', type=str, default=utils.TABOO_INSERT_AA, required=False,
                         help='Amino acids that could not be used')
-    parser.add_argument('--deny-change-aa', type=str,  default=utils.TABOO_DELETE_AA, required=False,
+    parser.add_argument('--deny-change-aa', type=str, default=utils.TABOO_DELETE_AA, required=False,
                         help='Amino acids that could not be changed')
 
 

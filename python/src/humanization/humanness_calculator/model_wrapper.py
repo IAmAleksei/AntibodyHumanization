@@ -5,7 +5,7 @@ from typing import Dict
 
 from catboost import CatBoostClassifier
 
-from humanization.annotations import Annotation, load_annotation, ChainType, GeneralChainType
+from humanization.common.annotations import Annotation, load_annotation, ChainType, GeneralChainType
 
 
 class ModelWrapper:

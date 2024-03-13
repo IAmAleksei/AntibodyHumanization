@@ -1,9 +1,10 @@
 import argparse
+
 from tqdm import tqdm
 
-from humanization import utils
-from humanization.annotations import GeneralChainType, load_annotation
-from humanization.dataset_preparer import read_any_dataset
+from humanization.common import utils
+from humanization.common.annotations import GeneralChainType, load_annotation
+from humanization.dataset.dataset_reader import read_any_dataset
 
 
 def main(dataset_dir):
