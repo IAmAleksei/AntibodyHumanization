@@ -124,13 +124,13 @@ class AbstractHumanizer(BaseHumanizer):
         return current_value, v_gene_score
 
 
-def run_humanizer(sequences: List[Tuple[str, str]], humanizer: BaseHumanizer,
-                  *args) -> List[Tuple[str, str, List[IterationDetails]]]:
+def run_humanizer(sequences: List[Tuple[str, str]], humanizer: BaseHumanizer, *args,
+                  **kwargs) -> List[Tuple[str, str, List[IterationDetails]]]:
     results = []
     for name, sequence in sequences:
         logger.info(f"Processing {name}")
         try:
-            result_one = humanizer.query(sequence, *args)
+            result_one = humanizer.query(sequence, *args, **kwargs)
         except RuntimeError as _:
             traceback.print_exc()
             result_one = [("", [])]

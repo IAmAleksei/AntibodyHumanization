@@ -68,7 +68,7 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                                 cur_changes: List[InnerChange]) -> List[Tuple[List[str], List[InnerChange]]]:
         if change_batch_size == 0:
             res.append((current_seq.copy(), cur_changes.copy()))
-        else:
+        elif change_batch_size > 0:
             for i in range(cur_index, len(all_candidate_changes)):
                 current_change = all_candidate_changes[i]
                 cur_changes.append(current_change)
@@ -190,13 +190,13 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
 
 
 def process_sequences(v_gene_scorer=None, models=None, wild_v_gene_scorer=None, sequences=None, limit_delta=16.0,
-                      human_sample=None, deny_use_aa=utils.TABOO_INSERT_AA, deny_change_aa=utils.TABOO_DELETE_AA,
-                      target_v_gene_score=None, aligned_result=False, prefer_human_sample=False,
-                      change_batch_size=1, limit_changes=999):
+                      human_sample=None, human_chain_type=None, deny_use_aa=utils.TABOO_INSERT_AA,
+                      deny_change_aa=utils.TABOO_DELETE_AA, target_v_gene_score=None, aligned_result=False,
+                      prefer_human_sample=False, change_batch_size=1, limit_changes=999):
     humanizer = InovativeAntibertaHumanizer(v_gene_scorer, wild_v_gene_scorer, models,
                                             parse_list(deny_use_aa), parse_list(deny_change_aa))
-    results = run_humanizer(sequences, humanizer, limit_delta, target_v_gene_score,
-                            human_sample, aligned_result, prefer_human_sample, change_batch_size, limit_changes)
+    results = run_humanizer(sequences, humanizer, limit_delta, target_v_gene_score, human_sample, human_chain_type,
+                            aligned_result, prefer_human_sample, change_batch_size, limit_changes)
     return results
 
 
