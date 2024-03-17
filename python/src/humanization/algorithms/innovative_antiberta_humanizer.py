@@ -26,6 +26,12 @@ def _get_embedding(seq: List[str]) -> np.array:
     return _get_embeddings([seq])[0, :]
 
 
+def chunks(lst, n):
+    """Yield successive n-sized chunks from lst."""
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]
+
+
 class InovativeAntibertaHumanizer(BaseHumanizer):
     def __init__(self, v_gene_scorer: VGeneScorer, wild_v_gene_scorer: VGeneScorer,
                  models: Optional[Dict[ChainType, ModelWrapper]], deny_use_aa: List[str], deny_change_aa: List[str]):
@@ -73,7 +79,7 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
                 current_change = all_candidate_changes[i]
                 cur_changes.append(current_change)
                 current_seq[current_change.position] = current_change.aa
-                self._generate_mod_sequences(current_seq, all_candidate_changes, change_batch_size, res, i + 1,
+                self._generate_mod_sequences(current_seq, all_candidate_changes, change_batch_size - 1, res, i + 1,
                                              cur_changes)
                 current_seq[current_change.position] = current_change.old_aa
                 cur_changes.pop()
@@ -93,7 +99,10 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         unevaluated_all_candidates = self._generate_mod_sequences(current_seq, all_candidate_changes, change_batch_size,
                                                                   [], 0, [])
         logger.debug(f"Get embeddings for {len(unevaluated_all_candidates)} sequences, batch is {change_batch_size}")
-        embeddings = _get_embeddings([mod_seq for mod_seq, _ in unevaluated_all_candidates])
+        embeddings = []
+        for i, chunk in enumerate(chunks(unevaluated_all_candidates, 500)):
+            logger.debug(f"Embeddings chunk#{i} calculation")
+            embeddings.extend(_get_embeddings([mod_seq for mod_seq, _ in chunk]))
         humanness_degree = self._get_random_forest_penalty([mod_seq for mod_seq, _ in unevaluated_all_candidates],
                                                            cur_chain_type)
         logger.debug(f"Calculating penalties")
