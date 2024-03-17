@@ -2,7 +2,7 @@ import argparse
 from typing import Optional, List, Tuple
 
 from humanization.algorithms.abstract_humanizer import seq_to_str, IterationDetails, is_change_less, SequenceChange, \
-    AbstractHumanizer, read_humanizer_options, run_humanizer, abstract_humanizer_parser_options
+    AbstractHumanizer, read_humanizer_options, run_humanizer, abstract_humanizer_parser_options, InnerChange
 from humanization.common import config_loader
 from humanization.common.annotations import annotate_single
 from humanization.common.utils import configure_logger, parse_list, read_sequences, write_sequences
@@ -23,15 +23,15 @@ class ReverseHumanizer(AbstractHumanizer):
     def _test_single_change(self, sequence: List[str], column_idx: int, new_aa: str) -> SequenceChange:
         aa_backup = sequence[column_idx]
         if aa_backup == new_aa:
-            return SequenceChange(None, aa_backup, None, -1.0)
+            return SequenceChange(None, -1.0)
         sequence[column_idx] = new_aa
         new_value = self.model_wrapper.model.predict_proba(sequence)[1]
-        candidate_change = SequenceChange(column_idx, aa_backup, new_aa, new_value)
+        candidate_change = SequenceChange([InnerChange(column_idx, aa_backup, new_aa)], new_value)
         sequence[column_idx] = aa_backup
         return candidate_change
 
     def _find_best_change(self, current_seq: List[str], original_seq: List[str]):
-        best_change = SequenceChange(None, None, None, -1.0)
+        best_change = SequenceChange(None, -1.0)
         for idx, column_name in enumerate(self.model_wrapper.annotation.segmented_positions):
             if column_name in self.skip_positions:
                 continue
@@ -57,17 +57,15 @@ class ReverseHumanizer(AbstractHumanizer):
                          f"Current model metric = {round(current_value, 6)}, V Gene score = {v_gene_score}")
             best_change = self._find_best_change(current_seq, original_seq)
             if best_change.is_defined():
-                prev_aa = current_seq[best_change.position]
-                current_seq[best_change.position] = best_change.aa
+                best_change.apply(current_seq)
                 best_value, best_v_gene_score = self._calc_metrics(current_seq, cur_human_sample, prefer_human_sample)
                 logger.debug(f"Trying apply metric {best_value} and v_gene_score {best_v_gene_score}")
                 if not (target_model_metric <= best_value and is_v_gene_score_less(target_v_gene_score,
                                                                                    best_v_gene_score)):
-                    current_seq[best_change.position] = prev_aa
+                    best_change.unapply(current_seq)
                     logger.info(f"Current metrics are best ({round(current_value, 6)})")
                     break
-                column_name = self.model_wrapper.annotation.segmented_positions[best_change.position]
-                logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
+                logger.debug(f"Best change: {best_change}")
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change))
                 current_value, v_gene_score = best_value, best_v_gene_score
             else:

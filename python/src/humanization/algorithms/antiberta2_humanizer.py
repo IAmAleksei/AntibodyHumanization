@@ -26,7 +26,6 @@ def mask_sequence(model_wrapper, v_gene_scorer, sequence: str, limit_changes):
             result_list = list(result)
             result_list[diff_pos] = "[MASK]"
             masked = " ".join(filter(lambda aa: aa != "X", result_list))
-            # logger.debug(f"Masked: {masked}")
             skip_positions.append(annotation.segmented_positions[diff_pos])
             yield masked
         else:

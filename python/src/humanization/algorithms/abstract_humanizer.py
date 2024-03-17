@@ -12,33 +12,52 @@ config = config_loader.Config()
 logger = configure_logger(config, "Abstract humanizer")
 
 
+class InnerChange(NamedTuple):
+    position: int
+    old_aa: str
+    aa: str
+
+
 class SequenceChange(NamedTuple):
-    position: Optional[int]
-    old_aa: Optional[str]
-    aa: Optional[str]
+    changes: List[InnerChange]
     value: float
     values: Optional[Dict[str, float]] = None
 
     def is_defined(self):
-        return self.position is not None
+        return self.changes is not None
+
+    def apply(self, seq: List[str]):
+        for ch in self.changes:
+            seq[ch.position] = ch.aa
+
+    def unapply(self, seq: List[str]):
+        for ch in self.changes:
+            seq[ch.position] = ch.old_aa
 
     def __repr__(self):
         if self.is_defined():
             values_str = ""
             if self.values:
                 values_str = f" (from {[k + ':' + str(round(v, 2)) for k, v in self.values.items()]})"
-            return f"Pos#{self.position} {self.old_aa}->{self.aa} with value {round(self.value, 5)}{values_str}"
+            pos = [f'#{str(ch.position)} {ch.old_aa}->{ch.aa}' for ch in self.changes]
+            return f"{'|'.join(pos)} with value {round(self.value, 5)}{values_str}"
         else:
             return "Undefined"
+
+
+def blosum_sum(change: List[InnerChange]) -> float:
+    if change is None:
+        return 0.0
+    return sum(BLOSUM62[ch.old_aa][ch.aa] for ch in change)
 
 
 def is_change_less(left: SequenceChange, right: SequenceChange, use_aa_similarity: bool):
     left_value, right_value = left.value, right.value
     if use_aa_similarity:
         if left.is_defined():
-            left_value += 0.001 * min(0, BLOSUM62[left.old_aa][left.aa])
+            left_value += 0.001 * min(0.0, blosum_sum(left.changes))
         if right.is_defined():
-            right_value += 0.001 * min(0, BLOSUM62[right.old_aa][right.aa])
+            right_value += 0.001 * min(0.0, blosum_sum(right.changes))
     return left_value < right_value
 
 

@@ -4,7 +4,7 @@ from typing import Optional, List, Tuple, Dict
 import numpy as np
 
 from humanization.algorithms.abstract_humanizer import seq_to_str, IterationDetails, is_change_less, SequenceChange, \
-    run_humanizer, BaseHumanizer, read_humanizer_options
+    run_humanizer, BaseHumanizer, read_humanizer_options, InnerChange, blosum_sum
 from humanization.common import config_loader, utils
 from humanization.common.annotations import annotate_single, ChothiaHeavy, GeneralChainType, Annotation, ChainType
 from humanization.common.utils import configure_logger, parse_list, read_sequences, write_sequences, BLOSUM62, \
@@ -40,16 +40,11 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
     def get_annotation(self) -> Annotation:
         return self.annotation
 
-    def _test_single_change(self, sequence: List[str], column_idx: int,
-                            new_aa: str) -> Tuple[List[str], Optional[SequenceChange]]:
+    def _test_single_change(self, sequence: List[str], column_idx: int, new_aa: str) -> Optional[InnerChange]:
         aa_backup = sequence[column_idx]
         if aa_backup in self.deny_delete_aa or aa_backup == new_aa or new_aa in self.deny_insert_aa:
-            return [], None
-        sequence[column_idx] = new_aa
-        seq_copy = sequence.copy()
-        candidate_change = SequenceChange(column_idx, aa_backup, new_aa, None)
-        sequence[column_idx] = aa_backup
-        return seq_copy, candidate_change
+            return None
+        return InnerChange(column_idx, aa_backup, new_aa)
 
     def _get_v_gene_penalty(self, mod_seq: List[str], cur_v_gene_score: float, cur_wild_v_gene_score: float) -> float:
         if self.wild_v_gene_scorer is None:
@@ -68,76 +63,92 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         else:
             return [0.0] * len(sequences)
 
+    def _generate_mod_sequences(self, current_seq: List[str], all_candidate_changes: List[InnerChange],
+                                change_batch_size: int, res: List[Tuple[List[str], List[InnerChange]]], cur_index: int,
+                                cur_changes: List[InnerChange]) -> List[Tuple[List[str], List[InnerChange]]]:
+        if change_batch_size == 0:
+            res.append((current_seq.copy(), cur_changes.copy()))
+        else:
+            for i in range(cur_index, len(all_candidate_changes)):
+                current_change = all_candidate_changes[i]
+                cur_changes.append(current_change)
+                current_seq[current_change.position] = current_change.aa
+                self._generate_mod_sequences(current_seq, all_candidate_changes, change_batch_size, res, i + 1,
+                                             cur_changes)
+                current_seq[current_change.position] = current_change.old_aa
+                cur_changes.pop()
+        return res
+
     def _find_best_change(self, current_seq: List[str], original_embedding: np.array, cur_human_sample: List[str],
-                          cur_chain_type: ChainType, cur_v_gene_score: float, wild_v_gene_score: float):
-        best_change = SequenceChange(None, None, None, 10e5)
-        unevaluated_all_candidates = []
+                          cur_chain_type: ChainType, cur_v_gene_score: float, wild_v_gene_score: float,
+                          change_batch_size: int):
+        best_change = SequenceChange(None, 10e5)
+        all_candidate_changes = []
         for idx, column_name in enumerate(self.get_annotation().segmented_positions):
             if column_name.startswith('cdr'):
                 continue
-            mod_seq, candidate_change = self._test_single_change(current_seq, idx, cur_human_sample[idx])
+            candidate_change = self._test_single_change(current_seq, idx, cur_human_sample[idx])
             if candidate_change is not None:
-                unevaluated_all_candidates.append((mod_seq, candidate_change))
-        logger.debug(f"Get embeddings for {len(unevaluated_all_candidates)} sequences")
+                all_candidate_changes.append(candidate_change)
+        unevaluated_all_candidates = self._generate_mod_sequences(current_seq, all_candidate_changes, change_batch_size,
+                                                                  [], 0, [])
+        logger.debug(f"Get embeddings for {len(unevaluated_all_candidates)} sequences, batch is {change_batch_size}")
         embeddings = _get_embeddings([mod_seq for mod_seq, _ in unevaluated_all_candidates])
         humanness_degree = self._get_random_forest_penalty([mod_seq for mod_seq, _ in unevaluated_all_candidates],
                                                            cur_chain_type)
         logger.debug(f"Calculating penalties")
         all_candidates = []
-        for idx, (mod_seq, candidate_change) in enumerate(unevaluated_all_candidates):
+        for idx, (mod_seq, changes) in enumerate(unevaluated_all_candidates):
             penalties = {
-                'embeds': diff_embeddings(original_embedding, embeddings[idx]),
+                'embeds': diff_embeddings(original_embedding, embeddings[idx]) * 50,  # Each change ~ 0.007
                 'v_gene': self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score),
                 'humanness': humanness_degree[idx],
-                'blosum': BLOSUM62[candidate_change.old_aa][candidate_change.aa] * (-0.04)
+                'blosum': blosum_sum(changes) * (-0.04)
             }
-            candidate_change = candidate_change._replace(value=sum(penalties.values()), values=penalties)
-            all_candidates.append(candidate_change)
+            all_candidates.append(SequenceChange(changes, value=sum(penalties.values()), values=penalties))
         for candidate_change in all_candidates:
             if is_change_less(candidate_change, best_change, self.use_aa_similarity):
                 best_change = candidate_change
         return best_change, all_candidates
 
-    def _calc_metrics(self, original_embedding: np.array, current_seq: List[str], human_sample: Optional[str] = None,
-                      prefer_human_sample: bool = False) -> Tuple[float, float, float]:
-        current_value = diff_embeddings(original_embedding, _get_embedding(current_seq))
+    def _calc_v_gene_metrics(self, current_seq: List[str], human_sample: Optional[str] = None,
+                             prefer_human_sample: bool = False) -> Tuple[float, float]:
         _, v_gene_score = self._get_v_gene_score(current_seq, human_sample, prefer_human_sample)
         if self.wild_v_gene_scorer:
             _, wild_v_gene_score, _ = self.wild_v_gene_scorer.query(current_seq)[0]
         else:
             wild_v_gene_score = None
-        return current_value, v_gene_score, wild_v_gene_score
+        return v_gene_score, wild_v_gene_score
 
     def _query_one(self, original_seq, cur_human_sample, cur_chain_type, limit_delta: float, target_v_gene_score: float,
-                   aligned_result: bool, prefer_human_sample: bool,
+                   aligned_result: bool, prefer_human_sample: bool, change_batch_size: int,
                    limit_changes: int) -> Tuple[str, List[IterationDetails]]:
         original_embedding = _get_embedding(original_seq)
         current_seq = original_seq.copy()
         logger.info(f"Used human sample: {cur_human_sample}, chain type: {cur_chain_type}")
         iterations = []
-        current_value, v_gene_score, wild_v_gene_score = \
-            self._calc_metrics(original_embedding, current_seq, cur_human_sample, prefer_human_sample)
+        current_value = 0.0
+        v_gene_score, wild_v_gene_score = self._calc_v_gene_metrics(current_seq, cur_human_sample, prefer_human_sample)
         iterations.append(IterationDetails(0, current_value, v_gene_score, None))
-        logger.info(f"Start metrics. V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
+        logger.info(f"Start metrics: V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
         for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
             logger.debug(f"Iteration {it}. "
                          f"Current delta = {round(current_value, 6)}, "
                          f"V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
             best_change, all_changes = self._find_best_change(current_seq, original_embedding, cur_human_sample,
-                                                              cur_chain_type, v_gene_score, wild_v_gene_score)
+                                                              cur_chain_type, v_gene_score, wild_v_gene_score,
+                                                              change_batch_size)
             if best_change.is_defined():
-                prev_aa = current_seq[best_change.position]
-                current_seq[best_change.position] = best_change.aa
-                best_value, best_v_gene_score, best_wild_v_gene_score = \
-                    self._calc_metrics(original_embedding, current_seq, cur_human_sample, prefer_human_sample)
+                best_change.apply(current_seq)
+                best_value = best_change.value
+                best_v_gene_score, best_wild_v_gene_score = \
+                    self._calc_v_gene_metrics(current_seq, cur_human_sample, prefer_human_sample)
                 logger.debug(f"Trying apply metric {best_value} and v_gene_score {best_v_gene_score}")
                 if best_value >= limit_delta:
-                    current_seq[best_change.position] = prev_aa
+                    best_change.unapply(current_seq)
                     logger.info(f"It {it}. Current metrics are best ({round(current_value, 6)})")
                     break
-                column_name = self.get_annotation().segmented_positions[best_change.position]
-                logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}."
-                             f" Value: {best_change.value} {best_change.values}")
+                logger.debug(f"Best change: {best_change}")
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change, all_changes))
                 if best_value < limit_delta and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
                     logger.info(f"It {it}. Target metrics are reached"
@@ -155,7 +166,7 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
 
     def query(self, sequence: str, limit_delta: float = 15, target_v_gene_score: float = 0.0, human_sample: str = None,
               human_chain_type: str = None, aligned_result: bool = False, prefer_human_sample: bool = False,
-              limit_changes: int = 999) -> List[Tuple[str, List[IterationDetails]]]:
+              change_batch_size: int = 1, limit_changes: int = 999) -> List[Tuple[str, List[IterationDetails]]]:
         general_type = GeneralChainType.HEAVY
         current_seq = annotate_single(sequence, self.annotation, general_type)
         if current_seq is None:
@@ -173,22 +184,24 @@ class InovativeAntibertaHumanizer(BaseHumanizer):
         result = []
         for cur_human_sample, cur_chain_type in human_samples:
             result.append(self._query_one(original_seq, cur_human_sample, cur_chain_type, limit_delta,
-                                          target_v_gene_score, aligned_result, prefer_human_sample, limit_changes))
+                                          target_v_gene_score, aligned_result, prefer_human_sample, change_batch_size,
+                                          limit_changes))
         return result
 
 
 def process_sequences(v_gene_scorer=None, models=None, wild_v_gene_scorer=None, sequences=None, limit_delta=16.0,
                       human_sample=None, deny_use_aa=utils.TABOO_INSERT_AA, deny_change_aa=utils.TABOO_DELETE_AA,
-                      target_v_gene_score=None, aligned_result=False, prefer_human_sample=False, limit_changes=999):
+                      target_v_gene_score=None, aligned_result=False, prefer_human_sample=False,
+                      change_batch_size=1, limit_changes=999):
     humanizer = InovativeAntibertaHumanizer(v_gene_scorer, wild_v_gene_scorer, models,
                                             parse_list(deny_use_aa), parse_list(deny_change_aa))
     results = run_humanizer(sequences, humanizer, limit_delta, target_v_gene_score,
-                            human_sample, aligned_result, prefer_human_sample, limit_changes)
+                            human_sample, aligned_result, prefer_human_sample, change_batch_size, limit_changes)
     return results
 
 
 def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, deny_change_aa, human_sample,
-         limit_changes, report, output_file):
+         limit_changes, change_batch_size, report, output_file):
     sequences = read_sequences(input_file)
     _, target_delta, target_v_gene_score = read_humanizer_options(dataset_file)
     v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), dataset_file)
@@ -198,7 +211,7 @@ def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, de
     models = load_all_models(model_dir, general_type) if model_dir else None
     results = process_sequences(
         v_gene_scorer, models, wild_v_gene_scorer, sequences, target_delta, human_sample, deny_use_aa, deny_change_aa,
-        target_v_gene_score, limit_changes=limit_changes
+        target_v_gene_score, change_batch_size=change_batch_size, limit_changes=limit_changes
     )
     generate_report(report, results)
     write_sequences(output_file, results)
@@ -217,6 +230,8 @@ if __name__ == '__main__':
                         help='Amino acids that could not be used')
     parser.add_argument('--deny-change-aa', type=str, default=utils.TABOO_DELETE_AA, required=False,
                         help='Amino acids that could not be changed')
+    parser.add_argument('--change-batch-size', type=int, default=1, required=False,
+                        help='Count of changes that will be applied in one iteration')
     parser.add_argument('--limit-changes', type=int, default=30, required=False, help='Limit count of changes')
     parser.add_argument('--report', type=str, default=None, required=False, help='Path to report file')
 
@@ -230,5 +245,6 @@ if __name__ == '__main__':
          deny_change_aa=args.deny_change_aa,
          human_sample=args.human_sample,
          limit_changes=args.limit_changes,
+         change_batch_size=args.change_batch_size,
          report=args.report,
          output_file=args.output)

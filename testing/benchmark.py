@@ -65,7 +65,8 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                 if humanizer_type is None or humanizer_type == "innovative":
                     innovative_result = innovative_antiberta_humanizer.process_sequences(
                         v_gene_scorer, all_models, wild_v_gene_scorer, prep_seqs, limit_delta=15.0,
-                        target_v_gene_score=0.85, prefer_human_sample=True, limit_changes=limit_changes
+                        target_v_gene_score=0.85, prefer_human_sample=True, limit_changes=limit_changes,
+                        change_batch_size=1
                     )
                 if humanizer_type is None or humanizer_type == "rev-antiberta":
                     rev_antiberta_result = reverse_antiberta2_humanizer._process_sequences(

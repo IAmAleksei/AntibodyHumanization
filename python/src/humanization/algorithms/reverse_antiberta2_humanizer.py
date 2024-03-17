@@ -1,7 +1,7 @@
 from typing import Optional, List, Tuple
 
 from humanization.algorithms.abstract_humanizer import AbstractHumanizer, IterationDetails, seq_to_str, \
-    SequenceChange, is_change_less, run_humanizer
+    SequenceChange, is_change_less, run_humanizer, InnerChange
 from humanization.common import config_loader, utils
 from humanization.common.annotations import annotate_single
 from humanization.common.utils import configure_logger, parse_list
@@ -30,34 +30,34 @@ class ReverseAntibertaHumanizer(AbstractHumanizer):
         self.use_aa_similarity = False
         self.increasing_v_gene = True
 
-    def _test_single_change(self, sequence: List[str], column_idx: int) -> Tuple[List[str], SequenceChange]:
+    def _test_single_change(self, sequence: List[str], column_idx: int) -> Tuple[List[str], InnerChange]:
         aa_backup = sequence[column_idx]
-        best_change = SequenceChange(None, aa_backup, None, 0.0)
         if aa_backup in self.deny_delete_aa:
-            return [], best_change
+            return [], None
         sequence[column_idx] = "[MASK]"
         seq_copy = sequence.copy()
-        candidate_change = SequenceChange(column_idx, aa_backup, None, None)
+        candidate_change = InnerChange(column_idx, aa_backup, None)
         sequence[column_idx] = aa_backup
         return seq_copy, candidate_change
 
     def _find_best_change(self, current_seq: List[str], current_v_gene_score: float = None):
         current_value = self.model_wrapper.model.predict_proba(current_seq)[1]
-        best_change = SequenceChange(None, None, None, current_value)
+        best_change = SequenceChange(None, current_value)
         all_candidates = []
         for idx, column_name in enumerate(self.model_wrapper.annotation.segmented_positions):
             if column_name.startswith('cdr'):
                 continue
             mod_seq, candidate_change = self._test_single_change(current_seq, idx)
-            if candidate_change.position is not None:
+            if candidate_change is not None:
                 all_candidates.append((mod_seq, candidate_change))
         logger.debug(f"Get masks for {len(all_candidates)} sequences")
         masks = _get_masks([mod_seq for mod_seq, _ in all_candidates])
-        for idx, (candidate_sequence, candidate_change) in enumerate(all_candidates):
+        for idx, (candidate_sequence, change) in enumerate(all_candidates):
             new_aa = masks[idx]
-            candidate_sequence[candidate_change.position] = new_aa
+            candidate_sequence[change.position] = new_aa
             new_value = self.model_wrapper.model.predict_proba(candidate_sequence)[1]
-            candidate_change = candidate_change._replace(aa=new_aa, value=new_value)
+            change = change._replace(aa=new_aa)
+            candidate_change = SequenceChange([change], new_value)
             if is_change_less(best_change, candidate_change, self.use_aa_similarity):
                 satisfied_v_gene = not self.increasing_v_gene
                 if not satisfied_v_gene:
@@ -83,10 +83,8 @@ class ReverseAntibertaHumanizer(AbstractHumanizer):
                          f"Current model metric = {round(current_value, 6)}, V Gene score = {v_gene_score}")
             best_change = self._find_best_change(current_seq, v_gene_score)
             if best_change.is_defined():
-                prev_aa = current_seq[best_change.position]
-                current_seq[best_change.position] = best_change.aa
-                column_name = self.model_wrapper.annotation.segmented_positions[best_change.position]
-                logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
+                best_change.apply(current_seq)
+                logger.debug(f"Best change: {best_change}")
                 best_value, best_v_gene_score = self._calc_metrics(current_seq)
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change))
                 if target_model_metric <= current_value and is_v_gene_score_less(target_v_gene_score,

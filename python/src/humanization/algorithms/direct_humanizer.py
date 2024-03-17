@@ -2,7 +2,7 @@ import argparse
 from typing import List, Optional, Tuple
 
 from humanization.algorithms.abstract_humanizer import run_humanizer, AbstractHumanizer, SequenceChange, \
-    is_change_less, IterationDetails, read_humanizer_options, seq_to_str, abstract_humanizer_parser_options
+    is_change_less, IterationDetails, read_humanizer_options, seq_to_str, abstract_humanizer_parser_options, InnerChange
 from humanization.common import config_loader, utils
 from humanization.common.annotations import annotate_single
 from humanization.common.utils import configure_logger, read_sequences, write_sequences, parse_list
@@ -28,7 +28,7 @@ class Humanizer(AbstractHumanizer):
     def _test_single_change(self, sequence: List[str], column_idx: int,
                             current_v_gene_score: float = None) -> SequenceChange:
         aa_backup = sequence[column_idx]
-        best_change = SequenceChange(None, aa_backup, None, 0.0)
+        best_change = SequenceChange(None, 0.0)
         if aa_backup in self.deny_delete_aa:
             return best_change
         for new_aa in utils.AA_ALPHABET:  # TODO: make it batched
@@ -36,7 +36,7 @@ class Humanizer(AbstractHumanizer):
                 continue
             sequence[column_idx] = new_aa
             new_value = self.model_wrapper.model.predict_proba(sequence)[1]
-            candidate_change = SequenceChange(column_idx, aa_backup, new_aa, new_value)
+            candidate_change = SequenceChange([InnerChange(column_idx, aa_backup, new_aa)], new_value)
             if is_change_less(best_change, candidate_change, self.use_aa_similarity):
                 satisfied_v_gene = not self.non_decreasing_v_gene
                 if not satisfied_v_gene:
@@ -49,7 +49,7 @@ class Humanizer(AbstractHumanizer):
 
     def _find_best_change(self, current_seq: List[str], current_v_gene_score: float = None):
         current_value = self.model_wrapper.model.predict_proba(current_seq)[1]
-        best_change = SequenceChange(None, None, None, current_value)
+        best_change = SequenceChange(None, current_value)
         for idx, column_name in enumerate(self.model_wrapper.annotation.segmented_positions):
             if not self.modify_cdr and column_name.startswith('cdr'):
                 continue
@@ -78,10 +78,8 @@ class Humanizer(AbstractHumanizer):
                          f"Current model metric = {round(current_value, 6)}, V Gene score = {v_gene_score}")
             best_change = self._find_best_change(current_seq, v_gene_score)
             if best_change.is_defined():
-                prev_aa = current_seq[best_change.position]
-                current_seq[best_change.position] = best_change.aa
-                column_name = self.model_wrapper.annotation.segmented_positions[best_change.position]
-                logger.debug(f"Best change position {column_name}: {prev_aa} -> {best_change.aa}")
+                best_change.apply(current_seq)
+                logger.debug(f"Best change: {best_change}")
                 best_value, best_v_gene_score = self._calc_metrics(current_seq)
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change))
                 if target_model_metric <= best_value and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
