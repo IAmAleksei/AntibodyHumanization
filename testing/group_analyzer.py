@@ -34,6 +34,7 @@ def main(group_size, only_changes):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''Group analyzer of sequences''')
     parser.add_argument('--size', type=int, required=False, default=5, help='Group size')
-    parser.add_argument('--only-changes', type=bool, required=False, default=True, help='Show only changes groups')
+    parser.add_argument('--only-changes', action='store_true', help='Show only changes groups')
+    parser.set_defaults(only_changes=False)
     args = parser.parse_args()
     main(args.size, args.only_changes)
