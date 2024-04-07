@@ -18,7 +18,7 @@ def main(group_size, only_changes):
         humanized_changes = [False] * length
         if humanized_seq != "":
             humanized_changes = [humanized_seq[i] != original_seq[i] for i in range(length)]
-            print("       " + ''.join('X' if ch else '.' for ch in humanized_changes))
+            print("Mask:  " + ''.join('X' if ch else '.' for ch in humanized_changes))
         for i in range(length):
             if only_changes and not humanized_changes[i]:
                 continue
@@ -28,7 +28,7 @@ def main(group_size, only_changes):
                 pos = res_attn[j][0]
                 ans[pos] = str(j)
             ans[i] = "*"
-            print(f"{i:03d}#. {''.join(ans)}")
+            print(f"{i:03d}#:  {''.join(ans)}")
 
 
 if __name__ == '__main__':
