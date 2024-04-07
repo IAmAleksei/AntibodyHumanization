@@ -10,9 +10,14 @@ logger = configure_logger(config, "Group analyzer")
 
 def main(group_size):
     while True:
-        seq = input(">     ")
-        attentions = get_attentions(seq)
-        length = len(seq)
+        original_seq = input("Wild > ")
+        humanized_seq = input("Hum >  ")
+        attentions = get_attentions(original_seq)
+        length = len(original_seq)
+        print("       " + original_seq)
+        if humanized_seq != "":
+            humanized_changes = ['X' if humanized_seq[i] == original_seq[i] else '.' for i in range(length)]
+            print("       " + ''.join(humanized_changes))
         for i in range(length):
             res_attn = sorted(enumerate(attentions[i]), key=lambda x: (x[1], x[0]), reverse=True)
             ans = ["."] * length
