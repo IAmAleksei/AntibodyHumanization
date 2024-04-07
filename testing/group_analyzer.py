@@ -10,7 +10,7 @@ logger = configure_logger(config, "Group analyzer")
 
 def main():
     while True:
-        seq = input("> ")
+        seq = input(">     ")
         attentions = get_attentions(seq)
         length = len(seq)
         for i in range(length):
@@ -20,7 +20,7 @@ def main():
                 pos = res_attn[j][0]
                 ans[pos] = str(j)
             ans[i] = "*"
-            print(f"{i:03d}#. {ans}")
+            print(f"{i:03d}#. {''.join(ans)}")
 
 
 if __name__ == '__main__':
