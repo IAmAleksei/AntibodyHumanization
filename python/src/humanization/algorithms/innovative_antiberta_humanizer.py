@@ -222,7 +222,8 @@ def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, de
         v_gene_scorer, models, wild_v_gene_scorer, sequences, target_delta, human_sample, human_chain_type, deny_use_aa,
         deny_change_aa, target_v_gene_score, change_batch_size=change_batch_size, limit_changes=limit_changes
     )
-    generate_report(report, results)
+    if report is not None:
+        generate_report(report, results)
     write_sequences(output_file, results)
 
 
