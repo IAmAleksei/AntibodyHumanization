@@ -3,9 +3,20 @@ from typing import List
 import numpy as np
 from transformers import pipeline, RoFormerForMaskedLM, RoFormerTokenizer
 
-antiberta_tokenizer = RoFormerTokenizer.from_pretrained("alchemab/antiberta2")
-antiberta_model = RoFormerForMaskedLM.from_pretrained("alchemab/antiberta2")
+model_name = "alchemab/antiberta2-cssp"
+antiberta_tokenizer = RoFormerTokenizer.from_pretrained(model_name)
+antiberta_model = RoFormerForMaskedLM.from_pretrained(model_name)
 filler = pipeline("fill-mask", model=antiberta_model, tokenizer=antiberta_tokenizer)
+
+
+def get_antiberta_embeddings(seqs: List[str], get_attention: bool = False) -> np.array:
+    inputs = antiberta_tokenizer(seqs, return_tensors="pt")
+    outputs = antiberta_model(**inputs, output_hidden_states=True, output_attentions=True)
+    embedding_2d = outputs.hidden_states[-1][:, 0, :].detach().numpy()  # layer, seq_no, token (CLS), embedding
+    if get_attention:
+        return embedding_2d, outputs.attentions
+    else:
+        return embedding_2d
 
 
 def get_antiberta_embeddings(seqs: List[str]) -> np.array:

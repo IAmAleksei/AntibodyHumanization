@@ -15,7 +15,7 @@ from humanization.external_models.embedding_utils import diff_embeddings
 from humanization.humanness_calculator.model_wrapper import load_all_models, ModelWrapper
 
 config = config_loader.Config()
-logger = configure_logger(config, "Inovative AntiBERTa2 humanizer")
+logger = configure_logger(config, "Innovative AntiBERTa2 humanizer")
 
 
 def _get_embeddings(seqs: List[List[str]]) -> np.array:
@@ -32,7 +32,7 @@ def chunks(lst, n):
         yield lst[i:i + n]
 
 
-class InovativeAntibertaHumanizer(BaseHumanizer):
+class InnovativeAntibertaHumanizer(BaseHumanizer):
     def __init__(self, v_gene_scorer: VGeneScorer, wild_v_gene_scorer: VGeneScorer,
                  models: Optional[Dict[ChainType, ModelWrapper]], deny_use_aa: List[str], deny_change_aa: List[str]):
         super().__init__(v_gene_scorer)
@@ -202,8 +202,8 @@ def process_sequences(v_gene_scorer=None, models=None, wild_v_gene_scorer=None, 
                       human_sample=None, human_chain_type=None, deny_use_aa=utils.TABOO_INSERT_AA,
                       deny_change_aa=utils.TABOO_DELETE_AA, target_v_gene_score=None, aligned_result=False,
                       prefer_human_sample=False, change_batch_size=1, limit_changes=999):
-    humanizer = InovativeAntibertaHumanizer(v_gene_scorer, wild_v_gene_scorer, models,
-                                            parse_list(deny_use_aa), parse_list(deny_change_aa))
+    humanizer = InnovativeAntibertaHumanizer(v_gene_scorer, wild_v_gene_scorer, models,
+                                             parse_list(deny_use_aa), parse_list(deny_change_aa))
     results = run_humanizer(sequences, humanizer, limit_delta, target_v_gene_score, human_sample, human_chain_type,
                             aligned_result, prefer_human_sample, change_batch_size, limit_changes)
     return results
@@ -212,22 +212,22 @@ def process_sequences(v_gene_scorer=None, models=None, wild_v_gene_scorer=None, 
 def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, deny_change_aa, human_sample,
          limit_changes, change_batch_size, report, output_file):
     sequences = read_sequences(input_file)
-    _, target_delta, target_v_gene_score = read_humanizer_options(dataset_file)
+    human_chain_type, target_delta, target_v_gene_score = read_humanizer_options(dataset_file)
     v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), dataset_file)
     wild_v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), wild_dataset_file)
     assert v_gene_scorer is not None
     general_type = GeneralChainType.HEAVY
     models = load_all_models(model_dir, general_type) if model_dir else None
     results = process_sequences(
-        v_gene_scorer, models, wild_v_gene_scorer, sequences, target_delta, human_sample, deny_use_aa, deny_change_aa,
-        target_v_gene_score, change_batch_size=change_batch_size, limit_changes=limit_changes
+        v_gene_scorer, models, wild_v_gene_scorer, sequences, target_delta, human_sample, human_chain_type, deny_use_aa,
+        deny_change_aa, target_v_gene_score, change_batch_size=change_batch_size, limit_changes=limit_changes
     )
     generate_report(report, results)
     write_sequences(output_file, results)
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='''Inovative antiberta humanizer''')
+    parser = argparse.ArgumentParser(description='''Innovative antiberta humanizer''')
     parser.add_argument('--input', type=str, required=False, help='Path to input fasta file')
     parser.add_argument('--output', type=str, required=False, help='Path to output fasta file')
     parser.add_argument('--models', type=str, help='Path to directory with random forest models')
