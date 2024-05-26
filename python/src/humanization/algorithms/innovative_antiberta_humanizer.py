@@ -112,11 +112,12 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
                 'embeds': diff_embeddings(original_embedding, embeddings[idx]) * 50,  # Each change ~ 0.007
                 'v_gene': self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score),
                 'humanness': humanness_degree[idx],
-                'blosum': blosum_sum(changes) * (-0.04)
             }
+            if self.use_aa_similarity:
+                penalties['blosum'] = blosum_sum(changes) * (-0.04)
             all_candidates.append(SequenceChange(changes, value=sum(penalties.values()), values=penalties))
         for candidate_change in all_candidates:
-            if is_change_less(candidate_change, best_change, self.use_aa_similarity):
+            if is_change_less(candidate_change, best_change):
                 best_change = candidate_change
         return best_change, all_candidates
 

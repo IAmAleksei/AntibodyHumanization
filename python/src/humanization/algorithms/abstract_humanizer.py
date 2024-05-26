@@ -51,7 +51,7 @@ def blosum_sum(change: List[InnerChange]) -> float:
     return sum(BLOSUM62[ch.old_aa][ch.aa] for ch in change)
 
 
-def is_change_less(left: SequenceChange, right: SequenceChange, use_aa_similarity: bool):
+def is_change_less(left: SequenceChange, right: SequenceChange, use_aa_similarity: bool = False):
     left_value, right_value = left.value, right.value
     if use_aa_similarity:
         if left.is_defined():

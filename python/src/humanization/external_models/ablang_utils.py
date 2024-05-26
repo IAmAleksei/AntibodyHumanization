@@ -17,5 +17,5 @@ def get_attentions(vh: str):
         result = []
         for pos in range(length):
             token = tokenized_seqs[0][pos + 1]  # Ignoring first token '<'
-            result.append(attn_weights[token - 1][pos + 1][1:length + 1])
+            result.append(attn_weights[token - 1, 1:length + 1, pos + 1])
         return np.array(result)
