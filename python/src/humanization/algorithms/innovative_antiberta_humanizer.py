@@ -57,7 +57,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
             return 0.0
         _, wild_vgs, _ = self.wild_v_gene_scorer.query(mod_seq)[0]
         _, vgs, _ = self.v_gene_scorer.query(mod_seq)[0]
-        if vgs - wild_vgs > 0.001 or vgs < 0.84 or \
+        if vgs - wild_vgs > 0.001 or vgs < 0.85 or \
                 (vgs < 0.86 and wild_vgs - cur_wild_vgs < -0.001 + vgs - cur_vgs) or wild_vgs - cur_wild_vgs < -0.001:
             mult = 10
             return max(0.0, wild_vgs + 0.02 - vgs) * mult
