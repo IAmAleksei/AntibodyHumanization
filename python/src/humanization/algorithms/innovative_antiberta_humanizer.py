@@ -57,10 +57,10 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
             return 0.0
         _, wild_vgs, _ = self.wild_v_gene_scorer.query(mod_seq)[0]
         _, vgs, _ = self.v_gene_scorer.query(mod_seq)[0]
-        if vgs - wild_vgs > 0.001 or vgs < 0.8 or \
-                (vgs < 0.83 and wild_vgs - cur_wild_vgs < 0.001 + vgs - cur_vgs) or wild_vgs - cur_wild_vgs < -0.001:
-            mult = 20
-            return max(0.0, wild_vgs + 0.01 - vgs) * mult
+        if vgs - wild_vgs > 0.001 or vgs < 0.84 or \
+                (vgs < 0.86 and wild_vgs - cur_wild_vgs < -0.001 + vgs - cur_vgs) or wild_vgs - cur_wild_vgs < -0.001:
+            mult = 10
+            return max(0.0, wild_vgs + 0.02 - vgs) * mult
         else:
             return 1e6  # Reject change
 
@@ -101,7 +101,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
             if candidate_change is not None:
                 all_candidate_changes.append(candidate_change)
         unevaluated_all_candidates = self._generate_candidates(current_seq, all_candidate_changes, change_batch_size)
-        if cur_v_gene_score > 0.82:
+        if cur_v_gene_score > 0.81:
             for bs in range(1, change_batch_size):
                 unevaluated_all_candidates.extend(self._generate_candidates(current_seq, all_candidate_changes, bs))
         logger.debug(f"Get embeddings for {len(unevaluated_all_candidates)} sequences, batch is {change_batch_size}")
