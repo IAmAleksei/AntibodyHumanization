@@ -53,7 +53,7 @@ class VGeneScorer:
             with Pool(processes=config.get(config_loader.NCPU), initializer=worker_init, initargs=worker_args) as pool:
                 v_gene_scores = pool.map(calc_score_wrapper, self.human_samples)
         result = []
-        for idx, v_gene_score in sorted(enumerate(v_gene_scores), key=lambda x: x[1], reverse=True)[:2]:
+        for idx, v_gene_score in sorted(enumerate(v_gene_scores), key=lambda x: x[1], reverse=True)[:3]:
             result.append((self.human_samples[idx], v_gene_score, self.labels[idx]))
         return result
 
