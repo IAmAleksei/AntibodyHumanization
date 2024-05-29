@@ -62,7 +62,7 @@ def main(files, dataset, wild_dataset, biophi_path):
         oasis_ident_wild = get_oasis_humanness(biophi_path, wild)
         print(wild[:25] + "...", "Wild.",
               "", "",
-              round(optional_v_gene_score(v_gene_scorer, wild), 2), round(optional_v_gene_score(wild_v_gene_scorer, wild), 2),
+              round(optional_v_gene_score(v_gene_scorer, wild), 3), round(optional_v_gene_score(wild_v_gene_scorer, wild), 3),
               "", "",
               "", "",
               "", "",
@@ -71,7 +71,7 @@ def main(files, dataset, wild_dataset, biophi_path):
               sep=",")
         print(thera[:25] + "...", "Therap.",
               "", edit_distance.SequenceMatcher(wild, thera).distance(),
-              round(optional_v_gene_score(v_gene_scorer, thera), 2), round(optional_v_gene_score(wild_v_gene_scorer, thera), 2),
+              round(optional_v_gene_score(v_gene_scorer, thera), 3), round(optional_v_gene_score(wild_v_gene_scorer, thera), 3),
               "", round(diff_embeddings(seq_emb_thera, seq_emb_wild), 3),
               "", round(diff_embeddings(struct_emb_thera, struct_emb_wild), 4),
               "", round(diff_embeddings(sap_emb_thera, sap_emb_wild), 3),
@@ -90,7 +90,7 @@ def main(files, dataset, wild_dataset, biophi_path):
             oasis_ident_seq = get_oasis_humanness(biophi_path, seq)
             print(seq[:25] + "...", way,
                   sm_thera.distance(), sm_wild.distance(),
-                  round(optional_v_gene_score(v_gene_scorer, seq), 2), round(optional_v_gene_score(wild_v_gene_scorer, seq), 2),
+                  round(optional_v_gene_score(v_gene_scorer, seq), 3), round(optional_v_gene_score(wild_v_gene_scorer, seq), 3),
                   round(diff_embeddings(seq_emb_thera, seq_emb_seq), 3), round(diff_embeddings(seq_emb_wild, seq_emb_seq), 3),
                   round(diff_embeddings(struct_emb_thera, struct_emb_seq), 4), round(diff_embeddings(struct_emb_wild, struct_emb_seq), 4),
                   round(diff_embeddings(sap_emb_thera, sap_emb_seq), 3), round(diff_embeddings(sap_emb_wild, sap_emb_seq), 3),
