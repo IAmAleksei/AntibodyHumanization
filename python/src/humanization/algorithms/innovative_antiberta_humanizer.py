@@ -52,13 +52,13 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
             return None
         return InnerChange(column_idx, aa_backup, new_aa)
 
-    def _get_v_gene_penalty(self, mod_seq: List[str], cur_wild_vgs: float) -> float:
+    def _get_v_gene_penalty(self, mod_seq: List[str], cur_vgs: float, cur_wild_vgs: float) -> float:
         if self.wild_v_gene_scorer is None:
             return 0.0
         _, wild_vgs, _ = self.wild_v_gene_scorer.query(mod_seq)[0]
         _, vgs, _ = self.v_gene_scorer.query(mod_seq)[0]
         if vgs - wild_vgs > 0.001 or vgs < 0.8 or \
-                (vgs < 0.83 and wild_vgs - cur_wild_vgs < 0.001) or wild_vgs - cur_wild_vgs < -0.001:
+                (vgs < 0.83 and wild_vgs - cur_wild_vgs < 0.001 + vgs - cur_vgs) or wild_vgs - cur_wild_vgs < -0.001:
             mult = 20
             return max(0.0, wild_vgs + 0.01 - vgs) * mult
         else:
@@ -101,7 +101,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
             if candidate_change is not None:
                 all_candidate_changes.append(candidate_change)
         unevaluated_all_candidates = self._generate_candidates(current_seq, all_candidate_changes, change_batch_size)
-        if cur_v_gene_score > 0.83:
+        if cur_v_gene_score > 0.82:
             for bs in range(1, change_batch_size):
                 unevaluated_all_candidates.extend(self._generate_candidates(current_seq, all_candidate_changes, bs))
         logger.debug(f"Get embeddings for {len(unevaluated_all_candidates)} sequences, batch is {change_batch_size}")
@@ -116,7 +116,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         for idx, (mod_seq, changes) in enumerate(unevaluated_all_candidates):
             penalties = {
                 'embeds': diff_embeddings(original_embedding, embeddings[idx]) * 50,  # Each change ~ 0.007
-                'v_gene': self._get_v_gene_penalty(mod_seq, wild_v_gene_score),
+                'v_gene': self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score),
                 'humanness': humanness_degree[idx],
             }
             if self.use_aa_similarity:
