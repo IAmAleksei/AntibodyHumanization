@@ -52,16 +52,17 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
             return None
         return InnerChange(column_idx, aa_backup, new_aa)
 
-    def _get_v_gene_penalty(self, mod_seq: List[str], cur_v_gene_score: float, cur_wild_v_gene_score: float) -> float:
+    def _get_v_gene_penalty(self, mod_seq: List[str], cur_wild_vgs: float) -> float:
         if self.wild_v_gene_scorer is None:
             return 0.0
-        _, wild_v_gene_score, _ = self.wild_v_gene_scorer.query(mod_seq)[0]
-        if wild_v_gene_score > 0.84 and wild_v_gene_score - cur_wild_v_gene_score > 0.001 and cur_v_gene_score > 0.8:
-            return 1e6  # Reject change
+        _, wild_vgs, _ = self.wild_v_gene_scorer.query(mod_seq)[0]
+        _, vgs, _ = self.v_gene_scorer.query(mod_seq)[0]
+        if vgs - wild_vgs > 0.001 or vgs < 0.8 or \
+                (vgs < 0.83 and wild_vgs - cur_wild_vgs < 0.001) or wild_vgs - cur_wild_vgs < -0.001:
+            mult = 20
+            return max(0.0, wild_vgs + 0.01 - vgs) * mult
         else:
-            # mult = 76 * (cur_v_gene_score - 0.85) + 20  # Increasing penalty when v gene score is increasing
-            mult = 10
-            return max(0.0, wild_v_gene_score + 0.01 - cur_v_gene_score) * mult
+            return 1e6  # Reject change
 
     def _get_random_forest_penalty(self, sequences: List[List[str]], chain_type: ChainType) -> List[float]:
         if self.models is not None:
@@ -69,18 +70,21 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         else:
             return [0.0] * len(sequences)
 
-    def _generate_mod_sequences(self, current_seq: List[str], all_candidate_changes: List[InnerChange],
-                                change_batch_size: int, res: List[Tuple[List[str], List[InnerChange]]], cur_index: int,
-                                cur_changes: List[InnerChange]) -> List[Tuple[List[str], List[InnerChange]]]:
-        if change_batch_size == 0:
+    def _generate_candidates(self, current_seq: List[str], all_candidate_changes: List[InnerChange], changes_left: int,
+                             res: List[Tuple[List[str], List[InnerChange]]] = None, cur_index: int = 0,
+                             cur_changes: List[InnerChange] = None) -> List[Tuple[List[str], List[InnerChange]]]:
+        if res is None:
+            res = []
+        if cur_changes is None:
+            cur_changes = []
+        if changes_left == 0:
             res.append((current_seq.copy(), cur_changes.copy()))
-        elif change_batch_size > 0:
+        elif changes_left > 0:
             for i in range(cur_index, len(all_candidate_changes)):
                 current_change = all_candidate_changes[i]
                 cur_changes.append(current_change)
                 current_seq[current_change.position] = current_change.aa
-                self._generate_mod_sequences(current_seq, all_candidate_changes, change_batch_size - 1, res, i + 1,
-                                             cur_changes)
+                self._generate_candidates(current_seq, all_candidate_changes, changes_left - 1, res, i + 1, cur_changes)
                 current_seq[current_change.position] = current_change.old_aa
                 cur_changes.pop()
         return res
@@ -96,8 +100,10 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
             candidate_change = self._test_single_change(current_seq, idx, cur_human_sample[idx])
             if candidate_change is not None:
                 all_candidate_changes.append(candidate_change)
-        unevaluated_all_candidates = self._generate_mod_sequences(current_seq, all_candidate_changes, change_batch_size,
-                                                                  [], 0, [])
+        unevaluated_all_candidates = self._generate_candidates(current_seq, all_candidate_changes, change_batch_size)
+        if cur_v_gene_score > 0.83:
+            for bs in range(1, change_batch_size):
+                unevaluated_all_candidates.extend(self._generate_candidates(current_seq, all_candidate_changes, bs))
         logger.debug(f"Get embeddings for {len(unevaluated_all_candidates)} sequences, batch is {change_batch_size}")
         embeddings = []
         for i, chunk in enumerate(chunks(unevaluated_all_candidates, 500)):
@@ -110,7 +116,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         for idx, (mod_seq, changes) in enumerate(unevaluated_all_candidates):
             penalties = {
                 'embeds': diff_embeddings(original_embedding, embeddings[idx]) * 50,  # Each change ~ 0.007
-                'v_gene': self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score),
+                'v_gene': self._get_v_gene_penalty(mod_seq, wild_v_gene_score),
                 'humanness': humanness_degree[idx],
             }
             if self.use_aa_similarity:

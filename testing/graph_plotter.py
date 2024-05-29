@@ -1,6 +1,7 @@
 import argparse
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 prettifier_m = {
@@ -24,9 +25,11 @@ prettifier_t = {
 }
 
 
-def main(metric, filename, with_wild):
+def main(metric, filename, with_wild, no_thera):
     df = pd.read_csv(filename)
-    types = ["Therap.", "i", "i3", "HuMab", "Sapiens1", "Sapiens3"]
+    types = ["i", "i3", "HuMab", "Sapiens1", "Sapiens3"]
+    if not no_thera:
+        types = ["Therap."] + types
     if with_wild:
         types = ["Wild."] + types
     labels = [prettifier_t[t] for t in types]
@@ -38,12 +41,11 @@ def main(metric, filename, with_wild):
         plt.axhline(y=0.85, color='r', alpha=0.35, linestyle='--')
     plt.boxplot(boxes, labels=labels, whis=(0, 100))
     plt.tight_layout()
+    for i, t in enumerate(types):
+        xs = np.random.normal(i + 1, 0.02, len(boxes[i]))
+        plt.scatter(xs, boxes[i], c='r', alpha=0.2)
     plt.savefig(metric + ".jpg")
     plt.show()
-    # for i in range(1, len(boxes)):
-    #     res = [boxes[0].iloc[j] >= boxes[i].iloc[j] for j in range(25)]
-    #     print(types[i], sum(res))
-    #     print(sorted(boxes[i])[12])
 
 
 if __name__ == '__main__':
@@ -51,5 +53,6 @@ if __name__ == '__main__':
     parser.add_argument('metric', type=str, help='Metric to visualize')
     parser.add_argument('filename', type=str, help='Input .csv')
     parser.add_argument('--with-wild', action='store_true', default=False, help='Include wild type')
+    parser.add_argument('--no-thera', action='store_true', default=False, help='Include therapeutic type')
     args = parser.parse_args()
-    main(args.metric, args.filename, args.with_wild)
+    main(args.metric, args.filename, args.with_wild, args.no_thera)
