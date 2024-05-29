@@ -191,14 +191,15 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         logger.debug(f"Annotated sequence: {seq_to_str(current_seq, True)}")
         if not human_sample:
             logger.debug(f"Retrieve human sample from V Gene scorer")
-            v_gene_samples = self.v_gene_scorer.query(current_seq)[:1]
+            v_gene_samples = self.v_gene_scorer.query(current_seq)[:3]
             human_samples = [(human_sample, ChainType.from_oas_type(human_chain_type))
                              for human_sample, _, human_chain_type in v_gene_samples]
         else:
             human_sample = annotate_single(human_sample, self.annotation, general_type)
             human_samples = [(human_sample, ChainType.from_oas_type(human_chain_type))]
         result = []
-        for cur_human_sample, cur_chain_type in human_samples:
+        for i, (cur_human_sample, cur_chain_type) in enumerate(human_samples):
+            logger.debug(f"Processing {i + 1} of {len(human_samples)} human sample")
             result.append(self._query_one(original_seq, cur_human_sample, cur_chain_type, limit_delta,
                                           target_v_gene_score, aligned_result, prefer_human_sample, change_batch_size,
                                           limit_changes))

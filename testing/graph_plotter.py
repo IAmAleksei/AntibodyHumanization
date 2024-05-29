@@ -19,6 +19,7 @@ prettifier_t = {
     "Therap.": "Терапевт.",
     "i": "РИ\n(1 замена)",
     "i3": "РИ\n(3 замены)",
+    "ni3": "РИ\n(3 замены)",
     "HuMab": "Hu-mAb",
     "Sapiens1": "BioPhi\nSapiens",
     "Sapiens3": "BioPhi\nSapiens 3x",
@@ -27,7 +28,7 @@ prettifier_t = {
 
 def main(metric, filename, with_wild, no_thera):
     df = pd.read_csv(filename)
-    types = ["i", "i3", "HuMab", "Sapiens1", "Sapiens3"]
+    types = ["i", "i3", "ni3", "HuMab", "Sapiens1", "Sapiens3"]
     if not no_thera:
         types = ["Therap."] + types
     if with_wild:
@@ -39,7 +40,8 @@ def main(metric, filename, with_wild, no_thera):
     plt.title(prettifier_m[metric])
     if metric == "HuVGS":
         plt.axhline(y=0.85, color='r', alpha=0.35, linestyle='--')
-    plt.boxplot(boxes, labels=labels, whis=(0, 100))
+    medianprops = {"linewidth": 0, "linestyle": None}
+    plt.boxplot(boxes, labels=labels, whis=(0, 100), medianprops=medianprops)
     plt.tight_layout()
     for i, t in enumerate(types):
         xs = np.random.normal(i + 1, 0.02, len(boxes[i]))
