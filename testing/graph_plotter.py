@@ -27,12 +27,15 @@ prettifier_t = {
 
 
 def main(metric, filename, with_wild, no_thera):
+    point_mode = False
     df = pd.read_csv(filename)
-    types = ["i", "i3", "ni3", "HuMab", "Sapiens1", "Sapiens3"]
+    types = ["i", "i3", "HuMab", "Sapiens1", "Sapiens3"]
     if not no_thera:
         types = ["Therap."] + types
     if with_wild:
         types = ["Wild."] + types
+    if point_mode:
+        types = list(reversed(types))
     labels = [prettifier_t[t] for t in types]
     boxes = [df[df["Type"] == t][metric] for t in types]
     plt.figure(figsize=(4 + len(types), 6), dpi=200)
@@ -40,12 +43,15 @@ def main(metric, filename, with_wild, no_thera):
     plt.title(prettifier_m[metric])
     if metric == "HuVGS":
         plt.axhline(y=0.85, color='r', alpha=0.35, linestyle='--')
-    medianprops = {"linewidth": 0, "linestyle": None}
-    plt.boxplot(boxes, labels=labels, whis=(0, 100), medianprops=medianprops)
+    medianprops = None
+    if point_mode:
+        medianprops = {"linewidth": 0, "linestyle": None}
+    plt.boxplot(boxes, labels=labels, whis=(0, 100), vert=not point_mode, medianprops=medianprops)
+    if point_mode:
+        for i, t in enumerate(types):
+            xs = np.random.normal(i + 1, 0.025, len(boxes[i]))
+            plt.scatter(boxes[i], xs, c='r', alpha=0.2, s=100)
     plt.tight_layout()
-    for i, t in enumerate(types):
-        xs = np.random.normal(i + 1, 0.02, len(boxes[i]))
-        plt.scatter(xs, boxes[i], c='r', alpha=0.2)
     plt.savefig(metric + ".jpg")
     plt.show()
 

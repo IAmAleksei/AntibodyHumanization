@@ -258,8 +258,9 @@ def annotate_single(sequence: str, annotation: Annotation, chain_type: GeneralCh
 
 
 if __name__ == '__main__':
+    annotation = load_annotation("chothia", ChainKind.HEAVY)
     res = annotate_single(
-        'AIRMTQSPSSFSASTGDRVSITCRASQGISSYLAWYQQKPGTAPKLLIYAASTLQSGVPSRFSGSGSGTDFTLTISCLQSEDFATYYCQQYYTYPWTFGLGTKVEVK',
-        load_annotation("chothia", ChainKind.LIGHT), GeneralChainType.KAPPA
+        'EIQLVQSGPELKQPGETVRISCKASGYTFTNYGMNWVKQAPGKGLKWMGWINTYTGEPTYAADFKRRFTFSLETSASTAYLQISNLKNDDTATYFCAKYPHYYGSSHWYFDVWGAGTTVTVSS',
+        annotation, GeneralChainType.HEAVY
     )
     print(res)
