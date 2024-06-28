@@ -209,8 +209,11 @@ def load_annotation(schema: str, kind: ChainKind) -> Annotation:
     raise RuntimeError("Unrecognized annotation type")
 
 
-def annotate_batch(sequences: List[str], annotation: Annotation, chain_type: GeneralChainType = None,
-                   is_human: bool = False) -> Tuple[List[int], List[List[str]]]:
+ALL_SPECIES = ['human', 'mouse', 'rat', 'rabbit', 'rhesus', 'pig', 'alpaca']
+
+
+def annotate_batch(sequences: List[str], annotation: Annotation,
+                   chain_type: GeneralChainType = None) -> Tuple[List[int], List[List[str]]]:
     sequences_ = list(enumerate(sequences))
     kwargs = {
         'ncpu': config.get(config_loader.NCPU),
@@ -220,10 +223,7 @@ def annotate_batch(sequences: List[str], annotation: Annotation, chain_type: Gen
         kwargs['allow'] = {chain_type.value}
     else:
         kwargs['allow'] = {chain_type.value for chain_type in annotation.kind.sub_types()}
-    if is_human:
-        kwargs['allowed_species'] = ['human']
-    else:
-        kwargs['allowed_species'] = ['mouse', 'rat', 'rabbit', 'rhesus', 'pig', 'alpaca']
+    kwargs['allowed_species'] = None
     import sys
     sys.modules['anarci.anarci']._parse_hmmer_query = patched_anarci._parse_hmmer_query  # Monkey patching
     logger.debug(f"Anarci run on {len(sequences)} rows (kwargs: {kwargs})")

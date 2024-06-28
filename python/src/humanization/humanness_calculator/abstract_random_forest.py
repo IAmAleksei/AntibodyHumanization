@@ -1,5 +1,5 @@
 import argparse
-from typing import Tuple, Generator
+from typing import Tuple, Generator, Callable
 
 import numpy as np
 from catboost import CatBoostClassifier, Pool
@@ -79,11 +79,11 @@ def build_tree_impl(X_train, y_train, val_pool, iterative_learning: bool = False
     return final_model
 
 
-def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: ChainType, metric: str,
-               iterative_learning: bool = False, print_metrics: bool = True):
-    y_train = make_binary_target(y_train_raw, v_type.oas_type())
-    y_val = make_binary_target(y_val_raw, v_type.oas_type())
-    logger.debug(f"Dataset for {v_type.full_type()} tree contains {np.count_nonzero(y_train == 1)} positive samples")
+def build_tree(X_train, y_train_raw, X_val, y_val_raw, marker: Callable[[str], bool],
+               label: str, metric: str, iterative_learning: bool = False, print_metrics: bool = True):
+    y_train = make_binary_target(y_train_raw, marker)
+    y_val = make_binary_target(y_val_raw, marker)
+    logger.debug(f"Dataset for {label} tree contains {np.count_nonzero(y_train == 1)} positive samples")
 
     val_pool = Pool(X_val, y_val, cat_features=X_val.columns.tolist())
     logger.debug(f"Validation pool prepared")
@@ -97,7 +97,7 @@ def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: ChainType, metric
 
         # TODO: Add train metrics
         figure, axis = plt.subplots(2, 2, figsize=(9, 9))
-        plt.suptitle(f'Tree IG{v_type.full_type()}')
+        plt.suptitle(f'Tree IG{label}')
         plot_metrics('Logloss', {}, val_metrics, axis[0, 0])
         plot_metrics('AUC', {}, val_metrics, axis[0, 1])
         threshold, metric_score = get_threshold(metric, y_val, y_val_pred_proba, axis[1, :])
@@ -111,14 +111,19 @@ def build_tree(X_train, y_train_raw, X_val, y_val_raw, v_type: ChainType, metric
 
 
 def make_model(X_train, y_train, X_val, y_val, test_pool, y_test, annotation: Annotation, v_type: ChainType,
-               metric: str, iterative_learning: bool, print_metrics: bool):
-    logger.debug(f"Tree for {v_type.full_type()} is building...")
-    model, threshold = build_tree(X_train, y_train, X_val, y_val, v_type, metric, iterative_learning, print_metrics)
-    logger.debug(f"Tree for {v_type.full_type()} was built")
+               metric: str, iterative_learning: bool, print_metrics: bool, marker=None):
+    if not marker:
+        marker = lambda x: x == v_type.oas_type()
+
+    label = v_type.full_type()
+    logger.debug(f"Tree for {label} is building...")
+    model, threshold = build_tree(X_train, y_train, X_val, y_val, marker, label,
+                                  metric, iterative_learning, print_metrics)
+    logger.debug(f"Tree for {label} was built")
     y_pred_proba = model.predict_proba(test_pool)[:, 1]
     y_pred = np.where(y_pred_proba >= threshold, 1, 0)
-    logger.info(format_confusion_matrix(make_binary_target(y_test, v_type.oas_type()), y_pred))
-    logger.info(f"Tree for {v_type.full_type()} tested.")
+    logger.info(format_confusion_matrix(make_binary_target(y_test, marker), y_pred))
+    logger.info(f"Tree for {label} tested.")
     return ModelWrapper(v_type, model, annotation, threshold)
 
 

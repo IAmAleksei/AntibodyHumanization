@@ -1,6 +1,7 @@
 import argparse
+import json
 import os
-from typing import NoReturn, Tuple, Optional, List
+from typing import NoReturn, Tuple, Optional, List, Dict
 
 import pandas
 
@@ -8,38 +9,45 @@ from humanization.common import config_loader
 from humanization.common.annotations import load_annotation, Annotation, ChainKind, ChainType
 from humanization.common.utils import configure_logger
 from humanization.dataset.dataset_preparer import read_oas_file, correct_v_call, make_annotated_df, filter_df, \
-    merge_all_columns, read_annotated_dataset, read_dataset, read_imgt_file
+    merge_all_columns, read_annotated_dataset, read_dataset, read_imgt_file, NA_SPECIES, mark_another_species
 
 config = config_loader.Config()
 logger = configure_logger(config, "Dataset preparer")
 
 
-def read_and_annotate_file(csv_file: str, annotation: Annotation) -> pandas.DataFrame:
+def read_and_annotate_file(csv_file: str, annotation: Annotation) -> Tuple[pandas.DataFrame, Dict[str, str]]:
     if csv_file.endswith(".imgt"):
-        df, is_human = read_imgt_file(csv_file)
+        df, species = read_imgt_file(csv_file)
     else:
-        df, is_human = read_oas_file(csv_file, ['sequence_alignment_aa', 'v_call'])
+        df, species = read_oas_file(csv_file, ['sequence_alignment_aa', 'v_call'])
     logger.debug(f"File contains {df.shape[0]} rows")
-    correct_v_call(df, is_human)
-    df = make_annotated_df(df, annotation, is_human=is_human)
+    correct_v_call(df)
+    df = make_annotated_df(df, annotation)
     df = filter_df(df, annotation)
-    return df
+    metadata = {"Species": species}
+    return df, metadata
 
 
-def read_raw_dataset(input_dir: str, annotation: Annotation, **kwargs) -> Tuple[pandas.DataFrame, pandas.Series]:
-    return read_dataset(input_dir, lambda csv_file: read_and_annotate_file(csv_file, annotation), **kwargs)
+def read_raw_dataset(input_dir: str, annotation: Annotation, species: str = 'human',
+                     **kwargs) -> Tuple[pandas.DataFrame, pandas.Series]:
+    def process_file(csv_file):
+        df, metadata = read_and_annotate_file(csv_file, annotation)
+        mark_another_species(df, metadata, species)
+        return df
+
+    return read_dataset(input_dir, process_file, **kwargs)
 
 
-def read_any_dataset(input_dir: str, annotation: Annotation, only_human: bool = False,
+def read_any_dataset(input_dir: str, annotation: Annotation, species: str = 'human', drop_another: bool = False,
                      v_type: Optional[ChainType] = None) -> Tuple[pandas.DataFrame, pandas.Series]:
     annotated_data = "_annotated" in os.path.basename(input_dir)
     if annotated_data:
         logger.info(f"Use annotated-data mode")
         logger.info(f"Please check that `{annotation.name}` is defined correctly")
-        X, y = read_annotated_dataset(input_dir, only_human=only_human, v_type=v_type)
+        X, y = read_annotated_dataset(input_dir, species=species, drop_another=drop_another, v_type=v_type)
     else:
         logger.info(f"Use raw-data mode")
-        X, y = read_raw_dataset(input_dir, annotation, only_human=only_human, v_type=v_type)
+        X, y = read_raw_dataset(input_dir, annotation, species=species, drop_another=drop_another, v_type=v_type)
     if X.isna().sum().sum() > 0 or y.isna().sum() > 0:
         raise RuntimeError("Found nans")
     if X.shape[0] != y.shape[0]:
@@ -52,7 +60,7 @@ def read_any_dataset(input_dir: str, annotation: Annotation, only_human: bool = 
 def read_v_gene_dataset(dataset_file=None, annotation=None, only_human=True,
                         v_type: ChainType = None) -> Optional[Tuple[List[str], List[str]]]:
     if dataset_file is not None:
-        X, y = read_any_dataset(dataset_file, annotation, only_human=only_human, v_type=v_type)
+        X, y = read_any_dataset(dataset_file, annotation, drop_another=only_human, v_type=v_type)
         X.reset_index(drop=True, inplace=True)
         human_samples = merge_all_columns(X)
         return human_samples, y.tolist()
@@ -74,10 +82,11 @@ def main(input_dir: str, chain_kind: ChainKind, schema: str, output_dir: str, sk
             continue
         logger.debug(f"Processing {input_file_name}...")
         try:
-            df = read_and_annotate_file(input_file_path, annotation)
-            df.to_csv(output_file_path, index=False)
-            logger.debug(f"Result with {df.shape[0]} rows saved to {output_file_path}")
-            break
+            df, metadata = read_and_annotate_file(input_file_path, annotation)
+            with open(output_file_path, 'w') as file:
+                json.dump(metadata, file)
+            df.to_csv(output_file_path, index=False, mode='a')
+            logger.debug(f"Dataframe {metadata} with {df.shape[0]} rows saved to {output_file_path}")
         except Exception:
             logger.exception(f"Processing error")
 

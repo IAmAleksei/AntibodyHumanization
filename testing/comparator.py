@@ -5,7 +5,7 @@ import edit_distance
 from Bio import SeqIO
 
 from humanization.common import config_loader
-from humanization.common.annotations import ChothiaHeavy, annotate_single, GeneralChainType
+from humanization.common.annotations import ChothiaHeavy, annotate_single, GeneralChainType, ChainType
 from humanization.common.utils import configure_logger
 from humanization.common.v_gene_scorer import build_v_gene_scorer
 from humanization.external_models.ablang_utils import get_ablang_embedding
@@ -14,6 +14,7 @@ from humanization.external_models.biophi_utils import get_oasis_humanness
 from humanization.external_models.embedding_utils import diff_embeddings
 from humanization.external_models.immunebuilder_utils import get_immunebuilder_embedding
 from humanization.external_models.sapiens_utils import get_sapiens_embedding
+from humanization.humanness_calculator.model_wrapper import load_all_models
 
 config = config_loader.Config()
 logger = configure_logger(config, "Comparator")
@@ -26,7 +27,18 @@ def optional_v_gene_score(v_gene_scorer, seq: str):
     return v_gene_scorer.query(aligned_seq)[0][1]
 
 
-def main(files, dataset, wild_dataset, biophi_path):
+def v_gene_type(v_gene_scorer, seq: str) -> ChainType:
+    aligned_seq = annotate_single(seq, ChothiaHeavy(), GeneralChainType.HEAVY)
+    return ChainType.from_oas_type(v_gene_scorer.query(aligned_seq)[0][2])
+
+
+def catboost_humanness_score(models, v_gene_scorer, seq: str):
+    chain_type = v_gene_type(v_gene_scorer, seq)
+    return models[chain_type].model.predict_proba(seq)[1]
+
+
+def main(files, dataset, wild_dataset, biophi_path, model_dir):
+    models = load_all_models(model_dir, GeneralChainType.HEAVY)
     v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), dataset)
     wild_v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), wild_dataset)
     seqs = defaultdict(list)
@@ -68,6 +80,7 @@ def main(files, dataset, wild_dataset, biophi_path):
               "", "",
               "", "",
               round(oasis_ident_wild.get_oasis_identity(0.5), 2), round(oasis_ident_wild.get_oasis_percentile(0.5), 2),
+              round(catboost_humanness_score(models, v_gene_scorer, wild), 2),
               sep=",")
         print(thera[:25] + "...", "Therap.",
               "", edit_distance.SequenceMatcher(wild, thera).distance(),
@@ -77,6 +90,7 @@ def main(files, dataset, wild_dataset, biophi_path):
               "", round(diff_embeddings(sap_emb_thera, sap_emb_wild), 3),
               "", round(diff_embeddings(abl_emb_thera, abl_emb_wild), 4),
               round(oasis_ident_thera.get_oasis_identity(0.5), 2), round(oasis_ident_thera.get_oasis_percentile(0.5), 2),
+              round(catboost_humanness_score(models, v_gene_scorer, thera), 2),
               sep=",")
         for i, (way, seq) in enumerate(lst):
             if way in ["Therap.", "Wild"]:
@@ -96,6 +110,7 @@ def main(files, dataset, wild_dataset, biophi_path):
                   round(diff_embeddings(sap_emb_thera, sap_emb_seq), 3), round(diff_embeddings(sap_emb_wild, sap_emb_seq), 3),
                   round(diff_embeddings(abl_emb_thera, abl_emb_seq), 4), round(diff_embeddings(abl_emb_wild, abl_emb_seq), 4),
                   round(oasis_ident_seq.get_oasis_identity(0.5), 2), round(oasis_ident_seq.get_oasis_percentile(0.5), 2),
+                  round(catboost_humanness_score(models, v_gene_scorer, seq), 2),
                   sep=",")
 
 
@@ -105,5 +120,6 @@ if __name__ == '__main__':
     parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
     parser.add_argument('--wild-dataset', type=str, required=False, help='Path to dataset for wildness calculation')
     parser.add_argument('--biophi-path', type=str, required=False, default=None, help='Path to BioPhi dir')
+    parser.add_argument('--models', type=str, help='Path to directory with random forest models')
     args = parser.parse_args()
-    main(args.files, args.dataset, args.wild_dataset, args.biophi_path)
+    main(args.files, args.dataset, args.wild_dataset, args.biophi_path, args.models)

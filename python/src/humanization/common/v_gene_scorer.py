@@ -58,9 +58,8 @@ class VGeneScorer:
         return result
 
 
-def build_v_gene_scorer(annotation: Annotation, dataset_file: str, only_human: bool = True,
-                        v_type: ChainType = None) -> Optional[VGeneScorer]:
-    human_dataset = read_v_gene_dataset(dataset_file, annotation, only_human, v_type)
+def build_v_gene_scorer(annotation: Annotation, dataset_file: str, v_type: ChainType = None) -> Optional[VGeneScorer]:
+    human_dataset = read_v_gene_dataset(dataset_file, annotation, True, v_type)
     if human_dataset is not None:
         v_gene_scorer = VGeneScorer(annotation, human_dataset[0], human_dataset[1])
         logger.info(f"Created VGeneScorer with {len(human_dataset[0])} samples")

@@ -19,13 +19,6 @@ def get_antiberta_embeddings(seqs: List[str], get_attention: bool = False) -> np
         return embedding_2d
 
 
-def get_antiberta_embeddings(seqs: List[str]) -> np.array:
-    inputs = antiberta_tokenizer(seqs, return_tensors="pt")
-    outputs = antiberta_model(**inputs, output_hidden_states=True)
-    embedding_2d = outputs.hidden_states[-1][:, 0, :].detach().numpy()
-    return embedding_2d
-
-
 def get_antiberta_embedding(seq: str) -> np.array:
     return get_antiberta_embeddings([seq])[0, :]
 

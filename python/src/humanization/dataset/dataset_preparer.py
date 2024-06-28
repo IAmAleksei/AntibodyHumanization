@@ -1,7 +1,7 @@
 import json
 import os
 from itertools import accumulate
-from typing import List, Tuple, Any, NoReturn, Callable, Optional
+from typing import List, Tuple, Any, NoReturn, Callable, Optional, Dict
 
 import numpy as np
 import pandas as pd
@@ -16,10 +16,28 @@ config = config_loader.Config()
 logger = configure_logger(config, "Dataset reader")
 
 
+NA_SPECIES = 'ANOTHER_SPECIES'
+
+
+def check_species(species: str, target_species: str) -> bool:
+    if target_species == 'human':
+        return 'human' in species
+    elif target_species == 'mouse':
+        return 'mouse' in species or 'rat' in species
+    elif target_species == 'rhesus':
+        return 'rhesus' in species
+    elif target_species == 'rabbit':
+        return 'rabbit' in species
+    elif target_species == 'camel':
+        return 'camel' in species
+    else:
+        return False
+
+
 def read_imgt_file(csv_path: str) -> Tuple[pd.DataFrame, Any]:
     df: pd.DataFrame = pd.read_csv(csv_path, names=['v_call', 'sequence_alignment_aa'], header=None)
     df.dropna(inplace=True)
-    return df, True
+    return df, 'human'
 
 
 def read_oas_file(csv_path: str, requested_columns: List[str]) -> Tuple[pd.DataFrame, Any]:
@@ -28,22 +46,21 @@ def read_oas_file(csv_path: str, requested_columns: List[str]) -> Tuple[pd.DataF
     if requested_columns is not None:
         df = df[requested_columns]
     df.dropna(inplace=True)
-    return df, metadata['Species'] == 'human'
+    return df, metadata['Species'].lower()
 
 
-def correct_v_call(df: pd.DataFrame, is_human: bool) -> NoReturn:
-    if not is_human:
-        df['v_call'] = 'NOT_HUMAN'
-    else:
-        df['v_call'].replace(r'^(....\d+).*$', r'\1', regex=True, inplace=True)
+def correct_v_call(df: pd.DataFrame) -> NoReturn:
+    df['v_call'].replace(r'^(....\d+).*$', r'\1', regex=True, inplace=True)
 
 
-def make_annotated_df(df: pd.DataFrame, annotation: Annotation, is_human: bool = False) -> pd.DataFrame:
+def mark_another_species(df: pd.DataFrame, metadata: Dict[str, str], target_species: str) -> NoReturn:
+    if not check_species(metadata['Species'], target_species):
+        df['v_call'] = NA_SPECIES
+
+
+def make_annotated_df(df: pd.DataFrame, annotation: Annotation) -> pd.DataFrame:
     aa_columns = annotation.segmented_positions
-    annotated_indexes, annotated_list = annotate_batch(
-        df['sequence_alignment_aa'].tolist(), annotation,
-        is_human=is_human
-    )
+    annotated_indexes, annotated_list = annotate_batch(df['sequence_alignment_aa'].tolist(), annotation)
     X = pd.DataFrame(annotated_list, columns=aa_columns)  # Make column for every aa
     y = df['v_call'][annotated_indexes]
     y.reset_index(drop=True, inplace=True)
@@ -63,7 +80,7 @@ def filter_df(df: pd.DataFrame, annotation: Annotation) -> pd.DataFrame:
 
 
 def read_datasets(input_dir: str, read_function: Callable[[str], pd.DataFrame],
-                  only_human: bool = False, v_type: Optional[ChainType] = None) -> List[pd.DataFrame]:
+                  drop_another: bool = False, v_type: Optional[ChainType] = None) -> List[pd.DataFrame]:
     logger.info("Dataset reading...")
     file_paths = []
     if os.path.isdir(input_dir):
@@ -79,8 +96,8 @@ def read_datasets(input_dir: str, read_function: Callable[[str], pd.DataFrame],
         df: pd.DataFrame = read_function(input_file_path)
         if v_type is not None:  # Only specific v type
             df = df[df['v_call'] == v_type.oas_type()]
-        elif only_human:  # Only human samples
-            df = df[df['v_call'] != 'NOT_HUMAN']
+        elif drop_another:  # Only human samples
+            df = df[df['v_call'] != NA_SPECIES]
         df.reset_index(drop=True, inplace=True)
         dfs.append(df)
         original_data_size += df.shape[0]
@@ -98,8 +115,15 @@ def read_dataset(*args, **kwargs) -> Tuple[pd.DataFrame, pd.Series]:
     return X, y
 
 
-def read_annotated_dataset(input_dir: str, **kwargs) -> Tuple[pd.DataFrame, pd.Series]:
-    return read_dataset(input_dir, pd.read_csv, **kwargs)
+def read_annotated_dataset(input_dir: str, species: str = 'human', **kwargs) -> Tuple[pd.DataFrame, pd.Series]:
+    def process_file(csv_file):
+        with open(csv_file, 'r') as file:
+            metadata = json.loads(file.readline())
+        df: pd.DataFrame = pd.read_csv(csv_file, skiprows=1)
+        mark_another_species(df, metadata, species)
+        return df
+
+    return read_dataset(input_dir, process_file, **kwargs)
 
 
 def merge_all_columns(df: pd.DataFrame) -> List[str]:
@@ -108,8 +132,8 @@ def merge_all_columns(df: pd.DataFrame) -> List[str]:
     return result
 
 
-def make_binary_target(y, target_v_type):
-    return np.where(y.apply(lambda x: x == target_v_type), 1, 0)
+def make_binary_target(y, v_type_checker: Callable[[str], bool]):
+    return np.where(y.apply(v_type_checker), 1, 0)
 
 
 def format_confusion_matrix(y_test, y_pred):

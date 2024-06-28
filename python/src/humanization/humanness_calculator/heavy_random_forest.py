@@ -26,5 +26,4 @@ if __name__ == '__main__':
     configure_abstract_parser(parser)
     args = parser.parse_args()
     main(input_dir=args.input, schema=args.schema, metric=args.metric, output_dir=args.output,
-         iterative_learning=args.iterative_learning,
-         print_metrics=args.print_metrics, tree_types=args.types)
+         iterative_learning=args.iterative_learning, print_metrics=args.print_metrics, tree_types=args.types)
