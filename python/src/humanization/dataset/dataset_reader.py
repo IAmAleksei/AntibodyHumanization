@@ -77,6 +77,8 @@ def main(input_dir: str, chain_kind: ChainKind, schema: str, output_dir: str, sk
     for input_file_name in file_names:
         input_file_path = os.path.join(input_dir, input_file_name)
         output_file_path = os.path.join(output_dir, input_file_name)
+        if output_file_path.endswith('.gz'):
+            output_file_path = output_file_path[:-3]
         if skip_existing and os.path.exists(output_file_path):
             logger.debug(f"Processed {input_file_name} exists")
             continue
