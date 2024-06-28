@@ -86,7 +86,7 @@ def main(input_dir: str, chain_kind: ChainKind, schema: str, output_dir: str, sk
         try:
             df, metadata = read_and_annotate_file(input_file_path, annotation)
             with open(output_file_path, 'w') as file:
-                json.dump(metadata, file)
+                file.write(json.dumps(metadata) + "\n")
             df.to_csv(output_file_path, index=False, mode='a')
             logger.debug(f"Dataframe {metadata} with {df.shape[0]} rows saved to {output_file_path}")
         except Exception:
