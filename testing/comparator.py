@@ -60,8 +60,8 @@ def print_info(seq: str, way: str, v_gene_scorer, wild_v_gene_scorer, biophi_pat
     args = [
         seq[:25] + "...",
         way,
-        edit_distance.SequenceMatcher(seq, thera) if thera is not None else "",
-        edit_distance.SequenceMatcher(seq, wild) if wild is not None else "",
+        edit_distance.SequenceMatcher(seq, thera).distance() if thera is not None else "",
+        edit_distance.SequenceMatcher(seq, wild).distance() if wild is not None else "",
         round(optional_v_gene_score(v_gene_scorer, seq), 3),
         round(optional_v_gene_score(wild_v_gene_scorer, seq), 3),
         round(diff_embeddings(seq_emb_thera, seq_emb_seq), 3) if thera is not None else "",
@@ -77,7 +77,7 @@ def print_info(seq: str, way: str, v_gene_scorer, wild_v_gene_scorer, biophi_pat
         round(catboost_humanness_score(models, v_gene_scorer, aligned_seq), 2) if aligned_seq is not None else "",
     ]
 
-    args.extend([model_humanness_score(model, aligned_seq) for model in wild_models if aligned_seq is not None])
+    args.extend([round(model_humanness_score(model, aligned_seq), 2) for model in wild_models if aligned_seq is not None])
 
     print(*args, sep=",")
 
