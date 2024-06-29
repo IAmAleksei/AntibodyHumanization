@@ -1,5 +1,6 @@
 import argparse
 from collections import defaultdict
+from typing import List
 
 import edit_distance
 from Bio import SeqIO
@@ -27,18 +28,17 @@ def optional_v_gene_score(v_gene_scorer, seq: str):
     return v_gene_scorer.query(aligned_seq)[0][1]
 
 
-def v_gene_type(v_gene_scorer, seq: str) -> ChainType:
-    aligned_seq = annotate_single(seq, ChothiaHeavy(), GeneralChainType.HEAVY)
+def v_gene_type(v_gene_scorer, aligned_seq: List[str]) -> ChainType:
     return ChainType.from_oas_type(v_gene_scorer.query(aligned_seq)[0][2])
 
 
-def model_humanness_score(model: ModelWrapper, seq: str):
-    return model.model.predict_proba(list(seq))[1]
+def model_humanness_score(model: ModelWrapper, aligned_seq: List[str]):
+    return model.model.predict_proba(aligned_seq)[1]
 
 
-def catboost_humanness_score(models, v_gene_scorer, seq: str):
-    chain_type = v_gene_type(v_gene_scorer, seq)
-    return model_humanness_score(models[chain_type], seq)
+def catboost_humanness_score(models, v_gene_scorer, aligned_seq: List[str]):
+    chain_type = v_gene_type(v_gene_scorer, aligned_seq)
+    return model_humanness_score(models[chain_type], aligned_seq)
 
 
 COLUMNS = ["Seq", "Type", "ThDist", "WDist", "HuVGS", "WVGS", "ThBerta", "WBerta", "ThAbody", "WAbody",
@@ -54,6 +54,8 @@ def print_info(seq: str, way: str, v_gene_scorer, wild_v_gene_scorer, biophi_pat
     sap_emb_seq = get_sapiens_embedding(seq)
     abl_emb_seq = get_ablang_embedding(seq)
     oasis_ident_seq = get_oasis_humanness(biophi_path, seq)
+
+    aligned_seq = annotate_single(seq, ChothiaHeavy(), GeneralChainType.HEAVY)
 
     args = [
         seq[:25] + "...",
@@ -72,10 +74,10 @@ def print_info(seq: str, way: str, v_gene_scorer, wild_v_gene_scorer, biophi_pat
         round(diff_embeddings(abl_emb_wild, abl_emb_seq), 4) if wild is not None else "",
         round(oasis_ident_seq.get_oasis_identity(0.5), 2),
         round(oasis_ident_seq.get_oasis_percentile(0.5), 2),
-        round(catboost_humanness_score(models, v_gene_scorer, seq), 2),
+        round(catboost_humanness_score(models, v_gene_scorer, aligned_seq), 2) if aligned_seq is not None else "",
     ]
 
-    args.extend([model_humanness_score(model, seq) for model in wild_models])
+    args.extend([model_humanness_score(model, aligned_seq) for model in wild_models if aligned_seq is not None])
 
     print(*args, sep=",")
 
