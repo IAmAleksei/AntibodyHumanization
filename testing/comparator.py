@@ -106,7 +106,7 @@ def main(files, dataset, wild_dataset, biophi_path, model_dir, wild_model_dir):
         print_info(wild, "Wild.", v_gene_scorer, wild_v_gene_scorer, biophi_path, models, wild_models,
                    seq_emb_thera, seq_emb_wild, struct_emb_thera, struct_emb_wild, sap_emb_thera, sap_emb_wild,
                    abl_emb_thera, abl_emb_wild, None, None)
-        print_info(thera, "Wild.", v_gene_scorer, wild_v_gene_scorer, biophi_path, models, wild_models,
+        print_info(thera, "Therap.", v_gene_scorer, wild_v_gene_scorer, biophi_path, models, wild_models,
                    seq_emb_thera, seq_emb_wild, struct_emb_thera, struct_emb_wild, sap_emb_thera, sap_emb_wild,
                    abl_emb_thera, abl_emb_wild, wild, None)
         for i, (way, seq) in enumerate(lst):
