@@ -42,7 +42,7 @@ def catboost_humanness_score(models, v_gene_scorer, aligned_seq: List[str]):
 
 
 COLUMNS = ["Seq", "Type", "ThDist", "WDist", "HuVGS", "WVGS", "ThBerta", "WBerta", "ThAbody", "WAbody",
-           "ThSap", "WSap", "ThAblang", "WAblang", "OASId", "OASPerc", "HumCM", "MurCM"]
+           "ThSap", "WSap", "ThAblang", "WAblang", "OASId", "OASPerc", "HumCM", "MurCM", "RheCM"]
 
 
 def print_info(seq: str, way: str, v_gene_scorer, wild_v_gene_scorer, biophi_path, models, wild_models,
@@ -82,9 +82,12 @@ def print_info(seq: str, way: str, v_gene_scorer, wild_v_gene_scorer, biophi_pat
     print(*args, sep=",")
 
 
-def main(files, dataset, wild_dataset, biophi_path, model_dir, wild_model_dir):
-    models = load_all_models(model_dir, GeneralChainType.HEAVY)
-    wild_models = [load_all_models(wild_model_dir, GeneralChainType.HEAVY)[HeavyChainType.V1]]
+def main(files, dataset, wild_dataset, biophi_path, human_models_dir, murine_models_dir, rhesus_models_dir):
+    models = load_all_models(human_models_dir, GeneralChainType.HEAVY)
+    wild_models = [
+        load_all_models(murine_models_dir, GeneralChainType.HEAVY)[HeavyChainType.V1],
+        load_all_models(rhesus_models_dir, GeneralChainType.HEAVY)[HeavyChainType.V1],
+    ]
     v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), dataset)
     wild_v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), wild_dataset)
     seqs = defaultdict(list)
@@ -123,7 +126,9 @@ if __name__ == '__main__':
     parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
     parser.add_argument('--wild-dataset', type=str, required=False, help='Path to dataset for wildness calculation')
     parser.add_argument('--biophi-path', type=str, required=False, default=None, help='Path to BioPhi dir')
-    parser.add_argument('--models', type=str, help='Path to directory with human random forest models')
-    parser.add_argument('--wild-models', type=str, help='Path to directory with murine random forest models')
+    parser.add_argument('--human-models', type=str, help='Path to directory with human random forest models')
+    parser.add_argument('--murine-models', type=str, help='Path to directory with murine random forest models')
+    parser.add_argument('--rhesus-models', type=str, help='Path to directory with rhesus random forest models')
     args = parser.parse_args()
-    main(args.files, args.dataset, args.wild_dataset, args.biophi_path, args.models, args.wild_models)
+    main(args.files, args.dataset, args.wild_dataset, args.biophi_path,
+         args.human_models, args.murine_models, args.rhesus_models)
