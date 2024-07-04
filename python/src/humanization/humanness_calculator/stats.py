@@ -1,5 +1,5 @@
 import math
-from typing import List, Tuple, Callable, NoReturn
+from typing import List, Tuple, Callable, NoReturn, Optional
 
 import numpy as np
 from sklearn import metrics
@@ -42,14 +42,21 @@ def proba_distribution(values: np.ndarray) -> np.ndarray:
     return np.histogram(values, bins=10, range=(0.0, 1.0))[0]
 
 
-def brute_force_threshold(metric_name: str, y_true: np.ndarray,
-                          y_pred_proba: np.ndarray) -> List[Tuple[float, float]]:
+def print_distribution(y_pred_proba: np.ndarray, y_true: Optional[np.ndarray]) -> NoReturn:
     total_counts = proba_distribution(y_pred_proba)
-    ones_counts = proba_distribution(y_pred_proba[y_true == 1])
+    ones_counts = None
+    if y_true is not None:
+        ones_counts = proba_distribution(y_pred_proba[y_true == 1])
     str_dists = []
     for i in range(10):
-        str_dists.append(f"{round(i * 0.1, 1)} - {round((i + 1) * 0.1, 1)}: {ones_counts[i]} / {total_counts[i]}")
+        str_count = f"{ones_counts[i]} / " if ones_counts else ""
+        str_dists.append(f"{round(i * 0.1, 1)} - {round((i + 1) * 0.1, 1)}: {str_count}{total_counts[i]}")
     logger.info("Sample distribution:\n" + "\n".join(str_dists))
+
+
+def brute_force_threshold(metric_name: str, y_true: np.ndarray,
+                          y_pred_proba: np.ndarray) -> List[Tuple[float, float]]:
+    print_distribution(y_pred_proba, y_true)
     metric_function = get_metric_function(metric_name)
     count = len(y_true)
     y_ = list(zip(y_pred_proba, y_true))
