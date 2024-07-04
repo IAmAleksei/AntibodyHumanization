@@ -3,7 +3,8 @@ import json
 import random
 
 from humanization.common import config_loader
-from humanization.common.annotations import HeavyChainType, annotate_single, ChothiaHeavy, GeneralChainType
+from humanization.common.annotations import HeavyChainType, annotate_single, ChothiaHeavy, GeneralChainType, \
+    annotate_batch
 from humanization.common.utils import configure_logger
 from humanization.humanness_calculator.model_wrapper import load_model
 from humanization.humanness_calculator.stats import print_distribution
@@ -34,14 +35,11 @@ def main(model_dir):
             test_seq = [c for c in source]
             for i in subsample_positions:
                 test_seq[i] = thera[i]
-            aligned_seq = annotate_single("".join(test_seq), ChothiaHeavy(), GeneralChainType.HEAVY)
-            if not aligned_seq:
-                logger.debug("Bad alignment. Skip")
-                continue
-            test_set.append(aligned_seq)
-    logger.info(f"{len(test_set)} antibodies generated")
+            test_set.append("".join(test_seq))
+    annotated_set = annotate_batch(test_set, ChothiaHeavy(), GeneralChainType.HEAVY)[1]
+    logger.info(f"{len(annotated_set)} antibodies generated")
     model_wrapper = load_model(model_dir, HeavyChainType.V1)
-    y_pred_proba = model_wrapper.model.predict_proba(test_set)
+    y_pred_proba = model_wrapper.model.predict_proba(annotated_set)
     logger.info(f"Got predictions")
     print_distribution(y_pred_proba, None)
 
