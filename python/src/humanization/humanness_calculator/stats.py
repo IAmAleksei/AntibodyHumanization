@@ -4,6 +4,13 @@ from typing import List, Tuple, Callable, NoReturn
 import numpy as np
 from sklearn import metrics
 
+from humanization.common import config_loader
+from humanization.common.utils import configure_logger
+
+
+config = config_loader.Config()
+logger = configure_logger(config, "Stats calculator")
+
 
 def calc_matthews_correlation(confusion_matrix: List[List[int]]) -> float:
     if confusion_matrix[0][0] == 0 or confusion_matrix[1][1] == 0:
@@ -31,8 +38,18 @@ def get_metric_function(metric_name: str) -> Callable[[List[List[int]]], float]:
         raise RuntimeError("Unrecognized metric name")
 
 
+def proba_distribution(values: np.ndarray) -> np.ndarray:
+    return np.histogram(values, bins=10, range=(0.0, 1.0))[0]
+
+
 def brute_force_threshold(metric_name: str, y_true: np.ndarray,
                           y_pred_proba: np.ndarray) -> List[Tuple[float, float]]:
+    total_counts = proba_distribution(y_pred_proba)
+    ones_counts = proba_distribution(y_pred_proba[y_true == 1])
+    str_dists = []
+    for i in range(10):
+        str_dists.append(f"{round(i * 0.1, 1)} - {round((i + 1) * 0.1, 1)}: {ones_counts[i]} / {total_counts[i]}")
+    logger.info("Sample distribution:\n" + "\n".join(str_dists))
     metric_function = get_metric_function(metric_name)
     count = len(y_true)
     y_ = list(zip(y_pred_proba, y_true))

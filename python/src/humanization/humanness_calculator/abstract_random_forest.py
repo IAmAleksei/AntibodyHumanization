@@ -69,7 +69,8 @@ def build_tree_impl(X_train, y_train, val_pool, iterative_learning: bool = False
             learning_rate=config.get(config_loader.TREE_LEARNING_RATE),
             verbose=config.get(config_loader.VERBOSE_FREQUENCY),
             max_ctr_complexity=config.get(config_loader.MAX_CTR_COMPLEXITY),
-            n_estimators=batch_estimators
+            n_estimators=batch_estimators,
+            min_data_in_leaf=config.get(config_loader.MIN_DATA_IN_LEAF),
         )
         model.fit(train_pool, eval_set=val_pool, early_stopping_rounds=10, init_model=final_model)
         final_model = model
