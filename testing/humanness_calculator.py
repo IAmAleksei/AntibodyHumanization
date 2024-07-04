@@ -31,10 +31,10 @@ def main(model_dir):
         for num_changes in range(1, len(diff_positions) + 1):
             random.shuffle(diff_positions)
             subsample_positions = diff_positions[:num_changes]
-            test_seq = source.copy()
+            test_seq = [c for c in source]
             for i in subsample_positions:
                 test_seq[i] = thera[i]
-            aligned_seq = annotate_single(test_seq, ChothiaHeavy(), GeneralChainType.HEAVY)
+            aligned_seq = annotate_single("".join(test_seq), ChothiaHeavy(), GeneralChainType.HEAVY)
             if not aligned_seq:
                 logger.debug("Bad alignment. Skip")
                 continue
