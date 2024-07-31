@@ -26,11 +26,11 @@ def main(model_dir):
     model_wrapper = load_model(model_dir, HeavyChainType.V1)
     y_pred_proba = model_wrapper.model.predict_proba(annotated_set)[:, 1]
     assert len(y_pred_proba) == len(seqs)
+    res = [(name, round(y_pred_proba[i], 2), adas[name]) for i, (name, _) in enumerate(seqs) if name in adas]
     logger.info(f"Got predictions")
-    for i, (name, _) in enumerate(seqs):
-        if name not in adas:
-            continue
-        print(name, round(y_pred_proba[i], 2), adas[name], sep='\t')
+    res.sort(key=lambda x: x[2])
+    for name, pred, ada in res:
+        print(name, pred, ada, sep='\t')
 
 
 if __name__ == '__main__':
