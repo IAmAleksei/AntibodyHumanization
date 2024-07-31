@@ -25,11 +25,12 @@ def main(model_dir):
     logger.info(f"{len(annotated_set)} antibodies generated")
     model_wrapper = load_model(model_dir, HeavyChainType.V1)
     y_pred_proba = model_wrapper.model.predict_proba(annotated_set)[:, 1]
+    assert len(y_pred_proba) == len(seqs)
     logger.info(f"Got predictions")
     for i, (name, _) in enumerate(seqs):
         if name not in adas:
             continue
-        print(name, y_pred_proba[i], adas[name])
+        print(name, round(y_pred_proba[i], 2), adas[name], sep='\t')
 
 
 if __name__ == '__main__':
