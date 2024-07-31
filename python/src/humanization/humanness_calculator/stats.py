@@ -49,7 +49,7 @@ def print_distribution(y_pred_proba: np.ndarray, y_true: Optional[np.ndarray]) -
         ones_counts = proba_distribution(y_pred_proba[y_true == 1])
     str_dists = []
     for i in range(10):
-        str_count = f"{ones_counts[i]} / " if ones_counts else ""
+        str_count = f"{ones_counts[i]} / " if ones_counts is not None else ""
         str_dists.append(f"{round(i * 0.1, 1)} - {round((i + 1) * 0.1, 1)}: {str_count}{total_counts[i]}")
     logger.info("Sample distribution:\n" + "\n".join(str_dists))
 

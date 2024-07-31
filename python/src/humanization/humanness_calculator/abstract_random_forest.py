@@ -65,6 +65,7 @@ def build_tree_impl(X_train, y_train, val_pool, iterative_learning: bool = False
         model = CatBoostClassifier(
             depth=config.get(config_loader.TREE_DEPTH),
             loss_function='Logloss',
+            grow_policy='Depthwise',
             used_ram_limit=config.get(config_loader.MEMORY_LIMIT),
             learning_rate=config.get(config_loader.TREE_LEARNING_RATE),
             verbose=config.get(config_loader.VERBOSE_FREQUENCY),
