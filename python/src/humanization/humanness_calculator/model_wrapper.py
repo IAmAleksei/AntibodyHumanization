@@ -23,7 +23,8 @@ class ModelWrapper:
         return 'catboost' if isinstance(self.model, CatBoostClassifier) else 'sklearn'
 
     def predict_proba(self, data):
-        return self.model.predict_proba(one_hot_encode(self.annotation, data, lib=self.library()))
+        return self.model.predict_proba(one_hot_encode(self.annotation, data, lib=self.library(),
+                                                       cat_features=self.annotation.segmented_positions))
 
 
 def get_model_name(chain_type: ChainType) -> str:
