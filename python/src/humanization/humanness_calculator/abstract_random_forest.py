@@ -57,9 +57,9 @@ def build_tree_impl(X_train, y_train, val_pool, y_val, annotation: Annotation, t
     if tree_lib == 'sklearn':
         final_model = RandomForestClassifier(n_estimators=0, warm_start=True)
     for idx, batch in enumerate(batches):
-        logger.debug(f"Model training. Batch {idx + 1} of {cnt_batches}")
         X_train_batch = X_train[batch]
         y_train_batch = y_train[batch]
+        logger.debug(f"Model training. Batch {idx + 1} of {cnt_batches} (size: {X_train_batch.shape[0]})")
 
         count_unique = len(np.unique(y_train_batch))
         if count_unique <= 1:
