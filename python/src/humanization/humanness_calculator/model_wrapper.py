@@ -4,6 +4,7 @@ import pickle
 from datetime import datetime
 from typing import Dict, Union
 
+import numpy as np
 from catboost import CatBoostClassifier
 from sklearn.ensemble import RandomForestClassifier
 
@@ -24,6 +25,9 @@ class ModelWrapper:
 
     def predict_proba(self, data):
         return self.model.predict_proba(one_hot_encode_pred(self.annotation, data, lib=self.library()))
+
+    def predict(self, data):
+        return np.where(self.predict_proba(data) > self.threshold, 1, 0)
 
 
 def get_model_name(chain_type: ChainType) -> str:

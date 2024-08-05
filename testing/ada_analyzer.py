@@ -1,5 +1,6 @@
 import argparse
 
+import numpy as np
 from Bio import SeqIO
 
 from humanization.common import config_loader
@@ -29,10 +30,20 @@ def main(model_dir):
     model_types = [key for key in model_wrappers.keys()]
     res.sort(key=lambda x: x[2])
     logger.info(f"{len(res)} antibodies with ADA value")
-    print("Name", "ADA", "Max", *[t.full_type() for t in model_types], sep='\t')
+    mtrx = np.zeros((3, 3,), dtype=int)
+    print("Name", "ADA", "Max", "", *[t.full_type() for t in model_types], sep='\t')
     for name, seq, ada in res:
         preds = [round(model_wrappers[t].predict_proba([seq])[0, 1], 2) for t in model_types]
-        print(name, ada, max(preds), "", *preds, sep='\t')
+        is_positive = any(model_wrappers[t].predict([seq]) for t in model_types)
+        mx = max(preds)
+        col = 0 if ada < 10 else (1 if 10 <= ada < 50 else 2)
+        row = 0 if mx > 0.9 else (1 if is_positive else 2)
+        mtrx[row, col] += 1
+        print(name, ada, mx, is_positive, "", *preds, sep='\t')
+    print()
+    print(">0.9", mtrx[0, :], sep='\t')
+    print("Pos.", mtrx[1, :], sep='\t')
+    print("Neg.", mtrx[2, :], sep='\t')
 
 
 if __name__ == '__main__':
