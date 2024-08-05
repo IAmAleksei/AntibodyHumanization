@@ -28,10 +28,10 @@ def main(model_dir):
     res = [(name, seq, adas[name]) for (name, _), seq in zip(seqs, annotated_set) if name in adas]
     model_types = [key for key in model_wrappers.keys()]
     res.sort(key=lambda x: x[2])
-    print("Name", "ADA", *model_types, sep='\t')
+    print("Name", "ADA", "Max", *[t.full_type() for t in model_types], sep='\t')
     for name, seq, ada in res:
-        preds = [round(model_wrappers[t].predict_proba(seq)[1], 2) for t in model_types]
-        print(name, ada, *preds, sep='\t')
+        preds = [round(model_wrappers[t].predict_proba([seq])[0, 1], 2) for t in model_types]
+        print(name, ada, max(preds), *preds, sep='\t')
 
 
 if __name__ == '__main__':
