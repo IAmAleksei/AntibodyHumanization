@@ -31,7 +31,7 @@ def main(model_dir):
     print("Name", "ADA", "Max", *[t.full_type() for t in model_types], sep='\t')
     for name, seq, ada in res:
         preds = [round(model_wrappers[t].predict_proba([seq])[0, 1], 2) for t in model_types]
-        print(name, ada, max(preds), *preds, sep='\t')
+        print(name, ada, max(preds), "", *preds, sep='\t')
 
 
 if __name__ == '__main__':

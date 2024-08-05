@@ -16,3 +16,12 @@ def one_hot_encode(annotation, X, y=None, lib='catboost', **kwargs):
         return get_encoder(annotation).fit_transform(X)
     else:
         raise RuntimeError("Unrecognized library")
+
+
+def one_hot_encode_pred(annotation, X, lib='catboost'):
+    if lib == 'catboost':
+        return X
+    elif lib == 'sklearn':
+        return get_encoder(annotation).fit_transform(X)
+    else:
+        raise RuntimeError("Unrecognized library")

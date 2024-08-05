@@ -8,7 +8,7 @@ from catboost import CatBoostClassifier
 from sklearn.ensemble import RandomForestClassifier
 
 from humanization.common.annotations import Annotation, load_annotation, ChainType, GeneralChainType
-from humanization.dataset.one_hot_encoder import one_hot_encode
+from humanization.dataset.one_hot_encoder import one_hot_encode_pred
 
 
 class ModelWrapper:
@@ -23,8 +23,7 @@ class ModelWrapper:
         return 'catboost' if isinstance(self.model, CatBoostClassifier) else 'sklearn'
 
     def predict_proba(self, data):
-        return self.model.predict_proba(one_hot_encode(self.annotation, data, lib=self.library(),
-                                                       cat_features=self.annotation.segmented_positions))
+        return self.model.predict_proba(one_hot_encode_pred(self.annotation, data, lib=self.library()))
 
 
 def get_model_name(chain_type: ChainType) -> str:

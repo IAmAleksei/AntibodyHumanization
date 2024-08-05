@@ -10,7 +10,6 @@ from humanization.common.annotations import annotate_single, ChothiaHeavy, Gener
 from humanization.common.utils import configure_logger, parse_list, read_sequences, write_sequences, BLOSUM62, \
     generate_report
 from humanization.common.v_gene_scorer import VGeneScorer, is_v_gene_score_less, build_v_gene_scorer
-from humanization.dataset.one_hot_encoder import one_hot_encode
 from humanization.external_models.antiberta_utils import get_antiberta_embeddings
 from humanization.external_models.embedding_utils import diff_embeddings
 from humanization.humanness_calculator.model_wrapper import load_all_models, ModelWrapper
