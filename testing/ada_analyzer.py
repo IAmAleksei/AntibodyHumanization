@@ -22,12 +22,13 @@ def main(model_dir):
     for seq in SeqIO.parse('all_therapeutics.fasta', 'fasta'):
         seqs.append((seq.name, str(seq.seq)))
     annotated_set = annotate_batch([seq for _, seq in seqs], ChothiaHeavy(), GeneralChainType.HEAVY)[1]
-    logger.info(f"{len(annotated_set)} antibodies generated")
+    logger.info(f"{len(annotated_set)} antibodies annotated")
     assert len(annotated_set) == len(seqs)
     model_wrappers = load_all_models(model_dir, GeneralChainType.HEAVY)
     res = [(name, seq, adas[name]) for (name, _), seq in zip(seqs, annotated_set) if name in adas]
     model_types = [key for key in model_wrappers.keys()]
     res.sort(key=lambda x: x[2])
+    logger.info(f"{len(res)} antibodies with ADA value")
     print("Name", "ADA", "Max", *[t.full_type() for t in model_types], sep='\t')
     for name, seq, ada in res:
         preds = [round(model_wrappers[t].predict_proba([seq])[0, 1], 2) for t in model_types]

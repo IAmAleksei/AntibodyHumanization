@@ -12,16 +12,14 @@ def get_encoder(a: Annotation) -> OneHotEncoder:
 def one_hot_encode(annotation, X, y=None, lib='catboost', **kwargs):
     if lib == 'catboost':
         return Pool(data=X, label=y, **kwargs)
-    elif lib == 'sklearn':
+    if lib == 'sklearn':
         return get_encoder(annotation).fit_transform(X)
-    else:
-        raise RuntimeError("Unrecognized library")
+    raise RuntimeError("Unrecognized library")
 
 
 def one_hot_encode_pred(annotation, X, lib='catboost'):
     if lib == 'catboost':
         return X
-    elif lib == 'sklearn':
+    if lib == 'sklearn':
         return get_encoder(annotation).fit_transform(X)
-    else:
-        raise RuntimeError("Unrecognized library")
+    raise RuntimeError("Unrecognized library")
