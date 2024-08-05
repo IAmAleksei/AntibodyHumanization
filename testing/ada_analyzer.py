@@ -24,7 +24,7 @@ def main(model_dir):
     annotated_set = annotate_batch([seq for _, seq in seqs], ChothiaHeavy(), GeneralChainType.HEAVY)[1]
     logger.info(f"{len(annotated_set)} antibodies generated")
     model_wrapper = load_model(model_dir, HeavyChainType.V1)
-    y_pred_proba = model_wrapper.model.predict_proba(annotated_set)[:, 1]
+    y_pred_proba = model_wrapper.predict_proba(annotated_set)[:, 1]
     assert len(y_pred_proba) == len(seqs)
     res = [(name, round(y_pred_proba[i], 2), adas[name]) for i, (name, _) in enumerate(seqs) if name in adas]
     logger.info(f"Got predictions")

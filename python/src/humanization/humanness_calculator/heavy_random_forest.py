@@ -11,10 +11,10 @@ config = config_loader.Config()
 logger = configure_logger(config, "Heavy chain RF")
 
 
-def main(input_dir, schema, metric, output_dir, iterative_learning, print_metrics, tree_types):
+def main(input_dir, schema, metric, output_dir, iterative_learning, print_metrics, tree_types, tree_lib):
     def make_models(chain_type: GeneralChainType):
         return abstract_random_forest.make_models(
-            input_dir, schema, chain_type, metric, iterative_learning, print_metrics, tree_types
+            input_dir, schema, chain_type, metric, iterative_learning, print_metrics, tree_types, tree_lib
         )
 
     for wrapped_model in make_models(GeneralChainType.HEAVY):
@@ -26,4 +26,5 @@ if __name__ == '__main__':
     configure_abstract_parser(parser)
     args = parser.parse_args()
     main(input_dir=args.input, schema=args.schema, metric=args.metric, output_dir=args.output,
-         iterative_learning=args.iterative_learning, print_metrics=args.print_metrics, tree_types=args.types)
+         iterative_learning=args.iterative_learning, print_metrics=args.print_metrics, tree_types=args.types,
+         tree_lib=args.tree_lib)

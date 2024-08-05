@@ -10,6 +10,7 @@ from humanization.common.annotations import annotate_single, ChothiaHeavy, Gener
 from humanization.common.utils import configure_logger, parse_list, read_sequences, write_sequences, BLOSUM62, \
     generate_report
 from humanization.common.v_gene_scorer import VGeneScorer, is_v_gene_score_less, build_v_gene_scorer
+from humanization.dataset.one_hot_encoder import one_hot_encode
 from humanization.external_models.antiberta_utils import get_antiberta_embeddings
 from humanization.external_models.embedding_utils import diff_embeddings
 from humanization.humanness_calculator.model_wrapper import load_all_models, ModelWrapper
@@ -66,7 +67,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
 
     def _get_random_forest_penalty(self, sequences: List[List[str]], chain_type: ChainType) -> List[float]:
         if self.models is not None:
-            return 1 - self.models[chain_type].model.predict_proba(sequences)[:, 1]
+            return 1 - self.models[chain_type].predict_proba(sequences)[:, 1]
         else:
             return [0.0] * len(sequences)
 
@@ -148,9 +149,9 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         iterations.append(IterationDetails(0, current_value, v_gene_score, None))
         logger.info(f"Start metrics: V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
         for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
-            logger.debug(f"Iteration {it}. "
-                         f"Current delta = {round(current_value, 6)}, "
-                         f"V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
+            logger.info(f"Iteration {it}. "
+                        f"Current delta = {round(current_value, 6)}, "
+                        f"V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
             best_change, all_changes = self._find_best_change(current_seq, original_embedding, cur_human_sample,
                                                               cur_chain_type, v_gene_score, wild_v_gene_score,
                                                               change_batch_size)
@@ -218,17 +219,18 @@ def process_sequences(v_gene_scorer=None, models=None, wild_v_gene_scorer=None, 
 
 
 def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, deny_change_aa, human_sample,
-         limit_changes, change_batch_size, report, output_file):
+         human_chain_type, limit_changes, change_batch_size, report, output_file):
     sequences = read_sequences(input_file)
-    human_chain_type, target_delta, target_v_gene_score = read_humanizer_options(dataset_file)
     v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), dataset_file)
     wild_v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), wild_dataset_file)
     assert v_gene_scorer is not None
     general_type = GeneralChainType.HEAVY
     models = load_all_models(model_dir, general_type) if model_dir else None
     results = process_sequences(
-        v_gene_scorer, models, wild_v_gene_scorer, sequences, target_delta, human_sample, human_chain_type, deny_use_aa,
-        deny_change_aa, target_v_gene_score, change_batch_size=change_batch_size, limit_changes=limit_changes
+        v_gene_scorer, models, wild_v_gene_scorer, sequences, limit_delta=15.0,
+        human_sample=human_sample, human_chain_type=human_chain_type,
+        deny_use_aa=deny_use_aa, deny_change_aa=deny_change_aa,
+        target_v_gene_score=0.85, change_batch_size=change_batch_size, limit_changes=limit_changes
     )
     if report is not None:
         generate_report(report, results)
@@ -242,6 +244,8 @@ if __name__ == '__main__':
     parser.add_argument('--models', type=str, help='Path to directory with random forest models')
     parser.add_argument('--human-sample', type=str, required=False,
                         help='Human sample used for creation chimeric sequence')
+    parser.add_argument('--human-chain-type', type=str, required=False,
+                        help='Type of provided human sample')
     parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
     parser.add_argument('--wild-dataset', type=str, required=False, help='Path to dataset for wildness calculation')
     parser.add_argument('--deny-use-aa', type=str, default=utils.TABOO_INSERT_AA, required=False,
@@ -262,6 +266,7 @@ if __name__ == '__main__':
          deny_use_aa=args.deny_use_aa,
          deny_change_aa=args.deny_change_aa,
          human_sample=args.human_sample,
+         human_chain_type=args.human_chain_type,
          limit_changes=args.limit_changes,
          change_batch_size=args.change_batch_size,
          report=args.report,

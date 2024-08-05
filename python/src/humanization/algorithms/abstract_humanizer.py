@@ -119,7 +119,7 @@ class AbstractHumanizer(BaseHumanizer):
 
     def _calc_metrics(self, current_seq: List[str], human_sample: Optional[str] = None,
                       prefer_human_sample: bool = False) -> Tuple[float, float]:
-        current_value = self.model_wrapper.model.predict_proba(current_seq)[1]
+        current_value = self.model_wrapper.predict_proba(current_seq)[1]
         _, v_gene_score = self._get_v_gene_score(current_seq, human_sample, prefer_human_sample)
         return current_value, v_gene_score
 

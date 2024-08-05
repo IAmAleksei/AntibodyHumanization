@@ -32,13 +32,9 @@ def v_gene_type(v_gene_scorer, aligned_seq: List[str]) -> ChainType:
     return ChainType.from_oas_type(v_gene_scorer.query(aligned_seq)[0][2])
 
 
-def model_humanness_score(model: ModelWrapper, aligned_seq: List[str]):
-    return model.model.predict_proba(aligned_seq)[1]
-
-
 def catboost_humanness_score(models, v_gene_scorer, aligned_seq: List[str]):
     chain_type = v_gene_type(v_gene_scorer, aligned_seq)
-    return model_humanness_score(models[chain_type], aligned_seq)
+    return models[chain_type].predict_proba(aligned_seq)[1]
 
 
 COLUMNS = ["Seq", "Type", "ThDist", "WDist", "HuVGS", "WVGS", "ThBerta", "WBerta", "ThAbody", "WAbody",
@@ -77,7 +73,7 @@ def print_info(seq: str, way: str, v_gene_scorer, wild_v_gene_scorer, biophi_pat
         round(catboost_humanness_score(models, v_gene_scorer, aligned_seq), 2) if aligned_seq is not None else "",
     ]
 
-    args.extend([round(model_humanness_score(model, aligned_seq), 2) for model in wild_models if aligned_seq is not None])
+    args.extend([round(model.predict_proba(aligned_seq)[1], 2) for model in wild_models if aligned_seq is not None])
 
     print(*args, sep=",")
 

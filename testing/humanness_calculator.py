@@ -39,7 +39,7 @@ def main(model_dir):
     annotated_set = annotate_batch(test_set, ChothiaHeavy(), GeneralChainType.HEAVY)[1]
     logger.info(f"{len(annotated_set)} antibodies generated")
     model_wrapper = load_model(model_dir, HeavyChainType.V1)
-    y_pred_proba = model_wrapper.model.predict_proba(annotated_set)[:, 1]
+    y_pred_proba = model_wrapper.predict_proba(annotated_set)[:, 1]
     logger.info(f"Got predictions")
     print_distribution(y_pred_proba, None)
 
