@@ -5,6 +5,7 @@ import numpy as np
 from catboost import CatBoostClassifier
 from matplotlib import pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 from sklearn.utils import gen_batches
 
@@ -43,7 +44,7 @@ def log_data_stats(X_, y_, X_test, y_test):
     logger.debug(f"Statistics:\n{y_test.value_counts()}")
 
 
-def build_tree_impl(X_train, y_train, val_pool, annotation: Annotation, tree_lib: str,
+def build_tree_impl(X_train, y_train, val_pool, y_val, annotation: Annotation, tree_lib: str,
                     iterative_learning: bool = False) -> Union[RandomForestClassifier, CatBoostClassifier]:
     if iterative_learning:
         # Cast to list for length calculation
@@ -84,6 +85,8 @@ def build_tree_impl(X_train, y_train, val_pool, annotation: Annotation, tree_lib
         else:
             final_model.n_estimators += batch_estimators
             final_model.fit(train_pool, y_train_batch)
+            error = mean_squared_error(y_val, final_model.predict_proba(val_pool)[:, 1])
+            logger.debug(f"Validation error: {error}")
 
         del train_pool, X_train_batch, y_train_batch
 
@@ -96,10 +99,10 @@ def build_tree(X_train, y_train_raw, X_val, y_val_raw, marker: Callable[[str], b
     y_val = make_binary_target(y_val_raw, marker)
     logger.debug(f"Dataset for {label} tree contains {np.count_nonzero(y_train == 1)} positive samples")
 
-    val_pool = one_hot_encode(annotation, X_val, y_val, cat_features=X_val.columns.tolist())
+    val_pool = one_hot_encode(annotation, X_val, y_val, lib=tree_lib, cat_features=X_val.columns.tolist())
     logger.debug(f"Validation pool prepared")
 
-    final_model = build_tree_impl(X_train, y_train, val_pool, annotation, tree_lib, iterative_learning)
+    final_model = build_tree_impl(X_train, y_train, val_pool, y_val, annotation, tree_lib, iterative_learning)
 
     y_val_pred_proba = final_model.predict_proba(val_pool)[:, 1]
     if print_metrics and tree_lib == 'catboost':
@@ -147,8 +150,8 @@ def make_models(input_dir: str, schema: str, chain_type: GeneralChainType,
     log_data_stats(X_, y_, X_test, y_test)
     X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.07, shuffle=True, random_state=42)
     used_types = tree_types.split(",") if tree_types else chain_type.available_specific_types()
-    logger.debug(f"Forests for types {used_types} will be built")
-    test_pool = one_hot_encode(annotation, X_test, tree_lib, cat_features=X_test.columns.tolist())
+    logger.debug(f"Forests {tree_lib} for types {used_types} will be built")
+    test_pool = one_hot_encode(annotation, X_test, lib=tree_lib, cat_features=X_test.columns.tolist())
     for v_type in used_types:
         yield make_model(X_train, y_train, X_val, y_val, test_pool, y_test, annotation,
                          chain_type.specific_type(v_type), metric, iterative_learning, print_metrics, tree_lib=tree_lib)
