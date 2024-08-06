@@ -27,7 +27,7 @@ class ModelWrapper:
         return self.model.predict_proba(one_hot_encode_pred(self.annotation, data, lib=self.library()))
 
     def predict(self, data):
-        return np.where(self.predict_proba(data) > self.threshold, 1, 0)
+        return np.where(self.predict_proba(data)[:, 1] > self.threshold, 1, 0)
 
 
 def get_model_name(chain_type: ChainType) -> str:

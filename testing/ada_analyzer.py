@@ -2,6 +2,7 @@ import argparse
 
 import numpy as np
 from Bio import SeqIO
+from tabulate import tabulate
 
 from humanization.common import config_loader
 from humanization.common.annotations import HeavyChainType, ChothiaHeavy, GeneralChainType, annotate_batch
@@ -30,20 +31,18 @@ def main(model_dir):
     model_types = [key for key in model_wrappers.keys()]
     res.sort(key=lambda x: x[2])
     logger.info(f"{len(res)} antibodies with ADA value")
-    mtrx = np.zeros((3, 3,), dtype=int)
     print("Name", "ADA", "Max", "", *[t.full_type() for t in model_types], sep='\t')
+    matrix = [["", "Ada<10", "10<Ada<50", "50<Ada"], [">0.9", 0, 0, 0], ["Pos", 0, 0, 0], ["Neg", 0, 0, 0]]
     for name, seq, ada in res:
         preds = [round(model_wrappers[t].predict_proba([seq])[0, 1], 2) for t in model_types]
-        is_positive = any(model_wrappers[t].predict([seq]) for t in model_types)
+        is_positive = any(model_wrappers[t].predict([seq])[0] for t in model_types)
         mx = max(preds)
-        col = 0 if ada < 10 else (1 if 10 <= ada < 50 else 2)
-        row = 0 if mx > 0.9 else (1 if is_positive else 2)
-        mtrx[row, col] += 1
+        col = 1 if ada < 10 else (2 if 10 <= ada < 50 else 3)
+        row = 1 if mx > 0.9 else (2 if is_positive else 3)
+        matrix[row][col] += 1
         print(name, ada, mx, is_positive, "", *preds, sep='\t')
     print()
-    print(">0.9", mtrx[0, :], sep='\t')
-    print("Pos.", mtrx[1, :], sep='\t')
-    print("Neg.", mtrx[2, :], sep='\t')
+    print(tabulate(matrix))
 
 
 if __name__ == '__main__':
