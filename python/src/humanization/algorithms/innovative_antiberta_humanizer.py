@@ -181,7 +181,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
                 break
         logger.info(f"Process took {len(iterations)} iterations")
         if self.models is not None:
-            logger.debug(f"Humanness: {round(self._get_random_forest_value([current_seq], cur_chain_type)[0], 2)} "
+            logger.debug(f"Humanness: {round(self._get_random_forest_value([current_seq], cur_chain_type)[0], 3)} "
                          f"(threshold: {self.models[cur_chain_type].threshold})")
         return seq_to_str(current_seq, aligned_result), iterations
 

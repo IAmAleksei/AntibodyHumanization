@@ -8,6 +8,7 @@ from humanization.common import config_loader
 from humanization.common.annotations import HeavyChainType, ChothiaHeavy, GeneralChainType, annotate_batch
 from humanization.common.utils import configure_logger
 from humanization.humanness_calculator.model_wrapper import load_all_models
+from humanization.humanness_calculator.stats import proba_distribution
 
 config = config_loader.Config()
 logger = configure_logger(config, "Ada analyzer")
@@ -33,6 +34,7 @@ def main(model_dir):
     logger.info(f"{len(res)} antibodies with ADA value")
     print("Name", "", "ADA", "Max", "Positive", "", *[t.full_type() for t in model_types], sep='\t')
     matrix = [["", "Ada<10", "10<Ada<50", "50<Ada"], [">0.9", 0, 0, 0], ["Pos", 0, 0, 0], ["Neg", 0, 0, 0]]
+    scores = []
     for name, seq, ada in res:
         preds = [round(model_wrappers[t].predict_proba([seq])[0, 1], 2) for t in model_types]
         is_positive = any(model_wrappers[t].predict([seq])[0] for t in model_types)
@@ -40,9 +42,12 @@ def main(model_dir):
         col = 1 if ada < 10 else (2 if 10 <= ada < 50 else 3)
         row = 1 if mx > 0.9 else (2 if is_positive else 3)
         matrix[row][col] += 1
+        scores.append(mx)
         print(name, ada, mx, is_positive, "", *preds, sep='\t')
     print()
     print(tabulate(matrix))
+    print()
+    print(proba_distribution(np.ndarray(scores)))
 
 
 if __name__ == '__main__':
