@@ -42,7 +42,7 @@ def proba_distribution(values: np.ndarray) -> np.ndarray:
     return np.histogram(values, bins=10, range=(0.0, 1.0))[0]
 
 
-def print_distribution(y_pred_proba: np.ndarray, y_true: Optional[np.ndarray]) -> NoReturn:
+def print_distribution(y_pred_proba: np.ndarray, y_true: Optional[np.ndarray] = None) -> NoReturn:
     total_counts = proba_distribution(y_pred_proba)
     ones_counts = None
     if y_true is not None:

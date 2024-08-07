@@ -117,7 +117,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         all_candidates = []
         for idx, (mod_seq, changes) in enumerate(unevaluated_all_candidates):
             penalties = {
-                'embeds': diff_embeddings(original_embedding, embeddings[idx]) * 50,  # Each change ~ 0.007
+                'embeds': diff_embeddings(original_embedding, embeddings[idx]) * 25,
                 'v_gene': self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score),
                 'humanness': 1 - humanness_degree[idx],
             }

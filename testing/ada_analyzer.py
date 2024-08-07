@@ -8,7 +8,7 @@ from humanization.common import config_loader
 from humanization.common.annotations import HeavyChainType, ChothiaHeavy, GeneralChainType, annotate_batch
 from humanization.common.utils import configure_logger
 from humanization.humanness_calculator.model_wrapper import load_all_models
-from humanization.humanness_calculator.stats import proba_distribution
+from humanization.humanness_calculator.stats import proba_distribution, print_distribution
 
 config = config_loader.Config()
 logger = configure_logger(config, "Ada analyzer")
@@ -43,11 +43,11 @@ def main(model_dir):
         row = 1 if mx > 0.9 else (2 if is_positive else 3)
         matrix[row][col] += 1
         scores.append(mx)
-        print(name, ada, mx, is_positive, "", *preds, sep='\t')
+        print(name, ada, mx, is_positive, "", "", *preds, sep='\t')
     print()
     print(tabulate(matrix))
     print()
-    print(proba_distribution(np.ndarray(scores)))
+    print(print_distribution(np.ndarray(scores)))
 
 
 if __name__ == '__main__':
