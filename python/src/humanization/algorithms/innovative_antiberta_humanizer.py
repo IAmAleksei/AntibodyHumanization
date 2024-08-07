@@ -34,12 +34,14 @@ def chunks(lst, n):
 
 class InnovativeAntibertaHumanizer(BaseHumanizer):
     def __init__(self, v_gene_scorer: VGeneScorer, wild_v_gene_scorer: VGeneScorer,
-                 models: Optional[Dict[ChainType, ModelWrapper]], deny_use_aa: List[str], deny_change_aa: List[str]):
+                 models: Optional[Dict[ChainType, ModelWrapper]], deny_use_aa: List[str],
+                 deny_change_aa: List[str], deny_change_pos: List[str]):
         super().__init__(v_gene_scorer)
         self.wild_v_gene_scorer = wild_v_gene_scorer
         self.annotation = ChothiaHeavy()
         self.deny_insert_aa = deny_use_aa
         self.deny_delete_aa = deny_change_aa
+        self.deny_change_pos = deny_change_pos
         self.use_aa_similarity = False
         self.models = models
 
@@ -64,11 +66,11 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         else:
             return 1e6  # Reject change
 
-    def _get_random_forest_penalty(self, sequences: List[List[str]], chain_type: ChainType) -> List[float]:
+    def _get_random_forest_value(self, sequences: List[List[str]], chain_type: ChainType) -> np.ndarray:
         if self.models is not None:
-            return 1 - self.models[chain_type].predict_proba(sequences)[:, 1]
+            return self.models[chain_type].predict_proba(sequences)[:, 1]
         else:
-            return [0.0] * len(sequences)
+            return np.ones(len(sequences), dtype=np.float)
 
     def _generate_candidates(self, current_seq: List[str], all_candidate_changes: List[InnerChange], changes_left: int,
                              res: List[Tuple[List[str], List[InnerChange]]] = None, cur_index: int = 0,
@@ -95,7 +97,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         best_change = SequenceChange(None, 10e5)
         all_candidate_changes = []
         for idx, column_name in enumerate(self.get_annotation().segmented_positions):
-            if column_name.startswith('cdr'):
+            if column_name.startswith('cdr') or column_name in self.deny_change_pos:
                 continue
             candidate_change = self._test_single_change(current_seq, idx, cur_human_sample[idx])
             if candidate_change is not None:
@@ -109,15 +111,15 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         for i, chunk in enumerate(chunks(unevaluated_all_candidates, 500)):
             logger.debug(f"Embeddings chunk#{i} calculation")
             embeddings.extend(_get_embeddings([mod_seq for mod_seq, _ in chunk]))
-        humanness_degree = self._get_random_forest_penalty([mod_seq for mod_seq, _ in unevaluated_all_candidates],
-                                                           cur_chain_type)
+        humanness_degree = self._get_random_forest_value([mod_seq for mod_seq, _ in unevaluated_all_candidates],
+                                                         cur_chain_type)
         logger.debug(f"Calculating penalties")
         all_candidates = []
         for idx, (mod_seq, changes) in enumerate(unevaluated_all_candidates):
             penalties = {
                 'embeds': diff_embeddings(original_embedding, embeddings[idx]) * 50,  # Each change ~ 0.007
                 'v_gene': self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score),
-                'humanness': humanness_degree[idx],
+                'humanness': 1 - humanness_degree[idx],
             }
             if self.use_aa_similarity:
                 penalties['blosum'] = blosum_sum(changes) * (-0.04)
@@ -178,6 +180,9 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
                             f" Stop algorithm on model metric = {round(current_value, 6)}")
                 break
         logger.info(f"Process took {len(iterations)} iterations")
+        if self.models is not None:
+            logger.debug(f"Humanness: {round(self._get_random_forest_value([current_seq], cur_chain_type)[0], 2)} "
+                         f"(threshold: {self.models[cur_chain_type].threshold})")
         return seq_to_str(current_seq, aligned_result), iterations
 
     def query(self, sequence: str, limit_delta: float = 15, target_v_gene_score: float = 0.0, human_sample: str = None,
@@ -208,17 +213,17 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
 
 def process_sequences(v_gene_scorer=None, models=None, wild_v_gene_scorer=None, sequences=None, limit_delta=16.0,
                       human_sample=None, human_chain_type=None, deny_use_aa=utils.TABOO_INSERT_AA,
-                      deny_change_aa=utils.TABOO_DELETE_AA, target_v_gene_score=None, aligned_result=False,
-                      prefer_human_sample=False, change_batch_size=1, limit_changes=999):
-    humanizer = InnovativeAntibertaHumanizer(v_gene_scorer, wild_v_gene_scorer, models,
-                                             parse_list(deny_use_aa), parse_list(deny_change_aa))
+                      deny_change_aa=utils.TABOO_DELETE_AA, deny_change_pos='', target_v_gene_score=None,
+                      aligned_result=False, prefer_human_sample=False, change_batch_size=1, limit_changes=999):
+    humanizer = InnovativeAntibertaHumanizer(v_gene_scorer, wild_v_gene_scorer, models, parse_list(deny_use_aa),
+                                             parse_list(deny_change_aa), parse_list(deny_change_pos))
     results = run_humanizer(sequences, humanizer, limit_delta, target_v_gene_score, human_sample, human_chain_type,
                             aligned_result, prefer_human_sample, change_batch_size, limit_changes)
     return results
 
 
-def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, deny_change_aa, human_sample,
-         human_chain_type, limit_changes, change_batch_size, report, output_file):
+def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, deny_change_aa, deny_change_pos,
+         human_sample, human_chain_type, limit_changes, change_batch_size, report, output_file):
     sequences = read_sequences(input_file)
     v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), dataset_file)
     wild_v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), wild_dataset_file)
@@ -228,7 +233,7 @@ def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, de
     results = process_sequences(
         v_gene_scorer, models, wild_v_gene_scorer, sequences, limit_delta=15.0,
         human_sample=human_sample, human_chain_type=human_chain_type,
-        deny_use_aa=deny_use_aa, deny_change_aa=deny_change_aa,
+        deny_use_aa=deny_use_aa, deny_change_aa=deny_change_aa,  deny_change_pos=deny_change_pos,
         target_v_gene_score=0.85, change_batch_size=change_batch_size, limit_changes=limit_changes
     )
     if report is not None:
@@ -251,6 +256,8 @@ if __name__ == '__main__':
                         help='Amino acids that could not be used')
     parser.add_argument('--deny-change-aa', type=str, default=utils.TABOO_DELETE_AA, required=False,
                         help='Amino acids that could not be changed')
+    parser.add_argument('--deny-change-pos', type=str, default='', required=False,
+                        help='Positions that could not be changed (fwr1_12, fwr2_2, etc.)')
     parser.add_argument('--change-batch-size', type=int, default=1, required=False,
                         help='Count of changes that will be applied in one iteration')
     parser.add_argument('--limit-changes', type=int, default=30, required=False, help='Limit count of changes')
@@ -264,6 +271,7 @@ if __name__ == '__main__':
          wild_dataset_file=args.wild_dataset,
          deny_use_aa=args.deny_use_aa,
          deny_change_aa=args.deny_change_aa,
+         deny_change_pos=args.deny_change_pos,
          human_sample=args.human_sample,
          human_chain_type=args.human_chain_type,
          limit_changes=args.limit_changes,

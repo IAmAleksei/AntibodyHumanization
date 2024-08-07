@@ -31,7 +31,7 @@ def main(model_dir):
     model_types = [key for key in model_wrappers.keys()]
     res.sort(key=lambda x: x[2])
     logger.info(f"{len(res)} antibodies with ADA value")
-    print("Name", "ADA", "Max", "", *[t.full_type() for t in model_types], sep='\t')
+    print("Name", "", "ADA", "Max", "Positive", "", *[t.full_type() for t in model_types], sep='\t')
     matrix = [["", "Ada<10", "10<Ada<50", "50<Ada"], [">0.9", 0, 0, 0], ["Pos", 0, 0, 0], ["Neg", 0, 0, 0]]
     for name, seq, ada in res:
         preds = [round(model_wrappers[t].predict_proba([seq])[0, 1], 2) for t in model_types]
