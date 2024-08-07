@@ -47,7 +47,7 @@ def main(model_dir):
     print()
     print(tabulate(matrix))
     print()
-    print(print_distribution(np.ndarray(scores)))
+    print(print_distribution(np.array(scores)))
 
 
 if __name__ == '__main__':
