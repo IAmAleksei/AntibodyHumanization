@@ -5,10 +5,10 @@ from Bio import SeqIO
 from tabulate import tabulate
 
 from humanization.common import config_loader
-from humanization.common.annotations import HeavyChainType, ChothiaHeavy, GeneralChainType, annotate_batch
+from humanization.common.annotations import ChothiaHeavy, GeneralChainType, annotate_batch
 from humanization.common.utils import configure_logger
 from humanization.humanness_calculator.model_wrapper import load_all_models
-from humanization.humanness_calculator.stats import proba_distribution, print_distribution
+from humanization.humanness_calculator.stats import print_distribution
 
 config = config_loader.Config()
 logger = configure_logger(config, "Ada analyzer")
@@ -47,7 +47,7 @@ def main(model_dir):
     print()
     print(tabulate(matrix))
     print()
-    print(print_distribution(np.array(scores)))
+    print_distribution(np.array(scores))
 
 
 if __name__ == '__main__':
