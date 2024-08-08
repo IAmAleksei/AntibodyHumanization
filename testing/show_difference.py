@@ -30,7 +30,10 @@ def main(files):
         wild = next(seq for way, seq in lst if "Wild" == way)
         print()
         print(mab)
-        print(wild, "Wild")
+        if len(thera) != len(wild):
+            print("Skipped")
+            continue
+        print(wild, "W")
         for way, seq in lst:
             if way in ["Therap.", "Wild"]:
                 continue
@@ -52,7 +55,7 @@ def main(files):
             if aa != wild[i]:
                 c_aa = colored(aa, 'orange')
             colored_thera.append(c_aa)
-        print("".join(colored_thera), "Therap.")
+        print("".join(colored_thera), "T")
 
 
 if __name__ == '__main__':

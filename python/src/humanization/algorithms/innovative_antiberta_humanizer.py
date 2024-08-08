@@ -187,7 +187,8 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
 
     def query(self, sequence: str, limit_delta: float = 15, target_v_gene_score: float = 0.0, human_sample: str = None,
               human_chain_type: str = None, aligned_result: bool = False, prefer_human_sample: bool = False,
-              change_batch_size: int = 1, limit_changes: int = 999) -> List[Tuple[str, List[IterationDetails]]]:
+              change_batch_size: int = 1, limit_changes: int = 999,
+              candidates_count: int = 3) -> List[Tuple[str, List[IterationDetails]]]:
         general_type = GeneralChainType.HEAVY
         current_seq = annotate_single(sequence, self.annotation, general_type)
         if current_seq is None:
@@ -196,7 +197,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         logger.debug(f"Annotated sequence: {seq_to_str(current_seq, True)}")
         if not human_sample:
             logger.debug(f"Retrieve human sample from V Gene scorer")
-            v_gene_samples = self.v_gene_scorer.query(current_seq)[:3]
+            v_gene_samples = self.v_gene_scorer.query(current_seq)[:candidates_count]
             human_samples = [(human_sample, ChainType.from_oas_type(human_chain_type))
                              for human_sample, _, human_chain_type in v_gene_samples]
         else:
@@ -214,16 +215,17 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
 def process_sequences(v_gene_scorer=None, models=None, wild_v_gene_scorer=None, sequences=None, limit_delta=16.0,
                       human_sample=None, human_chain_type=None, deny_use_aa=utils.TABOO_INSERT_AA,
                       deny_change_aa=utils.TABOO_DELETE_AA, deny_change_pos='', target_v_gene_score=None,
-                      aligned_result=False, prefer_human_sample=False, change_batch_size=1, limit_changes=999):
+                      aligned_result=False, prefer_human_sample=False, change_batch_size=1, limit_changes=999,
+                      candidates_count=3):
     humanizer = InnovativeAntibertaHumanizer(v_gene_scorer, wild_v_gene_scorer, models, parse_list(deny_use_aa),
                                              parse_list(deny_change_aa), parse_list(deny_change_pos))
     results = run_humanizer(sequences, humanizer, limit_delta, target_v_gene_score, human_sample, human_chain_type,
-                            aligned_result, prefer_human_sample, change_batch_size, limit_changes)
+                            aligned_result, prefer_human_sample, change_batch_size, limit_changes, candidates_count)
     return results
 
 
 def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, deny_change_aa, deny_change_pos,
-         human_sample, human_chain_type, limit_changes, change_batch_size, report, output_file):
+         human_sample, human_chain_type, limit_changes, change_batch_size, candidates_count, report, output_file):
     sequences = read_sequences(input_file)
     v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), dataset_file)
     wild_v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), wild_dataset_file)
@@ -234,7 +236,8 @@ def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, de
         v_gene_scorer, models, wild_v_gene_scorer, sequences, limit_delta=15.0,
         human_sample=human_sample, human_chain_type=human_chain_type,
         deny_use_aa=deny_use_aa, deny_change_aa=deny_change_aa,  deny_change_pos=deny_change_pos,
-        target_v_gene_score=0.85, change_batch_size=change_batch_size, limit_changes=limit_changes
+        target_v_gene_score=0.85, change_batch_size=change_batch_size, limit_changes=limit_changes,
+        candidates_count=candidates_count
     )
     if report is not None:
         generate_report(report, results)
@@ -261,6 +264,7 @@ if __name__ == '__main__':
     parser.add_argument('--change-batch-size', type=int, default=1, required=False,
                         help='Count of changes that will be applied in one iteration')
     parser.add_argument('--limit-changes', type=int, default=30, required=False, help='Limit count of changes')
+    parser.add_argument('--candidates-count', type=int, default=3, required=False, help='Count of used references')
     parser.add_argument('--report', type=str, default=None, required=False, help='Path to report file')
 
     args = parser.parse_args()
@@ -276,5 +280,6 @@ if __name__ == '__main__':
          human_chain_type=args.human_chain_type,
          limit_changes=args.limit_changes,
          change_batch_size=args.change_batch_size,
+         candidates_count=args.candidates_count,
          report=args.report,
          output_file=args.output)
