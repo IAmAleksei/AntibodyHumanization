@@ -39,9 +39,10 @@ def main(model_dir):
         preds = [round(model_wrappers[t].predict_proba([seq])[0, 1], 2) for t in model_types]
         is_positive = any(model_wrappers[t].predict([seq])[0] for t in model_types)
         mx = max(preds)
-        col = 1 if ada < 10 else (2 if 10 <= ada < 50 else 3)
-        row = 1 if mx > 0.9 else (2 if is_positive else 3)
-        matrix[row][col] += 1
+        col = 1 if ada < 10 else (2 if ada < 50 else 3)
+        if mx > 0.9:
+            matrix[1][col] += 1
+        matrix[2 if is_positive else 3][col] += 1
         scores.append(mx)
         print(name, ada, mx, is_positive, "", "", *preds, sep='\t')
     print()
