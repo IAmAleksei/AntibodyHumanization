@@ -28,8 +28,8 @@ def main(model_dir):
     logger.info(f"{len(annotated_set)} antibodies annotated")
     assert len(annotated_set) == len(seqs)
     model_wrappers = load_all_models(model_dir, GeneralChainType.HEAVY)
-    res = [(name, seq, adas[name]) for (name, _), seq in zip(seqs, annotated_set) if name in adas]
     model_types = [key for key in model_wrappers.keys()]
+    res = [(name, seq, adas[name]) for (name, _), seq in zip(seqs, annotated_set) if name in adas]
     res.sort(key=lambda x: x[2])
     logger.info(f"{len(res)} antibodies with ADA value")
     print("Name", "", "ADA", "Max", "Positive", "", *[t.full_type() for t in model_types], sep='\t')
