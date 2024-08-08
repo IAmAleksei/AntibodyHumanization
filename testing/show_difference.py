@@ -33,7 +33,7 @@ def main(files):
         if len(thera) != len(wild):
             print("Skipped")
             continue
-        print(wild, "W")
+        print(wild, "Wild")
         for way, seq in lst:
             if way in ["Therap.", "Wild"]:
                 continue
@@ -53,9 +53,9 @@ def main(files):
         for i, aa in enumerate(thera):
             c_aa = aa
             if aa != wild[i]:
-                c_aa = colored(aa, 'orange')
+                c_aa = colored(aa, 'yellow')
             colored_thera.append(c_aa)
-        print("".join(colored_thera), "T")
+        print("".join(colored_thera), "Thera")
 
 
 if __name__ == '__main__':
