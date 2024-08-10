@@ -147,7 +147,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         iterations = []
         current_value = 0.0
         v_gene_score, wild_v_gene_score = self._calc_v_gene_metrics(current_seq, cur_human_sample, prefer_human_sample)
-        iterations.append(IterationDetails(0, current_value, v_gene_score, None))
+        iterations.append(IterationDetails(0, current_value, v_gene_score, wild_v_gene_score, None, None))
         logger.info(f"Start metrics: V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
         for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
             logger.info(f"Iteration {it}. "
@@ -167,7 +167,9 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
                     logger.info(f"It {it}. Current metrics are best ({round(current_value, 6)})")
                     break
                 logger.debug(f"Best change: {best_change}")
-                iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change, all_changes))
+                humanness_score = self._get_random_forest_value([current_seq], cur_chain_type)[0]
+                iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_wild_v_gene_score,
+                                                   humanness_score, best_change, all_changes))
                 if best_value < limit_delta and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
                     logger.info(f"It {it}. Target metrics are reached"
                                 f" (v_gene_score = {best_v_gene_score}, wild_v_gene_score = {best_wild_v_gene_score})")
@@ -180,9 +182,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
                             f" Stop algorithm on model metric = {round(current_value, 6)}")
                 break
         logger.info(f"Process took {len(iterations)} iterations")
-        if self.models is not None:
-            logger.debug(f"Humanness: {round(self._get_random_forest_value([current_seq], cur_chain_type)[0], 3)} "
-                         f"(threshold: {self.models[cur_chain_type].threshold})")
+        logger.debug(f"Humanness: {iterations[-1].humanness_score} (threshold: {self.models[cur_chain_type].threshold})")
         return seq_to_str(current_seq, aligned_result), iterations
 
     def query(self, sequence: str, limit_delta: float = 15, target_v_gene_score: float = 0.0, human_sample: str = None,

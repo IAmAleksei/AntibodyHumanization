@@ -45,7 +45,7 @@ class VGeneScorer:
         if len(self.human_samples) != len(self.labels):
             raise RuntimeError(f"Lengths are different. Samples: {len(self.human_samples)}, labels: {len(self.labels)}")
 
-    def query(self, sequence: List[str]) -> List[Tuple[str, float, str]]:
+    def query(self, sequence: List[str], count: int = 3) -> List[Tuple[str, float, str]]:
         if len(self.human_samples) < 2000:
             v_gene_scores = [calc_score(sequence, sample, self.annotation) for sample in self.human_samples]
         else:
@@ -53,7 +53,7 @@ class VGeneScorer:
             with Pool(processes=config.get(config_loader.NCPU), initializer=worker_init, initargs=worker_args) as pool:
                 v_gene_scores = pool.map(calc_score_wrapper, self.human_samples)
         result = []
-        for idx, v_gene_score in sorted(enumerate(v_gene_scores), key=lambda x: x[1], reverse=True)[:3]:
+        for idx, v_gene_score in sorted(enumerate(v_gene_scores), key=lambda x: x[1], reverse=True)[:count]:
             result.append((self.human_samples[idx], v_gene_score, self.labels[idx]))
         return result
 
@@ -68,20 +68,20 @@ def build_v_gene_scorer(annotation: Annotation, dataset_file: str, v_type: Chain
         return None
 
 
-def get_similar_samples(annotation: Annotation, dataset_file: str, sequences: List[str], only_human: bool = True,
+def get_similar_samples(annotation: Annotation, dataset_file: str, sequences: List[str], count: int = 3,
                         chain_type: GeneralChainType = None) -> List[Optional[List[Tuple[str, float, str]]]]:
     v_gene_scorer = build_v_gene_scorer(annotation, dataset_file)
     assert v_gene_scorer is not None
     result = []
     for seq in sequences:
         aligned_seq = annotate_single(seq, annotation, chain_type)
-        result.append(v_gene_scorer.query(aligned_seq) if aligned_seq is not None else None)
+        result.append(v_gene_scorer.query(aligned_seq, count) if aligned_seq is not None else None)
     return result
 
 
 def main(input_file, dataset_file, output_file):
     sequences = read_sequences(input_file)
-    similar_samples = get_similar_samples(ChothiaHeavy(), dataset_file, sequences, only_human=False)
+    similar_samples = get_similar_samples(ChothiaHeavy(), dataset_file, sequences)
     out_sequences = []
     for idx, sample in enumerate(similar_samples):
         name = sequences[idx][0]

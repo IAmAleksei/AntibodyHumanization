@@ -65,6 +65,8 @@ class IterationDetails(NamedTuple):
     index: int
     model_metric: float
     v_gene_score: Optional[float] = None
+    wild_v_gene_score: Optional[float] = None
+    humanness_score: Optional[float] = None
     change: Optional[SequenceChange] = None
     all_changes: Optional[List[SequenceChange]] = None
 

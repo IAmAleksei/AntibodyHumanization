@@ -45,7 +45,7 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
         logger.info(f"Starting processing type {tp}")
         model_wrapper = load_model(models_dir, chain_type)
         v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_dir, chain_type)
-        wild_v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, wild_dataset_dir, only_human=False)
+        wild_v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, wild_dataset_dir)
         logger.info(f"Resources loaded")
         for limit_changes in [30]:
             for model_metric in [0.99]:
@@ -66,7 +66,7 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                     innovative_result = innovative_antiberta_humanizer.process_sequences(
                         v_gene_scorer, all_models, wild_v_gene_scorer, prep_seqs, limit_delta=15.0,
                         target_v_gene_score=0.85, prefer_human_sample=True, limit_changes=limit_changes,
-                        change_batch_size=1
+                        change_batch_size=1, candidates_count=3
                     )
                 if humanizer_type is None or humanizer_type == "rev-antiberta":
                     rev_antiberta_result = reverse_antiberta2_humanizer._process_sequences(
@@ -90,8 +90,11 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                              res])
                     for name, res, its in innovative_result:
                         lines.extend(
-                            [f"> {name}_i_{len(its):02d}ch_{i}t"
-                             f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",
+                            [f"> {name}_i_{len(its):02d}ch_{i}t "
+                             f"{its[-1].model_metric} "
+                             f"{its[0].v_gene_score} {its[-1].v_gene_score} "
+                             f"{its[0].wild_v_gene_score} {its[-1].wild_v_gene_score} "
+                             f"{its[0].humanness_score} {its[-1].humanness_score}",
                              res])
                     for name, res, its in rev_antiberta_result:
                         lines.extend(
