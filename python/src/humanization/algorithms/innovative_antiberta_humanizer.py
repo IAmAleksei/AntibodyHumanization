@@ -61,8 +61,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         _, vgs, _ = self.v_gene_scorer.query(mod_seq)[0]
         if vgs - wild_vgs > 0.001 or vgs < 0.85 or \
                 (vgs < 0.86 and wild_vgs - cur_wild_vgs < -0.001 + vgs - cur_vgs) or wild_vgs - cur_wild_vgs < -0.001:
-            mult = 10
-            return max(0.0, wild_vgs + 0.02 - vgs) * mult
+            return max(0.0, wild_vgs + 0.02 - vgs)
         else:
             return 1e6  # Reject change
 
@@ -118,7 +117,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         for idx, (mod_seq, changes) in enumerate(unevaluated_all_candidates):
             penalties = {
                 'embeds': diff_embeddings(original_embedding, embeddings[idx]) * 25,
-                'v_gene': self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score),
+                'v_gene': self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score) * 10,
                 'humanness': 1 - humanness_degree[idx],
             }
             if self.use_aa_similarity:
@@ -147,7 +146,8 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         iterations = []
         current_value = 0.0
         v_gene_score, wild_v_gene_score = self._calc_v_gene_metrics(current_seq, cur_human_sample, prefer_human_sample)
-        iterations.append(IterationDetails(0, current_value, v_gene_score, wild_v_gene_score, None, None))
+        humanness_score = self._get_random_forest_value([current_seq], cur_chain_type)[0]
+        iterations.append(IterationDetails(0, current_value, v_gene_score, wild_v_gene_score, humanness_score, None))
         logger.info(f"Start metrics: V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
         for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
             logger.info(f"Iteration {it}. "

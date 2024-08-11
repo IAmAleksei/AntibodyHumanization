@@ -16,6 +16,10 @@ config = config_loader.Config()
 logger = configure_logger(config, "Benchmark")
 
 
+def rnd(x):
+    return round(x, 4) if x is not None else None
+
+
 def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output):
     models_dir = os.path.abspath(models_dir)
     open(fasta_output, 'w').close()
@@ -90,11 +94,13 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                              res])
                     for name, res, its in innovative_result:
                         lines.extend(
-                            [f"> {name}_i_{len(its):02d}ch_{i}t "
-                             f"{its[-1].model_metric} "
-                             f"{its[0].v_gene_score} {its[-1].v_gene_score} "
-                             f"{its[0].wild_v_gene_score} {its[-1].wild_v_gene_score} "
-                             f"{its[0].humanness_score} {its[-1].humanness_score}",
+                            [f"> {name}_i "
+                             f"C={len(its):02d} T={i} "
+                             f"P={rnd(its[-1].model_metric)} "
+                             f"HVG0={rnd(its[0].v_gene_score)} HVG={rnd(its[-1].v_gene_score)} "
+                             f"WVG0={rnd(its[0].wild_v_gene_score)} WVG={rnd(its[-1].wild_v_gene_score)} "
+                             f"H0={rnd(its[0].humanness_score)} H={rnd(its[-1].humanness_score)} "
+                             f"TH={rnd(model_wrapper.threshold)}",
                              res])
                     for name, res, its in rev_antiberta_result:
                         lines.extend(
