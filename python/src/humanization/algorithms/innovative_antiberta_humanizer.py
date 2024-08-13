@@ -150,8 +150,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         iterations.append(IterationDetails(0, current_value, v_gene_score, wild_v_gene_score, humanness_score, None))
         logger.info(f"Start metrics: V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
         for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
-            logger.info(f"Iteration {it}. "
-                        f"Current delta = {round(current_value, 6)}, "
+            logger.info(f"Iteration {it}. Current delta = {round(current_value, 6)}, "
                         f"V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
             best_change, all_changes = self._find_best_change(current_seq, original_embedding, cur_human_sample,
                                                               cur_chain_type, v_gene_score, wild_v_gene_score,
@@ -186,7 +185,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         return seq_to_str(current_seq, aligned_result), iterations
 
     def query(self, sequence: str, limit_delta: float = 15, target_v_gene_score: float = 0.0, human_sample: str = None,
-              human_chain_type: str = None, aligned_result: bool = False, prefer_human_sample: bool = False,
+              human_chain_type: str = None, aligned_result: bool = False, prefer_human_sample: bool = True,
               change_batch_size: int = 1, limit_changes: int = 999,
               candidates_count: int = 3) -> List[Tuple[str, List[IterationDetails]]]:
         general_type = GeneralChainType.HEAVY
@@ -197,7 +196,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         logger.debug(f"Annotated sequence: {seq_to_str(current_seq, True)}")
         if not human_sample:
             logger.debug(f"Retrieve human sample from V Gene scorer")
-            v_gene_samples = self.v_gene_scorer.query(current_seq)[:candidates_count]
+            v_gene_samples = self.v_gene_scorer.query(current_seq, candidates_count)
             human_samples = [(human_sample, ChainType.from_oas_type(human_chain_type))
                              for human_sample, _, human_chain_type in v_gene_samples]
         else:
@@ -215,7 +214,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
 def process_sequences(v_gene_scorer=None, models=None, wild_v_gene_scorer=None, sequences=None, limit_delta=16.0,
                       human_sample=None, human_chain_type=None, deny_use_aa=utils.TABOO_INSERT_AA,
                       deny_change_aa=utils.TABOO_DELETE_AA, deny_change_pos='', target_v_gene_score=None,
-                      aligned_result=False, prefer_human_sample=False, change_batch_size=1, limit_changes=999,
+                      aligned_result=False, prefer_human_sample=True, change_batch_size=1, limit_changes=999,
                       candidates_count=3):
     humanizer = InnovativeAntibertaHumanizer(v_gene_scorer, wild_v_gene_scorer, models, parse_list(deny_use_aa),
                                              parse_list(deny_change_aa), parse_list(deny_change_pos))
