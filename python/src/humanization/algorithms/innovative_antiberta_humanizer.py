@@ -102,7 +102,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
             if candidate_change is not None:
                 all_candidate_changes.append(candidate_change)
         if len(all_candidate_changes) == 0:
-            return best_change
+            return best_change, []
         unevaluated_all_candidates = self._generate_candidates(current_seq, all_candidate_changes, change_batch_size)
         if cur_v_gene_score > 0.81:
             for bs in range(1, change_batch_size):
