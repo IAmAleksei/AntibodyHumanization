@@ -7,7 +7,6 @@ from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 
-from humanization.algorithms.abstract_humanizer import HumanizationDetails
 from humanization.common import config_loader
 
 AA_ALPHABET = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y', 'X']
@@ -41,7 +40,7 @@ def read_sequences(input_file):
     return result
 
 
-def generate_report(report_file: str, sequences: List[Tuple[str, str, HumanizationDetails]]):
+def generate_report(report_file: str, sequences):
     with open(report_file, 'w') as file:
         for name, result, details in sequences:
             file.write("++++++++++++++")
