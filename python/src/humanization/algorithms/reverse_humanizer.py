@@ -2,7 +2,8 @@ import argparse
 from typing import Optional, List, Tuple
 
 from humanization.algorithms.abstract_humanizer import seq_to_str, IterationDetails, is_change_less, SequenceChange, \
-    AbstractHumanizer, read_humanizer_options, run_humanizer, abstract_humanizer_parser_options, InnerChange
+    AbstractHumanizer, read_humanizer_options, run_humanizer, abstract_humanizer_parser_options, InnerChange, \
+    HumanizationDetails
 from humanization.common import config_loader
 from humanization.common.annotations import annotate_single
 from humanization.common.utils import configure_logger, parse_list, read_sequences, write_sequences
@@ -42,7 +43,7 @@ class ReverseHumanizer(AbstractHumanizer):
 
     def _query_one(self, original_seq, cur_human_sample, target_model_metric: float, target_v_gene_score: float,
                    aligned_result: bool, prefer_human_sample: bool,
-                   limit_changes: int) -> Tuple[str, List[IterationDetails]]:
+                   limit_changes: int) -> Tuple[str, HumanizationDetails]:
         current_seq = original_seq.copy()
         logger.info(f"Used human sample: {cur_human_sample}")
         for idx, column_name in enumerate(self.model_wrapper.annotation.segmented_positions):
@@ -66,17 +67,17 @@ class ReverseHumanizer(AbstractHumanizer):
                     logger.info(f"Current metrics are best ({round(current_value, 6)})")
                     break
                 logger.debug(f"Best change: {best_change}")
-                iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_change))
+                iterations.append(IterationDetails(it, best_value, best_v_gene_score, change=best_change))
                 current_value, v_gene_score = best_value, best_v_gene_score
             else:
                 logger.info(f"No effective changes found. Stop algorithm on model metric = {round(current_value, 6)}")
                 break
         logger.info(f"Process took {len(iterations)} iterations")
-        return seq_to_str(current_seq, aligned_result), iterations
+        return seq_to_str(current_seq, aligned_result), HumanizationDetails(iterations)
 
     def query(self, sequence: str, target_model_metric: float, target_v_gene_score: float = 0.0,
               human_sample: str = None, aligned_result: bool = False,
-              prefer_human_sample: bool = False, limit_changes: int = 999) -> List[Tuple[str, List[IterationDetails]]]:
+              prefer_human_sample: bool = False, limit_changes: int = 999) -> List[Tuple[str, HumanizationDetails]]:
         current_seq = annotate_single(sequence, self.model_wrapper.annotation,
                                       self.model_wrapper.chain_type.general_type())
         if current_seq is None:

@@ -30,7 +30,7 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
 
     temp_seqs = [antibody['heavy']['sequ'].replace('-', '') for antibody in samples]
     annotation = load_annotation("chothia", ChainKind.HEAVY)
-    human_samples = get_similar_samples(annotation, dataset_dir, temp_seqs, chain_type=GeneralChainType.HEAVY)
+    human_samples = get_similar_samples(annotation, dataset_dir, temp_seqs, count=1, chain_type=GeneralChainType.HEAVY)
     for idx, antibody in enumerate(samples):
         antibody['heavy']['my_type'] = []
         if human_samples[idx] is not None:
@@ -43,11 +43,14 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                     antibody['heavy']['my_type'].append(ChainType.from_oas_type(tp).full_type())
 
     all_models = load_all_models(models_dir, GeneralChainType.HEAVY)
+    common_v_gene_scorer = None
     for i in range(1, 8):
         tp = f'HV{i}'
         chain_type = ChainType.from_full_type(tp)
         logger.info(f"Starting processing type {tp}")
         model_wrapper = load_model(models_dir, chain_type)
+        if common_v_gene_scorer is None:
+            common_v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_dir)
         v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, dataset_dir, chain_type)
         wild_v_gene_scorer = build_v_gene_scorer(model_wrapper.annotation, wild_dataset_dir)
         logger.info(f"Resources loaded")
@@ -68,7 +71,7 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                     )
                 if humanizer_type is None or humanizer_type == "innovative":
                     innovative_result = innovative_antiberta_humanizer.process_sequences(
-                        v_gene_scorer, all_models, wild_v_gene_scorer, prep_seqs, limit_delta=15.0,
+                        common_v_gene_scorer, all_models, wild_v_gene_scorer, prep_seqs, limit_delta=15.0,
                         target_v_gene_score=0.85, prefer_human_sample=True, limit_changes=limit_changes,
                         change_batch_size=1, candidates_count=3
                     )
@@ -92,7 +95,8 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                         lines.extend(
                             [f"> {name}_a_{limit_changes:02d}pch_{i}t",
                              res])
-                    for name, res, its in innovative_result:
+                    for name, res, det in innovative_result:
+                        its = det.iterations
                         lines.extend(
                             [f"> {name}_i "
                              f"C={len(its):02d} T={i} "
@@ -102,17 +106,20 @@ def main(models_dir, dataset_dir, wild_dataset_dir, humanizer_type, fasta_output
                              f"H0={rnd(its[0].humanness_score)} H={rnd(its[-1].humanness_score)} "
                              f"TH={rnd(model_wrapper.threshold)}",
                              res])
-                    for name, res, its in rev_antiberta_result:
+                    for name, res, det in rev_antiberta_result:
+                        its = det.iterations
                         lines.extend(
                             [f"> {name}_b_{model_metric}_{limit_changes:02d}pch_{i}t"
                              f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",
                              res])
-                    for name, res, its in direct_result:
+                    for name, res, det in direct_result:
+                        its = det.iterations
                         lines.extend(
                             [f"> {name}_d_{model_metric}_{len(its):02d}ch_{i}t "
                              f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",
                              res])
-                    for name, res, its in reverse_result:
+                    for name, res, det in reverse_result:
+                        its = det.iterations
                         lines.extend(
                             [f"> {name}_r_{model_metric}_{len(its):02d}ch_{i}t "
                              f"{its[0].model_metric} {its[0].v_gene_score} {its[-1].model_metric} {its[-1].v_gene_score}",

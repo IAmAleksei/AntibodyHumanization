@@ -4,11 +4,10 @@ from typing import Optional, List, Tuple, Dict
 import numpy as np
 
 from humanization.algorithms.abstract_humanizer import seq_to_str, IterationDetails, is_change_less, SequenceChange, \
-    run_humanizer, BaseHumanizer, read_humanizer_options, InnerChange, blosum_sum
+    run_humanizer, BaseHumanizer, read_humanizer_options, InnerChange, blosum_sum, HumanizationDetails
 from humanization.common import config_loader, utils
 from humanization.common.annotations import annotate_single, ChothiaHeavy, GeneralChainType, Annotation, ChainType
-from humanization.common.utils import configure_logger, parse_list, read_sequences, write_sequences, BLOSUM62, \
-    generate_report
+from humanization.common.utils import configure_logger, parse_list, read_sequences, write_sequences, generate_report
 from humanization.common.v_gene_scorer import VGeneScorer, is_v_gene_score_less, build_v_gene_scorer
 from humanization.external_models.antiberta_utils import get_antiberta_embeddings
 from humanization.external_models.embedding_utils import diff_embeddings
@@ -141,7 +140,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
 
     def _query_one(self, original_seq, cur_human_sample, cur_chain_type, limit_delta: float, target_v_gene_score: float,
                    aligned_result: bool, prefer_human_sample: bool, change_batch_size: int,
-                   limit_changes: int) -> Tuple[str, List[IterationDetails]]:
+                   limit_changes: int) -> Tuple[str, HumanizationDetails]:
         original_embedding = _get_embedding(original_seq)
         current_seq = original_seq.copy()
         logger.info(f"Used human sample: {cur_human_sample}, chain type: {cur_chain_type}")
@@ -184,12 +183,12 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
                 break
         logger.info(f"Process took {len(iterations)} iterations")
         logger.debug(f"Humanness: {iterations[-1].humanness_score} (threshold: {self.models[cur_chain_type].threshold})")
-        return seq_to_str(current_seq, aligned_result), iterations
+        return seq_to_str(current_seq, aligned_result), HumanizationDetails(iterations, cur_chain_type)
 
     def query(self, sequence: str, limit_delta: float = 15, target_v_gene_score: float = 0.0, human_sample: str = None,
               human_chain_type: str = None, aligned_result: bool = False, prefer_human_sample: bool = True,
               change_batch_size: int = 1, limit_changes: int = 999,
-              candidates_count: int = 3) -> List[Tuple[str, List[IterationDetails]]]:
+              candidates_count: int = 3) -> List[Tuple[str, HumanizationDetails]]:
         general_type = GeneralChainType.HEAVY
         current_seq = annotate_single(sequence, self.annotation, general_type)
         if current_seq is None:
@@ -197,7 +196,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         original_seq = [x for x in current_seq]
         logger.debug(f"Annotated sequence: {seq_to_str(current_seq, True)}")
         if not human_sample:
-            logger.debug(f"Retrieve human sample from V Gene scorer")
+            logger.debug(f"Retrieve {candidates_count} human sample from V Gene scorer")
             v_gene_samples = self.v_gene_scorer.query(current_seq, candidates_count)
             human_samples = [(human_sample, ChainType.from_oas_type(human_chain_type))
                              for human_sample, _, human_chain_type in v_gene_samples]
@@ -205,11 +204,10 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
             human_sample = annotate_single(human_sample, self.annotation, general_type)
             human_samples = [(human_sample, ChainType.from_oas_type(human_chain_type))]
         result = []
-        for i, (cur_human_sample, cur_chain_type) in enumerate(human_samples):
+        for i, (cur_human_sample, chain_type) in enumerate(human_samples):
             logger.debug(f"Processing {i + 1} of {len(human_samples)} human sample")
-            result.append(self._query_one(original_seq, cur_human_sample, cur_chain_type, limit_delta,
-                                          target_v_gene_score, aligned_result, prefer_human_sample, change_batch_size,
-                                          limit_changes))
+            result.append(self._query_one(original_seq, cur_human_sample, chain_type, limit_delta, target_v_gene_score,
+                                          aligned_result, prefer_human_sample, change_batch_size, limit_changes))
         return result
 
 

@@ -1,7 +1,7 @@
 from typing import Optional, List, Tuple
 
 from humanization.algorithms.abstract_humanizer import AbstractHumanizer, IterationDetails, seq_to_str, \
-    SequenceChange, is_change_less, run_humanizer, InnerChange
+    SequenceChange, is_change_less, run_humanizer, InnerChange, HumanizationDetails
 from humanization.common import config_loader, utils
 from humanization.common.annotations import annotate_single
 from humanization.common.utils import configure_logger, parse_list
@@ -68,7 +68,7 @@ class ReverseAntibertaHumanizer(AbstractHumanizer):
         return best_change
 
     def query(self, sequence: str, target_model_metric: float, target_v_gene_score: float = 0.0,
-              aligned_result: bool = False, limit_changes: int = 999) -> List[Tuple[str, List[IterationDetails]]]:
+              aligned_result: bool = False, limit_changes: int = 999) -> List[Tuple[str, HumanizationDetails]]:
         current_seq = annotate_single(sequence, self.model_wrapper.annotation,
                                       self.model_wrapper.chain_type.general_type())
         if current_seq is None:
@@ -97,7 +97,7 @@ class ReverseAntibertaHumanizer(AbstractHumanizer):
                 break
         logger.info(f"Final model metric: ({round(current_value, 6)})")
         logger.info(f"Process took {len(iterations)} iterations")
-        return [(seq_to_str(current_seq, aligned_result), iterations)]
+        return [(seq_to_str(current_seq, aligned_result), HumanizationDetails(iterations))]
 
 
 def _process_sequences(model_wrapper, v_gene_scorer, sequences, target_model_metric, deny_use_aa=utils.TABOO_INSERT_AA,

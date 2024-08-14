@@ -3,7 +3,7 @@ from abc import ABC
 from typing import List, Tuple, NamedTuple, Optional, Dict
 
 from humanization.common import config_loader
-from humanization.common.annotations import GeneralChainType, Annotation
+from humanization.common.annotations import GeneralChainType, Annotation, ChainType
 from humanization.common.utils import BLOSUM62, configure_logger
 from humanization.common.v_gene_scorer import calc_score, VGeneScorer
 from humanization.humanness_calculator.model_wrapper import ModelWrapper
@@ -85,6 +85,11 @@ class IterationDetails(NamedTuple):
                f"{change}"
 
 
+class HumanizationDetails(NamedTuple):
+    iterations: List[IterationDetails]
+    chain_type: ChainType = None
+
+
 def seq_to_str(sequence: List[str], with_x: bool, sep: str = "") -> str:
     return sep.join(c for c in sequence if c != 'X' or with_x)
 
@@ -107,7 +112,7 @@ class BaseHumanizer(ABC):
             return None, None
 
     def query(self, sequence: str, target_model_metric: float,
-              target_v_gene_score: Optional[float]) -> List[Tuple[str, List[IterationDetails]]]:
+              target_v_gene_score: Optional[float]) -> List[Tuple[str, HumanizationDetails]]:
         pass
 
 
@@ -126,8 +131,8 @@ class AbstractHumanizer(BaseHumanizer):
         return current_value, v_gene_score
 
 
-def run_humanizer(sequences: List[Tuple[str, str]], humanizer: BaseHumanizer, *args,
-                  **kwargs) -> List[Tuple[str, str, List[IterationDetails]]]:
+def run_humanizer(sequences: List[Tuple[str, str]], humanizer: BaseHumanizer,
+                  *args, **kwargs) -> List[Tuple[str, str, HumanizationDetails]]:
     results = []
     for name, sequence in sequences:
         logger.info(f"Processing {name}")

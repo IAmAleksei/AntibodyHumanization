@@ -1,12 +1,13 @@
 import logging
 import sys
-from typing import List
+from typing import List, Tuple
 
 import blosum
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 
+from humanization.algorithms.abstract_humanizer import HumanizationDetails
 from humanization.common import config_loader
 
 AA_ALPHABET = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y', 'X']
@@ -40,12 +41,12 @@ def read_sequences(input_file):
     return result
 
 
-def generate_report(report_file, sequences):
+def generate_report(report_file: str, sequences: List[Tuple[str, str, HumanizationDetails]]):
     with open(report_file, 'w') as file:
-        for name, result, iterations in sequences:
+        for name, result, details in sequences:
             file.write("++++++++++++++")
             file.write(f"Sequence name: {name}\n")
-            for iteration in iterations:
+            for iteration in details.iterations:
                 file.write(f"   Iteration {iteration.index}\n")
                 if iteration.all_changes:
                     file.write(f"List of all changes:\n")
@@ -68,5 +69,3 @@ def write_sequences(output_file, sequences):
     else:
         seqs = [SeqRecord(Seq(seq), id=name, description='') for name, seq, _ in sequences]
         SeqIO.write(seqs, output_file, 'fasta')
-        print(seqs)
-        print(sequences)
