@@ -33,7 +33,7 @@ def main(models_dir, dataset_dir, wild_dataset_dir, fasta_output):
     prep_seqs = [(antibody['name'], antibody['heavy']['sequ'].replace('-', '')) for antibody in samples]
     innovative_result = innovative_antiberta_humanizer.process_sequences(
         v_gene_scorer, all_models, wild_v_gene_scorer, prep_seqs, limit_delta=15.0,
-        target_v_gene_score=0.85, prefer_human_sample=True, change_batch_size=1, candidates_count=10
+        target_v_gene_score=0.85, prefer_human_sample=False, change_batch_size=1, candidates_count=10
     )
     with open(fasta_output, 'w') as f:
         lines = []

@@ -186,7 +186,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         return seq_to_str(current_seq, aligned_result), HumanizationDetails(iterations, cur_chain_type)
 
     def query(self, sequence: str, limit_delta: float = 15, target_v_gene_score: float = 0.0, human_sample: str = None,
-              human_chain_type: str = None, aligned_result: bool = False, prefer_human_sample: bool = True,
+              human_chain_type: str = None, aligned_result: bool = False, prefer_human_sample: bool = False,
               change_batch_size: int = 1, limit_changes: int = 999,
               candidates_count: int = 3) -> List[Tuple[str, HumanizationDetails]]:
         general_type = GeneralChainType.HEAVY
@@ -214,7 +214,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
 def process_sequences(v_gene_scorer=None, models=None, wild_v_gene_scorer=None, sequences=None, limit_delta=16.0,
                       human_sample=None, human_chain_type=None, deny_use_aa=utils.TABOO_INSERT_AA,
                       deny_change_aa=utils.TABOO_DELETE_AA, deny_change_pos='', target_v_gene_score=None,
-                      aligned_result=False, prefer_human_sample=True, change_batch_size=1, limit_changes=999,
+                      aligned_result=False, prefer_human_sample=False, change_batch_size=1, limit_changes=999,
                       candidates_count=3):
     humanizer = InnovativeAntibertaHumanizer(v_gene_scorer, wild_v_gene_scorer, models, parse_list(deny_use_aa),
                                              parse_list(deny_change_aa), parse_list(deny_change_pos))
