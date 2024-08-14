@@ -80,10 +80,11 @@ def print_info(seq: str, way: str, v_gene_scorer, wild_v_gene_scorer, biophi_pat
 
 def main(files, dataset, wild_dataset, biophi_path, human_models_dir, murine_models_dir, rhesus_models_dir):
     models = load_all_models(human_models_dir, GeneralChainType.HEAVY)
-    wild_models = [
-        load_all_models(murine_models_dir, GeneralChainType.HEAVY)[HeavyChainType.V1],
-        load_all_models(rhesus_models_dir, GeneralChainType.HEAVY)[HeavyChainType.V1],
-    ]
+    wild_models = []
+    if murine_models_dir is not None:
+        wild_models.append(load_all_models(murine_models_dir, GeneralChainType.HEAVY)[HeavyChainType.V1])
+    if rhesus_models_dir is not None:
+        wild_models.append(load_all_models(rhesus_models_dir, GeneralChainType.HEAVY)[HeavyChainType.V1])
     v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), dataset)
     wild_v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), wild_dataset)
     seqs = defaultdict(list)
