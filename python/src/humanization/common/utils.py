@@ -20,7 +20,7 @@ def configure_logger(config: config_loader.Config, name):
     logger.setLevel(logging.getLevelName(config.get(config_loader.LOGGING_LEVEL)))
 
     ch = logging.StreamHandler(stream=sys.stdout)
-    ch.setFormatter(logging.Formatter(fmt=config.get(config_loader.LOGGING_FORMAT)))
+    ch.setFormatter(logging.Formatter(fmt=config.get(config_loader.LOGGING_FORMAT), datefmt='%Y-%m-%d %H:%M:%S'))
 
     logger.propagate = False
     logger.addHandler(ch)

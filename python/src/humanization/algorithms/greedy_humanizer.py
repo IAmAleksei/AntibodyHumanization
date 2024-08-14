@@ -4,7 +4,7 @@ from typing import Optional, List, Tuple, Dict
 import numpy as np
 
 from humanization.algorithms.abstract_humanizer import seq_to_str, IterationDetails, is_change_less, SequenceChange, \
-    run_humanizer, BaseHumanizer, read_humanizer_options, InnerChange, blosum_sum, HumanizationDetails
+    run_humanizer, BaseHumanizer, InnerChange, blosum_sum, HumanizationDetails
 from humanization.common import config_loader, utils
 from humanization.common.annotations import annotate_single, ChothiaHeavy, GeneralChainType, Annotation, ChainType
 from humanization.common.utils import configure_logger, parse_list, read_sequences, write_sequences, generate_report
@@ -90,7 +90,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         return res
 
     def _find_best_change(self, current_seq: List[str], original_embedding: np.array, cur_human_sample: List[str],
-                          cur_chain_type: ChainType, cur_v_gene_score: float, wild_v_gene_score: float,
+                          chain_type: ChainType, cur_v_gene_score: float, wild_v_gene_score: float,
                           change_batch_size: int):
         best_change = SequenceChange(None, 10e5)
         all_candidate_changes = []
@@ -102,20 +102,17 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
                 all_candidate_changes.append(candidate_change)
         if len(all_candidate_changes) == 0:
             return best_change, []
-        unevaluated_all_candidates = self._generate_candidates(current_seq, all_candidate_changes, change_batch_size)
+        unevaluated_candidates = self._generate_candidates(current_seq, all_candidate_changes, change_batch_size)
         if cur_v_gene_score > 0.81:
             for bs in range(1, change_batch_size):
-                unevaluated_all_candidates.extend(self._generate_candidates(current_seq, all_candidate_changes, bs))
-        logger.debug(f"Get embeddings for {len(unevaluated_all_candidates)} sequences, batch is {change_batch_size}")
+                unevaluated_candidates.extend(self._generate_candidates(current_seq, all_candidate_changes, bs))
+        logger.debug(f"Get embeddings for {len(unevaluated_candidates)} sequences, batch is {change_batch_size}")
         embeddings = []
-        for i, chunk in enumerate(chunks(unevaluated_all_candidates, 500)):
-            logger.debug(f"Embeddings chunk#{i} calculation")
+        for i, chunk in enumerate(chunks(unevaluated_candidates, 500)):
             embeddings.extend(_get_embeddings([mod_seq for mod_seq, _ in chunk]))
-        humanness_degree = self._get_random_forest_value([mod_seq for mod_seq, _ in unevaluated_all_candidates],
-                                                         cur_chain_type)
-        logger.debug(f"Calculating penalties")
+        humanness_degree = self._get_random_forest_value([mod_seq for mod_seq, _ in unevaluated_candidates], chain_type)
         all_candidates = []
-        for idx, (mod_seq, changes) in enumerate(unevaluated_all_candidates):
+        for idx, (mod_seq, changes) in enumerate(unevaluated_candidates):
             penalties = {
                 'embeds': diff_embeddings(original_embedding, embeddings[idx]) * 25,
                 'v_gene': self._get_v_gene_penalty(mod_seq, cur_v_gene_score, wild_v_gene_score) * 10,
@@ -138,36 +135,36 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
             wild_v_gene_score = None
         return v_gene_score, wild_v_gene_score
 
-    def _query_one(self, original_seq, cur_human_sample, cur_chain_type, limit_delta: float, target_v_gene_score: float,
+    def _query_one(self, original_seq, cur_human_sample, chain_type, limit_delta: float, target_v_gene_score: float,
                    aligned_result: bool, prefer_human_sample: bool, change_batch_size: int,
                    limit_changes: int) -> Tuple[str, HumanizationDetails]:
         original_embedding = _get_embedding(original_seq)
         current_seq = original_seq.copy()
-        logger.info(f"Used human sample: {cur_human_sample}, chain type: {cur_chain_type}")
+        logger.info(f"Used human sample: {cur_human_sample}, chain type: {chain_type}")
         iterations = []
         current_value = 0.0
         v_gene_score, wild_v_gene_score = self._calc_v_gene_metrics(current_seq, cur_human_sample, prefer_human_sample)
-        humanness_score = self._get_random_forest_value([current_seq], cur_chain_type)[0]
+        humanness_score = self._get_random_forest_value([current_seq], chain_type)[0]
         iterations.append(IterationDetails(0, current_value, v_gene_score, wild_v_gene_score, humanness_score, None))
         logger.info(f"Start metrics: V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
         for it in range(1, min(config.get(config_loader.MAX_CHANGES), limit_changes) + 1):
             logger.info(f"Iteration {it}. Current delta = {round(current_value, 6)}, "
                         f"V Gene score = {v_gene_score}, wild V Gene score = {wild_v_gene_score}")
             best_change, all_changes = self._find_best_change(current_seq, original_embedding, cur_human_sample,
-                                                              cur_chain_type, v_gene_score, wild_v_gene_score,
+                                                              chain_type, v_gene_score, wild_v_gene_score,
                                                               change_batch_size)
             if best_change.is_defined():
                 best_change.apply(current_seq)
                 best_value = best_change.value
                 best_v_gene_score, best_wild_v_gene_score = \
                     self._calc_v_gene_metrics(current_seq, cur_human_sample, prefer_human_sample)
-                logger.debug(f"Trying apply metric {best_value} and v_gene_score {best_v_gene_score}")
+                logger.debug(f"Trying apply metric {round(best_value, 6)} and V Gene score {best_v_gene_score}")
                 if best_value >= limit_delta:
                     best_change.unapply(current_seq)
                     logger.info(f"It {it}. Current metrics are best ({round(current_value, 6)})")
                     break
-                logger.debug(f"Best change: {best_change}")
-                humanness_score = self._get_random_forest_value([current_seq], cur_chain_type)[0]
+                logger.info(f"Best change: {best_change}")
+                humanness_score = self._get_random_forest_value([current_seq], chain_type)[0]
                 iterations.append(IterationDetails(it, best_value, best_v_gene_score, best_wild_v_gene_score,
                                                    humanness_score, best_change, all_changes))
                 if best_value < limit_delta and is_v_gene_score_less(target_v_gene_score, best_v_gene_score):
@@ -182,8 +179,8 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
                             f" Stop algorithm on model metric = {round(current_value, 6)}")
                 break
         logger.info(f"Process took {len(iterations)} iterations")
-        logger.debug(f"Humanness: {iterations[-1].humanness_score} (threshold: {self.models[cur_chain_type].threshold})")
-        return seq_to_str(current_seq, aligned_result), HumanizationDetails(iterations, cur_chain_type)
+        logger.debug(f"Humanness: {iterations[-1].humanness_score} (threshold: {self.models[chain_type].threshold})")
+        return seq_to_str(current_seq, aligned_result), HumanizationDetails(iterations, chain_type)
 
     def query(self, sequence: str, limit_delta: float = 15, target_v_gene_score: float = 0.0, human_sample: str = None,
               human_chain_type: str = None, aligned_result: bool = False, prefer_human_sample: bool = False,
@@ -198,14 +195,15 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         if not human_sample:
             logger.debug(f"Retrieve {candidates_count} human sample from V Gene scorer")
             v_gene_samples = self.v_gene_scorer.query(current_seq, candidates_count)
-            human_samples = [(human_sample, ChainType.from_oas_type(human_chain_type))
-                             for human_sample, _, human_chain_type in v_gene_samples]
+            human_samples = [(human_sample, vgs, ChainType.from_oas_type(human_chain_type))
+                             for human_sample, vgs, human_chain_type in v_gene_samples]
         else:
             human_sample = annotate_single(human_sample, self.annotation, general_type)
-            human_samples = [(human_sample, ChainType.from_oas_type(human_chain_type))]
+            _, v_gene_score = self._get_v_gene_score(current_seq, human_sample, prefer_human_sample=True)
+            human_samples = [(human_sample, v_gene_score, ChainType.from_oas_type(human_chain_type))]
         result = []
-        for i, (cur_human_sample, chain_type) in enumerate(human_samples):
-            logger.debug(f"Processing {i + 1} of {len(human_samples)} human sample")
+        for i, (cur_human_sample, vgs, chain_type) in enumerate(human_samples):
+            logger.debug(f"Processing {i + 1} of {len(human_samples)} human sample (v_gene_score = {vgs})")
             result.append(self._query_one(original_seq, cur_human_sample, chain_type, limit_delta, target_v_gene_score,
                                           aligned_result, prefer_human_sample, change_batch_size, limit_changes))
         return result

@@ -4,7 +4,7 @@ import json
 import os.path
 
 from humanization.algorithms import direct_humanizer, reverse_humanizer, antiberta2_humanizer, \
-    reverse_antiberta2_humanizer, innovative_antiberta_humanizer
+    reverse_antiberta2_humanizer, greedy_humanizer
 from humanization.common import config_loader
 from humanization.common.annotations import ChainType, GeneralChainType, load_annotation, ChainKind
 from humanization.humanness_calculator.model_wrapper import load_model, load_all_models
@@ -31,7 +31,7 @@ def main(models_dir, dataset_dir, wild_dataset_dir, fasta_output):
     v_gene_scorer = build_v_gene_scorer(annotation, dataset_dir)
     wild_v_gene_scorer = build_v_gene_scorer(annotation, wild_dataset_dir)
     prep_seqs = [(antibody['name'], antibody['heavy']['sequ'].replace('-', '')) for antibody in samples]
-    innovative_result = innovative_antiberta_humanizer.process_sequences(
+    innovative_result = greedy_humanizer.process_sequences(
         v_gene_scorer, all_models, wild_v_gene_scorer, prep_seqs, limit_delta=15.0,
         target_v_gene_score=0.85, prefer_human_sample=False, change_batch_size=1, candidates_count=10
     )
