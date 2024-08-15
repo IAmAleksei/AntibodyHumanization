@@ -5,7 +5,6 @@ from datetime import datetime
 from typing import Dict, Union
 
 import numpy as np
-from catboost import CatBoostClassifier
 from sklearn.ensemble import RandomForestClassifier
 
 from humanization.common.annotations import Annotation, load_annotation, ChainType, GeneralChainType
@@ -13,7 +12,7 @@ from humanization.dataset.one_hot_encoder import one_hot_encode_pred
 
 
 class ModelWrapper:
-    def __init__(self, chain_type: ChainType, model: Union[CatBoostClassifier, RandomForestClassifier],
+    def __init__(self, chain_type: ChainType, model,
                  annotation: Annotation, threshold: float):
         self.chain_type = chain_type
         self.model = model
@@ -21,7 +20,7 @@ class ModelWrapper:
         self.threshold = threshold
 
     def library(self):
-        return 'catboost' if isinstance(self.model, CatBoostClassifier) else 'sklearn'
+        return 'sklearn' if isinstance(self.model, RandomForestClassifier) else 'catboost'
 
     def predict_proba(self, data):
         return self.model.predict_proba(one_hot_encode_pred(self.annotation, data, lib=self.library()))
@@ -67,6 +66,8 @@ def load_model(model_dir, chain_type: ChainType) -> ModelWrapper:
         desc = json.load(file)
     annotation = load_annotation(desc['schema'], chain_type.general_type().kind())
     if desc.get('library', 'catboost') == 'catboost':
+        from catboost import CatBoostClassifier
+
         model = CatBoostClassifier()
         model.load_model(model_path)
     else:
@@ -82,6 +83,6 @@ def load_all_models(model_dir, general_type: GeneralChainType) -> Dict[ChainType
     for chain_type in chain_types:
         try:
             models[chain_type] = load_model(model_dir, chain_type)
-        except Exception:
+        except Exception as e:
             pass
     return models

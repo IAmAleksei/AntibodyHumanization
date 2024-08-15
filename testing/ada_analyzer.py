@@ -1,7 +1,9 @@
 import argparse
 
+import matplotlib.pyplot as plt
 import numpy as np
 from Bio import SeqIO
+from scipy.stats import pearsonr
 from tabulate import tabulate
 
 from humanization.common import config_loader
@@ -35,6 +37,7 @@ def main(model_dir):
     print("Name", "", "ADA", "Max", "Positive", "", *[t.full_type() for t in model_types], sep='\t')
     matrix = [["", "Ada<10", "10<Ada<50", "50<Ada"], [">0.9", 0, 0, 0], ["Pos", 0, 0, 0], ["Neg", 0, 0, 0]]
     scores = []
+    adas = []
     for name, seq, ada in res:
         preds = [round(model_wrappers[t].predict_proba([seq])[0, 1], 2) for t in model_types]
         is_positive = any(model_wrappers[t].predict([seq])[0] for t in model_types)
@@ -44,11 +47,15 @@ def main(model_dir):
             matrix[1][col] += 1
         matrix[2 if is_positive else 3][col] += 1
         scores.append(mx)
+        adas.append(ada)
         print(name, ada, mx, is_positive, "", "", *preds, sep='\t')
     print()
     print(tabulate(matrix))
     print()
     print_distribution(np.array(scores))
+    print("Correlation", pearsonr(scores, adas))
+    plt.scatter(scores, adas, c='r', alpha=0.3, s=10)
+    plt.show()
 
 
 if __name__ == '__main__':

@@ -1,4 +1,3 @@
-from catboost import Pool
 from sklearn.preprocessing import OneHotEncoder
 
 from humanization.common.annotations import Annotation
@@ -11,6 +10,8 @@ def get_encoder(a: Annotation) -> OneHotEncoder:
 
 def one_hot_encode(annotation, X, y=None, lib='catboost', **kwargs):
     if lib == 'catboost':
+        from catboost import Pool
+
         return Pool(data=X, label=y, **kwargs)
     if lib == 'sklearn':
         return get_encoder(annotation).fit_transform(X)

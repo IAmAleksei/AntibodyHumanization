@@ -4,7 +4,8 @@ from typing import List, Tuple, NamedTuple, Optional, Dict
 
 from humanization.common import config_loader
 from humanization.common.annotations import GeneralChainType, Annotation, ChainType
-from humanization.common.utils import BLOSUM62, configure_logger
+from humanization.common.blosum_utils import BLOSUM62
+from humanization.common.utils import configure_logger
 from humanization.common.v_gene_scorer import calc_score, VGeneScorer
 from humanization.humanness_calculator.model_wrapper import ModelWrapper
 

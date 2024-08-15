@@ -230,7 +230,6 @@ def annotate_batch(sequences: List[str], annotation: Annotation,
     # 'SSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQSYSTPRFGQGT' fails anarci
     temp_res = anarci.run_anarci(sequences_, **kwargs)
     numerated_sequences = temp_res[1]
-    logger.debug(f"Anarci run is finished")
     index_results = []
     prepared_results = []
     for i, numerated_seq in enumerate(numerated_sequences):

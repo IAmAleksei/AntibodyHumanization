@@ -17,12 +17,14 @@ setuptools.setup(
         'catboost==1.2.2',
         'blosum',
         'tqdm',
-        'scikit-learn',
+        'scikit-learn==1.3.1',
         'PyYAML',
         'numpy==1.26.3',
         'transformers==4.32.1',
         'rjieba==0.1.11',
-        'torch==2.2.1'
+        'torch==2.2.1',
+        'biopython==1.78',
+        'tabulate',
     ],
     license='http://www.apache.org/licenses/LICENSE-2.0',
 )

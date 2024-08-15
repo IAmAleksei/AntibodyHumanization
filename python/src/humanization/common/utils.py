@@ -2,7 +2,6 @@ import logging
 import sys
 from typing import List, Tuple
 
-import blosum
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
@@ -12,7 +11,6 @@ from humanization.common import config_loader
 AA_ALPHABET = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y', 'X']
 TABOO_INSERT_AA = 'C,P,X'
 TABOO_DELETE_AA = 'C,P,X'
-BLOSUM62 = blosum.BLOSUM(62)
 
 
 def configure_logger(config: config_loader.Config, name):
