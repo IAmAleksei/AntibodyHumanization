@@ -36,7 +36,7 @@ def get_colored_seq(seq, wild, thera):
     return colored_seq
 
 
-def main(files, dataset_dir):
+def main(files, dataset_dir, only_first):
     annotation = load_annotation("chothia", ChainKind.HEAVY)
     v_gene_scorer = build_v_gene_scorer(annotation, dataset_dir)
     seqs = defaultdict(list)
@@ -55,9 +55,12 @@ def main(files, dataset_dir):
         print(wild, "Wild")
         reference = v_gene_scorer.query(annotate_single(wild, annotation, GeneralChainType.HEAVY), count=1)
         print("".join(get_colored_seq(reference[0][0], wild, thera)), f"Ref {reference[0][2]}")
+        used = ["Therap.", "Wild"]
         for way, seq in lst:
-            if way in ["Therap.", "Wild"]:
+            if way in used:
                 continue
+            if only_first:
+                used.append(way)
             print("".join(get_colored_seq(seq, wild, thera)), way)
         colored_thera = []
         for i, aa in enumerate(thera):
@@ -72,5 +75,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''Comparator of sequences''')
     parser.add_argument('files', metavar='file', type=str, nargs='+', help='Name of files')
     parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
+    parser.add_argument('--only-first', type=bool, action='store_true', default=False,
+                        help='Process only first seq from tool')
     args = parser.parse_args()
-    main(args.files, args.dataset)
+    main(args.files, args.dataset, args.only_first)
