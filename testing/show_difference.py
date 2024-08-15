@@ -25,7 +25,7 @@ def get_colored_seq(seq, wild, thera):
     colored_seq = []
     for i, aa in enumerate(seq):
         c_aa = aa
-        if aa != wild[i]:
+        if aa != wild[i] and aa != "X":
             if aa == thera[i]:
                 c_aa = colored(aa, 'green')
             elif same_group_aa(aa, thera[i]):
@@ -34,6 +34,13 @@ def get_colored_seq(seq, wild, thera):
                 c_aa = colored(aa, 'red')
         colored_seq.append(c_aa)
     return colored_seq
+
+
+def print_reference(v_gene_scorer, annotation, wild, thera):
+    annotated_wild = annotate_single(wild, annotation, GeneralChainType.HEAVY)
+    ref = v_gene_scorer.query(annotated_wild, count=1)[0]
+    ref_seq = [aa1 for aa1, aa2 in zip(ref[0], annotated_wild) if aa2 != 'X']
+    print("".join(get_colored_seq(ref_seq, wild, thera)), f"Ref {ref[2]}")
 
 
 def main(files, dataset_dir, only_first):
@@ -53,8 +60,7 @@ def main(files, dataset_dir, only_first):
             print("Skipped")
             continue
         print(wild, "Wild")
-        reference = v_gene_scorer.query(annotate_single(wild, annotation, GeneralChainType.HEAVY), count=1)
-        print("".join(get_colored_seq(reference[0][0], wild, thera)), f"Ref {reference[0][2]}")
+        print_reference(v_gene_scorer, annotation, wild, thera)
         used = ["Therap.", "Wild"]
         for way, seq in lst:
             if way in used:
