@@ -37,7 +37,7 @@ def get_colored_seq(seq, wild, thera):
                 c_aa = colored(aa, 'red')
                 chs[0] += 1
         colored_seq.append(c_aa)
-    return "".join(colored_seq), chs
+    return "".join(colored_seq), "/".join(map(str, chs))
 
 
 def print_reference(v_gene_scorer, annotation, wild, thera):
