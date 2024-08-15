@@ -75,7 +75,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''Comparator of sequences''')
     parser.add_argument('files', metavar='file', type=str, nargs='+', help='Name of files')
     parser.add_argument('--dataset', type=str, required=False, help='Path to dataset for humanness calculation')
-    parser.add_argument('--only-first', type=bool, action='store_true', default=False,
+    parser.add_argument('--only-first', action='store_true', default=False,
                         help='Process only first seq from tool')
     args = parser.parse_args()
     main(args.files, args.dataset, args.only_first)
