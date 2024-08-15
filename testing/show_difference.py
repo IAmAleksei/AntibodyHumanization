@@ -23,24 +23,29 @@ def same_group_aa(aa1, aa2):
 
 def get_colored_seq(seq, wild, thera):
     colored_seq = []
+    chs = [0, 0, 0]
     for i, aa in enumerate(seq):
         c_aa = aa
         if aa != wild[i] and aa != "X":
             if aa == thera[i]:
                 c_aa = colored(aa, 'green')
+                chs[2] += 1
             elif same_group_aa(aa, thera[i]):
                 c_aa = colored(aa, 'blue')
+                chs[1] += 1
             else:
                 c_aa = colored(aa, 'red')
+                chs[0] += 1
         colored_seq.append(c_aa)
-    return colored_seq
+    return "".join(colored_seq), chs
 
 
 def print_reference(v_gene_scorer, annotation, wild, thera):
     annotated_wild = annotate_single(wild, annotation, GeneralChainType.HEAVY)
     ref = v_gene_scorer.query(annotated_wild, count=1)[0]
     ref_seq = [aa1 for aa1, aa2 in zip(ref[0], annotated_wild) if aa2 != 'X']
-    print("".join(get_colored_seq(ref_seq, wild, thera)), f"Ref {ref[2]}")
+    colored_seq, chs = get_colored_seq(ref_seq, wild, thera)
+    print(colored_seq, f"Ref {ref[2]}", chs)
 
 
 def main(files, dataset_dir, only_first):
@@ -67,7 +72,8 @@ def main(files, dataset_dir, only_first):
                 continue
             if only_first:
                 used.append(way)
-            print("".join(get_colored_seq(seq, wild, thera)), way)
+            colored_seq, chs = get_colored_seq(seq, wild, thera)
+            print(colored_seq, way, chs)
         colored_thera = []
         for i, aa in enumerate(thera):
             c_aa = aa
