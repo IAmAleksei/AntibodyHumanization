@@ -30,11 +30,11 @@ class ModelWrapper:
 
 
 def get_model_name(chain_type: ChainType) -> str:
-    return f"{chain_type.full_type()}.cbm"
+    return f"{chain_type}.cbm"
 
 
 def get_meta_name(chain_type: ChainType) -> str:
-    return f"{chain_type.full_type()}_meta.json"
+    return f"{chain_type}_meta.json"
 
 
 def save_model(model_dir: str, wrapped_model: ModelWrapper):
@@ -84,5 +84,5 @@ def load_all_models(model_dir, general_type: GeneralChainType) -> Dict[ChainType
         try:
             models[chain_type] = load_model(model_dir, chain_type)
         except Exception as e:
-            pass
+            print(f"Model for {chain_type} is not loaded: {e}")
     return models

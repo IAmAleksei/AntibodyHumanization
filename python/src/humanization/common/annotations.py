@@ -75,6 +75,9 @@ class ChainType(Enum):
         # IG{H,K,L}V[1-10]
         return ChainType.from_full_type(s[2:])
 
+    def __str__(self):
+        return self.full_type()
+
 
 class HeavyChainType(ChainType):
     V1 = "1"
@@ -216,7 +219,7 @@ def annotate_batch(sequences: List[str], annotation: Annotation,
                    chain_type: GeneralChainType = None) -> Tuple[List[int], List[List[str]]]:
     sequences_ = list(enumerate(sequences))
     kwargs = {
-        'ncpu': min(config.get(config_loader.NCPU), 1 + len(sequences_) / 2000),
+        'ncpu': min(config.get(config_loader.NCPU), 1 + len(sequences_) // 2000),
         'scheme': annotation.name,
     }
     if chain_type:

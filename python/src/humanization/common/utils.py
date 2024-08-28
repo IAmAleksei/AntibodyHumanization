@@ -65,4 +65,4 @@ def write_sequences(output_file, sequences):
             print(result)
     else:
         seqs = [SeqRecord(Seq(seq), id=name, description='') for name, seq, _ in sequences]
-        SeqIO.write(seqs, output_file, 'fasta')
+        SeqIO.write(seqs, output_file, 'fasta-2line')

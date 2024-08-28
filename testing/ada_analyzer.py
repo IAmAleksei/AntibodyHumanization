@@ -1,4 +1,5 @@
 import argparse
+from collections import defaultdict
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -19,13 +20,16 @@ logger = configure_logger(config, "Ada analyzer")
 def main(model_dir):
     adas = {}
     seqs = []
+    source = {}
     with open('therapeutics_ada.csv', 'r') as fp:
         lines = fp.readlines()
         for line in lines:
             name, ada = line.split(',')
             adas[name] = float(ada)
-    for seq in SeqIO.parse('all_therapeutics.fasta', 'fasta'):
-        seqs.append((seq.name, str(seq.seq)))
+    for seq in list(SeqIO.parse('all_therapeutics_2.fasta', 'fasta')):
+        parts = seq.name.split("_")
+        seqs.append((parts[0], str(seq.seq)))
+        source[parts[0]] = parts[1]
     annotated_set = annotate_batch([seq for _, seq in seqs], ChothiaHeavy(), GeneralChainType.HEAVY)[1]
     logger.info(f"{len(annotated_set)} antibodies annotated")
     assert len(annotated_set) == len(seqs)
@@ -36,6 +40,8 @@ def main(model_dir):
     logger.info(f"{len(res)} antibodies with ADA value")
     print("Name", "", "ADA", "Max", "Positive", "", *[t.full_type() for t in model_types], sep='\t')
     matrix = [["", "Ada<10", "10<Ada<50", "50<Ada"], [">0.9", 0, 0, 0], ["Pos", 0, 0, 0], ["Neg", 0, 0, 0]]
+    scores_k = defaultdict(list)
+    adas_k = defaultdict(list)
     scores = []
     adas = []
     for name, seq, ada in res:
@@ -46,6 +52,8 @@ def main(model_dir):
         if mx > 0.9:
             matrix[1][col] += 1
         matrix[2 if is_positive else 3][col] += 1
+        scores_k[source[name]].append(mx)
+        adas_k[source[name]].append(ada)
         scores.append(mx)
         adas.append(ada)
         print(name, ada, mx, is_positive, "", "", *preds, sep='\t')
@@ -54,13 +62,18 @@ def main(model_dir):
     print()
     print_distribution(np.array(scores))
     print("Correlation", pearsonr(scores, adas))
-    plt.scatter(scores, adas, c='r', alpha=0.3, s=10)
-    plt.show()
+    plt.figure(figsize=(7, 5), dpi=400)
+    kinds = list(scores_k.keys())
+    kind_translate = {'xi': "Chimeric", "u": "Human", "zu": "Humanized", "xizu": "Chimeric/Humanized", "o": "Mouse"}
+    for k in kinds:
+        plt.scatter(scores_k[k], adas_k[k], alpha=0.3, s=10, label=kind_translate[k])
+    plt.legend(loc='upper right')
+    plt.savefig("ada_scores.jpg")
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''CM models ada analyzer''')
-    parser.add_argument('models', type=str, help='Path to directory with models')
+    parser.add_argument('--models', type=str, default='../sklearn_models2', help='Path to directory with models')
     args = parser.parse_args()
 
     main(args.models)

@@ -88,7 +88,7 @@ def main(input_dir: str, chain_kind: ChainKind, schema: str, output_dir: str, sk
             with open(output_file_path, 'w') as file:
                 file.write(json.dumps(metadata) + "\n")
             df.to_csv(output_file_path, index=False, mode='a')
-            logger.debug(f"Dataframe {metadata} with {df.shape[0]} rows saved to {output_file_path}")
+            logger.info(f"Dataframe {metadata} with {df.shape[0]} rows saved to {output_file_path}")
         except Exception:
             logger.exception(f"Processing error")
 
@@ -97,8 +97,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''Dataset preparer''')
     parser.add_argument('input', type=str, help='Path to input folder with .csv files')
     parser.add_argument('chain_kind', type=str, choices=[c_kind.value for c_kind in ChainKind], help='Chain kind')
-    parser.add_argument('schema', type=str, help='Annotation schema')
     parser.add_argument('output', type=str, help='Path to output folder')
+    parser.add_argument('--schema', type=str, default='chothia', help='Annotation schema')
     parser.add_argument('--skip-existing', action='store_true', help='Skip existing processed files')
     parser.add_argument('--process-existing', dest='skip_existing', action='store_false')
     parser.set_defaults(skip_existing=True)
