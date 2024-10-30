@@ -17,8 +17,30 @@ config = config_loader.Config()
 logger = configure_logger(config, "Innovative AntiBERTa2 humanizer")
 
 
-def _get_embeddings(seqs: List[List[str]]) -> np.array:
+# This function calculates embeddings for a list of sequences.
+# Input: 2d array NxM, where N - count of sequences, M - maximum count of aminoacids in sequence with used annotation
+# Sample input: [['Q', 'E', ...], ['Q', 'V', 'Q', ...]]
+# Output: 2d array NxL, where N - count of sequences, L - size of embedding
+# Sample output: numpy.array([[0.01, 0.53, ...], [0.32, 0.2, ...]])
+def _get_embeddings(
+        seqs: List[List[str]]) -> np.array:
     return get_antiberta_embeddings([seq_to_str(seq, False, " ") for seq in seqs])
+
+
+# This function calculates humanness scores for a list of sequences.
+# Input: 2d array NxM, where N - count of sequences, M - maximum count of aminoacids in sequence with used annotation
+# Sample input: [['Q', 'E', ...], ['Q', 'V', 'Q', ...]]
+# Output: 1d array of size N, where N - count of sequences
+# Sample output: numpy.array([0.98, 0.04])
+def _get_humanness_scores(
+        sequences: List[List[str]],
+        chain_type: ChainType,
+        models=None) -> np.ndarray:
+    if models is not None:
+        # If models argument passed then use it.
+        return models[chain_type].predict_proba(sequences)[:, 1]
+    # Implement any custom algorithm here
+    return np.ones(len(sequences), dtype=np.float)
 
 
 def _get_embedding(seq: List[str]) -> np.array:
@@ -43,6 +65,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         self.deny_change_pos = deny_change_pos
         self.use_aa_similarity = False
         self.models = models
+        # Any extra dependencies may be put here
 
     def get_annotation(self) -> Annotation:
         return self.annotation
@@ -65,10 +88,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
             return 1e6  # Reject change
 
     def _get_random_forest_value(self, sequences: List[List[str]], chain_type: ChainType) -> np.ndarray:
-        if self.models is not None:
-            return self.models[chain_type].predict_proba(sequences)[:, 1]
-        else:
-            return np.ones(len(sequences), dtype=np.float)
+        return _get_humanness_scores(sequences, chain_type, self.models)
 
     def _generate_candidates(self, current_seq: List[str], all_candidate_changes: List[InnerChange], changes_left: int,
                              res: List[Tuple[List[str], List[InnerChange]]] = None, cur_index: int = 0,
@@ -242,7 +262,7 @@ def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, de
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='''Innovative antiberta humanizer''')
+    parser = argparse.ArgumentParser(description='''Greedy antiberta humanizer''')
     parser.add_argument('--input', type=str, required=False, help='Path to input fasta file')
     parser.add_argument('--output', type=str, required=False, help='Path to output fasta file')
     parser.add_argument('--models', type=str, help='Path to directory with random forest models')

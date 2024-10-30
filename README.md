@@ -5,13 +5,33 @@ Basic idea has been taken from article (see [References](#references)).
 
 The solution uses CatBoost library.
 
-## Modules:
+## Installing
+
+1. Create venv with Python 3.10 using conda.
+2. Install anarci.
+   ```shell
+   cd python/src
+   ./install_anarci.sh
+   ```
+3. Install library and dependencies.
+   ```shell
+   cd python/src
+   pip install --editable .
+   ```
+4. Download models from GitHub page and extract to the repository root.
+
+If the code cannot find `humanization` library then run the following code in a terminal:
+```shell
+export PYTHONPATH="$PYTHONPATH:<full-path-to-python/src>"
+```
+
+## Scripts:
 - [Dataset downloader](#dataset-downloader)
 - [Dataset preparer](#dataset-preparer)
 - [Classifiers builder](#classifiers-builder)
 - [Humanizer](#humanizer)
-- [Reverse humanizer](#reverse-humanizer)
-- [Telegram bot](#telegram-bot)
+- [Configuration](#configuration)
+- [Testing](#testing)
  
 ### Dataset downloader
 
@@ -31,23 +51,27 @@ Example:
 Annotating sequences using specified annotation.
 
 ```
-dataset_preparer.py [-h] [--skip-existing] [--process-existing]
-                           input schema output
+usage: dataset_reader.py [-h] [--schema SCHEMA] [--skip-existing]
+                         [--process-existing]
+                         input {H,L} output
+
+Dataset preparer
 
 positional arguments:
   input               Path to input folder with .csv files
-  schema              Annotation schema
+  {H,L}               Chain kind
   output              Path to output folder
 
-optional arguments:
+options:
   -h, --help          show this help message and exit
+  --schema SCHEMA     Annotation schema
   --skip-existing     Skip existing processed files
   --process-existing
 ```
 
 Example:
 ```shell
-python3 dataset_reader.py bash/raw_dataset chothia bash/annotated_dataset
+python3 dataset_reader.py bash/raw_dataset H bash/annotated_dataset
 ```
 
 ### Classifiers builder
@@ -55,20 +79,31 @@ python3 dataset_reader.py bash/raw_dataset chothia bash/annotated_dataset
 Training models of all 7 V gene types.
 
 ```
-heavy_random_forest.py [-h] [--annotated-data] [--raw-data]
-                              [--schema SCHEMA] [--metric METRIC]
+usage: heavy_random_forest.py [-h] [--iterative-learning]
+                              [--single-batch-learning] [--schema {chothia}]
+                              [--metric {youdens,matthews}]
+                              [--tree-lib {catboost,sklearn}]
+                              [--print-metrics] [--types TYPES]
                               input output
 
-positional arguments:
-  input             Path to directory where all .csv (or .csv.gz) are listed
-  output            Output models location
+Heavy chain RF generator
 
-optional arguments:
-  -h, --help        show this help message and exit
-  --annotated-data  Data is annotated
-  --raw-data
-  --schema SCHEMA   Annotation schema
-  --metric METRIC   Threshold optimized metric
+positional arguments:
+  input                 Path to directory where all .csv (or .csv.gz) are
+                        listed
+  output                Output models location
+
+options:
+  -h, --help            show this help message and exit
+  --iterative-learning  Iterative learning using data batches
+  --single-batch-learning
+  --schema {chothia}    Annotation schema
+  --metric {youdens,matthews}
+                        Threshold optimized metric
+  --tree-lib {catboost,sklearn}
+                        Decision tree library
+  --print-metrics       Print learning metrics
+  --types TYPES         Build only specified types
 ```
 
 Example:
@@ -76,118 +111,83 @@ Example:
 python3 heavy_random_forest.py bash/annotated_dataset models --schema chothia
 ```
 
+Animal models could be retrieved in the same way using `animal_random_forest.py`.
+
 ### Humanizer
 
-Direct transformation an animal chain sequence.
-Grafting method takes every single amino acid in sequence and tries to change it with best humanizing effect.
+Greedy humanizer.
+Takes the most effective aminoacids from a reference and inserts to the given sequence.
+It continues while V-gene score >= 0.85 is not achieved.
+Change choice relies on complex penalty containing humanness score, embedding distance and distance to animal reference.
 
 ```
-humanizer.py [-h] [--input INPUT] [--output OUTPUT]
-                    [--skip-positions SKIP_POSITIONS] [--dataset DATASET]
-                    [--annotated-data] [--raw-data] [--use-aa-similarity]
-                    [--ignore-aa-similarity] [--modify-cdr] [--skip-cdr]
-                    [--deny-use-aa DENY_USE_AA]
-                    [--deny-change-aa DENY_CHANGE_AA]
-                    models
+usage: greedy_humanizer.py [-h] [--input INPUT] [--output OUTPUT]
+                           [--models MODELS] [--human-sample HUMAN_SAMPLE]
+                           [--human-chain-type HUMAN_CHAIN_TYPE]
+                           [--dataset DATASET] [--wild-dataset WILD_DATASET]
+                           [--deny-use-aa DENY_USE_AA]
+                           [--deny-change-aa DENY_CHANGE_AA]
+                           [--deny-change-pos DENY_CHANGE_POS]
+                           [--change-batch-size CHANGE_BATCH_SIZE]
+                           [--limit-changes LIMIT_CHANGES]
+                           [--candidates-count CANDIDATES_COUNT]
+                           [--report REPORT]
 
-positional arguments:
-  models                Path to directory with models
+Greedy antiberta humanizer
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   --input INPUT         Path to input fasta file
   --output OUTPUT       Path to output fasta file
-  --skip-positions SKIP_POSITIONS
-                        Positions that could not be changed
-  --dataset DATASET     Path to dataset for humanness calculation
-  --annotated-data      Data is annotated
-  --raw-data
-  --use-aa-similarity   Use blosum table while search best change
-  --ignore-aa-similarity
-  --modify-cdr          Allow CDR modifications
-  --skip-cdr            Deny CDR modifications
-  --deny-use-aa DENY_USE_AA
-                        Amino acids that could not be used
-  --deny-change-aa DENY_CHANGE_AA
-                        Amino acids that could not be changed
-```
-
-Example:
-```shell
-python3 direct_humanizer.py models --input input.fasta --dataset bash/annotated_dataset --skip-cdr
-```
-
-### Reverse humanizer
-
-Reversed version of humanizer.
-Tool combines animal CDR segments and suitable human FR segments, creating chimeric antibody.
-Then grafting method takes every single amino acid in sequence and tries to change to animal AA, keeping in the mind humanization score.
-
-```
-reverse_humanizer.py [-h] [--skip-positions SKIP_POSITIONS]
-                            [--dataset DATASET] [--annotated-data]
-                            [--raw-data] [--use-aa-similarity]
-                            [--ignore-aa-similarity] [--input INPUT]
-                            [--output OUTPUT] [--human-sample HUMAN_SAMPLE]
-                            models
-
-positional arguments:
-  models                Path to directory with models
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --skip-positions SKIP_POSITIONS
-                        Positions that could not be changed
-  --dataset DATASET     Path to dataset for humanness calculation
-  --annotated-data      Data is annotated
-  --raw-data
-  --use-aa-similarity   Use blosum table while search best change
-  --ignore-aa-similarity
-  --input INPUT         Path to input fasta file
-  --output OUTPUT       Path to output fasta file
+  --models MODELS       Path to directory with random forest models
   --human-sample HUMAN_SAMPLE
                         Human sample used for creation chimeric sequence
-```
-
-Example:
-```shell
-python3 reverse_humanizer.py models --input input.fasta --dataset bash/annotated_dataset
-```
-
-### Telegram bot
-
-Humanizer bot.
-
-```
-bot.py [-h] [--skip-positions SKIP_POSITIONS] [--dataset DATASET]
-              [--annotated-data] [--raw-data] [--use-aa-similarity]
-              [--ignore-aa-similarity] [--modify-cdr] [--skip-cdr]
-              [--deny-use-aa DENY_USE_AA] [--deny-change-aa DENY_CHANGE_AA]
-              models
-
-positional arguments:
-  models                Path to directory with models
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --skip-positions SKIP_POSITIONS
-                        Positions that could not be changed
+  --human-chain-type HUMAN_CHAIN_TYPE
+                        Type of provided human sample
   --dataset DATASET     Path to dataset for humanness calculation
-  --annotated-data      Data is annotated
-  --raw-data
-  --use-aa-similarity   Use blosum table while search best change
-  --ignore-aa-similarity
-  --modify-cdr          Allow CDR modifications
-  --skip-cdr            Deny CDR modifications
+  --wild-dataset WILD_DATASET
+                        Path to dataset for wildness calculation
   --deny-use-aa DENY_USE_AA
                         Amino acids that could not be used
   --deny-change-aa DENY_CHANGE_AA
                         Amino acids that could not be changed
+  --deny-change-pos DENY_CHANGE_POS
+                        Positions that could not be changed (fwr1_12, fwr2_2,
+                        etc.)
+  --change-batch-size CHANGE_BATCH_SIZE
+                        Count of changes that will be applied in one iteration
+  --limit-changes LIMIT_CHANGES
+                        Limit count of changes
+  --candidates-count CANDIDATES_COUNT
+                        Count of used references
+  --report REPORT       Path to report file
 ```
 
 Example:
 ```shell
-python3 bot.py models --dataset bash/annotated_dataset --skip-cdr
+python3 greedy_humanizer.py models --input in.fasta --output out.fasta --models ../../../../sklearn_models2
+```
+
+### Configuration
+
+There is a bunch of configurable settings in `config.yaml` file.
+
+### Testing
+
+In folder `testing` there are few scripts for drawing plots:
+
+```
+ada_analyzer.py
+embedding_analyzer.py
+feature_importance.py
+humanness_calculator_2.py
+```
+
+They need to be run from the directory without any arguments:
+
+```shell
+cd testing
+python3 ada_analyzer.py
 ```
 
 ## References
