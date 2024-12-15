@@ -48,11 +48,11 @@ def build_tree_impl(X_train, y_train, val_pool, y_val, annotation: Annotation, t
                     iterative_learning: bool = False) -> Union[RandomForestClassifier, CatBoostClassifier]:
     if iterative_learning:
         # Cast to list for length calculation
-        batches = list(gen_batches(X_train.shape[0], config.get(config_loader.LEARNING_BATCH_SIZE)))
+        batches = list(gen_batches(X_train.shape[0], config.get(config_loader.LEARNING_BATCH_SIZE, 1000000)))
     else:
         batches = [slice(X_train.shape[0])]
     cnt_batches = len(batches)
-    batch_estimators = config.get(config_loader.TOTAL_ESTIMATORS) // cnt_batches
+    batch_estimators = config.get(config_loader.TOTAL_ESTIMATORS, 1) // cnt_batches
     final_model: Union[RandomForestClassifier, CatBoostClassifier] = None
     if tree_lib == 'sklearn':
         final_model = RandomForestClassifier(n_estimators=0, warm_start=True)
@@ -163,7 +163,7 @@ def configure_abstract_parser(parser: argparse.ArgumentParser):
     parser.add_argument('--iterative-learning', action='store_true', help='Iterative learning using data batches')
     parser.add_argument('--single-batch-learning', dest='iterative_learning', action='store_false')
     parser.set_defaults(iterative_learning=True)
-    parser.add_argument('--schema', type=str, default="chothia", choices=['chothia'], help='Annotation schema')
+    parser.add_argument('--schema', type=str, default="chothia", choices=['chothia', 'imgt_humatch'], help='Annotation schema')
     parser.add_argument('--metric', type=str, default="youdens",
                         choices=['youdens', 'matthews'], help='Threshold optimized metric')
     parser.add_argument('--tree-lib', type=str, default="catboost",

@@ -6,10 +6,11 @@ from typing import NoReturn, Tuple, Optional, List, Dict
 import pandas
 
 from humanization.common import config_loader
-from humanization.common.annotations import load_annotation, Annotation, ChainKind, ChainType
+from humanization.common.annotations import load_annotation, Annotation, ChainKind, ChainType, HumatchNumbering
 from humanization.common.utils import configure_logger
 from humanization.dataset.dataset_preparer import read_oas_file, correct_v_call, make_annotated_df, filter_df, \
-    merge_all_columns, read_annotated_dataset, read_dataset, read_imgt_file, NA_SPECIES, mark_another_species
+    merge_all_columns, read_annotated_dataset, read_dataset, read_imgt_file, NA_SPECIES, mark_another_species, \
+    read_split_dataset
 
 config = config_loader.Config()
 logger = configure_logger(config, "Dataset preparer")
@@ -41,7 +42,17 @@ def read_raw_dataset(input_dir: str, annotation: Annotation, species: str = 'hum
 def read_any_dataset(input_dir: str, annotation: Annotation, species: str = 'human', drop_another: bool = False,
                      v_type: Optional[ChainType] = None) -> Tuple[pandas.DataFrame, pandas.Series]:
     annotated_data = "_annotated" in os.path.basename(input_dir)
-    if annotated_data:
+    split_data = "_split" in os.path.basename(input_dir)
+    if split_data:
+        logger.info(f"Use split-data mode")
+        if not isinstance(annotation, HumatchNumbering):
+            raise RuntimeError("Split dataset requires humatch numbering scheme")
+        if species != 'human':
+            raise RuntimeError("Only human species supported")
+        if v_type is not None:
+            raise RuntimeError("Specification v gene is not supported")
+        X, y = read_split_dataset(input_dir, annotation)
+    elif annotated_data:
         logger.info(f"Use annotated-data mode")
         logger.info(f"Please check that `{annotation.name}` is defined correctly")
         X, y = read_annotated_dataset(input_dir, species=species, drop_another=drop_another, v_type=v_type)

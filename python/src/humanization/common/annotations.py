@@ -2,9 +2,7 @@ import re
 from enum import Enum
 from typing import List, Tuple, Optional, Dict
 
-import anarci
-
-from humanization.common import patched_anarci, annotation_const, config_loader
+from humanization.common import annotation_const, config_loader
 from humanization.common.utils import configure_logger
 
 config = config_loader.Config()
@@ -130,6 +128,7 @@ def compare_positions(first: str, second: str):
 
 class Annotation:
     name = "-"
+    anarci_name = "-"
     positions: List[str] = []
     kind: ChainKind = None
     segments: List[Tuple[str, List[str]]] = []
@@ -138,6 +137,7 @@ class Annotation:
     v_gene_end: int = None
 
 
+# [start, end)
 def get_position_segment(positions: List[str], start: str, end: str) -> List[str]:
     def compare(fst, snd):
         fst_ = re.sub(r'\D', '', fst)
@@ -148,8 +148,15 @@ def get_position_segment(positions: List[str], start: str, end: str) -> List[str
     return res
 
 
+# [start, end]
+def get_slice_numbering(positions: List[str], start: str, end: str) -> List[str]:
+    res = positions[positions.index(start):positions.index(end) + 1]
+    return res
+
+
 class ChothiaLight(Annotation):
-    name = "chothia"
+    name = "chothia_light"
+    anarci_name = "chithia"
     positions = annotation_const.CHOTHIA_LIGHT_POSITIONS
     kind = ChainKind.LIGHT
     segments = [
@@ -167,7 +174,8 @@ class ChothiaLight(Annotation):
 
 
 class ChothiaHeavy(Annotation):
-    name = "chothia"
+    name = "chothia_heavy"
+    anarci_name = "chothia"
     positions = annotation_const.CHOTHIA_HEAVY_POSITIONS
     kind = ChainKind.HEAVY
     segments = [
@@ -185,7 +193,8 @@ class ChothiaHeavy(Annotation):
 
 
 class Imgt(Annotation):
-    name = "imgt"
+    name = "imgt_heavy"
+    anarci_name = "imgt"
     positions = annotation_const.IMGT_HEAVY_POSITIONS
     kind = ChainKind.HEAVY
     segments = [
@@ -199,6 +208,22 @@ class Imgt(Annotation):
     ]
     segmented_positions = segments_to_columns(segments)
 
+class HumatchNumbering(Annotation):
+    name = "imgt_humatch"
+    anarci_name = "imgt"
+    positions = annotation_const.HUMATCH_HEAVY_POSITIONS
+    kind = ChainKind.HEAVY
+    segments = [
+        ("fwr1", get_slice_numbering(positions, '1', '26')),
+        ("cdr1", get_slice_numbering(positions, '27', '38')),
+        ("fwr2", get_slice_numbering(positions, '39', '55')),
+        ("cdr2", get_slice_numbering(positions, '56', '65')),
+        ("fwr3", get_slice_numbering(positions, '66', '104')),
+        ("cdr3", get_slice_numbering(positions, '105', '117')),
+        ("fwr4", get_slice_numbering(positions, '118', '128')),
+    ]
+    segmented_positions = segments_to_columns(segments)
+
 
 def load_annotation(schema: str, kind: ChainKind) -> Annotation:
     if schema == "chothia":
@@ -209,6 +234,9 @@ def load_annotation(schema: str, kind: ChainKind) -> Annotation:
     elif schema == "imgt":
         if kind == ChainKind.HEAVY:
             return Imgt()
+    elif schema == "imgt_humatch":
+        if kind == ChainKind.HEAVY:
+            return HumatchNumbering()
     raise RuntimeError("Unrecognized annotation type")
 
 
@@ -217,10 +245,13 @@ ALL_SPECIES = ['human', 'mouse', 'rat', 'rabbit', 'rhesus', 'pig', 'alpaca']
 
 def annotate_batch(sequences: List[str], annotation: Annotation,
                    chain_type: GeneralChainType = None) -> Tuple[List[int], List[List[str]]]:
+    import anarci
+    from humanization.common import patched_anarci
+
     sequences_ = list(enumerate(sequences))
     kwargs = {
         'ncpu': min(config.get(config_loader.NCPU), 1 + len(sequences_) // 2000),
-        'scheme': annotation.name,
+        'scheme': annotation.anarci_name,
     }
     if chain_type:
         kwargs['allow'] = {chain_type.value}

@@ -15,7 +15,7 @@ TABOO_DELETE_AA = 'C,P,X'
 
 def configure_logger(config: config_loader.Config, name):
     logger = logging.getLogger(name)
-    logger.setLevel(logging.getLevelName(config.get(config_loader.LOGGING_LEVEL)))
+    logger.setLevel(logging.getLevelName(config.get(config_loader.LOGGING_LEVEL, 'INFO')))
 
     ch = logging.StreamHandler(stream=sys.stdout)
     ch.setFormatter(logging.Formatter(fmt=config.get(config_loader.LOGGING_FORMAT), datefmt='%Y-%m-%d %H:%M:%S'))

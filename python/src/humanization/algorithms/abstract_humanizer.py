@@ -99,7 +99,7 @@ class BaseHumanizer(ABC):
     def __init__(self, v_gene_scorer: Optional[VGeneScorer]):
         self.v_gene_scorer = v_gene_scorer
 
-    def get_annotation(self) -> Annotation:
+    def get_annotation(self, chain_type: ChainType = None) -> Annotation:
         pass
 
     def _get_v_gene_score(self, current_seq: List[str], human_sample: Optional[str] = None,

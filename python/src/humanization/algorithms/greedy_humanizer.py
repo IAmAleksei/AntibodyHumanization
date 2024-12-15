@@ -16,15 +16,19 @@ from humanization.humanness_calculator.model_wrapper import load_all_models, Mod
 config = config_loader.Config()
 logger = configure_logger(config, "Innovative AntiBERTa2 humanizer")
 
+EMBEDDING_SOURCE = "antiberta"
+
 
 # This function calculates embeddings for a list of sequences.
 # Input: 2d array NxM, where N - count of sequences, M - maximum count of aminoacids in sequence with used annotation
 # Sample input: [['Q', 'E', ...], ['Q', 'V', 'Q', ...]]
 # Output: 2d array NxL, where N - count of sequences, L - size of embedding
 # Sample output: numpy.array([[0.01, 0.53, ...], [0.32, 0.2, ...]])
-def _get_embeddings(
-        seqs: List[List[str]]) -> np.array:
-    return get_antiberta_embeddings([seq_to_str(seq, False, " ") for seq in seqs])
+def _get_embeddings(seqs: List[List[str]]) -> np.array:
+    if EMBEDDING_SOURCE == "antiberta":
+        return get_antiberta_embeddings([seq_to_str(seq, False, " ") for seq in seqs])
+    # ...
+    raise RuntimeError("Unknown embedding source")
 
 
 # This function calculates humanness scores for a list of sequences.
@@ -59,7 +63,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
                  deny_change_aa: List[str], deny_change_pos: List[str]):
         super().__init__(v_gene_scorer)
         self.wild_v_gene_scorer = wild_v_gene_scorer
-        self.annotation = ChothiaHeavy()
+        self.default_annotation = ChothiaHeavy()
         self.deny_insert_aa = deny_use_aa
         self.deny_delete_aa = deny_change_aa
         self.deny_change_pos = deny_change_pos
@@ -67,8 +71,13 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         self.models = models
         # Any extra dependencies may be put here
 
-    def get_annotation(self) -> Annotation:
-        return self.annotation
+    def get_annotation(self, chain_type: ChainType = None) -> Annotation:
+        if self.models is None:
+            return self.default_annotation
+        if chain_type is None:
+            # Take the annotation from random model, because all models should have the same one
+            return next(iter(self.models.values())).annotation
+        return self.models[chain_type].annotation
 
     def _test_single_change(self, sequence: List[str], column_idx: int, new_aa: str) -> Optional[InnerChange]:
         aa_backup = sequence[column_idx]
@@ -207,7 +216,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
               change_batch_size: int = 1, limit_changes: int = 999,
               candidates_count: int = 3) -> List[Tuple[str, HumanizationDetails]]:
         general_type = GeneralChainType.HEAVY
-        current_seq = annotate_single(sequence, self.annotation, general_type)
+        current_seq = annotate_single(sequence, self.get_annotation(), general_type)
         if current_seq is None:
             raise RuntimeError(f"{sequence} cannot be annotated")
         original_seq = [x for x in current_seq]
@@ -218,7 +227,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
             human_samples = [(human_sample, vgs, ChainType.from_oas_type(human_chain_type))
                              for human_sample, vgs, human_chain_type in v_gene_samples]
         else:
-            human_sample = annotate_single(human_sample, self.annotation, general_type)
+            human_sample = annotate_single(human_sample, self.get_annotation(), general_type)
             _, v_gene_score = self._get_v_gene_score(current_seq, human_sample, prefer_human_sample=True)
             human_samples = [(human_sample, v_gene_score, ChainType.from_oas_type(human_chain_type))]
         result = []

@@ -59,9 +59,8 @@ def mark_another_species(df: pd.DataFrame, metadata: Dict[str, str], target_spec
 
 
 def make_annotated_df(df: pd.DataFrame, annotation: Annotation) -> pd.DataFrame:
-    aa_columns = annotation.segmented_positions
     annotated_indexes, annotated_list = annotate_batch(df['sequence_alignment_aa'].tolist(), annotation)
-    X = pd.DataFrame(annotated_list, columns=aa_columns)  # Make column for every aa
+    X = pd.DataFrame(annotated_list, columns=annotation.segmented_positions)  # Make column for every aa
     y = df['v_call'][annotated_indexes]
     y.reset_index(drop=True, inplace=True)
     dataset = pd.concat([X, y], axis=1)
@@ -107,6 +106,10 @@ def read_datasets(input_dir: str, read_function: Callable[[str], pd.DataFrame],
 
 def read_dataset(*args, **kwargs) -> Tuple[pd.DataFrame, pd.Series]:
     dfs = read_datasets(*args, **kwargs)
+    return merge_dataframes(dfs)
+
+
+def merge_dataframes(dfs: List[pd.DataFrame]):
     dataset = pd.concat(dfs, axis=0, ignore_index=True, copy=False)
     dataset.drop_duplicates(ignore_index=True, inplace=True)
     logger.info(f"Dataset: {dataset.shape[0]} rows (duplicates removed)")
@@ -124,6 +127,28 @@ def read_annotated_dataset(input_dir: str, species: str = 'human', **kwargs) -> 
         return df
 
     return read_dataset(input_dir, process_file, **kwargs)
+
+
+def read_split_dataset(input_dir: str, annotation: Annotation) -> Tuple[pd.DataFrame, pd.Series]:
+    logger.info("Dataset reading...")
+    file_names = [(f"hv{i}.csv", f"IGHV{i}") for i in range(1, 8)] + [("neg_heavy.csv", NA_SPECIES)]
+    file_paths = [(os.path.join(input_dir, fname), v_type) for fname, v_type in file_names]
+    if not os.path.isdir(input_dir):
+        raise RuntimeError(f"Unexpected dataset path: {input_dir}")
+    original_data_size = 0
+    dfs = []
+    for (input_file_path, v_type) in tqdm(file_paths):
+        with open(input_file_path, 'r') as f:
+            lines = [line.strip() for line in f.readlines()]
+            sequences = [line for line in lines if line]
+            normalized_sequences = [list(seq.replace('-', 'X')) for seq in sequences]
+        df = pd.DataFrame(normalized_sequences, columns=annotation.segmented_positions)
+        df.reset_index(drop=True, inplace=True)
+        df['v_call'] = v_type
+        dfs.append(df)
+        original_data_size += df.shape[0]
+    logger.info(f"Original dataset: {original_data_size} rows")
+    return merge_dataframes(dfs)
 
 
 def merge_all_columns(df: pd.DataFrame) -> List[str]:

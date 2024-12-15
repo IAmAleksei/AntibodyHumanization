@@ -19,8 +19,8 @@ class Config(metaclass=MetaSingleton):
         self.config_loader = ConfigLoader()
         self.config_loader.update_from_yaml_file(config_file_path)
 
-    def get(self, setting_name):
-        return self.config_loader.get(setting_name, None)
+    def get(self, setting_name, default=None):
+        return self.config_loader.get(setting_name, default)
 
     def __getitem__(self, item):
         return self.get(item)
