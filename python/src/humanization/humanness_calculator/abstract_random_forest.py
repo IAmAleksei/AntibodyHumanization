@@ -1,4 +1,5 @@
 import argparse
+import os
 from typing import Tuple, Generator, Callable, Union
 
 import numpy as np
@@ -37,9 +38,11 @@ def plot_metrics(name: str, train_metrics: dict, val_metrics: dict, ax):
     plot_comparison(name, train_metrics, "Train", val_metrics, "Validation", ax)
 
 
-def log_data_stats(X_, y_, X_test, y_test):
-    logger.info(f"Train dataset: {X_.shape[0]} rows")
-    logger.debug(f"Statistics:\n{y_.value_counts()}")
+def log_data_stats(X_train, y_train, X_val, y_val, X_test, y_test):
+    logger.info(f"Train dataset: {X_train.shape[0]} rows")
+    logger.debug(f"Statistics:\n{y_train.value_counts()}")
+    logger.info(f"Val dataset: {X_val.shape[0]} rows")
+    logger.debug(f"Statistics:\n{y_val.value_counts()}")
     logger.info(f"Test dataset: {X_test.shape[0]} rows")
     logger.debug(f"Statistics:\n{y_test.value_counts()}")
 
@@ -55,7 +58,7 @@ def build_tree_impl(X_train, y_train, val_pool, y_val, annotation: Annotation, t
     batch_estimators = config.get(config_loader.TOTAL_ESTIMATORS, 1) // cnt_batches
     final_model: Union[RandomForestClassifier, CatBoostClassifier] = None
     if tree_lib == 'sklearn':
-        final_model = RandomForestClassifier(n_estimators=0, warm_start=True)
+        final_model = RandomForestClassifier(n_estimators=0, warm_start=True, n_jobs=config.get(config_loader.NCPU))
     for idx, batch in enumerate(batches):
         X_train_batch = X_train[batch]
         y_train_batch = y_train[batch]
@@ -145,10 +148,19 @@ def make_models(input_dir: str, schema: str, chain_type: GeneralChainType,
                 metric: str, iterative_learning: bool, print_metrics: bool,
                 tree_types: str = None, tree_lib: str = None) -> Generator[ModelWrapper, None, None]:
     annotation = load_annotation(schema, chain_type.kind())
-    X, y = read_any_dataset(input_dir, annotation)
-    X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.07, shuffle=True, random_state=42)
-    log_data_stats(X_, y_, X_test, y_test)
-    X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.07, shuffle=True, random_state=42)
+    train_path = os.path.join(input_dir, "train")
+    val_path = os.path.join(input_dir, "val")
+    test_path = os.path.join(input_dir, "test")
+    if os.path.exists(train_path) and os.path.exists(val_path) and os.path.exists(test_path):
+        logger.info("Directory contains train/val/test split, it will be reused")
+        X_train, y_train = read_any_dataset(train_path, annotation)
+        X_val, y_val = read_any_dataset(val_path, annotation)
+        X_test, y_test = read_any_dataset(test_path, annotation)
+    else:
+        X, y = read_any_dataset(input_dir, annotation)
+        X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.07, shuffle=True, random_state=42)
+        X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.07, shuffle=True, random_state=42)
+    log_data_stats(X_train, y_train, X_val, y_val, X_test, y_test)
     used_types = tree_types.split(",") if tree_types else chain_type.available_specific_types()
     logger.debug(f"Forests {tree_lib} for types {used_types} will be built")
     test_pool = one_hot_encode(annotation, X_test, lib=tree_lib, cat_features=X_test.columns.tolist())

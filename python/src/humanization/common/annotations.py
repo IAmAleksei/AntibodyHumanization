@@ -208,6 +208,7 @@ class Imgt(Annotation):
     ]
     segmented_positions = segments_to_columns(segments)
 
+
 class HumatchNumbering(Annotation):
     name = "imgt_humatch"
     anarci_name = "imgt"
@@ -223,6 +224,7 @@ class HumatchNumbering(Annotation):
         ("fwr4", get_slice_numbering(positions, '118', '128')),
     ]
     segmented_positions = segments_to_columns(segments)
+    v_gene_end = segmented_positions.index('fwr3_62')
 
 
 def load_annotation(schema: str, kind: ChainKind) -> Annotation:

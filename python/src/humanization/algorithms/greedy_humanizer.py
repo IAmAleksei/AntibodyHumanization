@@ -52,9 +52,15 @@ def _get_embedding(seq: List[str]) -> np.array:
 
 
 def chunks(lst, n):
-    """Yield successive n-sized chunks from lst."""
     for i in range(0, len(lst), n):
         yield lst[i:i + n]
+
+
+def get_models_annotation(models=None):
+    # Take the annotation from random model, because all models should have the same one
+    if models is None:
+        return None
+    return next(iter(models.values())).annotation
 
 
 class InnovativeAntibertaHumanizer(BaseHumanizer):
@@ -75,8 +81,7 @@ class InnovativeAntibertaHumanizer(BaseHumanizer):
         if self.models is None:
             return self.default_annotation
         if chain_type is None:
-            # Take the annotation from random model, because all models should have the same one
-            return next(iter(self.models.values())).annotation
+            return get_models_annotation(self.models)
         return self.models[chain_type].annotation
 
     def _test_single_change(self, sequence: List[str], column_idx: int, new_aa: str) -> Optional[InnerChange]:
@@ -252,12 +257,13 @@ def process_sequences(v_gene_scorer=None, models=None, wild_v_gene_scorer=None, 
 
 def main(input_file, model_dir, dataset_file, wild_dataset_file, deny_use_aa, deny_change_aa, deny_change_pos,
          human_sample, human_chain_type, limit_changes, change_batch_size, candidates_count, report, output_file):
-    sequences = read_sequences(input_file)
-    v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), dataset_file)
-    wild_v_gene_scorer = build_v_gene_scorer(ChothiaHeavy(), wild_dataset_file)
-    assert v_gene_scorer is not None
     general_type = GeneralChainType.HEAVY
     models = load_all_models(model_dir, general_type) if model_dir else None
+    annotation = get_models_annotation(models) or ChothiaHeavy()
+    v_gene_scorer = build_v_gene_scorer(annotation, dataset_file)
+    wild_v_gene_scorer = build_v_gene_scorer(annotation, wild_dataset_file)
+    assert v_gene_scorer is not None
+    sequences = read_sequences(input_file)
     results = process_sequences(
         v_gene_scorer, models, wild_v_gene_scorer, sequences, limit_delta=15.0,
         human_sample=human_sample, human_chain_type=human_chain_type,

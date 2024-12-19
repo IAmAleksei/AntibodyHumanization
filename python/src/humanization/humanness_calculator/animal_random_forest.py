@@ -22,8 +22,8 @@ def make_model(input_dir: str, schema: str, species: str,
     annotation = load_annotation(schema, ChainKind.HEAVY)
     X, y = read_any_dataset(input_dir, annotation, species=species)
     X_, X_test, y_, y_test = train_test_split(X, y, test_size=0.07, shuffle=True, random_state=42)
-    log_data_stats(X_, y_, X_test, y_test)
     X_train, X_val, y_train, y_val = train_test_split(X_, y_, test_size=0.07, shuffle=True, random_state=42)
+    log_data_stats(X_train, y_train, X_val, y_val, X_test, y_test)
     test_pool = one_hot_encode(annotation, X_test, cat_features=X_test.columns.tolist())
     return abstract_random_forest.make_model(X_train, y_train, X_val, y_val, test_pool, y_test, annotation,
                                              HeavyChainType.V1, metric, iterative_learning, print_metrics,

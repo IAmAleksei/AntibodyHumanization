@@ -42,7 +42,7 @@ def read_raw_dataset(input_dir: str, annotation: Annotation, species: str = 'hum
 def read_any_dataset(input_dir: str, annotation: Annotation, species: str = 'human', drop_another: bool = False,
                      v_type: Optional[ChainType] = None) -> Tuple[pandas.DataFrame, pandas.Series]:
     annotated_data = "_annotated" in os.path.basename(input_dir)
-    split_data = "_split" in os.path.basename(input_dir)
+    split_data = "humatch" in os.path.abspath(input_dir)
     if split_data:
         logger.info(f"Use split-data mode")
         if not isinstance(annotation, HumatchNumbering):
