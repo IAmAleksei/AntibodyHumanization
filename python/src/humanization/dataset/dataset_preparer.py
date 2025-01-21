@@ -109,9 +109,11 @@ def read_dataset(*args, **kwargs) -> Tuple[pd.DataFrame, pd.Series]:
     return merge_dataframes(dfs)
 
 
-def merge_dataframes(dfs: List[pd.DataFrame]):
+def merge_dataframes(dfs: List[pd.DataFrame], with_shuffle = False):
     dataset = pd.concat(dfs, axis=0, ignore_index=True, copy=False)
     dataset.drop_duplicates(ignore_index=True, inplace=True)
+    if with_shuffle:
+        dataset = dataset.sample(frac=1).reset_index(drop=True)
     logger.info(f"Dataset: {dataset.shape[0]} rows (duplicates removed)")
     X = dataset.drop(['v_call'], axis=1)
     y = dataset['v_call']
@@ -148,7 +150,7 @@ def read_split_dataset(input_dir: str, annotation: Annotation) -> Tuple[pd.DataF
         dfs.append(df)
         original_data_size += df.shape[0]
     logger.info(f"Original dataset: {original_data_size} rows")
-    return merge_dataframes(dfs)
+    return merge_dataframes(dfs, with_shuffle=True)
 
 
 def merge_all_columns(df: pd.DataFrame) -> List[str]:

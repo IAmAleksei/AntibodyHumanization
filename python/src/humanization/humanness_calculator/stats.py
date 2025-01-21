@@ -1,5 +1,5 @@
 import math
-from typing import List, Tuple, Callable, NoReturn, Optional
+from typing import List, Tuple, Callable, NoReturn, Optional, Dict
 
 import numpy as np
 from sklearn import metrics
@@ -96,6 +96,16 @@ def plot_roc_auc(y_true: np.ndarray, y_pred_proba: np.ndarray, ax):
     ax.set_title('ROC AUC')
     ax.plot(fpr, tpr, color="#160773", label="AUC = " + str(round(auc, 4)))
     ax.legend(loc=4)
+
+
+def calc_learning_stats(y_true, y_pred_proba, y_pred) -> Dict[str, float]:
+    return {
+        'pr_auc': metrics.average_precision_score(y_true, y_pred_proba),
+        'roc_auc': metrics.roc_auc_score(y_true, y_pred_proba),
+        'f1': metrics.f1_score(y_true, y_pred),
+        'matthews': metrics.matthews_corrcoef(y_true, y_pred),
+        'balanced_accuracy': metrics.balanced_accuracy_score(y_true, y_pred)
+    }
 
 
 def plot_comparison(key: str, metrics1: dict, name1: str, metrics2: dict, name2: str, ax):
