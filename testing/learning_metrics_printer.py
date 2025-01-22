@@ -24,7 +24,7 @@ def main(input_dir, schema, model_dir):
     print([""] + metrics, sep=',')
     for key in model_wrappers.keys():
         model = model_wrappers[key]
-        y_pred_proba = model.predict_proba(test_pool)[:, 1]
+        y_pred_proba = model.model.predict_proba(test_pool)[:, 1] # Data has been encoded already
         y_pred = np.where(y_pred_proba >= model.threshold, 1, 0)
         learning_statistics = calc_learning_stats(y_test, y_pred_proba, y_pred)
         metrics_values = [learning_statistics[m] for m in metrics]
