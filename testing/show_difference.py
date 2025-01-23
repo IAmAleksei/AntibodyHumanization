@@ -49,13 +49,15 @@ def print_reference(v_gene_scorer, annotation, wild, thera):
 
 
 def main(files, dataset_dir, only_first):
-    annotation = load_annotation("chothia", ChainKind.HEAVY)
+    annotation = load_annotation("imgt_humatch", ChainKind.HEAVY)
     v_gene_scorer = build_v_gene_scorer(annotation, dataset_dir)
     seqs = defaultdict(list)
     for file in files:
         for seq in SeqIO.parse(file, 'fasta'):
             parts = seq.name.split("_")
-            seqs[parts[0]].append((parts[2], str(seq.seq).replace('X', '')))
+            name = parts[0]
+            tool = parts[1] if len(parts) < 3 else parts[2]
+            seqs[name].append((tool, str(seq.seq).replace('X', '')))
     for mab, lst in seqs.items():
         thera = next(seq for way, seq in lst if "Therap." == way)
         wild = next(seq for way, seq in lst if "Wild" == way)

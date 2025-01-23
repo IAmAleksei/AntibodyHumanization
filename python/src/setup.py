@@ -25,6 +25,7 @@ setuptools.setup(
         'torch==2.2.1',
         'biopython==1.78',
         'tabulate',
+        'termcolor'
     ],
     license='http://www.apache.org/licenses/LICENSE-2.0',
 )
