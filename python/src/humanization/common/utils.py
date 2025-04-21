@@ -29,7 +29,7 @@ def parse_list(value: str) -> List[str]:
     return [x for x in value.split(",") if x != ""]
 
 
-def read_sequences(input_file):
+def read_sequences(input_file) -> List[Tuple[str, str]]:
     if not input_file:
         sequence = input("Enter sequence: ")
         result = [("CONSOLE", sequence)]

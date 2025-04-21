@@ -245,6 +245,13 @@ def load_annotation(schema: str, kind: ChainKind) -> Annotation:
 ALL_SPECIES = ['human', 'mouse', 'rat', 'rabbit', 'rhesus', 'pig', 'alpaca']
 
 
+def format_sequence(seq_dict: dict, annotation: Annotation) -> List[str]:
+    return [
+        seq_dict.get(position, "X")
+        for _, segment_positions in annotation.segments for position in segment_positions
+    ]
+
+
 def annotate_batch(sequences: List[str], annotation: Annotation,
                    chain_type: GeneralChainType = None) -> Tuple[List[int], List[List[str]]]:
     import anarci
@@ -274,10 +281,7 @@ def annotate_batch(sequences: List[str], annotation: Annotation,
             a = numerated_seq[0]
             b = a[0]
             seq_dict = {f"{idx}{letter.strip()}": aa for (idx, letter), aa in b if aa != "-"}
-            result_seq = [
-                seq_dict.get(position, "X")
-                for segment_name, segment_positions in annotation.segments for position in segment_positions
-            ]
+            result_seq = format_sequence(seq_dict, annotation)
             index_results.append(i)
             prepared_results.append(result_seq)
     logger.debug(f"Anarci returned {len(index_results)} rows")
