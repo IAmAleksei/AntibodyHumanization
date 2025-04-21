@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from humanization.common import config_loader, utils
-from humanization.common.annotations import GeneralChainType, annotate_batch, HumatchNumbering
+from humanization.common.annotations import GeneralChainType, annotate_batch
 from humanization.common.utils import configure_logger
 from humanization.humanness_calculator.model_wrapper import load_all_models
 
@@ -20,13 +20,13 @@ def main(input_file, raw_model_dirs: List[str]):
     else:
         with open(input_file, 'r') as f:
             seqs = [s for s in f.readlines() if len(s) > 0]
-    annotation = HumatchNumbering()
-    annotated_set = annotate_batch(seqs, annotation, GeneralChainType.HEAVY)[1]
-    logger.info(f"{len(annotated_set)} antibodies annotated")
-    assert len(annotated_set) == len(seqs)
     models_wrappers = [(name, load_all_models(d, GeneralChainType.HEAVY)) for name, d in models_dirs]
     plt.figure(figsize=(7, 5), dpi=400)
     for model_name, model_wrappers in models_wrappers:
+        annotation = list(model_wrappers.values())[0].annotation
+        annotated_set = annotate_batch(seqs, annotation, GeneralChainType.HEAVY)[1]
+        logger.info(f"{len(annotated_set)} antibodies annotated")
+        assert len(annotated_set) == len(seqs)
         scores = []
         for seq in annotated_set:
             preds = [round(model.predict_proba([seq])[0, 1], 2) for model in model_wrappers.values()]
